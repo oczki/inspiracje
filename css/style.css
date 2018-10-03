@@ -1,0 +1,51 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat:700';
+
+body {
+    margin: 0;
+    font: 30pt Montserrat;
+    color: #333;
+    background: #e5e5e5;
+}
+
+main {
+    margin: 1em auto;
+    width: 800px;
+}
+
+svg {
+    overflow: visible;
+}
+
+#buttons {
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 150px);
+    grid-gap: 20px 20px;
+}
+
+button {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    font: inherit;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+    color: #e5e5e5;
+    border: 0;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+    border-top: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10pt;
+    font-size: 1.2em;
+}
+
+button#noun       { background: #1c74c1;}
+button#location   { background: #14a020;}
+button#character  { background: #d6a414;}
+button#relation   { background: #d40b0b;}
+button#emotion    { background: #bb2392;}
+button#dictionary { background: #808080;}
+
+button.disabled   { background: none !important; color: gray; border-color: gray; }
