@@ -85,7 +85,6 @@ lotnisko
 łóżko
 lumpeks
 lunapark
-masaż
 mleczarnia
 molo
 monopolowy
@@ -148,13 +147,14 @@ sala|operacyjna
 sala|weselna
 salon|fotograficzny
 salon|gier
+salon|masażu
 samochód
 sauna
 scena
 schody|ruchome
 schronisko
 sesja|zdjęciowa
-sex shop
+sex|shop
 siłownia
 sklep
 sklep|muzyczny
@@ -187,7 +187,7 @@ tratwa
 trawnik
 tunel
 uniwersytet
-urząd pracy
+urząd|pracy
 wagon
 wars
 warsztat
