@@ -32,7 +32,7 @@ class DictionaryReader extends Reader {
         $this->prepareOffsets();
     }
 
-    function __destruct() {
+    public function __destruct() {
         fclose($this->file);
     }
 
@@ -87,7 +87,7 @@ class NounsReader extends Reader {
         $this->prepareOffsets();
     }
 
-    function __destruct() {
+    public function __destruct() {
         fclose($this->file);
     }
 
