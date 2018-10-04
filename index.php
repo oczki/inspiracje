@@ -19,7 +19,7 @@
             <div id="buttons">
                 <button id="noun">rzeczownik</button>
                 <button id="location">miejsce</button>
-                <button id="character" class="disabled">postać</button>
+                <button id="character">postać</button>
                 <button id="relation" class="disabled">relacja</button>
                 <button id="emotion" class="disabled">emocja</button>
                 <button id="dictionary">słowo</button>
