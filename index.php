@@ -11,7 +11,9 @@
         <main>
             <div id="word">
                 <svg viewBox="0 0 800 500">
-                    <text id="slowo" x="50%" y="50%" font-size="2.5em" fill="#333" text-anchor="middle" alignment-baseline="middle"><tspan x="50%" dy="-0.3em">wybierz opcję</tspan><tspan x="50%" dy="1em">poniżej...</tspan></text>
+                    <text id="slowo" x="50%" y="50%" font-size="2.5em" fill="#333" text-anchor="middle" alignment-baseline="middle">
+                        <tspan x="50%" dy="-0.3em">wybierz opcję</tspan><tspan x="50%" dy="1em">poniżej...</tspan>
+                    </text>
                 </svg>
             </div>
             <div id="buttons">
