@@ -77,27 +77,22 @@ class DictionaryReader extends Reader {
     }
 }
 
-class NounsReader extends Reader {
-    private const fileName = "../data/nouns.txt";
-    private $file, $start, $end;
+class GenericReader extends Reader {
+    private $file, $endOffset, $wordsCount;
 
-    public function __construct() {
-        $this->file = fopen(self::fileName, 'r');
+    public function __construct($fileName, $fileSize, $wordsCount) {
+        $this->file = fopen($fileName, 'r');
         parent::__construct($this->file);
-        $this->prepareOffsets();
+        $this->endOffset = $fileSize;
+        $this->wordsCount = $wordsCount;
     }
 
     public function __destruct() {
         fclose($this->file);
     }
 
-    private function prepareOffsets() {
-        $this->start = 0;
-        $this->end = 629386;
-    }
-
     final public function getWords() {
-        $words = $this->randomWords($this->start, $this->end, 35);
+        $words = $this->randomWords(0, $this->endOffset, $this->wordsCount);
         $words = array_unique($words);
         shuffle($words);
         return $words;
@@ -111,9 +106,13 @@ class Printer {
         $this->reader = $reader;
     }
     
-    final public function print() {
-        $reader = new $this->reader();  
-        echo '[ "' . implode('", "', $reader->getWords()) . '" ]'; 
+    final public function print() {  
+        echo '[ "' . implode('", "', $this->reader->getWords()) . '" ]'; 
     }
+}
+
+function getGenericReader($args = array()) {
+    $reflectionClass = new ReflectionClass(GenericReader::class);
+    return $reflectionClass->newInstanceArgs($args);
 }
 ?>
