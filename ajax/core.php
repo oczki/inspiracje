@@ -24,10 +24,11 @@ class Reader {
 
 class DictionaryReader extends Reader {
     private const fileName = "../data/dictionary.txt";
-    private $file, $offset;
+    private $reader, $file, $offset;
 
     public function __construct() {
         $this->file = fopen(self::fileName, 'r');
+        $this->reader = new Reader($this->file);
         $this->prepareOffsets();
     }
 
@@ -56,8 +57,7 @@ class DictionaryReader extends Reader {
     private function randomWordsOfLength($len, $count) {    
         $start = $this->offset[$len];
         $end = $this->offset[$len+1];
-        $reader = new Reader($this->file);
-        return $reader->randomWords($start, $end, $count);
+        return $this->reader->randomWords($start, $end, $count);
     }
 
     final public function getWords() {
@@ -79,10 +79,11 @@ class DictionaryReader extends Reader {
 
 class NounsReader extends Reader {
     private const fileName = "../data/nouns.txt";
-    private $file, $start, $end;
+    private $reader, $file, $start, $end;
 
     public function __construct() {
         $this->file = fopen(self::fileName, 'r');
+        $this->reader = new Reader($this->file);
         $this->prepareOffsets();
     }
 
@@ -96,8 +97,7 @@ class NounsReader extends Reader {
     }
 
     final public function getWords() {
-        $reader = new Reader($this->file);
-        $words = $reader->randomWords($this->start, $this->end, 35);
+        $words = $this->reader->randomWords($this->start, $this->end, 35);
         $words = array_unique($words);
         shuffle($words);
         return $words;
