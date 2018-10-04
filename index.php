@@ -22,7 +22,7 @@
                 <button id="character" class="disabled">postać</button>
                 <button id="relation" class="disabled">relacja</button>
                 <button id="emotion" class="disabled">emocja</button>
-                <button id="dictionary" class="disabled">słowo</button>
+                <button id="dictionary">słowo</button>
             </div>
         </main>
     </body>

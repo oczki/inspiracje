@@ -1,10 +1,4 @@
-let wordsJs = [ ];
-let wordsCount;
-
-function updateWordsJs(words) {
-    wordsJs = eval(words);
-    wordsCount = wordsJs.length;
-}
+let wordsContainer = [ ];
 
 function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -12,8 +6,6 @@ function shuffle(arr) {
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 }
-
-let nextIndex = (function() { var index = 0; return function() { return index++; }; })();
 
 function splitIfNeeded(word) {
     if (word.indexOf("|") === -1) { return word; }
@@ -39,14 +31,6 @@ function setWord(word, color) {
     textNode.setAttribute("font-size", scale + "em");
 }
 
-function nextWord(color) {
-    let index = nextIndex();
-    if (index < wordsCount)
-        setWord(wordsJs[index], color);
-    else
-        location.reload();
-}
-
 function ajax(url, callback) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -58,14 +42,64 @@ function ajax(url, callback) {
     xhr.send();
 }
 
+function getNouns() {
+    ajax("ajax/noun.php", function(output) {
+        wordsContainer["noun"].words = eval(output);
+    });
+}
+
+function getDictionary() {
+    ajax("ajax/dict.php", function(output) {
+        wordsContainer["dictionary"].words = eval(output);
+    });
+}
+
+class Container {
+    constructor(dataGetterFunction, color) {
+        this.color = color;
+        this.fun = dataGetterFunction;
+        this.init();
+    }
+
+    init() {
+        this.words = [ ];
+        this.fun();
+        this.index = 0;
+    }
+
+    nextIndex() {
+        let index = this.index++;
+        if (index >= this.words.length - 10)
+            this.init();
+        return index;
+    }
+
+    nextWord() {
+        setWord(this.words[this.nextIndex()], this.color);
+    }
+}
+
+function initializeWordsContainer() {
+    wordsContainer["noun"] = new Container(getNouns, "#1c74c1");
+    //wordsContainer["location"] = new Container(getLocations, "#14a020");
+    //wordsContainer["character"] = new Container(getCharacters, "#d6a414");
+    //wordsContainer["relation"] = new Container(getRelations, "#d40b0b");
+    //wordsContainer["emotion"] = new Container(getEmotions, "#bb2392");
+    wordsContainer["dictionary"] = new Container(getDictionary, "#808080");
+}
+
+function initializeEventListeners() {
+    document.getElementById("noun").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["noun"].nextWord(); });
+    //document.getElementById("location").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["location"].nextWord(); });
+    //document.getElementById("character").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["character"].nextWord(); });
+    //document.getElementById("relation").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["relation"].nextWord(); });
+    //document.getElementById("emotion").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["emotion"].nextWord(); });
+    document.getElementById("dictionary").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["dictionary"].nextWord(); });
+}
+
 function init() {
-    ajax("ajax/noun.php", updateWordsJs);
-    document.getElementById("noun").addEventListener("click", function(e) { e.preventDefault(); nextWord("#1c74c1"); });
-    document.getElementById("location").addEventListener("click", function(e) { e.preventDefault(); nextWord("#14a020"); });
-    document.getElementById("character").addEventListener("click", function(e) { e.preventDefault(); nextWord("#d6a414"); });
-    document.getElementById("relation").addEventListener("click", function(e) { e.preventDefault(); nextWord("#d40b0b"); });
-    document.getElementById("emotion").addEventListener("click", function(e) { e.preventDefault(); nextWord("#bb2392"); });
-    document.getElementById("dictionary").addEventListener("click", function(e) { e.preventDefault(); nextWord("#808080"); });
+    initializeWordsContainer();
+    initializeEventListeners();    
 }
 
 if (document.readyState != "loading")
