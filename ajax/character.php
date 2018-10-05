@@ -3,7 +3,7 @@ header("Content-type: text/plain; charset=utf-8");
 
 require "core.php";
 
-$reader = getGenericReader([ "../data/characters.txt", 1677, 40 ]);
+$reader = new GenericReader("../data/characters.txt");
 $printer = new Printer($reader);
 $printer->print();
 ?>

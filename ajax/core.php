@@ -1,4 +1,6 @@
 <?php
+$bytesPerWord = 40;
+
 class Reader {
     private $file;
 
@@ -7,8 +9,9 @@ class Reader {
     }
 
     private function randomWord($start, $end) {
+        global $bytesPerWord;
         fseek($this->file, mt_rand($start, $end));
-        return fread($this->file, 40);
+        return fread($this->file, $bytesPerWord);
     }
 
     final public function randomWords($start, $end, $count) {
@@ -80,10 +83,11 @@ class DictionaryReader extends Reader {
 class GenericReader extends Reader {
     private $file, $endOffset, $wordsCount;
 
-    public function __construct($fileName, $fileSize, $wordsCount) {
+    public function __construct($fileName, $wordsCount = 40) {
+        global $bytesPerWord;
         $this->file = fopen($fileName, 'r');
         parent::__construct($this->file);
-        $this->endOffset = $fileSize;
+        $this->endOffset = filesize($fileName) - $bytesPerWord;
         $this->wordsCount = $wordsCount;
     }
 
@@ -109,10 +113,5 @@ class Printer {
     final public function print() {  
         echo '[ "' . implode('", "', $this->reader->getWords()) . '" ]'; 
     }
-}
-
-function getGenericReader($args = array()) {
-    $reflectionClass = new ReflectionClass(GenericReader::class);
-    return $reflectionClass->newInstanceArgs($args);
 }
 ?>
