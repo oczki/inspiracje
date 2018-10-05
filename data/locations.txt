@@ -77,14 +77,14 @@ kuźnia
 labirynt
 las
 latarnia
-ławeczka
 linia|produkcyjna
 lodowiec
 lodowisko
 lotnisko
-łóżko
 lumpeks
 lunapark
+ławeczka
+łóżko
 mleczarnia
 molo
 monopolowy
@@ -116,10 +116,10 @@ plaża
 plebania
 pociąg
 poczekalnia
-pokaz|mody
 pod|kioskiem
 pod|mostem
 pod|ścianą
+pokaz|mody
 pole|uprawne
 pośredniak
 poza zasięgiem|kamer
@@ -142,7 +142,6 @@ ruiny
 rynek
 rzeźnia
 sad
-sąd
 sala|operacyjna
 sala|weselna
 salon|fotograficzny
@@ -150,6 +149,7 @@ salon|gier
 salon|masażu
 samochód
 sauna
+sąd
 scena
 schody|ruchome
 schronisko
@@ -159,7 +159,6 @@ siłownia
 sklep
 sklep|muzyczny
 skrzyżowanie
-ślepa|uliczka
 spotkanie|rodzinne
 stacja|benzynowa
 stajnia
@@ -172,12 +171,13 @@ strych
 studio
 supermarket
 suszarnia
-świetlica
 sypialnia
 szałas
 szklarnia
 szkoła
 szpital
+ślepa|uliczka
+świetlica
 taras
 tartak
 teatr
