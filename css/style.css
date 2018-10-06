@@ -39,6 +39,7 @@ button {
     border-top: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 10pt;
     font-size: 1.2em;
+    cursor: pointer;
 }
 
 button#noun       { background: #1c74c1;}
@@ -48,4 +49,4 @@ button#relation   { background: #d40b0b;}
 button#emotion    { background: #bb2392;}
 button#dictionary { background: #808080;}
 
-button.disabled   { background: none !important; color: gray; border-color: gray; }
+button.disabled   { background: none !important; color: gray; border-color: gray; cursor: not-allowed; }
