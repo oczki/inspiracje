@@ -20,7 +20,7 @@
                 <button id="noun">rzeczownik</button>
                 <button id="location">miejsce</button>
                 <button id="character">postać</button>
-                <button id="relation" class="disabled">relacja</button>
+                <button id="relation">relacja</button>
                 <button id="emotion">emocja</button>
                 <button id="dictionary">słowo</button>
             </div>

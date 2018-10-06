@@ -77,7 +77,7 @@ function getEmotions() {
 }
 
 function getDictionary() {
-    ajax("ajax/dict.php", function(output) {
+    ajax("ajax/dictionary.php", function(output) {
         wordsContainer["dictionary"].words = eval(output);
     });
 }
