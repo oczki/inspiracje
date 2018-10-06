@@ -41,6 +41,8 @@ button {
     font-size: 1.2em;
     cursor: pointer;
     outline: none;
+    transition: opacity 0.1s linear;
+    opacity: 1;
 }
 
 body.show-outline button:focus {
@@ -56,7 +58,5 @@ button#emotion    { background: #bb2392;}
 button#dictionary { background: #777777;}
 
 button[disabled]   {
-    background: none !important;
-    color: gray;
-    border-color: gray;
+    opacity: 0.3;
 }
