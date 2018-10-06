@@ -5,5 +5,5 @@ require "core.php";
 
 $reader = new GenericReader("../data/character-modifiers.txt");
 $printer = new Printer($reader);
-$printer->print();
+$printer->printAllWords();
 ?>

@@ -5,5 +5,5 @@ require "core.php";
 
 $reader = new GenericReader("../data/nouns.txt");
 $printer = new Printer($reader);
-$printer->print();
+$printer->printRandomWords();
 ?>

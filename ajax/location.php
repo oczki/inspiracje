@@ -5,5 +5,5 @@ require "core.php";
 
 $reader = new GenericReader("../data/locations.txt");
 $printer = new Printer($reader);
-$printer->print();
+$printer->printAllWords();
 ?>

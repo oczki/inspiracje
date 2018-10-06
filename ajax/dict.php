@@ -5,5 +5,5 @@ require "core.php";
 
 $reader = new DictionaryReader();
 $printer = new Printer($reader);
-$printer->print();
+$printer->printRandomWords();
 ?>

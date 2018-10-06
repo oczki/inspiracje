@@ -23,6 +23,15 @@ class Reader {
         }
         return array_filter($words);
     }
+
+    final public function getAllWords() {
+        $words = array();
+        fseek($this->file, 0);
+        while (($line = fgets($this->file)) !== false) {
+            $words[] = trim($line);
+        }
+        return array_filter($words);
+    }
 }
 
 class DictionaryReader extends Reader {
@@ -63,7 +72,7 @@ class DictionaryReader extends Reader {
         return $this->randomWords($start, $end, $count);
     }
 
-    final public function getWords() {
+    final public function getRandomWords() {
         $words = array();
         $words = array_merge($words, $this->randomWordsOfLength(3, 2));
         $words = array_merge($words, $this->randomWordsOfLength(4, 4));
@@ -81,22 +90,21 @@ class DictionaryReader extends Reader {
 }
 
 class GenericReader extends Reader {
-    private $file, $endOffset, $wordsCount;
+    private $file, $endOffset;
 
-    public function __construct($fileName, $wordsCount = 40) {
+    public function __construct($fileName) {
         global $bytesPerWord;
         $this->file = fopen($fileName, 'r');
         parent::__construct($this->file);
         $this->endOffset = filesize($fileName) - $bytesPerWord;
-        $this->wordsCount = $wordsCount;
     }
 
     public function __destruct() {
         fclose($this->file);
     }
 
-    final public function getWords() {
-        $words = $this->randomWords(0, $this->endOffset, $this->wordsCount);
+    final public function getRandomWords($wordsCount = 40) {
+        $words = $this->randomWords(0, $this->endOffset, $wordsCount);
         $words = array_unique($words);
         shuffle($words);
         return $words;
@@ -105,13 +113,21 @@ class GenericReader extends Reader {
 
 class Printer {
     private $reader;
-    
+
     public function __construct($reader) {
         $this->reader = $reader;
     }
-    
-    final public function print() {  
-        echo '[ "' . implode('", "', $this->reader->getWords()) . '" ]'; 
+
+    private function format($words) {
+        return '[ "' . implode('", "', $words) . '" ]';
+    }
+
+    final public function printRandomWords() {
+        echo $this->format($this->reader->getRandomWords());
+    }
+
+    final public function printAllWords() {
+        echo $this->format($this->reader->getAllWords());
     }
 }
 ?>

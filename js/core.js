@@ -51,12 +51,14 @@ function getNouns() {
 function getLocations() {
     ajax("ajax/location.php", function(output) {
         wordsContainer["location"].words = eval(output);
+        shuffle(wordsContainer["location"].words);
     });
 }
 
 function getCharacters() {
     ajax("ajax/character.php", function(output) {
         wordsContainer["character"].words = eval(output);
+        shuffle(wordsContainer["character"].words);
     });
 }
 
