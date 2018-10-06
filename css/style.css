@@ -40,6 +40,12 @@ button {
     border-radius: 10pt;
     font-size: 1.2em;
     cursor: pointer;
+    outline: none;
+}
+
+body.show-outline button:focus {
+    outline: 8px dashed white;
+    outline-offset: -20px;
 }
 
 button#noun       { background: #1c74c1;}
