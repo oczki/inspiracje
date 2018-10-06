@@ -103,7 +103,7 @@ class Container {
 function initializeWordsContainer() {
     wordsContainer["noun"] = new Container(getNouns, "#1c74c1");
     wordsContainer["location"] = new Container(getLocations, "#14a020");
-    wordsContainer["character"] = new Container(getCharacters, "#d6a414");
+    wordsContainer["character"] = new Container(getCharacters, "#ce9900");
     //wordsContainer["relation"] = new Container(getRelations, "#d40b0b");
     wordsContainer["emotion"] = new Container(getEmotions, "#bb2392");
     wordsContainer["dictionary"] = new Container(getDictionary, "#808080");
