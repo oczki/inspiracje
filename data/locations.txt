@@ -74,6 +74,7 @@ krypta
 kuchnia
 kurnik
 kuźnia
+kwiaciarnia
 labirynt
 las
 latarnia
