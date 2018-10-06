@@ -81,25 +81,15 @@ class Container {
     }
 }
 
-function initializeWordsContainer() {
+function init() {
     for (let type in containers) {
         let color = containers[type];
         wordsContainer[type] = new Container(getWords(type), color);
+        document.getElementById(type).addEventListener("click", function(e) {
+            e.preventDefault();
+            wordsContainer[type].nextWord();
+        });
     }
-}
-
-function initializeEventListeners() {
-    document.getElementById("noun").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["noun"].nextWord(); });
-    document.getElementById("location").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["location"].nextWord(); });
-    document.getElementById("character").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["character"].nextWord(); });
-    document.getElementById("relation").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["relation"].nextWord(); });
-    document.getElementById("emotion").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["emotion"].nextWord(); });
-    document.getElementById("dictionary").addEventListener("click", function(e) { e.preventDefault(); wordsContainer["dictionary"].nextWord(); });
-}
-
-function init() {
-    initializeWordsContainer();
-    initializeEventListeners();    
 }
 
 if (document.readyState != "loading")
