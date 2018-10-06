@@ -1,4 +1,12 @@
 let wordsContainer = [ ];
+let containers = {
+    "noun"       : "#1c74c1",
+    "location"   : "#14a020",
+    "character"  : "#ce9900",
+    "relation"   : "#d40b0b",
+    "emotion"    : "#bb2392",
+    "dictionary" : "#777777",
+};
 
 function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -42,43 +50,9 @@ function ajax(url, callback) {
     xhr.send();
 }
 
-function getNouns() {
-    ajax("ajax/noun.php", function(output) {
-        wordsContainer["noun"].words = eval(output);
-    });
-}
-
-function getLocations() {
-    ajax("ajax/location.php", function(output) {
-        wordsContainer["location"].words = eval(output);
-        shuffle(wordsContainer["location"].words);
-    });
-}
-
-function getCharacters() {
-    ajax("ajax/character.php", function(output) {
-        wordsContainer["character"].words = eval(output);
-        shuffle(wordsContainer["character"].words);
-    });
-}
-
-function getRelations() {
-    ajax("ajax/relation.php", function(output) {
-        wordsContainer["relation"].words = eval(output);
-        shuffle(wordsContainer["relation"].words);
-    });
-}
-
-function getEmotions() {
-    ajax("ajax/emotion.php", function(output) {
-        wordsContainer["emotion"].words = eval(output);
-        shuffle(wordsContainer["emotion"].words);
-    });
-}
-
-function getDictionary() {
-    ajax("ajax/dictionary.php", function(output) {
-        wordsContainer["dictionary"].words = eval(output);
+function getWords(type) {
+    ajax("ajax/" + type + ".php", function(output) {
+        wordsContainer[type].words = eval(output);
     });
 }
 
@@ -91,7 +65,7 @@ class Container {
 
     init() {
         this.words = [ ];
-        this.fun();
+        this.fun;
         this.index = 0;
     }
 
@@ -108,12 +82,10 @@ class Container {
 }
 
 function initializeWordsContainer() {
-    wordsContainer["noun"] = new Container(getNouns, "#1c74c1");
-    wordsContainer["location"] = new Container(getLocations, "#14a020");
-    wordsContainer["character"] = new Container(getCharacters, "#ce9900");
-    wordsContainer["relation"] = new Container(getRelations, "#d40b0b");
-    wordsContainer["emotion"] = new Container(getEmotions, "#bb2392");
-    wordsContainer["dictionary"] = new Container(getDictionary, "#777777");
+    for (let type in containers) {
+        let color = containers[type];
+        wordsContainer[type] = new Container(getWords(type), color);
+    }
 }
 
 function initializeEventListeners() {
