@@ -106,7 +106,7 @@ function initializeWordsContainer() {
     wordsContainer["character"] = new Container(getCharacters, "#ce9900");
     //wordsContainer["relation"] = new Container(getRelations, "#d40b0b");
     wordsContainer["emotion"] = new Container(getEmotions, "#bb2392");
-    wordsContainer["dictionary"] = new Container(getDictionary, "#808080");
+    wordsContainer["dictionary"] = new Container(getDictionary, "#777777");
 }
 
 function initializeEventListeners() {
