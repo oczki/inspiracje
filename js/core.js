@@ -53,6 +53,7 @@ function ajax(url, callback) {
 function getWords(type) {
     ajax("ajax/" + type + ".php", function(output) {
         wordsContainer[type].words = eval(output);
+        shuffle(wordsContainer[type].words);
         document.getElementById(type).disabled = false;
     });
 }
