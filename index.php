@@ -17,12 +17,12 @@
                 </svg>
             </div>
             <div id="buttons">
-                <button id="noun">rzeczownik</button>
-                <button id="location">miejsce</button>
-                <button id="character">postać</button>
-                <button id="relation">relacja</button>
-                <button id="emotion">emocja</button>
-                <button id="dictionary">słowo</button>
+                <button disabled id="noun">rzeczownik</button>
+                <button disabled id="location">miejsce</button>
+                <button disabled id="character">postać</button>
+                <button disabled id="relation">relacja</button>
+                <button disabled id="emotion">emocja</button>
+                <button disabled id="dictionary">słowo</button>
             </div>
         </main>
     </body>

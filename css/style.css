@@ -49,4 +49,8 @@ button#relation   { background: #d40b0b;}
 button#emotion    { background: #bb2392;}
 button#dictionary { background: #777777;}
 
-button.disabled   { background: none !important; color: gray; border-color: gray; cursor: not-allowed; }
+button[disabled]   {
+    background: none !important;
+    color: gray;
+    border-color: gray;
+}
