@@ -1,0 +1,49 @@
+/* hi-res desktops */
+@media (min-width: 1281px) {
+
+}
+
+
+/* low-res desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+}
+
+
+/* hi-res tablets; landscape */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+}
+
+
+/* hi-res tablets; portrait */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+
+/* low-res tablets, mobile; landscape */
+@media (min-width: 481px) and (max-width: 767px) {
+body {
+    font-size: 10pt;
+    margin-left: 1em;
+}
+}
+
+
+/* mobile; portrait */
+@media (min-width: 320px) and (max-width: 480px) {
+body {
+    font-size: 10pt;
+    margin-left: 1em;
+}
+
+div[id^=section] {
+    grid-template-columns: 5em auto;
+    grid-template-rows: 1.5em 2.5em;
+}
+
+div[id^=word-] {
+    line-height: 1.3em;
+}
+}
