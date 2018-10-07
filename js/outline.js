@@ -28,7 +28,7 @@ function initOutline() {
     let outlineCss = "";
     for (let c of containers) {
         let buttonId = prevButtonId(c.type);
-        outlineCss += `body.show-outline button#${buttonId}:focus { outline-color: ${c.color} !important; } `;
+        outlineCss += `body.show-outline button#${buttonId}:focus { outline-color: ${c.color}; } `;
     }
     applyCss(outlineCss);
 }
