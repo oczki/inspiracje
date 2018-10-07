@@ -2,61 +2,9 @@
 
 body {
     margin: 0;
-    font: 30pt Montserrat;
+    font: 25pt Montserrat;
     color: #333;
     background: #e5e5e5;
-}
-
-main {
-    margin: 1em auto;
-    width: 800px;
-}
-
-svg {
-    overflow: visible;
-}
-
-#buttons {
-    margin-top: 1em;
-    display: grid;
-    grid-template-columns: [buttons-start] repeat(6, 1fr) [buttons-end];
-    grid-template-rows: [buttons-start] repeat(3, 150px) [buttons-end] 100px;
-    grid-gap: 20px 20px;
-    position: relative;
-}
-
-button {
-    grid-column: span 3;
-    display: flex;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    font: inherit;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-    color: white;
-    border: 0;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
-    border-top: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: 10pt;
-    font-size: 1.2em;
-    cursor: pointer;
-    outline: none;
-    transition: opacity 0.1s linear;
-    opacity: 1;
-}
-
-button.nav {
-    grid-column: span 2;
-    font-size: 1.8em;
-    color: #676767;
-    background: buttonface;
-}
-
-button.nav#undo span {
-    position: relative;
-    top: -6px;
 }
 
 body.show-outline button:focus {
@@ -64,33 +12,84 @@ body.show-outline button:focus {
     outline-offset: -20px;
 }
 
-button#noun       { background: #1c74c1;}
-button#location   { background: #14a020;}
-button#character  { background: #ce9900;}
-button#relation   { background: #d40b0b;}
-button#emotion    { background: #bb2392;}
-button#dictionary { background: #777777;}
+main {
+    margin: 1em auto;
+    width: 800px;
+}
 
-button[disabled]   {
+div[id^=section] {
+    margin: 1.5em 0;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1.5em 2em;
+    grid-gap: 10px 20px;
+    position: relative;
+}
+
+button {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    font: inherit;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+    color: white;
+    background: none;
+    border: 0;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+    border-top: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 5pt;
+    font-size: 1.2em;
+    cursor: pointer;
+    outline: none;
+    transition: opacity 0.1s linear;
+    opacity: 1;
+}
+
+button[id^=button-prev-] {
+    order: 1;
+}
+
+button[id^=button-next-] {
+    order: 3;
+}
+
+button span {
+    position: relative;
+    line-height: 0em;
+    pointer-events: none;
+}
+
+button[id^=button-prev-] span {
+    top: -0.05em;
+    font-size: 1.3em;
+    color: #676767;
+}
+
+button[id^=button-next-] span {
+    top: -0.09em;
+    font-size: 1.8em;
+}
+
+button[disabled] {
     opacity: 0.3;
 }
 
-#popup {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    grid-area: buttons;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 10pt;
-    box-shadow: 0 0 0 2pt white;
+button[id^=button-prev-][disabled] {
+    opacity: 0;
 }
 
-#popup div {
-    padding: 0.5em;
+div.section-header {
+    order: 2;
+    font-variant: small-caps;
 }
 
-#popup p {
-    text-align: center;
-    margin: 0;
+div[id^=word-] {
+    order: 4;
+    font-size: 1.8em;
+    line-height: 1.1em;
+    white-space: nowrap;
+    max-width: 0;
 }
