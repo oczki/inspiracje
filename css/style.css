@@ -19,12 +19,13 @@ svg {
 #buttons {
     margin-top: 1em;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 150px);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 150px) 100px;
     grid-gap: 20px 20px;
 }
 
 button {
+    grid-column: span 3;
     display: flex;
     width: 100%;
     margin: 0 auto;
@@ -43,6 +44,18 @@ button {
     outline: none;
     transition: opacity 0.1s linear;
     opacity: 1;
+}
+
+button.nav {
+    grid-column: span 2;
+    font-size: 1.8em;
+    color: #676767;
+    background: buttonface;
+}
+
+button.nav span {
+    position: relative;
+    top: -6px;
 }
 
 body.show-outline button:focus {

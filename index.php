@@ -24,6 +24,7 @@
                 <button disabled id="relation">relacja</button>
                 <button disabled id="emotion">emocja</button>
                 <button disabled id="dictionary">słowo</button>
+                <button disabled class="nav" id="undo"><span>&laquo;</span></button>
             </div>
         </main>
     </body>

@@ -1,4 +1,6 @@
 let wordsContainer = [ ];
+let wordsHistory = [ ];
+let wordsHistoryIndex = 0;
 let containers = {
     "noun"       : "#1c74c1",
     "location"   : "#14a020",
@@ -12,6 +14,27 @@ function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+}
+
+function pushHistory(word, color) {
+    wordsHistory.push({ "word": word, "color": color });
+    wordsHistoryIndex = wordsHistory.length - 1;
+    document.getElementById("undo").removeAttribute("disabled");
+}
+
+function popHistory() {
+    wordsHistoryIndex--;
+    return wordsHistory[wordsHistoryIndex];
+}
+
+function undo() {
+    let entry = popHistory();
+    if (entry !== undefined) {
+        setWord(entry.word, entry.color);
+    } else {
+        document.getElementById("undo").setAttribute("disabled", "");
+        setWord("wybierz opcję|poniżej...", "black");
     }
 }
 
@@ -79,8 +102,17 @@ class Container {
     }
 
     nextWord() {
-        setWord(this.words[this.nextIndex()], this.color);
+        let word = this.words[this.nextIndex()];
+        setWord(word, this.color);
+        pushHistory(word, this.color);
     }
+}
+
+function initUndo() {
+    document.getElementById("undo").addEventListener("click", function(e) {
+        e.preventDefault();
+        undo();
+    });
 }
 
 function init() {
@@ -92,6 +124,7 @@ function init() {
             wordsContainer[type].nextWord();
         });
     }
+    initUndo();
 }
 
 if (document.readyState != "loading")
