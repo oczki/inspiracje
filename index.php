@@ -25,6 +25,12 @@
                 <button disabled id="emotion">emocja</button>
                 <button disabled id="dictionary">słowo</button>
                 <button disabled class="nav" id="undo"><span>&laquo;</span></button>
+                <button class="nav" id="about"><span>?</span></button>
+                <div id="popup" style="display: none;">
+                    <div>
+                        <p>Magazyn inspiracji</p>
+                    </div>
+                </div>
             </div>
         </main>
     </body>

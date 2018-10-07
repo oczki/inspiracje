@@ -38,6 +38,22 @@ function undo() {
     }
 }
 
+function toggleAbout() {
+    let box = document.getElementById("popup");
+    let btn = document.getElementById("about");
+    if (box.style.display === "none") {
+        box.style.display = "block";
+        btn.style.background = "red";
+        btn.style.color = "white";
+        btn.innerHTML = "<span>x</span>";
+    } else {
+        box.style.display = "none";
+        btn.style.background = "buttonface";
+        btn.style.color = "#676767";
+        btn.innerHTML = "<span>?</span>";
+    }
+}
+
 function splitIfNeeded(word) {
     if (word.indexOf("|") === -1) { return word; }
     let splitWords = word.split("|");
@@ -115,6 +131,13 @@ function initUndo() {
     });
 }
 
+function initAbout() {
+    document.getElementById("about").addEventListener("click", function(e) {
+        e.preventDefault();
+        toggleAbout();
+    });
+}
+
 function init() {
     for (let type in containers) {
         let color = containers[type];
@@ -125,6 +148,7 @@ function init() {
         });
     }
     initUndo();
+    initAbout();
 }
 
 if (document.readyState != "loading")
