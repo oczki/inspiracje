@@ -59,16 +59,16 @@ function getWords(type) {
 }
 
 class Container {
-    constructor(dataGetterFunction, color) {
+    constructor(type, color) {
+        this.type = type;
         this.color = color;
-        this.fun = dataGetterFunction;
         this.init();
     }
 
     init() {
         this.words = [ ];
-        this.fun;
         this.index = 0;
+        getWords(this.type);
     }
 
     nextIndex() {
@@ -86,7 +86,7 @@ class Container {
 function init() {
     for (let type in containers) {
         let color = containers[type];
-        wordsContainer[type] = new Container(getWords(type), color);
+        wordsContainer[type] = new Container(type, color);
         document.getElementById(type).addEventListener("click", function(e) {
             e.preventDefault();
             wordsContainer[type].nextWord();
