@@ -7,7 +7,7 @@ let containers = [
     { type: "character",  color: "#ce9900", label: "postać" },
     { type: "relation",   color: "#d40b0b", label: "relacja" },
     { type: "emotion",    color: "#bb2392", label: "emocja" },
-    { type: "dictionary", color: "#777777", label: "słownik" },
+    { type: "dictionary", color: "#777777", label: "dowolne słowo" },
 ];
 
 function sectionId(type) {
