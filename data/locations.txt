@@ -15,24 +15,24 @@ biurowiec
 boisko
 brama
 browar
-budka|z jedzeniem
+budka z jedzeniem
 budowa
 bufet
 burdel
-centrum|badawcze
+centrum badawcze
 chłodnia
 chodnik
-ciasny|tunel
-ciemny|zaułek
+ciasny tunel
+ciemny zaułek
 cmentarz
 cyrk
-czerwony|dywan
+czerwony dywan
 dach
 dentysta
 disneyland
 dom
 domówka
-drapacz|chmur
+drapacz chmur
 dworzec
 dyskoteka
 działka
@@ -40,28 +40,28 @@ dżungla
 elektrownia
 farma
 filharmonia
-fosa|zamku
-galeria|handlowa
-galeria|sztuki
+fosa zamku
+galeria handlowa
+galeria sztuki
 garaż
-głęboko|pod ziemią
+głęboko pod ziemią
 góra
 hangar
 hotel
 ikea
-impreza|firmowa
+impreza firmowa
 jacht
 jaskinia
 jezioro
-kafejka|internetowa
-kanał|ściekowy
+kafejka internetowa
+kanał ściekowy
 kanciapa
 karaoke
 kasyno
 katedra
 kawiarnia
 kino
-klatka|schodowa
+klatka schodowa
 kolejka
 kominek
 komisariat
@@ -78,7 +78,7 @@ kwiaciarnia
 labirynt
 las
 latarnia
-linia|produkcyjna
+linia produkcyjna
 lodowiec
 lodowisko
 lotnisko
@@ -101,39 +101,39 @@ obozowisko
 obuwniczy
 ogródek
 ołtarz
-open|space
+open space
 pałac
 parawan
 park
 parking
-pas|startowy
+pas startowy
 piekło
 pijalnia
 piramida
 piwnica
-plac|zabaw
+plac zabaw
 planeta
 plaża
 plebania
 pociąg
 poczekalnia
-pod|kioskiem
-pod|mostem
-pod|ścianą
-pokaz|mody
-pole|uprawne
+pod kioskiem
+pod mostem
+pod ścianą
+pokaz mody
+pole uprawne
 pośredniak
-poza zasięgiem|kamer
+poza zasięgiem kamer
 pralnia
 prosektorium
 przedszkole
-przejście|dla pieszych
-przyczepa|kempingowa
+przejście dla pieszych
+przyczepa kempingowa
 przymierzalnia
 przystanek
-psia|buda
+psia buda
 pub
-punkt|obserwacyjny
+punkt obserwacyjny
 pustynia
 recepcja
 redakcja
@@ -143,30 +143,30 @@ ruiny
 rynek
 rzeźnia
 sad
-sala|operacyjna
-sala|weselna
-salon|fotograficzny
-salon|gier
-salon|masażu
+sala operacyjna
+sala weselna
+salon fotograficzny
+salon gier
+salon masażu
 samochód
 sauna
 sąd
 scena
-schody|ruchome
+schody ruchome
 schronisko
-sesja|zdjęciowa
-sex|shop
+sesja zdjęciowa
+sex shop
 siłownia
 sklep
-sklep|muzyczny
+sklep muzyczny
 skrzyżowanie
-spotkanie|rodzinne
-stacja|benzynowa
+spotkanie rodzinne
+stacja benzynowa
 stajnia
-stara|kamienica
+stara kamienica
 statek
 sterowiec
-sterylne|pomieszczenie
+sterylne pomieszczenie
 stołówka
 strych
 studio
@@ -177,7 +177,7 @@ szałas
 szklarnia
 szkoła
 szpital
-ślepa|uliczka
+ślepa uliczka
 świetlica
 taras
 tartak
@@ -188,14 +188,14 @@ tratwa
 trawnik
 tunel
 uniwersytet
-urząd|pracy
+urząd pracy
 wagon
 wars
 warsztat
 warzywniak
 wiatrak
 wieża
-wieża|eiffela
+wieża eiffela
 więzienie
 willa
 winda
@@ -205,12 +205,12 @@ woodstock
 wykopaliska
 wykopki
 wypożyczalnia
-wysoko|nad ziemią
+wysoko nad ziemią
 wysypisko
 za garażami
 zagroda
-zakład|fryzjerski
-zakład|pogrzebowy
+zakład fryzjerski
+zakład pogrzebowy
 zakrystia
 zamek
 zoo

@@ -57,7 +57,7 @@ gajowy
 geodeta
 geograf
 glina
-głowa|rodziny
+głowa rodziny
 gość
 górnik
 grabarz
@@ -88,7 +88,7 @@ komendant
 kominiarz
 komornik
 konduktor
-kontroler|biletów
+kontroler biletów
 korektor
 koszykarz
 kowal
@@ -159,7 +159,7 @@ poeta
 policjant
 polityk
 porucznik
-pracownik|call center
+pracownik call center
 pracz
 praktykant
 prawnik

@@ -42,9 +42,9 @@ odrzucenie
 oszołomienie
 ożywienie
 panika
-poczucie|bezpieczeństwa
-poczucie|winy
-poczucie|własnej wartości
+poczucie bezpieczeństwa
+poczucie winy
+poczucie własnej wartości
 podejrzliwość
 podniecenie
 podziw
@@ -88,7 +88,7 @@ współczucie
 wstręt
 wstyd
 wściekłość
-wyrzuty|sumienia
+wyrzuty sumienia
 wzburzenie
 zachwyt
 zacietrzewienie
