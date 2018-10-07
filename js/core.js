@@ -1,6 +1,4 @@
 let wordsContainer = [ ];
-let wordsHistory = [ ];
-let wordsHistoryIndex = 0;
 let containers = [
     { type: "noun",       color: "#1c74c1", label: "rzeczownik" },
     { type: "location",   color: "#14a020", label: "miejsce" },
