@@ -32,6 +32,7 @@ dziki
 ekstrawertyk
 energiczny
 gbur
+gestykuluje
 gibki
 głodny
 gościnny
@@ -62,6 +63,7 @@ mocarz
 modniś
 mówca
 nadmiar zarostu
+nagłe ruchy
 naiwny
 narcyz
 nerd
@@ -71,6 +73,7 @@ nie lubi stać
 nie lubi zmian
 nie lubi zwierząt
 nie patrzy w oczy
+nieadekwatne miny
 niechluj
 niedoceniany
 niedoświadczony
@@ -87,6 +90,7 @@ oczytany
 odpowiedzialny
 odważny
 opiekuńczy
+opóźniony o 2 s
 optymista
 ostrożny
 oszczędny
@@ -110,6 +114,7 @@ prawiczek
 prący na szkło
 próżny
 przebiegły
+przesadne ruchy
 przesądny
 przezorny
 przytakiwacz
@@ -147,6 +152,7 @@ wchodzi w słowo
 wie wszystko
 wierny
 wieśniak
+wiodąca część ciała
 wrażliwy
 wstydzioch
 wścibski
@@ -160,5 +166,6 @@ zamyślony
 zapominalski
 zdolny
 zdrów jak ryba
+zmienia zdanie
 zziębnięty
 życzliwy
