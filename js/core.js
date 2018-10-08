@@ -74,16 +74,23 @@ class Container {
         return index;
     }
 
-    nextWord() {
+    newWord() {
         let word = this.words[this.nextIndex()];
         setWord(this.type, word);
         this.pushHistory(word);
     }
 
+    nextWord() {
+        if (this.wordsHistoryIndex >= this.wordsHistory.length - 1)
+            this.newWord()
+        else
+            setWord(this.type, this.wordsHistory[++this.wordsHistoryIndex]);
+        this.setUndoButtonState();
+    }
+
     prevWord() {
-        let word = this.popHistory();
-        if (this.wordsHistoryIndex === 0)
-            document.getElementById(prevButtonId(this.type)).disabled = true;
+        let word = this.wordsHistory[--this.wordsHistoryIndex];
+        this.setUndoButtonState();
         if (word === undefined) {
             word = "&middot;&middot;&middot;";
             document.getElementById(prevButtonId(this.type)).disabled = true;
@@ -94,13 +101,10 @@ class Container {
     pushHistory(word) {
         this.wordsHistory.push(word);
         this.wordsHistoryIndex = this.wordsHistory.length - 1;
-        if (this.wordsHistoryIndex > 0)
-            document.getElementById(prevButtonId(this.type)).disabled = false;
     }
 
-    popHistory() {
-        this.wordsHistoryIndex--;
-        return this.wordsHistory[this.wordsHistoryIndex];
+    setUndoButtonState() {
+        document.getElementById(prevButtonId(this.type)).disabled = (this.wordsHistoryIndex === 0);
     }
 }
 
