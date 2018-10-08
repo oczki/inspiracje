@@ -11,9 +11,11 @@ bogobojny
 celebryta
 chamski
 chaotyczny
+chce więcej!
 chciwy
 chory
 chytrus
+ciągle żartuje
 cierpliwy
 cwaniak
 cyniczny
@@ -30,6 +32,7 @@ dziki
 ekstrawertyk
 energiczny
 gbur
+gibki
 głodny
 gościnny
 grubas
@@ -40,12 +43,16 @@ hojny
 indywidualista
 introwertyk
 inwalida
+kleptoman
 kłamczuch
 kocha muzykę
+kolekcjoner
+kreatywny
 kura domowa
 leniwy
 lizus
 lojalny
+lubi dotyk
 lubi zwierzęta
 łakomczuch
 łatwowierny
@@ -54,11 +61,14 @@ mazgaj
 mocarz
 modniś
 mówca
+nadmiar zarostu
 naiwny
 narcyz
 nerd
+nie dotrzymuje słowa
 nie lubi siedzieć
 nie lubi stać
+nie lubi zmian
 nie lubi zwierząt
 nie patrzy w oczy
 niechluj
@@ -71,6 +81,7 @@ nieśmiertelny
 nieufny
 niewierny
 niewinny
+niezdecydowany
 obżartuch
 oczytany
 odpowiedzialny
@@ -93,6 +104,7 @@ podrywacz
 podstępny
 poker face
 poważny
+powtarza słówko
 pracoholik
 prawiczek
 prący na szkło
@@ -108,13 +120,16 @@ sceptyczny
 sknera
 skryty
 skupiony
+sokole oko
 spełniony
 spocony
 spragniony
 sprawiedliwy
 sprytny
+stalker
 szczery
 szlachcic
+szuka wrażeń
 śmiały
 śmieciuch
 śpioch
@@ -141,6 +156,8 @@ wyrachowany
 wyrozumiały
 zadbany
 zakochany
+zamyślony
+zapominalski
 zdolny
 zdrów jak ryba
 zziębnięty
