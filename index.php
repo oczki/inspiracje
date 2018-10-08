@@ -2,7 +2,7 @@
 <html lang="pl-PL">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>Magazyn inspiracji</title>
         <link rel="shortcut icon" type="image/png" href="favicon.png"/>
         <link rel="stylesheet" href="./css/style.css" type="text/css">
