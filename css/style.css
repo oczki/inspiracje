@@ -79,6 +79,7 @@ button[disabled] {
 
 button[id^=button-prev-][disabled] {
     opacity: 0;
+    pointer-events: none;
 }
 
 div.section-header {
