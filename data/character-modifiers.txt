@@ -78,7 +78,7 @@ mocarz
 modniś
 mówca
 mówi do siebie
-mówi na "ty"
+mówi na 'ty'
 mówi tylko o sobie
 mówi w trzeciej osobie
 nadmiar zarostu
