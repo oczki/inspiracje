@@ -63,6 +63,7 @@ górnik
 grabarz
 gracz
 guru
+host airbnb
 hydraulik
 iluzjonista
 informatyk
@@ -135,7 +136,6 @@ myśliwy
 nauczyciel
 naukowiec
 nożownik
-obżartuch
 ochroniarz
 ogrodnik
 optyk
@@ -154,6 +154,7 @@ piosenkarz
 pisarz
 pływak
 podróżnik
+podróżnik w czasie
 podrywacz
 poeta
 policjant

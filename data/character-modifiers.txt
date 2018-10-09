@@ -1,3 +1,4 @@
+a nie mówiłem?
 alergik
 altruista
 ambitny
@@ -8,9 +9,11 @@ bezmyślny
 bezwstydny
 bezwzględny
 bogobojny
+boi się zwierzątek
 celebryta
 chamski
 chaotyczny
+chce mieć dzieci
 chce więcej!
 chciwy
 chory
@@ -19,24 +22,33 @@ ciągle żartuje
 cierpliwy
 cwaniak
 cyniczny
+często dotyka twarzy
 często przesadza
+często wyłącza się
 czyścioch
+czyta w myślach
+dba o skórę
 dobroduszny
 dokładny
+doskonała pamięć
 doskonałe ciało
 doświadczony
+drapie się
 dresiarz
 dumny
 dużo się rusza
 dziki
+ekspert w dziedzinie
 ekstrawertyk
 energiczny
 gbur
 gestykuluje
 gibki
 głodny
+głupi śmiech
 gościnny
 grubas
+gry słowne
 grzeczny
 hipochondryk
 hipokryta
@@ -44,6 +56,7 @@ hojny
 indywidualista
 introwertyk
 inwalida
+klaszcze przy śmiechu
 kleptoman
 kłamczuch
 kocha muzykę
@@ -57,22 +70,33 @@ lubi dotyk
 lubi zwierzęta
 łakomczuch
 łatwowierny
+ma swój trigger
 maminsynek
 mazgaj
+mlaska
 mocarz
 modniś
 mówca
+mówi do siebie
+mówi na "ty"
+mówi tylko o sobie
+mówi w trzeciej osobie
 nadmiar zarostu
 nagłe ruchy
 naiwny
 narcyz
 nerd
+nie czyta książek
 nie dotrzymuje słowa
+nie lubi dzieci
 nie lubi siedzieć
 nie lubi stać
 nie lubi zmian
 nie lubi zwierząt
+nie oddaje długów
 nie patrzy w oczy
+nie sprząta
+nie taki jak kiedyś
 nieadekwatne miny
 niechluj
 niedoceniany
@@ -85,6 +109,9 @@ nieufny
 niewierny
 niewinny
 niezdecydowany
+niski głos
+niszowe zainteresowania
+obgryza paznokcie
 obżartuch
 oczytany
 odpowiedzialny
@@ -102,6 +129,7 @@ pewny siebie
 piękność
 pobożny
 pochlebca
+pociąga nosem
 podejrzliwy
 podlizywacz
 podrywacz
@@ -112,6 +140,7 @@ powtarza słówko
 pracoholik
 prawiczek
 prący na szkło
+prokrastynacja
 próżny
 przebiegły
 przesadne ruchy
@@ -119,8 +148,11 @@ przesądny
 przezorny
 przytakiwacz
 punktualny
+puszcza całusy
+rozgląda się
 rozrzutny
 rozsądny
+rzadko w domu
 sceptyczny
 sknera
 skryty
@@ -129,12 +161,15 @@ sokole oko
 spełniony
 spocony
 spragniony
+sprawdza horoskop
+sprawdza każdy fakt
 sprawiedliwy
 sprytny
 stalker
 szczery
 szlachcic
 szuka wrażeń
+szybki refleks
 śmiały
 śmieciuch
 śpioch
@@ -143,13 +178,18 @@ tchórz
 trendsetter
 twardziel
 uczciwy
+ukryty talent
 uległy
+unika dotyku
+unika słońca
 uparty
 uprzejmy
 utalentowany
 uzależniony
 wchodzi w słowo
+wcześnie dojrzał
 wie wszystko
+wiedza z tabloidów
 wierny
 wieśniak
 wiodąca część ciała
@@ -160,12 +200,22 @@ wybuchowy
 wyluzowany
 wyrachowany
 wyrozumiały
+wysoki głos
+za moich czasów...
 zadbany
+zajmuje dużo miejsca
 zakochany
 zamyślony
+zapisuje wszystko
 zapominalski
+zawsze był drugi
+zawsze wygrywa
 zdolny
 zdrów jak ryba
 zmienia zdanie
+zna przyszłość
+zna wszystkich
+zorganizowany
 zziębnięty
+źle znosi hałas
 życzliwy

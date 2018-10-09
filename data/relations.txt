@@ -3,12 +3,14 @@ aktor z reżyserem
 artysta i dzieło
 astronauta i kosmita
 babcia i wnuk
+bogacz i biedak
 bóg i szatan
 bóstwo i śmiertelnik
 celebryta i fan
 chirurg i anestezjolog
 chirurg plastyczny i pacjent
 czapka i skarpetka
+człowiek i jego dusza
 człowiek i umysł
 dawca i odbiorca
 detektyw i podejrzany
@@ -35,6 +37,7 @@ nauczyciel i dyrektor
 nauczyciel i rodzic
 nauczyciel i uczeń
 naukowiec i mysz
+nieznajomy sobowtór
 nowy partner oraz eks
 obserwator i obserwowany
 ósme spotkanie dzisiaj
@@ -45,6 +48,7 @@ pies i kość
 plemnik i jajeczko
 polityk z wyborcą
 położna i dziecko
+poprzednie wcielenie
 prawnik i klient
 profesor i świeżak
 przybrana rodzina
