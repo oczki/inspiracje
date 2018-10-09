@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    font: 25pt Montserrat;
+    font: 20pt Montserrat;
     color: #333;
     background: #e5e5e5;
 }
@@ -14,16 +14,16 @@ body.show-outline button:focus {
 
 main {
     margin: 1em auto;
-    width: 800px;
 }
 
 div[id^=section] {
-    margin: 1.5em 0;
+    margin: 1.5em 0 1.5em 1em;
     display: grid;
     grid-template-columns: 4em auto;
     grid-template-rows: 1.5em 2em;
     grid-gap: 0.25em 0.5em;
     position: relative;
+    max-width: 100vw;
 }
 
 button {

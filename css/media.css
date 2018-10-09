@@ -1,32 +1,48 @@
 /* hi-res desktops */
 @media (min-width: 1281px) {
-
+main {
+    width: 768px;
+}
 }
 
 
 /* low-res desktops */
 @media (min-width: 1025px) and (max-width: 1280px) {
+body {
+    font-size: 18pt;
+}
 
+main {
+    width: 768px;
+}
 }
 
 
 /* hi-res tablets; landscape */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-
+main {
+    width: 768px;
+}
 }
 
 
 /* hi-res tablets; portrait */
 @media (min-width: 768px) and (max-width: 1024px) {
+body {
+    font-size: 15pt;
+    margin-left: 1em;
+}
 
+main {
+    width: 768px;
+}
 }
 
 
 /* low-res tablets, mobile; landscape */
 @media (min-width: 481px) and (max-width: 767px) {
 body {
-    font-size: 10pt;
-    margin-left: 1em;
+    font-size: 12pt;
 }
 }
 
@@ -35,7 +51,6 @@ body {
 @media (min-width: 320px) and (max-width: 480px) {
 body {
     font-size: 10pt;
-    margin-left: 1em;
 }
 
 div[id^=section] {
