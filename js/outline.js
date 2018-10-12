@@ -22,15 +22,30 @@ function applyCss(rules) {
     document.head.appendChild(styleElem);
 }
 
+function generateOutlineColorCss(id, color) {
+    return `body.show-outline button#${id}:focus {
+    outline-color: ${color};
+}
+`;
+}
+
+function generatePulseColorCss(id, color) {
+    return `@keyframes pulse-${id} {
+    0% { box-shadow: 0 0 0 0em ${color}77 }
+    100% { box-shadow: 0 0 0 1.5em ${color}00 }
+}
+`;
+}
+
 function initOutline() {
     window.addEventListener("keydown", handleKeyboardInput);
 
-    let outlineCss = "";
+    let css = "";
     for (let c of containers) {
-        let buttonId = prevButtonId(c.type);
-        outlineCss += `body.show-outline button#${buttonId}:focus { outline-color: ${c.color}; } `;
+        css += generateOutlineColorCss(prevButtonId(c.type), c.color);
+        css += generatePulseColorCss(nextButtonId(c.type), c.color)
     }
-    applyCss(outlineCss);
+    applyCss(css);
 }
 
 if (document.readyState != "loading")

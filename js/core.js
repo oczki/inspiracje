@@ -112,7 +112,7 @@ function addSectionButtons(parentElement, type, color) {
     let prevButton = document.createElement("button");
     prevButton.id = prevButtonId(type);
     prevButton.disabled = true;
-    prevButton.innerHTML = `<span style="color: ${color}">&laquo;</span>`;
+    prevButton.innerHTML = `<span style="color: ${color}">wstecz</span>`;
     prevButton.addEventListener("click", function(e) {
         e.preventDefault();
         wordsContainer[type].prevWord();
@@ -122,7 +122,8 @@ function addSectionButtons(parentElement, type, color) {
     nextButton.id = nextButtonId(type);
     nextButton.disabled = true;
     nextButton.style.backgroundColor = color;
-    nextButton.innerHTML = "<span>&raquo;</span>";
+    nextButton.style.animationName = `pulse-${nextButton.id}`;
+    nextButton.innerHTML = "<span>dalej</span>";
     nextButton.addEventListener("click", function(e) {
         e.preventDefault();
         wordsContainer[type].nextWord();
