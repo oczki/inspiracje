@@ -4,6 +4,6 @@ let containers = [
     { type: "character",  color: "#ce9900", label: "postać" },
     { type: "character-modifier", color: "#e25b00", label: "cecha postaci" },
     { type: "emotion",    color: "#d40b0b", label: "emocja" },
-    { type: "relation",   color: "#bb2392", label: "kontekst" },
+    { type: "relation",   color: "#bb2392", label: "relacja" },
     { type: "dictionary", color: "#777777", label: "dowolne słowo" },
 ];
