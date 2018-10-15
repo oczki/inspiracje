@@ -8,8 +8,8 @@ body {
 }
 
 body.show-outline button:focus {
-    outline: 5px dashed white;
-    outline-offset: -12px;
+    outline: 0.15em dashed white;
+    outline-offset: -0.3em;
 }
 
 main {
