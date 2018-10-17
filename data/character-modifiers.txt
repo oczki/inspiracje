@@ -6,8 +6,10 @@ arogancki
 awanturnik
 bezczelny
 bezmyślny
+bezużyteczny talent
 bezwstydny
 bezwzględny
+blizna na ciele
 bogobojny
 boi się zwierzątek
 celebryta
@@ -27,19 +29,26 @@ często przesadza
 często wyłącza się
 czyścioch
 czyta w myślach
+daje innym wygrać
 dba o skórę
+dba o szczegóły
 dobroduszny
 dokładny
 doskonała pamięć
 doskonałe ciało
 doświadczony
+dowiaduje się ostatni
 drapie się
 dresiarz
+drobiazgowy
 dumny
 dużo się rusza
 dziki
+dziurawe skarpety
+dziwny akcent sylab
 ekspert w dziedzinie
 ekstrawertyk
+empatyczny
 energiczny
 gbur
 gestykuluje
@@ -72,6 +81,7 @@ lubi zwierzęta
 łatwowierny
 ma swój trigger
 maminsynek
+manipulant
 mazgaj
 mlaska
 mocarz
@@ -81,6 +91,8 @@ mówi do siebie
 mówi na 'ty'
 mówi tylko o sobie
 mówi w trzeciej osobie
+myli kierunki
+nadmiar perfum
 nadmiar zarostu
 nagłe ruchy
 naiwny
@@ -97,6 +109,7 @@ nie oddaje długów
 nie patrzy w oczy
 nie sprząta
 nie taki jak kiedyś
+nie znosi porażki
 nieadekwatne miny
 niechluj
 niedoceniany
@@ -111,6 +124,9 @@ niewinny
 niezdecydowany
 niski głos
 niszowe zainteresowania
+nosi broń
+nowoczesny
+nóż przy sobie
 obgryza paznokcie
 obżartuch
 oczytany
@@ -122,11 +138,13 @@ optymista
 ostrożny
 oszczędny
 oszust
+pamięta cytaty
 papuguje innych
 patrzy w oczy
 pedantyczny
 pewny siebie
 piękność
+pilnuje wagi
 pobożny
 pochlebca
 pociąga nosem
@@ -140,9 +158,11 @@ powtarza słówko
 pracoholik
 prawiczek
 prący na szkło
+prehistoryczny
 prokrastynacja
 próżny
 przebiegły
+przechwala się
 przesadne ruchy
 przesądny
 przezorny
@@ -152,6 +172,7 @@ puszcza całusy
 rozgląda się
 rozrzutny
 rozsądny
+różne skarpety
 rzadko w domu
 sceptyczny
 sknera
@@ -160,24 +181,30 @@ skupiony
 sokole oko
 spełniony
 spocony
+spóźnia się
 spragniony
 sprawdza horoskop
 sprawdza każdy fakt
 sprawiedliwy
 sprytny
 stalker
+szczegółowe zdania
 szczery
 szlachcic
 szuka wrażeń
 szybki refleks
+śliwa pod okiem
 śmiały
 śmieciuch
 śpioch
+świeżo wykąpany
+tajemnica rodzinna
 taktowny
 tchórz
 trendsetter
 twardziel
 uczciwy
+ukryte marzenie
 ukryty talent
 uległy
 unika dotyku
@@ -189,6 +216,7 @@ uzależniony
 wchodzi w słowo
 wcześnie dojrzał
 wie wszystko
+wieczny student
 wiedza z tabloidów
 wierny
 wieśniak
@@ -201,7 +229,10 @@ wyluzowany
 wyrachowany
 wyrozumiały
 wysoki głos
+yolo
+z przyszłości
 za moich czasów...
+zaciśnięte dłonie
 zadbany
 zajmuje dużo miejsca
 zakochany
@@ -209,12 +240,15 @@ zamyślony
 zapisuje wszystko
 zapominalski
 zawsze był drugi
+zawsze musi wygrać
 zawsze wygrywa
 zdolny
 zdrów jak ryba
+złamana kość
 zmienia zdanie
 zna przyszłość
 zna wszystkich
+zna wszystkie pokemony
 zorganizowany
 zziębnięty
 źle znosi hałas

@@ -11,6 +11,7 @@ ciekawość
 czułość
 depresja
 docenienie
+duma
 dyskomfort
 ekscytacja
 entuzjazm
@@ -56,6 +57,7 @@ przybicie
 przygaszenie
 przygnębienie
 przyjemność
+pycha
 radość
 rozbawienie
 rozczarowanie
