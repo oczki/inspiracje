@@ -28,7 +28,9 @@ function addJs($name) {
         <?php addJs('outline'); ?>
     </head>
     <body>
-        <main>
-        </main>
+        <main></main>
+        <footer>
+            <span id="author">&copy; <a href="http://oczki.pl" title="Damian Oczki - strona główna">Damian Oczki</a></span>
+        </footer>
     </body>
 </html>

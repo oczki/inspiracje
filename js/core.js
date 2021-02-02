@@ -46,6 +46,7 @@ function getWords(type, firstInit) {
         document.getElementById(nextButtonId(type)).disabled = false;
         if (firstInit) {
             wordsContainer[type].nextWord();
+            setForwardAllWordsButtonState();
         }
     });
 }
@@ -158,9 +159,35 @@ function addSection(type, color, label) {
     document.getElementsByTagName("main")[0].appendChild(section);
 }
 
+function addForwardAllWordsButton() {
+    let forwardButton = document.createElement('button');
+    forwardButton.id = nextButtonId('all');
+    forwardButton.disabled = true;
+    forwardButton.style.backgroundColor = 'black';
+    forwardButton.style.animationName = `pulse-${forwardButton.id}`;
+    forwardButton.innerHTML = '<span>kolejny zestaw</span>';
+    forwardButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        for (let c of containers)
+            wordsContainer[c.type].nextWord();
+    });
+
+    const footer = document.getElementsByTagName('footer')[0];
+    footer.insertBefore(forwardButton, footer.firstChild);
+}
+
+function setForwardAllWordsButtonState() {
+    const buttons = document.querySelectorAll(`main button[id^="${nextButtonId('')}"]`);
+    const state = Array.from(buttons).every(button => !button.disabled);
+    const forwardAllWordsButton = document.getElementById(nextButtonId('all'));
+    forwardAllWordsButton.disabled = !state;
+}
+
 function init() {
     for (let c of containers)
         wordsContainer[c.type] = new Container(c.type, c.color, c.label);
+
+    addForwardAllWordsButton();
 }
 
 if (document.readyState != "loading")

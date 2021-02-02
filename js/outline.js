@@ -43,8 +43,9 @@ function initOutline() {
     let css = "";
     for (let c of containers) {
         css += generateOutlineColorCss(prevButtonId(c.type), c.color);
-        css += generatePulseColorCss(nextButtonId(c.type), c.color)
+        css += generatePulseColorCss(nextButtonId(c.type), c.color);
     }
+    css += generatePulseColorCss(nextButtonId('all'), '#000000');
     applyCss(css);
 }
 

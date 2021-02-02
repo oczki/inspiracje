@@ -1,6 +1,6 @@
 /* hi-res desktops */
 @media (min-width: 1281px) {
-main {
+main, footer {
     width: 768px;
 }
 }
@@ -12,7 +12,7 @@ body {
     font-size: 16pt;
 }
 
-main {
+main, footer {
     width: 768px;
 }
 }
@@ -20,7 +20,7 @@ main {
 
 /* hi-res tablets; landscape */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-main {
+main, footer {
     width: 768px;
 }
 }
@@ -32,7 +32,7 @@ body {
     font-size: 15pt;
 }
 
-main {
+main, footer {
     width: 768px;
 }
 }
