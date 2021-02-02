@@ -31,8 +31,8 @@ function generateOutlineColorCss(id, color) {
 
 function generatePulseColorCss(id, color) {
     return `@keyframes pulse-${id} {
-    0% { box-shadow: 0 0 0 0em ${color}77 }
-    100% { box-shadow: 0 0 0 1.5em ${color}00 }
+    0% { box-shadow: 0 0 0 0em ${color}77, var(--button-shadow) }
+    100% { box-shadow: 0 0 0 1.5em ${color}00, var(--button-shadow) }
 }
 `;
 }
