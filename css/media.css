@@ -1,7 +1,7 @@
 /* hi-res desktops */
 @media (min-width: 1281px) {
 main, footer {
-    width: 768px;
+  width: 768px;
 }
 }
 
@@ -9,11 +9,11 @@ main, footer {
 /* low-res desktops */
 @media (min-width: 1025px) and (max-width: 1280px) {
 body {
-    font-size: 16pt;
+  font-size: 16pt;
 }
 
 main, footer {
-    width: 768px;
+  width: 768px;
 }
 }
 
@@ -21,7 +21,7 @@ main, footer {
 /* hi-res tablets; landscape */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
 main, footer {
-    width: 768px;
+  width: 768px;
 }
 }
 
@@ -29,11 +29,11 @@ main, footer {
 /* hi-res tablets; portrait */
 @media (min-width: 768px) and (max-width: 1024px) {
 body {
-    font-size: 15pt;
+  font-size: 15pt;
 }
 
 main, footer {
-    width: 768px;
+  width: 768px;
 }
 }
 
@@ -41,7 +41,7 @@ main, footer {
 /* low-res tablets, mobile; landscape */
 @media (min-width: 481px) and (max-width: 767px) {
 body {
-    font-size: 12pt;
+  font-size: 12pt;
 }
 }
 
@@ -49,6 +49,6 @@ body {
 /* mobile; portrait */
 @media (min-width: 320px) and (max-width: 480px) {
 body {
-    font-size: 10pt;
+  font-size: 10pt;
 }
 }
