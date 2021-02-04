@@ -43,11 +43,12 @@ function getWords(type, firstInit) {
   ajax("ajax/" + type + ".php", function (output) {
     wordsContainer[type].words = eval(output);
     shuffle(wordsContainer[type].words);
-    document.getElementById(nextButtonId(type)).disabled = false;
     if (firstInit) {
-      wordsContainer[type].nextWord();
-      setForwardAllWordsButtonState();
+      getSwiper(type).removeSlide(0);
+      //wordsContainer[type].nextWord();
+      //setForwardAllWordsButtonState();
     }
+    getSwiper(type).appendSlide(textArrayToSlides(wordsContainer[type].words));
   });
 }
 
@@ -78,7 +79,6 @@ class Container {
   newWord() {
     let word = this.words[this.nextIndex()];
     setWord(this.type, word);
-    this.pushHistory(word);
   }
 
   nextWord() {
@@ -86,26 +86,15 @@ class Container {
       this.newWord()
     else
       setWord(this.type, this.wordsHistory[++this.wordsHistoryIndex]);
-    this.setUndoButtonState();
   }
 
   prevWord() {
     let word = this.wordsHistory[--this.wordsHistoryIndex];
-    this.setUndoButtonState();
     if (word === undefined) {
       word = "&middot;&middot;&middot;";
       document.getElementById(prevButtonId(this.type)).disabled = true;
     }
     setWord(this.type, word);
-  }
-
-  pushHistory(word) {
-    this.wordsHistory.push(word);
-    this.wordsHistoryIndex = this.wordsHistory.length - 1;
-  }
-
-  setUndoButtonState() {
-    document.getElementById(prevButtonId(this.type)).disabled = (this.wordsHistoryIndex === 0);
   }
 }
 
@@ -150,7 +139,64 @@ function addSectionWord(parentElement, type, color) {
   parentElement.appendChild(div);
 }
 
+function getSwiper(type) {
+  return document.querySelector(`#${sectionId(type)}`)?.swiper;
+}
+
+function textToSlide(text) {
+  return `<div class="swiper-slide">${text}</div>`;
+}
+
+function textArrayToSlides(texts = []) {
+  let slides = [];
+  for (let text of texts) {
+    slides.push(textToSlide(text));
+  }
+  return slides;
+}
+
+function createSwiper(type) {
+  const swiper = new Swiper(`#${sectionId(type)}`, {
+    speed: 230,
+    spaceBetween: 100,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+  swiper.on('reachEnd', () => {
+    console.log('reached end of type', type);
+  })
+  const swiperInitialized = getSwiper(type);
+  swiperInitialized.appendSlide(textToSlide('Ładuję...'));
+  return swiper;
+}
+
 function addSection(type, color, label) {
+  let section = document.createElement("div");
+  section.id = sectionId(type);
+
+  let swiperWrapper = document.createElement('div');
+  swiperWrapper.classList.add('swiper-wrapper');
+
+
+
+  section.appendChild(swiperWrapper);
+
+  let swiperButtonPrev = document.createElement('div');
+  swiperButtonPrev.classList.add('swiper-button-prev');
+  let swiperButtonNext = document.createElement('div');
+  swiperButtonNext.classList.add('swiper-button-next');
+
+  section.appendChild(swiperButtonPrev);
+  section.appendChild(swiperButtonNext);
+
+  document.getElementsByTagName("main")[0].appendChild(section);
+  const swiperInitialized = createSwiper(type);
+  swiperInitialized.slideNext();
+}
+
+function old_addSection(type, color, label) {
   let section = document.createElement("div");
   section.id = sectionId(type);
   addSectionHeader(section, color, label);
@@ -184,8 +230,10 @@ function setForwardAllWordsButtonState() {
 }
 
 function init() {
-  for (let c of containers)
-    wordsContainer[c.type] = new Container(c.type, c.color, c.label);
+  for (let c of containers) {
+     wordsContainer[c.type] = new Container(c.type, c.color, c.label);
+     //break;
+  }
 
   addForwardAllWordsButton();
 }

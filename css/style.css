@@ -6,6 +6,14 @@
   --hover-duration: 180ms;
 }
 
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  box-sizing: border-box;
+  box-shadow: 0 0 0 1px red;
+}
+
 html,
 body {
   height: 100%;
@@ -34,16 +42,19 @@ main {
   width: 100vw;
 }
 
-div[id^=section] {
-  margin-left: 1em;
-  display: grid;
-  grid-template-columns: 5em auto;
-  grid-template-rows: 1.7em 2.3em;
-  grid-template-areas: "button-prev-word category-name"
-             "button-next-word word";
-  grid-gap: 0.25em 1.1em;
+div[id^='section-'] {
   position: relative;
-  max-width: 100vw;
+  width: 100%;
+  height: 4rem;
+  overflow: hidden;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 3rem;
 }
 
 button {
@@ -72,12 +83,7 @@ button:focus {
   box-shadow: var(--button-shadow-deep);
 }
 
-button[id^=button-prev-] {
-  grid-area: button-prev-word;
-}
-
 button[id^=button-next-] {
-  grid-area: button-next-word;
   animation-duration: 1s;
   animation-iteration-count: 1;
   animation-play-state: running;
@@ -100,18 +106,6 @@ button:focus span {
   --span-shadow-opacity: 0.15;
 }
 
-button[id^=button-prev-] span {
-  top: -0.17em;
-}
-
-button[id^=button-prev-] span:before {
-  content: "\ab";
-  font-size: 1.3em;
-  margin-right: 0.2em;
-  position: relative;
-  top: 0.085em;
-}
-
 button[id^=button-next-] span {
   font-size: 1.1em;
   top: -0.17em;
@@ -129,26 +123,6 @@ button[disabled] {
   opacity: 0.3;
   pointer-events: none;
   animation-play-state: paused;
-}
-
-button[id^=button-prev-][disabled] {
-  opacity: 0;
-}
-
-div.section-header {
-  grid-area: category-name;
-  font-variant: small-caps;
-  position: relative;
-  top: 0.2em;
-  letter-spacing: 0.03em;
-}
-
-div[id^=word-] {
-  grid-area: word;
-  font-size: 1.8em;
-  line-height: 1.2em;
-  white-space: nowrap;
-  max-width: 0;
 }
 
 footer {

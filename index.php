@@ -21,8 +21,12 @@ function addJs($name) {
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <title>Magazyn inspiracji</title>
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <?php addCss('style'); ?>
     <?php addCss('media'); ?>
+    <?php //addCss('swiper-bundle.min'); ?>
+    <?php //addJs('swiper-bundle.min'); ?>
     <?php addJs('containers'); ?>
     <?php addJs('core'); ?>
     <?php addJs('outline'); ?>
