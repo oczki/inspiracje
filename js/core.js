@@ -157,7 +157,7 @@ function textArrayToSlides(texts = []) {
 
 function createSwiper(type) {
   const swiper = new Swiper(`#${sectionId(type)}`, {
-    speed: 230,
+    speed: 180, // zero this if prefers-reduced-motion is on
     spaceBetween: 100,
     navigation: {
       nextEl: '.swiper-button-next',
@@ -208,14 +208,19 @@ function old_addSection(type, color, label) {
 function addForwardAllWordsButton() {
   let forwardButton = document.createElement('button');
   forwardButton.id = nextButtonId('all');
-  forwardButton.disabled = true;
+  //forwardButton.disabled = true;
   forwardButton.style.backgroundColor = 'black';
   forwardButton.style.animationName = `pulse-${forwardButton.id}`;
   forwardButton.innerHTML = '<span>kolejny zestaw</span>';
   forwardButton.addEventListener('click', function (e) {
     e.preventDefault();
-    for (let c of containers)
-      wordsContainer[c.type].nextWord();
+    const types = Object.keys(containers).map(key => containers[key].type);
+    shuffle(types);
+    for (const [index, type] of types.entries()) {
+      const swiper = getSwiper(type);
+      setTimeout(() => swiper.slideNext(), 20 * index); // zero this if prefers-reduced-motion is on
+      //wordsContainer[c.type].nextWord();
+    }
   });
 
   const footer = document.getElementsByTagName('footer')[0];

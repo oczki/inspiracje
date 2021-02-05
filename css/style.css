@@ -11,7 +11,7 @@
   padding: 0;
   line-height: 1;
   box-sizing: border-box;
-  box-shadow: 0 0 0 1px red;
+  /* box-shadow: 0 0 0 1px red; */
 }
 
 html,
@@ -47,6 +47,10 @@ div[id^='section-'] {
   width: 100%;
   height: 4rem;
   overflow: hidden;
+}
+
+.swiper-wrapper {
+  cursor: ew-resize;
 }
 
 .swiper-slide {
