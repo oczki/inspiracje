@@ -35,12 +35,12 @@ function ajax(url, callback) {
       callback(xhr.responseText);
     }
   }
-  xhr.open("GET", url, true);
+  xhr.open('GET', url, true);
   xhr.send();
 }
 
 function getWords(type, firstInit) {
-  ajax("ajax/" + type + ".php", function (output) {
+  ajax('ajax/' + type + '.php', function (output) {
     wordsContainer[type].words = eval(output);
     shuffle(wordsContainer[type].words);
     if (firstInit) {
@@ -91,7 +91,7 @@ class Container {
   prevWord() {
     let word = this.wordsHistory[--this.wordsHistoryIndex];
     if (word === undefined) {
-      word = "&middot;&middot;&middot;";
+      word = '&middot;&middot;&middot;';
       document.getElementById(prevButtonId(this.type)).disabled = true;
     }
     setWord(this.type, word);
@@ -99,22 +99,22 @@ class Container {
 }
 
 function addSectionButtons(parentElement, type, color) {
-  let prevButton = document.createElement("button");
+  let prevButton = document.createElement('button');
   prevButton.id = prevButtonId(type);
   prevButton.disabled = true;
   prevButton.innerHTML = `<span style="color: ${color}">wstecz</span>`;
-  prevButton.addEventListener("click", function (e) {
+  prevButton.addEventListener('click', function (e) {
     e.preventDefault();
     wordsContainer[type].prevWord();
   });
 
-  let nextButton = document.createElement("button");
+  let nextButton = document.createElement('button');
   nextButton.id = nextButtonId(type);
   nextButton.disabled = true;
   nextButton.style.backgroundColor = color;
   nextButton.style.animationName = `pulse-${nextButton.id}`;
-  nextButton.innerHTML = "<span>dalej</span>";
-  nextButton.addEventListener("click", function (e) {
+  nextButton.innerHTML = '<span>dalej</span>';
+  nextButton.addEventListener('click', function (e) {
     e.preventDefault();
     wordsContainer[type].nextWord();
   });
@@ -124,18 +124,18 @@ function addSectionButtons(parentElement, type, color) {
 }
 
 function addSectionHeader(parentElement, color, label) {
-  let header = document.createElement("div");
-  header.classList.add("section-header");
+  let header = document.createElement('div');
+  header.classList.add('section-header');
   header.style.color = color;
   header.innerHTML = label;
   parentElement.appendChild(header);
 }
 
 function addSectionWord(parentElement, type, color) {
-  let div = document.createElement("div");
+  let div = document.createElement('div');
   div.id = sectionWordId(type);
   div.style.color = color;
-  div.innerHTML = "&middot;&middot;&middot;";
+  div.innerHTML = '&middot;&middot;&middot;';
   parentElement.appendChild(div);
 }
 
@@ -173,7 +173,7 @@ function createSwiper(type) {
 }
 
 function addSection(type, color, label) {
-  let section = document.createElement("div");
+  let section = document.createElement('div');
   section.id = sectionId(type);
 
   let swiperWrapper = document.createElement('div');
@@ -191,18 +191,18 @@ function addSection(type, color, label) {
   section.appendChild(swiperButtonPrev);
   section.appendChild(swiperButtonNext);
 
-  document.getElementsByTagName("main")[0].appendChild(section);
+  document.getElementsByTagName('main')[0].appendChild(section);
   const swiperInitialized = createSwiper(type);
   swiperInitialized.slideNext();
 }
 
 function old_addSection(type, color, label) {
-  let section = document.createElement("div");
+  let section = document.createElement('div');
   section.id = sectionId(type);
   addSectionHeader(section, color, label);
   addSectionButtons(section, type, color);
   addSectionWord(section, type, color);
-  document.getElementsByTagName("main")[0].appendChild(section);
+  document.getElementsByTagName('main')[0].appendChild(section);
 }
 
 function addForwardAllWordsButton() {
@@ -237,18 +237,17 @@ function setForwardAllWordsButtonState() {
 function init() {
   for (let c of containers) {
      wordsContainer[c.type] = new Container(c.type, c.color, c.label);
-     //break;
   }
 
   addForwardAllWordsButton();
 }
 
-if (document.readyState != "loading")
+if (document.readyState != 'loading')
   init();
 else if (document.addEventListener)
-  document.addEventListener("DOMContentLoaded", init);
+  document.addEventListener('DOMContentLoaded', init);
 else
-  document.attachEvent("onreadystatechange", function () {
-    if (document.readyState == "complete")
+  document.attachEvent('onreadystatechange', function () {
+    if (document.readyState == 'complete')
       init();
   });
