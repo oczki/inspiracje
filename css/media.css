@@ -48,6 +48,9 @@ body {
 
 /* mobile; portrait */
 @media (min-width: 320px) and (max-width: 480px) {
+:root {
+  --swiper-navigation-padding: 0.5rem;
+}
 body {
   font-size: 10pt;
 }
