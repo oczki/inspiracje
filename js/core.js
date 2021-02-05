@@ -87,41 +87,8 @@ class Container {
     else
       setWord(this.type, this.wordsHistory[++this.wordsHistoryIndex]);
   }
-
-  prevWord() {
-    let word = this.wordsHistory[--this.wordsHistoryIndex];
-    if (word === undefined) {
-      word = '&middot;&middot;&middot;';
-      document.getElementById(prevButtonId(this.type)).disabled = true;
-    }
-    setWord(this.type, word);
-  }
 }
 
-function addSectionButtons(parentElement, type, color) {
-  let prevButton = document.createElement('button');
-  prevButton.id = prevButtonId(type);
-  prevButton.disabled = true;
-  prevButton.innerHTML = `<span style="color: ${color}">wstecz</span>`;
-  prevButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    wordsContainer[type].prevWord();
-  });
-
-  let nextButton = document.createElement('button');
-  nextButton.id = nextButtonId(type);
-  nextButton.disabled = true;
-  nextButton.style.backgroundColor = color;
-  nextButton.style.animationName = `pulse-${nextButton.id}`;
-  nextButton.innerHTML = '<span>dalej</span>';
-  nextButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    wordsContainer[type].nextWord();
-  });
-
-  parentElement.appendChild(prevButton);
-  parentElement.appendChild(nextButton);
-}
 
 function addSectionHeader(parentElement, color, label) {
   let header = document.createElement('div');
@@ -129,14 +96,6 @@ function addSectionHeader(parentElement, color, label) {
   header.style.color = color;
   header.innerHTML = label;
   parentElement.appendChild(header);
-}
-
-function addSectionWord(parentElement, type, color) {
-  let div = document.createElement('div');
-  div.id = sectionWordId(type);
-  div.style.color = color;
-  div.innerHTML = '&middot;&middot;&middot;';
-  parentElement.appendChild(div);
 }
 
 function getSwiper(type) {
@@ -172,42 +131,57 @@ function createSwiper(type) {
   return swiper;
 }
 
+function createElementWithClass(tagName, className = undefined) {
+  const element = document.createElement(tagName);
+  if (className) {
+    element.classList.add(className);
+  }
+  return element;  
+}
+
+function createElementWithId(tagName, id = undefined) {
+  const element = document.createElement(tagName);
+  if (id) {
+    element.id = id;
+  }
+  return element;  
+}
+
+function createElementWithClassAndId(tagName, className = undefined, id = undefined) {
+  const element = createElementWithClass(tagName, className);
+  if (id) {
+    element.id = id;
+  }
+  return element;
+}
+
+function addSwiperPrevNextButtons(parentElement) {
+  parentElement.appendChild(createElementWithClass('div', 'swiper-button-prev'));
+  parentElement.appendChild(createElementWithClass('div', 'swiper-button-next'));
+}
+
+function addSwiperWrapper(parentElement) {
+  parentElement.appendChild(createElementWithClass('div', 'swiper-wrapper'));
+}
+
+function appendElementToMainDocument(newElement) {
+  document.getElementsByTagName('main')[0].appendChild(newElement);
+}
+
 function addSection(type, color, label) {
-  let section = document.createElement('div');
-  section.id = sectionId(type);
+  const section = createElementWithClassAndId('section', 'word-section', sectionId(type));
 
-  let swiperWrapper = document.createElement('div');
-  swiperWrapper.classList.add('swiper-wrapper');
+  addSwiperWrapper(section);
+  addSwiperPrevNextButtons(section);
 
+  appendElementToMainDocument(section);
 
-
-  section.appendChild(swiperWrapper);
-
-  let swiperButtonPrev = document.createElement('div');
-  swiperButtonPrev.classList.add('swiper-button-prev');
-  let swiperButtonNext = document.createElement('div');
-  swiperButtonNext.classList.add('swiper-button-next');
-
-  section.appendChild(swiperButtonPrev);
-  section.appendChild(swiperButtonNext);
-
-  document.getElementsByTagName('main')[0].appendChild(section);
   const swiperInitialized = createSwiper(type);
   swiperInitialized.slideNext();
 }
 
-function old_addSection(type, color, label) {
-  let section = document.createElement('div');
-  section.id = sectionId(type);
-  addSectionHeader(section, color, label);
-  addSectionButtons(section, type, color);
-  addSectionWord(section, type, color);
-  document.getElementsByTagName('main')[0].appendChild(section);
-}
-
 function addForwardAllWordsButton() {
-  let forwardButton = document.createElement('button');
-  forwardButton.id = nextButtonId('all');
+  const forwardButton = createElementWithId('button', nextButtonId('all'));
   //forwardButton.disabled = true;
   forwardButton.style.backgroundColor = 'black';
   forwardButton.style.animationName = `pulse-${forwardButton.id}`;
