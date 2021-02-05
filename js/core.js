@@ -117,7 +117,7 @@ function textArrayToSlides(texts = []) {
 function createSwiper(type) {
   const swiper = new Swiper(`#${sectionId(type)}`, {
     speed: 180, // zero this if prefers-reduced-motion is on
-    spaceBetween: 100,
+    spaceBetween: 0,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -161,6 +161,7 @@ function addSwiperPrevNextButtons(parentElement) {
 }
 
 function addSwiperWrapper(parentElement) {
+  parentElement.appendChild(createElementWithClass('div', 'swiper-overlay'));
   parentElement.appendChild(createElementWithClass('div', 'swiper-wrapper'));
 }
 
@@ -172,6 +173,7 @@ function addSection(type, color, label) {
   const section = createElementWithClassAndId('section', 'word-section', sectionId(type));
 
   addSwiperWrapper(section);
+
   addSwiperPrevNextButtons(section);
 
   appendElementToMainDocument(section);

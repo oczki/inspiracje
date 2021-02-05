@@ -5,8 +5,19 @@
   --button-shadow-deep: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.2);
   --hover-duration: 180ms;
 
+  --section-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.11);
+  --section-background-color: white;
+  --section-gradient-size: 4rem;
+  --section-background-gradient: linear-gradient(to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) var(--section-gradient-size),
+    rgba(255, 255, 255, 0) calc(100% - var(--section-gradient-size)),
+    rgba(255, 255, 255, 1) 100%
+  );
+
   --swiper-navigation-color: black;
   --swiper-navigation-padding: 2rem;
+  --swiper-word-padding: calc(2rem + 2 * var(--swiper-navigation-padding));
 }
 
 *, *::before, *::after {
@@ -50,10 +61,21 @@ main {
   width: 100%;
   height: 4rem;
   overflow: hidden;
+  box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  background-color: var(--section-background-color);
 }
 
 .swiper-wrapper {
   cursor: ew-resize;
+}
+
+.swiper-overlay {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background: var(--section-background-gradient);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .swiper-slide {
@@ -61,12 +83,25 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 3rem;
+  padding: 0 var(--swiper-word-padding);
 }
 
 .swiper-button-next,
 .swiper-button-prev {
   padding: 0 var(--swiper-navigation-padding);
+  font-weight: bold;
+  z-index: 3;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: red;
+}
+
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  opacity: 0.1;
 }
 
 button {

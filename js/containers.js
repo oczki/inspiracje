@@ -35,10 +35,10 @@ let containers = [
     color: "#1c74c1",
     icon: 'box',
   },
-  {
-    type: "dictionary",
-    label: "dowolne słowo",
-    color: "#777777",
-    icon: 'question-mark',
-  },
+  // {
+  //   type: "dictionary",
+  //   label: "dowolne słowo",
+  //   color: "#777777",
+  //   icon: 'question-mark',
+  // },
 ];
