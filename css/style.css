@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 :root {
   --button-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.11);
   --button-shadow-deep: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.2);
   --hover-duration: 180ms;
+
+  --accent-color: rgb(31, 50, 158);
 
   --section-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.11);
   --section-background-color: white;
@@ -15,6 +17,7 @@
     rgba(255, 255, 255, 1) 100%
   );
 
+  --card-padding: 1rem;
   --card-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
                  0px 1px 1px 0px rgba(0, 0, 0, 0.14),
                  0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -43,14 +46,15 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 12pt;
   color: #333;
-  background: #f5f5f5;
+  background: #f0f0f0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 1rem;
 }
 
 main {
-  margin: 1em auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,25 +64,19 @@ main {
 .word-section {
   position: relative;
   width: min(100%, 40rem);
-  height: 4rem;
   box-shadow: var(--card-shadow);
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   background-color: var(--section-background-color);
-  margin-bottom: 2rem;
-}
-
-.word-section-header {
-  position: absolute;
-  top: -2rem;
-}
-
-.swiper-with-controls-container {
-  overflow: hidden;
-  height: 100%;
+  margin-bottom: 0.5rem;
+  padding-top: var(--card-padding);
+  padding-left: var(--card-padding);
+  padding-right: calc(0.5 * var(--card-padding));
+  padding-bottom: calc(0.5 * var(--card-padding));
 }
 
 .swiper-wrapper {
   cursor: ew-resize;
+  min-height: 2rem;
 }
 
 .swiper-overlay {
@@ -92,32 +90,53 @@ main {
 
 .swiper-slide {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 var(--swiper-word-padding);
-  font-weight: bold;
+  /* align-items: center;
+  justify-content: center; */
+  /* text-align: center; */
+  font-weight: 500;
   font-size: 1.5rem;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  padding: 0 var(--swiper-navigation-padding);
-  font-weight: bold;
-  z-index: 3;
-  background-color: gray;
-  border-radius: 0.5rem;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  color: red;
+  line-height: 1.25;
+  word-break: break-word;
 }
 
 
-.swiper-button-next.swiper-button-disabled,
-.swiper-button-prev.swiper-button-disabled {
+.header-and-navigation-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-container {
+  opacity: 0.7;
+}
+
+.navigation-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.navigation-container > div {
+  text-transform: uppercase;
+  color: var(--accent-color);
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.navigation-container > div:hover {
+  background-color: silver;
+}
+
+.navigation-container > div + div {
+  margin-left: 0.5rem;
+}
+
+
+.navigation-container .swiper-button-disabled {
   opacity: 0.1;
+  pointer-events: none;
+  background-color: none;
 }
 
 

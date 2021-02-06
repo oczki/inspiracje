@@ -9,7 +9,7 @@ function nextButtonId(type) {
 }
 
 function swiperSelector(type) {
-  return `#${sectionId(type)} .swiper-with-controls-container`;
+  return `#${sectionId(type)} .swiper-container`;
 }
 
 function shuffle(arr) {
@@ -136,7 +136,8 @@ function getSwiper(type) {
 }
 
 function textToSlide(text) {
-  return `<div class="swiper-slide">${text}</div>`;
+  const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
+  return `<div class="swiper-slide">${capitalizedText}</div>`;
 }
 
 function textArrayToSlides(texts = []) {
@@ -153,8 +154,8 @@ class Creator {
       speed: 180, // TODO: zero this if prefers-reduced-motion is on
       spaceBetween: 0,
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: `#${sectionId(type)} .navigation-button-next`,
+        prevEl: `#${sectionId(type)} .navigation-button-prev`,
       },
     });
     swiper.on('slidePrevTransitionStart', prevSlideCallback);
@@ -191,12 +192,18 @@ class Creator {
 }
 
 function addSwiperPrevNextButtons(parentElement) {
-  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-button-prev'));
-  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-button-next'));
+  const prevButton = Creator.createElementWithClass('div', 'navigation-button-prev');
+  prevButton.innerHTML = 'Wstecz';
+
+  const nextButton = Creator.createElementWithClass('div', 'navigation-button-next');
+  nextButton.innerHTML = 'Dalej';
+
+  parentElement.appendChild(prevButton);
+  parentElement.appendChild(nextButton);
 }
 
 function addSwiperWrapper(parentElement) {
-  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay'));
+  // parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay'));
   parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
 }
 
@@ -205,20 +212,25 @@ function appendElementToMainDocument(newElement) {
 }
 
 function addSectionHeader(parentElement, container) {
-  const header = Creator.createElementWithClass('div', 'word-section-header');
+  const header = Creator.createElementWithClass('div', 'header-container');
   header.innerHTML = container.label;
   parentElement.appendChild(header);
 }
 
 function addSection(container) {
   const section = Creator.createElementWithClassAndId('section', 'word-section', sectionId(container.type));
-  addSectionHeader(section, container);
 
-  const swiperContainer = Creator.createElementWithClass('div', 'swiper-with-controls-container');
+  const swiperContainer = Creator.createElementWithClass('div', 'swiper-container');
   addSwiperWrapper(swiperContainer);
-  addSwiperPrevNextButtons(swiperContainer);
-  section.appendChild(swiperContainer);
 
+  const headerAndNavigationContainer = Creator.createElementWithClass('div', 'header-and-navigation-container');
+  addSectionHeader(headerAndNavigationContainer, container);
+  const navigationContainer = Creator.createElementWithClass('div', 'navigation-container');
+  addSwiperPrevNextButtons(navigationContainer);
+  headerAndNavigationContainer.appendChild(navigationContainer);
+
+  section.appendChild(swiperContainer);
+  section.appendChild(headerAndNavigationContainer);
   appendElementToMainDocument(section);
 }
 
