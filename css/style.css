@@ -43,11 +43,6 @@ body {
   justify-content: space-between;
 }
 
-body.show-outline button:focus {
-  outline: 0.15em dashed white;
-  outline-offset: -0.3em;
-}
-
 main {
   margin: 1em auto;
   display: grid;
