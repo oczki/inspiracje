@@ -39,17 +39,8 @@ function ajax(url, callback) {
   xhr.send();
 }
 
-function getWords(type, firstInit) {
-  ajax('ajax/' + type + '.php', function (output) {
-    wordsContainer[type].words = eval(output);
-    shuffle(wordsContainer[type].words);
-    if (firstInit) {
-      getSwiper(type).removeSlide(0);
-      //wordsContainer[type].nextWord();
-      //setForwardAllWordsButtonState();
-    }
-    getSwiper(type).appendSlide(textArrayToSlides(wordsContainer[type].words));
-  });
+function getWords(type, callback) {
+  ajax('ajax/' + type + '.php', (output) => callback(output));
 }
 
 class Container {
@@ -57,38 +48,103 @@ class Container {
     this.type = type;
     this.color = color;
     this.label = label;
-    this.wordsHistory = [];
-    this.wordsHistoryIndex = 0;
-    this.init(true);
+    this.numberOfSlidesToGenerateFromWordsCache = 30;
+    this.wordsCache = [];
+    this.wordsCacheIndex = 0;
+    this.slideCount = 0;
+    this.slideIndex = 0;
+
+    this.initializeWords();
     addSection(type, color, label);
+    this.swiper = this.initializeSwiper();
   }
 
-  init(firstInit = false) {
-    this.words = [];
-    this.index = 0;
-    getWords(this.type, firstInit);
+  initializeWords() {
+
+    getWords(this.type, (output) => {
+      this.wordsCache = eval(output);
+      shuffle(this.wordsCache);
+      this.removeFirstSlides(0); // Removes the hardcoded first slide with 'Loading...' text
+      this.appendMoreSlidesFromCache(this.numberOfSlidesToGenerateFromWordsCache, 0);
+    });
   }
 
-  nextIndex() {
-    let index = this.index++;
-    if (index >= this.words.length - 10)
-      this.init();
-    return index;
+  initializeSwiper() {
+    const prevSlideCallback = () => { this.wordsCacheIndex--; }
+    const nextSlideCallback = () => { this.wordsCacheIndex++; }
+    const afterSlideChangedCallback = () => { this.maintainSensibleSlideCount(); }
+    const swiperInitialized = createSwiper(this.type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback);
+    swiperInitialized.slideNext();
+    return getSwiper(this.type);
   }
 
-  newWord() {
-    let word = this.words[this.nextIndex()];
-    setWord(this.type, word);
+  maintainSensibleSlideCount() {
+    const marginFromBeginning = 20;
+    const numberOfSlidesToRemoveFromBeginning = 10;
+    const marginFromEnd = 10;
+    const numberOfSlidesToAppendToEnd = 10;
+    this.recalculateSlideCountAndIndex();
+    if (this.isActiveSlideCloseToEnd(marginFromEnd)) {
+      this.appendMoreSlidesFromCache(numberOfSlidesToAppendToEnd, marginFromEnd);
+    }
+    if (this.isActiveSlideFarFromBeginning(marginFromBeginning)) {
+      setTimeout(() => this.removeFirstSlides(numberOfSlidesToRemoveFromBeginning), 200);
+    }
   }
 
-  nextWord() {
-    if (this.wordsHistoryIndex >= this.wordsHistory.length - 1)
-      this.newWord()
-    else
-      setWord(this.type, this.wordsHistory[++this.wordsHistoryIndex]);
+  isWordCacheAboutToRunOut(minimumRemainingWordCacheLength) {
+    return this.wordsCacheIndex + minimumRemainingWordCacheLength >= this.wordsCache.length;
+  }
+
+  isActiveSlideCloseToEnd(marginFromEnd) {
+    return this.slideIndex >= this.slideCount - marginFromEnd;
+  }
+
+  isActiveSlideFarFromBeginning(marginFromBeginning) {
+    return this.slideIndex >= marginFromBeginning;
+  }
+
+  recalculateSlideCountAndIndex() {
+    this.slideCount = this.swiper.slides.length;
+    this.slideIndex = this.swiper.activeIndex;
+  }
+
+  removeFirstSlides(numberOfSlidesToRemove) {
+    this.wordsCache.splice(0, numberOfSlidesToRemove);
+    this.wordsCacheIndex -= numberOfSlidesToRemove;
+    if (numberOfSlidesToRemove > 1) {
+      const range = (x, y) => Array.from((function* () { while (x <= y) yield x++; })());
+      this.swiper.removeSlide(range(0, numberOfSlidesToRemove - 1));
+    } else {
+      this.swiper.removeSlide(0);
+    }
+    this.recalculateSlideCountAndIndex();
+  }
+
+  appendMoreSlidesFromCache(numberOfSlidesToAppend, marginFromEnd, safetyMargin = 5) {
+    this.recalculateSlideCountAndIndex();
+    if (this.isWordCacheAboutToRunOut(numberOfSlidesToAppend + safetyMargin)) {
+      this.loadMoreWordsIntoCache();
+    }
+    const startIndex = this.wordsCacheIndex + marginFromEnd;
+    const endIndex = startIndex + numberOfSlidesToAppend;
+    const nextChunkOfWordsFromCache = this.wordsCache.slice(startIndex, endIndex);
+    this.swiper.appendSlide(textArrayToSlides(nextChunkOfWordsFromCache));
+  }
+
+  loadMoreWordsIntoCache() {
+    getWords(this.type, (output) => {
+      let newWords = eval(output);
+      shuffle(newWords);
+      this.wordsCache = this.wordsCache.concat(newWords);
+    });
+  }
+
+  logDebug() {
+    console.log(`${this.type}: slide count: ${this.slideCount}, current slide: ${this.slideIndex}, ` +
+      `words count: ${this.wordsCache.length}, current cache index: ${this.wordsCacheIndex}`);
   }
 }
-
 
 function addSectionHeader(parentElement, color, label) {
   let header = document.createElement('div');
@@ -114,7 +170,7 @@ function textArrayToSlides(texts = []) {
   return slides;
 }
 
-function createSwiper(type) {
+function createSwiper(type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback) {
   const swiper = new Swiper(`#${sectionId(type)}`, {
     speed: 180, // zero this if prefers-reduced-motion is on
     spaceBetween: 0,
@@ -123,9 +179,9 @@ function createSwiper(type) {
       prevEl: '.swiper-button-prev',
     },
   });
-  swiper.on('reachEnd', () => {
-    console.log('reached end of type', type);
-  })
+  swiper.on('slidePrevTransitionStart', prevSlideCallback);
+  swiper.on('slideNextTransitionStart', nextSlideCallback);
+  swiper.on('slideChangeTransitionEnd', afterSlideChangedCallback);
   const swiperInitialized = getSwiper(type);
   swiperInitialized.appendSlide(textToSlide('Ładuję...'));
   return swiper;
@@ -136,7 +192,7 @@ function createElementWithClass(tagName, className = undefined) {
   if (className) {
     element.classList.add(className);
   }
-  return element;  
+  return element;
 }
 
 function createElementWithId(tagName, id = undefined) {
@@ -144,7 +200,7 @@ function createElementWithId(tagName, id = undefined) {
   if (id) {
     element.id = id;
   }
-  return element;  
+  return element;
 }
 
 function createElementWithClassAndId(tagName, className = undefined, id = undefined) {
@@ -178,8 +234,7 @@ function addSection(type, color, label) {
 
   appendElementToMainDocument(section);
 
-  const swiperInitialized = createSwiper(type);
-  swiperInitialized.slideNext();
+
 }
 
 function addForwardAllWordsButton() {
@@ -195,7 +250,6 @@ function addForwardAllWordsButton() {
     for (const [index, type] of types.entries()) {
       const swiper = getSwiper(type);
       setTimeout(() => swiper.slideNext(), 20 * index); // zero this if prefers-reduced-motion is on
-      //wordsContainer[c.type].nextWord();
     }
   });
 
@@ -212,7 +266,7 @@ function setForwardAllWordsButtonState() {
 
 function init() {
   for (let c of containers) {
-     wordsContainer[c.type] = new Container(c.type, c.color, c.label);
+    wordsContainer[c.type] = new Container(c.type, c.color, c.label);
   }
 
   addForwardAllWordsButton();
