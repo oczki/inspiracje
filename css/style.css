@@ -7,7 +7,7 @@
 
   --section-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.11);
   --section-background-color: white;
-  --section-gradient-size: 4rem;
+  --section-gradient-size: 6rem;
   --section-background-gradient: linear-gradient(to right,
     rgba(255, 255, 255, 1) 0%,
     rgba(255, 255, 255, 0) var(--section-gradient-size),
