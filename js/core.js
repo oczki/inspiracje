@@ -8,24 +8,11 @@ function nextButtonId(type) {
   return `button-next-${type}`;
 }
 
-function prevButtonId(type) {
-  return `button-prev-${type}`;
-}
-
-function sectionWordId(type) {
-  return `word-${type}`;
-}
-
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-}
-
-function setWord(type, word) {
-  let wordBox = document.getElementById(sectionWordId(type));
-  wordBox.innerHTML = word;
 }
 
 function ajax(url, callback) {
