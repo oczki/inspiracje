@@ -44,10 +44,10 @@ function getWords(type, callback) {
 }
 
 class Container {
-  constructor(type, color, label) {
-    this.type = type;
-    this.color = color;
-    this.label = label;
+  constructor(container) {
+    this.type = container.type;
+    this.color = container.color;
+    this.label = container.label;
     this.numberOfSlidesToGenerateFromWordsCache = 30;
     this.wordsCache = [];
     this.wordsCacheIndex = 0;
@@ -55,12 +55,11 @@ class Container {
     this.slideIndex = 0;
 
     this.initializeWords();
-    addSection(type, color, label);
+    addSection(this.type, this.color, this.label);
     this.swiper = this.initializeSwiper();
   }
 
   initializeWords() {
-
     getWords(this.type, (output) => {
       this.wordsCache = eval(output);
       shuffle(this.wordsCache);
@@ -73,7 +72,7 @@ class Container {
     const prevSlideCallback = () => { this.wordsCacheIndex--; }
     const nextSlideCallback = () => { this.wordsCacheIndex++; }
     const afterSlideChangedCallback = () => { this.maintainSensibleSlideCount(); }
-    const swiperInitialized = createSwiper(this.type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback);
+    const swiperInitialized = Creator.createSwiper(this.type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback);
     swiperInitialized.slideNext();
     return getSwiper(this.type);
   }
@@ -139,16 +138,10 @@ class Container {
       this.wordsCache = this.wordsCache.concat(newWords);
     });
   }
-
-  logDebug() {
-    console.log(`${this.type}: slide count: ${this.slideCount}, current slide: ${this.slideIndex}, ` +
-      `words count: ${this.wordsCache.length}, current cache index: ${this.wordsCacheIndex}`);
-  }
 }
 
 function addSectionHeader(parentElement, color, label) {
-  let header = document.createElement('div');
-  header.classList.add('section-header');
+  const header = Creator.createElementWithClass('div', 'section-header');
   header.style.color = color;
   header.innerHTML = label;
   parentElement.appendChild(header);
@@ -170,55 +163,57 @@ function textArrayToSlides(texts = []) {
   return slides;
 }
 
-function createSwiper(type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback) {
-  const swiper = new Swiper(`#${sectionId(type)}`, {
-    speed: 180, // zero this if prefers-reduced-motion is on
-    spaceBetween: 0,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
-  swiper.on('slidePrevTransitionStart', prevSlideCallback);
-  swiper.on('slideNextTransitionStart', nextSlideCallback);
-  swiper.on('slideChangeTransitionEnd', afterSlideChangedCallback);
-  const swiperInitialized = getSwiper(type);
-  swiperInitialized.appendSlide(textToSlide('Ładuję...'));
-  return swiper;
-}
-
-function createElementWithClass(tagName, className = undefined) {
-  const element = document.createElement(tagName);
-  if (className) {
-    element.classList.add(className);
+class Creator {
+  static createSwiper(type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback) {
+    const swiper = new Swiper(`#${sectionId(type)}`, {
+      speed: 180, // zero this if prefers-reduced-motion is on
+      spaceBetween: 0,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+    swiper.on('slidePrevTransitionStart', prevSlideCallback);
+    swiper.on('slideNextTransitionStart', nextSlideCallback);
+    swiper.on('slideChangeTransitionEnd', afterSlideChangedCallback);
+    const swiperInitialized = getSwiper(type);
+    swiperInitialized.appendSlide(textToSlide('Ładuję...'));
+    return swiper;
   }
-  return element;
-}
 
-function createElementWithId(tagName, id = undefined) {
-  const element = document.createElement(tagName);
-  if (id) {
-    element.id = id;
+  static createElementWithClass(tagName, className = undefined) {
+    const element = document.createElement(tagName);
+    if (className) {
+      element.classList.add(className);
+    }
+    return element;
   }
-  return element;
-}
 
-function createElementWithClassAndId(tagName, className = undefined, id = undefined) {
-  const element = createElementWithClass(tagName, className);
-  if (id) {
-    element.id = id;
+  static createElementWithId(tagName, id = undefined) {
+    const element = document.createElement(tagName);
+    if (id) {
+      element.id = id;
+    }
+    return element;
   }
-  return element;
+
+  static createElementWithClassAndId(tagName, className = undefined, id = undefined) {
+    const element = this.createElementWithClass(tagName, className);
+    if (id) {
+      element.id = id;
+    }
+    return element;
+  }
 }
 
 function addSwiperPrevNextButtons(parentElement) {
-  parentElement.appendChild(createElementWithClass('div', 'swiper-button-prev'));
-  parentElement.appendChild(createElementWithClass('div', 'swiper-button-next'));
+  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-button-prev'));
+  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-button-next'));
 }
 
 function addSwiperWrapper(parentElement) {
-  parentElement.appendChild(createElementWithClass('div', 'swiper-overlay'));
-  parentElement.appendChild(createElementWithClass('div', 'swiper-wrapper'));
+  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay'));
+  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
 }
 
 function appendElementToMainDocument(newElement) {
@@ -226,7 +221,7 @@ function appendElementToMainDocument(newElement) {
 }
 
 function addSection(type, color, label) {
-  const section = createElementWithClassAndId('section', 'word-section', sectionId(type));
+  const section = Creator.createElementWithClassAndId('section', 'word-section', sectionId(type));
 
   addSwiperWrapper(section);
 
@@ -238,7 +233,7 @@ function addSection(type, color, label) {
 }
 
 function addForwardAllWordsButton() {
-  const forwardButton = createElementWithId('button', nextButtonId('all'));
+  const forwardButton = Creator.createElementWithId('button', nextButtonId('all'));
   //forwardButton.disabled = true;
   forwardButton.style.backgroundColor = 'black';
   forwardButton.style.animationName = `pulse-${forwardButton.id}`;
@@ -265,8 +260,8 @@ function setForwardAllWordsButtonState() {
 }
 
 function init() {
-  for (let c of containers) {
-    wordsContainer[c.type] = new Container(c.type, c.color, c.label);
+  for (const container of containers) {
+    wordsContainer[container.type] = new Container(container);
   }
 
   addForwardAllWordsButton();
