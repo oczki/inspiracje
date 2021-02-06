@@ -51,7 +51,7 @@ class Container {
       this.wordsCache = eval(output);
       shuffle(this.wordsCache);
       this.removeFirstSlides(0); // Removes the hardcoded first slide with 'Loading...' text
-      this.appendMoreSlidesFromCache(this.numberOfSlidesToGenerateFromWordsCache, 0);
+      this.appendSlidesFromWordsCache(this.numberOfSlidesToGenerateFromWordsCache, 0);
     });
   }
 
@@ -71,7 +71,7 @@ class Container {
     const numberOfSlidesToAppendToEnd = 10;
     this.recalculateSlideCountAndIndex();
     if (this.isActiveSlideCloseToEnd(marginFromEnd)) {
-      this.appendMoreSlidesFromCache(numberOfSlidesToAppendToEnd, marginFromEnd);
+      this.appendSlidesFromWordsCache(numberOfSlidesToAppendToEnd, marginFromEnd);
     }
     if (this.isActiveSlideFarFromBeginning(marginFromBeginning)) {
       setTimeout(() => this.removeFirstSlides(numberOfSlidesToRemoveFromBeginning), 200);
@@ -107,7 +107,7 @@ class Container {
     this.recalculateSlideCountAndIndex();
   }
 
-  appendMoreSlidesFromCache(numberOfSlidesToAppend, marginFromEnd, safetyMargin = 5) {
+  appendSlidesFromWordsCache(numberOfSlidesToAppend, marginFromEnd, safetyMargin = 5) {
     this.recalculateSlideCountAndIndex();
     if (this.isWordCacheAboutToRunOut(numberOfSlidesToAppend + safetyMargin)) {
       this.loadMoreWordsIntoCache();
@@ -153,7 +153,7 @@ function textArrayToSlides(texts = []) {
 class Creator {
   static createSwiper(type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback) {
     const swiper = new Swiper(`#${sectionId(type)}`, {
-      speed: 180, // zero this if prefers-reduced-motion is on
+      speed: 180, // TODO: zero this if prefers-reduced-motion is on
       spaceBetween: 0,
       navigation: {
         nextEl: '.swiper-button-next',
@@ -231,7 +231,7 @@ function addForwardAllWordsButton() {
     shuffle(types);
     for (const [index, type] of types.entries()) {
       const swiper = getSwiper(type);
-      setTimeout(() => swiper.slideNext(), 20 * index); // zero this if prefers-reduced-motion is on
+      setTimeout(() => swiper.slideNext(), 20 * index); // TODO: zero this if prefers-reduced-motion is on
     }
   });
 
