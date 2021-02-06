@@ -8,6 +8,10 @@ function nextButtonId(type) {
   return `button-next-${type}`;
 }
 
+function swiperSelector(type) {
+  return `#${sectionId(type)} .swiper-with-controls-container`;
+}
+
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -42,7 +46,7 @@ class Container {
     this.slideIndex = 0;
 
     this.initializeWords();
-    addSection(this.type, this.color, this.label);
+    addSection(container);
     this.swiper = this.initializeSwiper();
   }
 
@@ -127,15 +131,8 @@ class Container {
   }
 }
 
-function addSectionHeader(parentElement, color, label) {
-  const header = Creator.createElementWithClass('div', 'section-header');
-  header.style.color = color;
-  header.innerHTML = label;
-  parentElement.appendChild(header);
-}
-
 function getSwiper(type) {
-  return document.querySelector(`#${sectionId(type)}`)?.swiper;
+  return document.querySelector(swiperSelector(type))?.swiper;
 }
 
 function textToSlide(text) {
@@ -152,7 +149,7 @@ function textArrayToSlides(texts = []) {
 
 class Creator {
   static createSwiper(type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback) {
-    const swiper = new Swiper(`#${sectionId(type)}`, {
+    const swiper = new Swiper(swiperSelector(type), {
       speed: 180, // TODO: zero this if prefers-reduced-motion is on
       spaceBetween: 0,
       navigation: {
@@ -207,16 +204,22 @@ function appendElementToMainDocument(newElement) {
   document.getElementsByTagName('main')[0].appendChild(newElement);
 }
 
-function addSection(type, color, label) {
-  const section = Creator.createElementWithClassAndId('section', 'word-section', sectionId(type));
+function addSectionHeader(parentElement, container) {
+  const header = Creator.createElementWithClass('div', 'word-section-header');
+  header.innerHTML = container.label;
+  parentElement.appendChild(header);
+}
 
-  addSwiperWrapper(section);
+function addSection(container) {
+  const section = Creator.createElementWithClassAndId('section', 'word-section', sectionId(container.type));
+  addSectionHeader(section, container);
 
-  addSwiperPrevNextButtons(section);
+  const swiperContainer = Creator.createElementWithClass('div', 'swiper-with-controls-container');
+  addSwiperWrapper(swiperContainer);
+  addSwiperPrevNextButtons(swiperContainer);
+  section.appendChild(swiperContainer);
 
   appendElementToMainDocument(section);
-
-
 }
 
 function addForwardAllWordsButton() {

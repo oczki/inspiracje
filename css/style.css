@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Montserrat:700';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 :root {
   --button-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.11);
@@ -15,7 +15,12 @@
     rgba(255, 255, 255, 1) 100%
   );
 
+  --card-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+                 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+                 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+
   --swiper-navigation-color: black;
+  --swiper-navigation-size: 3rem;
   --swiper-navigation-padding: 2rem;
   --swiper-word-padding: calc(2rem + 2 * var(--swiper-navigation-padding));
 }
@@ -35,7 +40,8 @@ body {
 
 body {
   margin: 0;
-  font: 18pt Montserrat;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12pt;
   color: #333;
   background: #f5f5f5;
   display: flex;
@@ -45,20 +51,30 @@ body {
 
 main {
   margin: 1em auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1.5em;
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .word-section {
   position: relative;
-  width: 100%;
+  width: min(100%, 40rem);
   height: 4rem;
-  overflow: hidden;
-  box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   border-radius: 0.5rem;
   background-color: var(--section-background-color);
+  margin-bottom: 2rem;
+}
+
+.word-section-header {
+  position: absolute;
+  top: -2rem;
+}
+
+.swiper-with-controls-container {
+  overflow: hidden;
+  height: 100%;
 }
 
 .swiper-wrapper {
@@ -71,6 +87,7 @@ main {
   background: var(--section-background-gradient);
   z-index: 2;
   pointer-events: none;
+  border-radius: 0.5rem;
 }
 
 .swiper-slide {
@@ -79,6 +96,8 @@ main {
   justify-content: center;
   text-align: center;
   padding: 0 var(--swiper-word-padding);
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .swiper-button-next,
@@ -86,6 +105,8 @@ main {
   padding: 0 var(--swiper-navigation-padding);
   font-weight: bold;
   z-index: 3;
+  background-color: gray;
+  border-radius: 0.5rem;
 }
 
 .swiper-button-next:hover,
@@ -98,6 +119,11 @@ main {
 .swiper-button-prev.swiper-button-disabled {
   opacity: 0.1;
 }
+
+
+
+
+
 
 button {
   display: flex;
