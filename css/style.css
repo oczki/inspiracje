@@ -31,6 +31,8 @@
   --top-margin-between-cards-small: 0;
 }
 
+/* #region Initial definitions */
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -87,6 +89,10 @@ a {
   border: none;
   outline: none;
 }
+
+/* #endregion Initial definitions */
+
+/* #region Single section with a word swiper */
 
 .word-section {
   position: relative;
@@ -211,3 +217,9 @@ a {
 .navigation-button-prev:not(.swiper-button-disabled):focus {
   opacity: 1;
 }
+
+/* #endregion Single section with a word swiper */
+
+/* #region Footer */
+
+/* #endregion Footer */
