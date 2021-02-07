@@ -154,8 +154,8 @@ class Creator {
       speed: 180, // TODO: zero this if prefers-reduced-motion is on
       spaceBetween: 0,
       navigation: {
-        nextEl: `#${sectionId(type)} .navigation-button-next`,
         prevEl: `#${sectionId(type)} .navigation-button-prev`,
+        nextEl: `#${sectionId(type)} .navigation-button-next`,
       },
     });
     swiper.on('slidePrevTransitionStart', prevSlideCallback);
@@ -189,14 +189,33 @@ class Creator {
     }
     return element;
   }
+
+  static createIcon(iconName, additionalClass = undefined) {
+    const iconContainer = this.createElementWithClass('div', `icon`);
+    if (additionalClass) {
+      element.classList.add(additionalClass);
+    }
+    
+    const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svgElement.setAttribute('width', '24');
+    svgElement.setAttribute('height', '24');
+    
+    const useElement = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    const pathToIcon = `./media/icons/tabler-sprite.svg#tabler-${iconName}`;
+    useElement.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', pathToIcon);
+
+    svgElement.appendChild(useElement);
+    iconContainer.appendChild(svgElement);  
+    return iconContainer;
+  }
 }
 
 function addSwiperPrevNextButtons(parentElement) {
   const prevButton = Creator.createElementWithClass('div', 'navigation-button-prev');
-  prevButton.innerHTML = 'Wstecz';
-
+  prevButton.appendChild(Creator.createIcon('chevron-left'));
+  
   const nextButton = Creator.createElementWithClass('div', 'navigation-button-next');
-  nextButton.innerHTML = 'Dalej';
+  nextButton.appendChild(Creator.createIcon('chevron-right'));
 
   parentElement.appendChild(prevButton);
   parentElement.appendChild(nextButton);
