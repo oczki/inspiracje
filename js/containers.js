@@ -3,7 +3,7 @@ let containers = [
     type: "location",
     label: "Miejsce",
     color: "#14a020",
-    icon: 'map-pin',
+    icon: 'map-2',
   },
   {
     type: "character",
@@ -18,16 +18,16 @@ let containers = [
     icon: 'user-plus',
   },
   {
+    type: "relation",
+    label: "Relacja",
+    color: "#bb2392",
+    icon: 'friends',
+  },
+  {
     type: "emotion",
     label: "Emocja",
     color: "#d40b0b",
     icon: 'heart',
-  },
-  {
-    type: "relation",
-    label: "Relacja",
-    color: "#bb2392",
-    icon: 'hierarchy',
   },
   {
     type: "noun",
