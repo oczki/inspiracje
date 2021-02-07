@@ -83,6 +83,7 @@ main {
 .swiper-my-container {
   grid-area: swiper-container;
   overflow: hidden;
+  margin: calc(-1 * var(--card-padding)) 0;
 }
 
 /* Element created by Swiper */
