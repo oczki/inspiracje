@@ -1,0 +1,17 @@
+@media (min-width: 50em) and (max-width: 64em) {
+  :root {
+    font-size: 10pt;
+  }
+}
+
+@media (max-width: 50em) {
+  :root {
+    font-size: 9pt;
+  }
+}
+
+@media (max-width: 40em) {
+  :root {
+    font-size: 9pt;
+  }
+}
