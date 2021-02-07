@@ -73,7 +73,6 @@ main {
   margin-bottom: 0.5rem;
   padding: var(--card-padding);
   display: grid;
-  /* grid-template-rows: auto auto; */
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'nav-prev swiper-container nav-next';
 }
@@ -84,6 +83,7 @@ main {
   grid-area: swiper-container;
   overflow: hidden;
   margin: calc(-1 * var(--card-padding)) 0;
+  position: relative;
 }
 
 /* Element created by Swiper */
@@ -91,7 +91,6 @@ main {
   height: 100%;
 }
 
-/* TODO: Not used anymore? */
 .swiper-overlay {
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0;
@@ -120,6 +119,9 @@ main {
 .header-container {
   grid-area: header;
   opacity: 0.7;
+  position: absolute;
+  top: -2rem;
+  
 }
 
 .navigation-button-prev {

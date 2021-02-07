@@ -137,7 +137,8 @@ function getSwiper(type) {
 
 function textToSlide(text) {
   const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
-  return `<div class="swiper-slide">${capitalizedText}</div>`;
+  const textWithNonBreakingSpace = capitalizedText.replace(/ (i|z|w|oraz) /gi, ' $1&nbsp;');
+  return `<div class="swiper-slide">${textWithNonBreakingSpace}</div>`;
 }
 
 function textArrayToSlides(texts = []) {
@@ -213,9 +214,13 @@ class Creator {
 function addSwiperPrevNextButtons(parentElement) {
   const prevButton = Creator.createElementWithClass('div', 'navigation-button-prev');
   prevButton.appendChild(Creator.createIcon('chevron-left'));
-
+  prevButton.appendChild(Creator.createElementWithClass('div', 'rippleJS'));
+  prevButton.style.position = 'relative';
+  
   const nextButton = Creator.createElementWithClass('div', 'navigation-button-next');
   nextButton.appendChild(Creator.createIcon('chevron-right'));
+  nextButton.appendChild(Creator.createElementWithClass('div', 'rippleJS'));
+  nextButton.style.position = 'relative';
 
   parentElement.appendChild(prevButton);
   parentElement.appendChild(nextButton);
@@ -250,7 +255,7 @@ function addSection(container) {
   mySwiperContainer.appendChild(swiperScriptsContainer);
   section.appendChild(mySwiperContainer);
 
-  // addSectionHeader(section, container);
+  addSectionHeader(section, container);
   addIcon(section, container.icon);
   addSwiperPrevNextButtons(section);
 
