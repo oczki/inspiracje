@@ -1,31 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 :root {
-  --button-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.11);
-  --button-shadow-deep: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.2);
-  --hover-duration: 180ms;
+  --hover-duration: 120ms;
 
-  --accent-color: rgb(31, 50, 158);
+  --color-accent-h: 215deg;
+  --color-accent-s: 70%;
+  --color-accent-l: 50%;
+  --color-accent: hsl(var(--color-accent-h), var(--color-accent-s), var(--color-accent-l));
+  --color-accent-lighter: hsl(var(--color-accent-h), var(--color-accent-s), 95%);
 
-  --section-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.11);
-  --section-background-color: white;
-  --section-gradient-size: 6rem;
-  --section-background-gradient: linear-gradient(to right,
+  --gradient-under-slides-size: 1rem;
+  --gradient-under-slides: linear-gradient(to right,
     rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0) var(--section-gradient-size),
-    rgba(255, 255, 255, 0) calc(100% - var(--section-gradient-size)),
+    rgba(255, 255, 255, 0) var(--gradient-under-slides-size),
+    rgba(255, 255, 255, 0) calc(100% - var(--gradient-under-slides-size)),
     rgba(255, 255, 255, 1) 100%
   );
 
-  --card-padding: 1rem;
+  --card-padding: 0.5rem;
   --card-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
                  0px 1px 1px 0px rgba(0, 0, 0, 0.14),
                  0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-
-  --swiper-navigation-color: black;
-  --swiper-navigation-size: 3rem;
-  --swiper-navigation-padding: 2rem;
-  --swiper-word-padding: calc(2rem + 2 * var(--swiper-navigation-padding));
+  --card-background-color: white;
+  --card-icon-color: var(--color-accent);
+  --swiper-navigation-color: var(--color-accent);
+  --swiper-navigation-background-color: var(--color-accent-lighter);
 }
 
 *, *::before, *::after {
@@ -34,6 +33,10 @@
   line-height: 1;
   box-sizing: border-box;
   /* box-shadow: 0 0 0 1px red; */
+}
+
+::selection {
+  background-color: transparent;
 }
 
 html,
@@ -66,12 +69,34 @@ main {
   width: min(100%, 40rem);
   box-shadow: var(--card-shadow);
   border-radius: 0.25rem;
-  background-color: var(--section-background-color);
+  background-color: var(--card-background-color);
   margin-bottom: 0.5rem;
-  padding-top: var(--card-padding);
-  padding-left: var(--card-padding);
-  padding-right: calc(0.5 * var(--card-padding));
-  padding-bottom: calc(0.5 * var(--card-padding));
+  padding: var(--card-padding);
+  display: grid;
+  /* grid-template-rows: auto auto; */
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'nav-prev swiper-container nav-next';
+}
+
+
+/* Contains the wrapper created by Swiper */
+.swiper-my-container {
+  grid-area: swiper-container;
+  overflow: hidden;
+}
+
+/* Element created by Swiper */
+.swiper-container {
+  height: 100%;
+}
+
+/* TODO: Not used anymore? */
+.swiper-overlay {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background: var(--gradient-under-slides);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .swiper-wrapper {
@@ -79,166 +104,82 @@ main {
   min-height: 2rem;
 }
 
-.swiper-overlay {
-  position: absolute;
-  top: 0; bottom: 0; left: 0; right: 0;
-  background: var(--section-background-gradient);
-  z-index: 2;
-  pointer-events: none;
-  border-radius: 0.5rem;
-}
-
 .swiper-slide {
   display: flex;
-  /* align-items: center;
-  justify-content: center; */
-  /* text-align: center; */
+  align-items: center;
+  /* justify-content: center;
+  text-align: center; */
   font-weight: 500;
   font-size: 1.5rem;
   line-height: 1.25;
   word-break: break-word;
-}
-
-
-.header-and-navigation-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 0 var(--gradient-under-slides-size);
 }
 
 .header-container {
+  grid-area: header;
   opacity: 0.7;
 }
 
-.navigation-container {
-  display: flex;
-  flex-wrap: nowrap;
+.navigation-button-prev {
+  grid-area: nav-prev;
 }
 
-.navigation-container > div {
+.navigation-button-next {
+  grid-area: nav-next;
+}
+
+.section-icon {
+  grid-area: nav-prev;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  color: var(--card-icon-color);
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.icon {
+  display: flex;
+}
+
+[class^='navigation-button-'] {
   text-transform: uppercase;
-  color: var(--accent-color);
+  color: var(--swiper-navigation-color);
   font-weight: 500;
   padding: 0.5rem;
   border-radius: 0.2rem;
   cursor: pointer;
-}
-
-.navigation-container > div:hover {
-  background-color: silver;
-}
-
-.navigation-container > div + div {
-  margin-left: 0.5rem;
-}
-
-
-.navigation-container .swiper-button-disabled {
-  opacity: 0.1;
-  pointer-events: none;
-  background-color: none;
-}
-
-
-
-
-
-
-button {
   display: flex;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  font: inherit;
-  color: white;
-  background: none;
-  border: 0;
-  border-radius: 0.15em;
-  cursor: pointer;
-  outline: none;
-  overflow: hidden;
+}
+
+.navigation-button-next {
+  transition-property: background-color;
+  transition-duration: var(--hover-duration);
+  background-color: transparent;
+}
+
+.navigation-button-next:hover,
+.navigation-button-next:focus {
+  background-color: var(--swiper-navigation-background-color);
+}
+
+.swiper-button-disabled {
+  pointer-events: none;
+}
+
+/* Show navigation button Prev when it's hovered */
+.navigation-button-prev {
+  background-color: var(--swiper-navigation-background-color);
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--hover-duration);
+}
+
+.navigation-button-prev:not(.swiper-button-disabled):hover,
+.navigation-button-prev:not(.swiper-button-disabled):focus {
   opacity: 1;
-  box-shadow: var(--button-shadow);
-  transition-property: box-shadow;
-  transition-duration: var(--hover-duration);
-}
-
-button:hover,
-button:focus {
-  box-shadow: var(--button-shadow-deep);
-}
-
-button[id^=button-next-] {
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-play-state: running;
-}
-
-button span {
-  --span-shadow-opacity: 0;
-
-  position: relative;
-  line-height: 0.5;
-  pointer-events: none;
-  font-variant: small-caps;
-  box-shadow: 0 0 0 2em rgba(255, 255, 255, var(--span-shadow-opacity)), inset 0 0 0 2em rgba(255, 255, 255, var(--span-shadow-opacity));
-  transition-property: box-shadow;
-  transition-duration: var(--hover-duration);
-}
-
-button:hover span,
-button:focus span {
-  --span-shadow-opacity: 0.15;
-}
-
-button[id^=button-next-] span {
-  font-size: 1.1em;
-  top: -0.17em;
-}
-
-button[id^=button-next-] span:after {
-  content: "\bb";
-  font-size: 1.3em;
-  margin-left: 0.2em;
-  position: relative;
-  top: 0.085em;
-}
-
-button[disabled] {
-  opacity: 0.3;
-  pointer-events: none;
-  animation-play-state: paused;
-}
-
-footer {
-  margin: 1em auto;
-  width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
-footer > :first-child {
-  margin-left: 1em;
-}
-
-footer > :last-child {
-  margin-right: 1em;
-}
-
-#button-next-all {
-  width: 12em;
-  height: 2.3em;
-}
-
-#author {
-  margin-left: 1em;
-}
-
-#author a {
-  color: #333;
-  text-decoration: none;
 }

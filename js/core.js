@@ -193,19 +193,19 @@ class Creator {
   static createIcon(iconName, additionalClass = undefined) {
     const iconContainer = this.createElementWithClass('div', `icon`);
     if (additionalClass) {
-      element.classList.add(additionalClass);
+      iconContainer.classList.add(additionalClass);
     }
-    
+
     const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svgElement.setAttribute('width', '24');
     svgElement.setAttribute('height', '24');
-    
+
     const useElement = document.createElementNS('http://www.w3.org/2000/svg', 'use');
     const pathToIcon = `./media/icons/tabler-sprite.svg#tabler-${iconName}`;
     useElement.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', pathToIcon);
 
     svgElement.appendChild(useElement);
-    iconContainer.appendChild(svgElement);  
+    iconContainer.appendChild(svgElement);
     return iconContainer;
   }
 }
@@ -213,7 +213,7 @@ class Creator {
 function addSwiperPrevNextButtons(parentElement) {
   const prevButton = Creator.createElementWithClass('div', 'navigation-button-prev');
   prevButton.appendChild(Creator.createIcon('chevron-left'));
-  
+
   const nextButton = Creator.createElementWithClass('div', 'navigation-button-next');
   nextButton.appendChild(Creator.createIcon('chevron-right'));
 
@@ -221,8 +221,13 @@ function addSwiperPrevNextButtons(parentElement) {
   parentElement.appendChild(nextButton);
 }
 
+function addIcon(parentElement, iconName) {
+  const icon = Creator.createIcon(iconName, 'section-icon');
+  parentElement.appendChild(icon);
+}
+
 function addSwiperWrapper(parentElement) {
-  // parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay'));
+  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay'));
   parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
 }
 
@@ -239,17 +244,16 @@ function addSectionHeader(parentElement, container) {
 function addSection(container) {
   const section = Creator.createElementWithClassAndId('section', 'word-section', sectionId(container.type));
 
-  const swiperContainer = Creator.createElementWithClass('div', 'swiper-container');
-  addSwiperWrapper(swiperContainer);
+  const mySwiperContainer = Creator.createElementWithClass('div', 'swiper-my-container');
+  const swiperScriptsContainer = Creator.createElementWithClass('div', 'swiper-container');
+  addSwiperWrapper(swiperScriptsContainer);
+  mySwiperContainer.appendChild(swiperScriptsContainer);
+  section.appendChild(mySwiperContainer);
 
-  const headerAndNavigationContainer = Creator.createElementWithClass('div', 'header-and-navigation-container');
-  addSectionHeader(headerAndNavigationContainer, container);
-  const navigationContainer = Creator.createElementWithClass('div', 'navigation-container');
-  addSwiperPrevNextButtons(navigationContainer);
-  headerAndNavigationContainer.appendChild(navigationContainer);
+  // addSectionHeader(section, container);
+  addIcon(section, container.icon);
+  addSwiperPrevNextButtons(section);
 
-  section.appendChild(swiperContainer);
-  section.appendChild(headerAndNavigationContainer);
   appendElementToMainDocument(section);
 }
 
