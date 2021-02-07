@@ -3,6 +3,7 @@
 :root {
   --hover-duration: 120ms;
 
+  --color-text: #333;
   --color-accent-h: 215deg;
   --color-accent-s: 70%;
   --color-accent-l: 50%;
@@ -54,7 +55,7 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   font-size: 12pt;
-  color: #333;
+  color: var(--color-text);
   background: #f0f0f0;
   display: flex;
   flex-direction: column;
@@ -67,12 +68,24 @@ body.compact {
   --card-header-display: none;
 }
 
+body.show-outline button:focus,
+body.show-outline a:focus {
+  outline: 2px dashed var(--color-text);
+  outline-offset: -5px;
+}
+
 main {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+}
+
+button,
+a {
+  border: none;
+  outline: none;
 }
 
 .word-section {

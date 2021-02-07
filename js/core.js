@@ -212,12 +212,12 @@ class Creator {
 }
 
 function addSwiperPrevNextButtons(parentElement) {
-  const prevButton = Creator.createElementWithClass('div', 'navigation-button-prev');
+  const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
   prevButton.appendChild(Creator.createIcon('chevron-left'));
   prevButton.appendChild(Creator.createElementWithClass('div', 'rippleJS'));
   prevButton.style.position = 'relative';
   
-  const nextButton = Creator.createElementWithClass('div', 'navigation-button-next');
+  const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
   nextButton.appendChild(Creator.createIcon('chevron-right'));
   nextButton.appendChild(Creator.createElementWithClass('div', 'rippleJS'));
   nextButton.style.position = 'relative';
@@ -289,12 +289,27 @@ function setForwardAllWordsButtonState() {
   forwardAllWordsButton.disabled = !state;
 }
 
+function handleKeyboardInput(event) {
+  if (event.keyCode === 9) {
+    document.body.classList.add('show-outline');
+    window.removeEventListener('keydown', handleKeyboardInput);
+    window.addEventListener('mousedown', handleMouseInput);
+  }
+}
+
+function handleMouseInput() {
+  document.body.classList.remove('show-outline');
+  window.addEventListener('keydown', handleKeyboardInput);
+  window.removeEventListener('mousedown', handleMouseInput);
+}
+
 function init() {
   for (const container of containers) {
     wordsContainer[container.type] = new Container(container);
   }
 
   addForwardAllWordsButton();
+  window.addEventListener('keydown', handleKeyboardInput);
 }
 
 if (document.readyState != 'loading')
