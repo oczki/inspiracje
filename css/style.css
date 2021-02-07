@@ -25,6 +25,9 @@
   --card-icon-color: var(--color-accent);
   --swiper-navigation-color: var(--color-accent);
   --swiper-navigation-background-color: var(--color-accent-lighter);
+
+  --top-margin-between-cards-default: 1.6rem;
+  --top-margin-between-cards-small: 0;
 }
 
 *, *::before, *::after {
@@ -45,6 +48,9 @@ body {
 }
 
 body {
+  --top-margin-between-cards: var(--top-margin-between-cards-default);
+  --card-header-display: block;
+
   margin: 0;
   font-family: 'Roboto', sans-serif;
   font-size: 12pt;
@@ -54,6 +60,11 @@ body {
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
+}
+
+body.compact {
+  --top-margin-between-cards: var(--top-margin-between-cards-small);
+  --card-header-display: none;
 }
 
 main {
@@ -70,6 +81,7 @@ main {
   box-shadow: var(--card-shadow);
   border-radius: 0.25rem;
   background-color: var(--card-background-color);
+  margin-top: var(--top-margin-between-cards);
   margin-bottom: 0.5rem;
   padding: var(--card-padding);
   display: grid;
@@ -77,13 +89,11 @@ main {
   grid-template-areas: 'nav-prev swiper-container nav-next';
 }
 
-
 /* Contains the wrapper created by Swiper */
-.swiper-my-container {
+.swiper-outer-container {
   grid-area: swiper-container;
   overflow: hidden;
   margin: calc(-1 * var(--card-padding)) 0;
-  position: relative;
 }
 
 /* Element created by Swiper */
@@ -117,11 +127,13 @@ main {
 }
 
 .header-container {
-  grid-area: header;
-  opacity: 0.7;
   position: absolute;
-  top: -2rem;
-  
+  left: var(--card-padding);
+  bottom: calc(100% + 0.3rem);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: var(--card-header-display);
 }
 
 .navigation-button-prev {

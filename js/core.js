@@ -249,7 +249,7 @@ function addSectionHeader(parentElement, container) {
 function addSection(container) {
   const section = Creator.createElementWithClassAndId('section', 'word-section', sectionId(container.type));
 
-  const mySwiperContainer = Creator.createElementWithClass('div', 'swiper-my-container');
+  const mySwiperContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
   const swiperScriptsContainer = Creator.createElementWithClass('div', 'swiper-container');
   addSwiperWrapper(swiperScriptsContainer);
   mySwiperContainer.appendChild(swiperScriptsContainer);
