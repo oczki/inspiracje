@@ -275,7 +275,7 @@ footer {
   color: white;
   transform: translate3d(0, 0, 0);
   transition-property: box-shadow;
-  transition-duration: 400ms;
+  transition-duration: 300ms;
 }
 
 #advance-all:active {
