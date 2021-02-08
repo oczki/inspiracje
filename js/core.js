@@ -1,4 +1,5 @@
 let wordsContainer = [];
+let swiperAnimationDuration = 180;
 
 function sectionId(type) {
   return `section-${type}`;
@@ -39,7 +40,7 @@ class Container {
     this.type = container.type;
     this.color = container.color;
     this.label = container.label;
-    this.numberOfSlidesToGenerateFromWordsCache = 30;
+    this.numberOfSlidesToGenerateFromWordsCache = 20;
     this.wordsCache = [];
     this.wordsCacheIndex = 0;
     this.slideCount = 0;
@@ -48,37 +49,55 @@ class Container {
     this.initializeWords();
     addSection(container);
     this.swiper = this.initializeSwiper();
+    setInterval(() => this.runCleanup(), swiperAnimationDuration * 10 + 11);
   }
 
   initializeWords() {
     getWords(this.type, (output) => {
       this.wordsCache = eval(output);
-      shuffle(this.wordsCache);
+      //shuffle(this.wordsCache);
       this.removeFirstSlides(0); // Removes the hardcoded first slide with 'Loading...' text
+      this.recalculateSlideCountAndIndex();
       this.appendSlidesFromWordsCache(this.numberOfSlidesToGenerateFromWordsCache, 0);
     });
   }
 
+  runCleanup() {
+    if (!this.isCleanupAllowed) return;
+    if (this.isSwiperTransitionOngoing()) return; // Let's clean up later, so animations are not disrupted.
+    this.deleteSlidesIfNeeded();
+  }
+
   initializeSwiper() {
     const prevSlideCallback = () => { this.wordsCacheIndex--; }
-    const nextSlideCallback = () => { this.wordsCacheIndex++; }
-    const afterSlideChangedCallback = () => { this.maintainSensibleSlideCount(); }
-    const swiperInitialized = Creator.createSwiper(this.type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback);
+    const nextSlideCallback = () => { this.wordsCacheIndex++; this.addSlidesIfNeeded(); }
+    const transitionStartedCallback = () => { this.isCleanupAllowed = false; }
+    const transitionFinishedCallback = () => { this.isCleanupAllowed = true; }
+    const swiperInitialized = Creator.createSwiper(this.type,
+      prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback);
     swiperInitialized.slideNext();
     return getSwiper(this.type);
   }
 
-  maintainSensibleSlideCount() {
-    const marginFromBeginning = 20;
-    const numberOfSlidesToRemoveFromBeginning = 10;
-    const marginFromEnd = 10;
+  isSwiperTransitionOngoing() {
+    return this.swiper.animating;
+  }
+
+  addSlidesIfNeeded() {
+    const marginFromEnd = 5;
     const numberOfSlidesToAppendToEnd = 10;
     this.recalculateSlideCountAndIndex();
     if (this.isActiveSlideCloseToEnd(marginFromEnd)) {
       this.appendSlidesFromWordsCache(numberOfSlidesToAppendToEnd, marginFromEnd);
     }
+  }
+
+  deleteSlidesIfNeeded() {
+    const marginFromBeginning = 20;
+    const numberOfSlidesToRemoveFromBeginning = 10;
+    this.recalculateSlideCountAndIndex();
     if (this.isActiveSlideFarFromBeginning(marginFromBeginning)) {
-      setTimeout(() => this.removeFirstSlides(numberOfSlidesToRemoveFromBeginning), 200);
+      this.removeFirstSlides(numberOfSlidesToRemoveFromBeginning);
     }
   }
 
@@ -100,6 +119,7 @@ class Container {
   }
 
   removeFirstSlides(numberOfSlidesToRemove) {
+    if (this.isSwiperTransitionOngoing()) return;
     this.wordsCache.splice(0, numberOfSlidesToRemove);
     this.wordsCacheIndex -= numberOfSlidesToRemove;
     if (numberOfSlidesToRemove > 1) {
@@ -112,7 +132,6 @@ class Container {
   }
 
   appendSlidesFromWordsCache(numberOfSlidesToAppend, marginFromEnd, safetyMargin = 5) {
-    this.recalculateSlideCountAndIndex();
     if (this.isWordCacheAboutToRunOut(numberOfSlidesToAppend + safetyMargin)) {
       this.loadMoreWordsIntoCache();
     }
@@ -120,12 +139,13 @@ class Container {
     const endIndex = startIndex + numberOfSlidesToAppend;
     const nextChunkOfWordsFromCache = this.wordsCache.slice(startIndex, endIndex);
     this.swiper.appendSlide(textArrayToSlides(nextChunkOfWordsFromCache));
+    this.recalculateSlideCountAndIndex();
   }
 
   loadMoreWordsIntoCache() {
     getWords(this.type, (output) => {
       let newWords = eval(output);
-      shuffle(newWords);
+      //shuffle(newWords);
       this.wordsCache = this.wordsCache.concat(newWords);
     });
   }
@@ -150,9 +170,9 @@ function textArrayToSlides(texts = []) {
 }
 
 class Creator {
-  static createSwiper(type, prevSlideCallback, nextSlideCallback, afterSlideChangedCallback) {
+  static createSwiper(type, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) {
     const swiper = new Swiper(swiperSelector(type), {
-      speed: 180, // TODO: zero this if prefers-reduced-motion is on
+      speed: swiperAnimationDuration, // TODO: zero this if prefers-reduced-motion is on
       spaceBetween: 0,
       navigation: {
         prevEl: `#${sectionId(type)} .navigation-button-prev`,
@@ -161,7 +181,8 @@ class Creator {
     });
     swiper.on('slidePrevTransitionStart', prevSlideCallback);
     swiper.on('slideNextTransitionStart', nextSlideCallback);
-    swiper.on('slideChangeTransitionEnd', afterSlideChangedCallback);
+    swiper.on('slideChangeTransitionStart', transitionStartedCallback);
+    swiper.on('slideChangeTransitionEnd', transitionFinishedCallback);
     const swiperInitialized = getSwiper(type);
     swiperInitialized.appendSlide(textToSlide('Ładuję...'));
     return swiper;
@@ -220,7 +241,7 @@ function addSwiperPrevNextButtons(parentElement) {
   prevButton.appendChild(Creator.createIcon('chevron-left'));
   prevButton.style.position = 'relative';
   addRipple(prevButton);
-  
+
   const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
   nextButton.appendChild(Creator.createIcon('chevron-right'));
   nextButton.style.position = 'relative';
