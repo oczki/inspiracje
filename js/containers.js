@@ -29,12 +29,12 @@ let containers = [
     color: "#d40b0b",
     icon: 'heart',
   },
-  {
-    type: "noun",
-    label: "Rzeczownik",
-    color: "#1c74c1",
-    icon: 'box',
-  },
+  // {
+  //   type: "noun",
+  //   label: "Rzeczownik",
+  //   color: "#1c74c1",
+  //   icon: 'box',
+  // },
   // {
   //   type: "dictionary",
   //   label: "dowolne słowo",
