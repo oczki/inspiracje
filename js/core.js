@@ -211,16 +211,20 @@ class Creator {
   }
 }
 
+function addRipple(parentElement) {
+  parentElement.appendChild(Creator.createElementWithClass('div', 'rippleJS'));
+}
+
 function addSwiperPrevNextButtons(parentElement) {
   const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
   prevButton.appendChild(Creator.createIcon('chevron-left'));
-  prevButton.appendChild(Creator.createElementWithClass('div', 'rippleJS'));
   prevButton.style.position = 'relative';
+  addRipple(prevButton);
   
   const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
   nextButton.appendChild(Creator.createIcon('chevron-right'));
-  nextButton.appendChild(Creator.createElementWithClass('div', 'rippleJS'));
   nextButton.style.position = 'relative';
+  addRipple(nextButton);
 
   parentElement.appendChild(prevButton);
   parentElement.appendChild(nextButton);
@@ -262,12 +266,15 @@ function addSection(container) {
   appendElementToMainDocument(section);
 }
 
-function addForwardAllWordsButton() {
-  const forwardButton = Creator.createElementWithId('button', nextButtonId('all'));
+function createForwardAllWordsButton() {
+  const forwardButton = Creator.createElementWithId('button', 'advance-all');
+  addRipple(forwardButton);
   //forwardButton.disabled = true;
-  forwardButton.style.backgroundColor = 'black';
-  forwardButton.style.animationName = `pulse-${forwardButton.id}`;
-  forwardButton.innerHTML = '<span>kolejny zestaw</span>';
+
+  const text = Creator.createElementWithClass('span');
+  text.innerHTML = 'Inspiruj';
+  const icon = Creator.createIcon('chevrons-right');
+
   forwardButton.addEventListener('click', function (e) {
     e.preventDefault();
     const types = Object.keys(containers).map(key => containers[key].type);
@@ -278,8 +285,10 @@ function addForwardAllWordsButton() {
     }
   });
 
-  const footer = document.getElementsByTagName('footer')[0];
-  footer.insertBefore(forwardButton, footer.firstChild);
+  forwardButton.appendChild(text);
+  forwardButton.appendChild(icon);
+
+  return forwardButton;
 }
 
 function setForwardAllWordsButtonState() {
@@ -287,6 +296,15 @@ function setForwardAllWordsButtonState() {
   const state = Array.from(buttons).every(button => !button.disabled);
   const forwardAllWordsButton = document.getElementById(nextButtonId('all'));
   forwardAllWordsButton.disabled = !state;
+}
+
+function populateFooter() {
+  const footer = document.getElementsByTagName('footer')[0];
+
+  const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
+  innerContainer.appendChild(createForwardAllWordsButton());
+
+  footer.appendChild(innerContainer);
 }
 
 function handleKeyboardInput(event) {
@@ -308,7 +326,7 @@ function init() {
     wordsContainer[container.type] = new Container(container);
   }
 
-  addForwardAllWordsButton();
+  populateFooter();
   window.addEventListener('keydown', handleKeyboardInput);
 }
 
