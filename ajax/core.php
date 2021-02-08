@@ -127,7 +127,9 @@ class Printer {
   }
 
   final public function printAllWords() {
-    echo $this->format($this->reader->getAllWords());
+    $words = $this->reader->getAllWords();
+    shuffle($words);
+    echo $this->format($words);
   }
 }
 ?>
