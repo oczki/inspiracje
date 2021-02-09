@@ -55,7 +55,6 @@ class Container {
   initializeWords() {
     getWords(this.type, (output) => {
       this.wordsCache = eval(output);
-      //shuffle(this.wordsCache);
       this.removeFirstSlides(0); // Removes the hardcoded first slide with 'Loading...' text
       this.recalculateSlideCountAndIndex();
       this.appendSlidesFromWordsCache(this.numberOfSlidesToGenerateFromWordsCache, 0);
@@ -145,7 +144,6 @@ class Container {
   loadMoreWordsIntoCache() {
     getWords(this.type, (output) => {
       let newWords = eval(output);
-      //shuffle(newWords);
       this.wordsCache = this.wordsCache.concat(newWords);
     });
   }
