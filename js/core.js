@@ -228,6 +228,12 @@ class Creator {
     iconContainer.appendChild(svgElement);
     return iconContainer;
   }
+
+  static createSpan(text) {
+    const spanElement = Creator.createElementWithClass('span', 'hidden-when-narrow');
+    spanElement.innerHTML = text;
+    return spanElement;
+  }
 }
 
 function addRipple(parentElement) {
@@ -237,10 +243,12 @@ function addRipple(parentElement) {
 function addSwiperPrevNextButtons(parentElement) {
   const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
   prevButton.appendChild(Creator.createIcon('chevron-left'));
+  prevButton.appendChild(Creator.createSpan('Wstecz'));
   prevButton.style.position = 'relative';
   addRipple(prevButton);
-
+  
   const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
+  nextButton.appendChild(Creator.createSpan('Dalej'));
   nextButton.appendChild(Creator.createIcon('chevron-right'));
   nextButton.style.position = 'relative';
   addRipple(nextButton);
