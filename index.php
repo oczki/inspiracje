@@ -33,7 +33,8 @@ function addJs($name) {
   </head>
   <body class="compact">
     <main></main>
-    <footer>
-    </footer>
+    <div id="scrim"></div>
+    <div id="sliding-panel-container"></div>
+    <footer></footer>
   </body>
 </html>

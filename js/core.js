@@ -230,9 +230,15 @@ class Creator {
   }
 
   static createSpan(text) {
-    const spanElement = Creator.createElementWithClass('span', 'hidden-when-narrow');
+    const spanElement = this.createElementWithClass('span', 'hidden-when-narrow');
     spanElement.innerHTML = text;
     return spanElement;
+  }
+
+  static createSlidingPanel() {
+    const panel = this.createElementWithClass('div', 'sliding-panel');
+    panel.style.display = 'none';
+    return panel;
   }
 }
 
@@ -293,6 +299,28 @@ function addSection(container) {
   appendElementToMainDocument(section);
 }
 
+function createSettingsPanel() {
+  const panel = Creator.createSlidingPanel();
+  panel.style.display = 'block'; // TODO: remove this line
+
+  panel.appendChild(createDarkModeToggle());
+
+
+  return panel;
+}
+
+function createAboutPanel() {
+  const panel = Creator.createSlidingPanel();
+  panel.innerHTML = 'about';
+  return panel;
+}
+
+function populateSlidingPanelContainer() {
+  const container = document.getElementById('sliding-panel-container');
+  container.appendChild(createSettingsPanel());
+  container.appendChild(createAboutPanel());
+}
+
 function createForwardAllWordsButton() {
   const forwardButton = Creator.createElementWithId('button', 'button-advance-all');
   addRipple(forwardButton);
@@ -301,6 +329,7 @@ function createForwardAllWordsButton() {
   const text = Creator.createElementWithClass('span');
   text.innerHTML = 'Inspiruj';
   const icon = Creator.createIcon('chevrons-right');
+  // TODO create additional icon for closing a panel?
 
   forwardButton.addEventListener('click', function (e) {
     e.preventDefault();
@@ -410,7 +439,7 @@ function createDarkModeToggle() {
   const labelElement = Creator.createElementWithId('label', 'dark-mode');
   labelElement.appendChild(toggle);
   addRipple(labelElement);
-  // TODO: do something with this toggle
+  return labelElement;
 }
 
 function init() {
@@ -419,6 +448,7 @@ function init() {
     wordsContainer[container.type] = new Container(container);
   }
 
+  populateSlidingPanelContainer();
   populateFooter();
   window.addEventListener('keydown', handleKeyboardInput);
 }

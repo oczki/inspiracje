@@ -33,6 +33,7 @@
                        0 5px 22px 4px rgba(0, 0, 0, 0.12);
   --card-background-color: white;
   --icon-size: 1.5rem;
+  --footer-height: 5rem;
   --swiper-navigation-color: var(--color-accent);
   --swiper-navigation-background-color: var(--color-accent-lighter);
 }
@@ -73,6 +74,11 @@ body {
 
 body.compact {
   --card-header-display: none;
+}
+
+body.dark {
+  --card-background-color: black;
+  --color-text: white;
 }
 
 body.show-outline button:focus,
@@ -320,11 +326,11 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: 10;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  height: 5rem;
+  height: var(--footer-height);
   background-color: white;
   box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.2); /* TODO: shadow from material design */
 }
@@ -400,3 +406,33 @@ body.show-outline #button-about:focus {
 }
 
 /* #endregion Footer */
+
+/* #region Sliding panel (settings, about, ...) */
+
+#sliding-panel-container {
+  z-index: 9;
+}
+
+/* TODO: show the scrim behind container */
+#scrim {
+  z-index: 8;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+
+/* TODO: animate appearing from behind the footer */
+.sliding-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--card-background-color);
+  padding-bottom: calc(2rem + var(--footer-height));
+}
+
+/* #endregion Sliding panel (settings, about, ...) */
