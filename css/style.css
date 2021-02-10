@@ -32,6 +32,7 @@
                        0 12px 17px 2px rgba(0, 0, 0, 0.14),
                        0 5px 22px 4px rgba(0, 0, 0, 0.12);
   --card-background-color: white;
+  --icon-size: 1.5rem;
   --swiper-navigation-color: var(--color-accent);
   --swiper-navigation-background-color: var(--color-accent-lighter);
 }
@@ -238,19 +239,26 @@ body:not(.compact) .swiper-slide {
   grid-area: nav-next;
 }
 
+.icon {
+  display: flex;
+}
+
+.icon,
+.icon svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
 .section-icon {
   grid-area: nav-prev;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
   color: var(--color-accent);
   font-weight: 500;
   pointer-events: none;
-}
-
-.icon {
-  display: flex;
+  align-self: center;
+  justify-self: center;
 }
 
 [class^='navigation-button-'] {
@@ -262,6 +270,8 @@ body:not(.compact) .swiper-slide {
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
+  justify-self: center;
   transition-duration: var(--hover-duration);
 }
 
@@ -329,6 +339,8 @@ footer {
 }
 
 #button-advance-all {
+  --icon-size: 2.5rem;
+
   position: absolute;
   top: 0;
   left: 50%;
@@ -352,11 +364,6 @@ footer {
 
 #button-advance-all:active {
   box-shadow: var(--fab-shadow-active);
-}
-
-#button-advance-all svg {
-  width: 2.5rem;
-  height: 2.5rem;
 }
 
 #button-advance-all span {

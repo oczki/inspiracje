@@ -326,7 +326,6 @@ function createSettingsButton() {
   
   settingsButton.addEventListener('click', function (e) {
     e.preventDefault();
-    console.log('settings was clicked');
     // TODO: toggle the settings view, sliding from the bottom
     // TODO: change the fab to 'close' button
   });
@@ -346,7 +345,6 @@ function createAboutButton() {
   
   aboutButton.addEventListener('click', function (e) {
     e.preventDefault();
-    console.log('about was clicked');
     // TODO: toggle the about view, sliding from the bottom
     // TODO: change the fab to 'close' button
   });
@@ -402,6 +400,7 @@ function setDarkModeState(state) {
 function createDarkModeToggle() {
   const toggle = Creator.createElementWithId('input', 'dark-mode-checkbox');
   toggle.type = 'checkbox';
+  // TODO if there is no key in local storage, read user's preferred color scheme
   toggle.checked = localStorage.getItem('dark-mode') === 'true';
   setDarkModeState(toggle.checked);
   toggle.addEventListener('change', (event) => {
