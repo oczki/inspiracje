@@ -294,9 +294,9 @@ function addSection(container) {
 }
 
 function createForwardAllWordsButton() {
-  const forwardButton = Creator.createElementWithId('button', 'advance-all');
+  const forwardButton = Creator.createElementWithId('button', 'button-advance-all');
   addRipple(forwardButton);
-  //forwardButton.disabled = true;
+  //forwardButton.disabled = true; // TODO
 
   const text = Creator.createElementWithClass('span');
   text.innerHTML = 'Inspiruj';
@@ -314,14 +314,54 @@ function createForwardAllWordsButton() {
 
   forwardButton.appendChild(text);
   forwardButton.appendChild(icon);
-
   return forwardButton;
 }
 
+function createSettingsButton() {
+  const settingsButton = Creator.createElementWithId('button', 'button-settings');
+  
+  const text = Creator.createElementWithClass('span');
+  text.innerHTML = 'Opcje';
+  const icon = Creator.createIcon('settings');
+  
+  settingsButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    console.log('settings was clicked');
+    // TODO: toggle the settings view, sliding from the bottom
+    // TODO: change the fab to 'close' button
+  });
+  
+  settingsButton.appendChild(text);
+  settingsButton.appendChild(icon);
+  addRipple(settingsButton);
+  return settingsButton;
+}
+
+function createAboutButton() {
+  const aboutButton = Creator.createElementWithId('button', 'button-about');
+  
+  const text = Creator.createElementWithClass('span');
+  text.innerHTML = 'Info';
+  const icon = Creator.createIcon('info-circle');
+  
+  aboutButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    console.log('about was clicked');
+    // TODO: toggle the about view, sliding from the bottom
+    // TODO: change the fab to 'close' button
+  });
+  
+  aboutButton.appendChild(text);
+  aboutButton.appendChild(icon);
+  addRipple(aboutButton);
+  return aboutButton;
+}
+
+// TODO: not used yet, needs styling and this method to be called in proper places
 function setForwardAllWordsButtonState() {
   const buttons = document.querySelectorAll(`main button[id^="${nextButtonId('')}"]`);
   const state = Array.from(buttons).every(button => !button.disabled);
-  const forwardAllWordsButton = document.getElementById(nextButtonId('all'));
+  const forwardAllWordsButton = document.getElementById('button-advance-all');
   forwardAllWordsButton.disabled = !state;
 }
 
@@ -330,6 +370,8 @@ function populateFooter() {
 
   const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
   innerContainer.appendChild(createForwardAllWordsButton());
+  innerContainer.appendChild(createSettingsButton());
+  innerContainer.appendChild(createAboutButton());
 
   footer.appendChild(innerContainer);
 }
@@ -348,7 +390,32 @@ function handleMouseInput() {
   window.removeEventListener('mousedown', handleMouseInput);
 }
 
+function setDarkModeState(state) {
+  localStorage.setItem('dark-mode', state);
+  document.body.classList.toggle('dark', state);
+  requestAnimationFrame(() => {
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgColor); // TODO add attr to index head
+  });
+}
+
+function createDarkModeToggle() {
+  const toggle = Creator.createElementWithId('input', 'dark-mode-checkbox');
+  toggle.type = 'checkbox';
+  toggle.checked = localStorage.getItem('dark-mode') === 'true';
+  setDarkModeState(toggle.checked);
+  toggle.addEventListener('change', (event) => {
+    setDarkModeState(event.currentTarget.checked);
+  });
+  
+  const labelElement = Creator.createElementWithId('label', 'dark-mode');
+  labelElement.appendChild(toggle);
+  addRipple(labelElement);
+  // TODO: do something with this toggle
+}
+
 function init() {
+  createDarkModeToggle();
   for (const container of containers) {
     wordsContainer[container.type] = new Container(container);
   }

@@ -320,15 +320,19 @@ footer {
 }
 
 #footer-inner-container {
-  width: min(100%, 40rem);
   position: relative;
+  width: min(100%, 40rem);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#advance-all {
+#button-advance-all {
   position: absolute;
   top: 0;
   left: 50%;
-  z-index: 2;
+  z-index: 100;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -346,19 +350,45 @@ footer {
   transition-duration: 300ms;
 }
 
-#advance-all:active {
+#button-advance-all:active {
   box-shadow: var(--fab-shadow-active);
 }
 
-#advance-all svg {
+#button-advance-all svg {
   width: 2.5rem;
   height: 2.5rem;
 }
 
-#advance-all span {
+#button-advance-all span {
   font-weight: 500;
   margin-right: 0.5rem;
   display: none;
+}
+
+#button-settings,
+#button-about {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 10rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--color-text);
+  transition-property: background-color;
+  transition-duration: var(--hover-duration);
+}
+
+#button-settings:hover,
+#button-about:hover,
+body.show-outline #button-settings:focus,
+body.show-outline #button-about:focus {
+  background-color: var(--swiper-navigation-background-color);
 }
 
 /* #endregion Footer */
