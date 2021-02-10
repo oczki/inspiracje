@@ -174,7 +174,7 @@ body.compact button > span {
 }
 
 .word-section:last-child {
-  margin-bottom: 5.5rem;
+  margin-bottom: 6rem;
 }
 
 /* Contains the wrapper created by Swiper */
@@ -307,13 +307,16 @@ body.show-outline .navigation-button-prev:not(.swiper-button-disabled):focus {
 
 footer {
   position: fixed;
-  left: var(--body-padding);
-  right: var(--body-padding);
-  bottom: var(--body-padding);
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  height: 5rem;
+  background-color: white;
+  box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.2); /* TODO: shadow from material design */
 }
 
 #footer-inner-container {
@@ -323,14 +326,14 @@ footer {
 
 #advance-all {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 0;
+  left: 50%;
   z-index: 2;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 10rem;
   box-shadow: var(--fab-shadow);
   font-size: 1rem;
@@ -338,13 +341,18 @@ footer {
   cursor: pointer;
   background-color: var(--color-accent);
   color: white;
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(-50%, -50%, 0);
   transition-property: box-shadow;
   transition-duration: 300ms;
 }
 
 #advance-all:active {
   box-shadow: var(--fab-shadow-active);
+}
+
+#advance-all svg {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 #advance-all span {
