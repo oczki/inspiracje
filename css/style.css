@@ -333,6 +333,7 @@ footer {
   position: relative;
   width: min(100%, 40rem);
   height: 100%;
+  margin: 0 var(--body-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
