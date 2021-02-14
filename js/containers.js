@@ -29,12 +29,12 @@ let containers = [
     color: "#d40b0b",
     icon: 'heart',
   },
-  // {
-  //   type: "action",
-  //   label: "Czynność",
-  //   color: "#d40b0b",
-  //   icon: 'heart',
-  // },
+  {
+    type: "action",
+    label: "Czynność",
+    color: "#d40b0b",
+    icon: 'run',
+  },
   // {
   //   type: "body-part",
   //   label: "Część ciała",
