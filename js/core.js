@@ -230,16 +230,30 @@ class Creator {
   }
 
   static createSpan(text) {
+    const spanElement = document.createElement('span');
+    spanElement.innerHTML = text;
+    return spanElement;
+  }
+
+  static createHidingSpan(text) {
     const spanElement = this.createElementWithClass('span', 'hidden-when-narrow');
     spanElement.innerHTML = text;
     return spanElement;
   }
 
-  static createSlidingPanel() {
-    const panel = this.createElementWithClass('div', 'sliding-panel');
+  static createSlidingPanel(id) {
+    const panel = this.createElementWithClassAndId('div', 'sliding-panel', id);
     panel.style.display = 'none';
+
+    const content = this.createElementWithClass('div', 'sliding-panel-content');
+
+    panel.appendChild(content);
     return panel;
   }
+}
+
+function getSlidingPanelContentById(id) {
+  return document.querySelector(`#${id} .sliding-panel-content`);
 }
 
 function addRipple(parentElement) {
@@ -249,12 +263,12 @@ function addRipple(parentElement) {
 function addSwiperPrevNextButtons(parentElement) {
   const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
   prevButton.appendChild(Creator.createIcon('chevron-left'));
-  prevButton.appendChild(Creator.createSpan('Wstecz'));
+  prevButton.appendChild(Creator.createHidingSpan('Wstecz'));
   prevButton.style.position = 'relative';
   addRipple(prevButton);
-  
+
   const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
-  nextButton.appendChild(Creator.createSpan('Dalej'));
+  nextButton.appendChild(Creator.createHidingSpan('Dalej'));
   nextButton.appendChild(Creator.createIcon('chevron-right'));
   nextButton.style.position = 'relative';
   addRipple(nextButton);
@@ -300,23 +314,26 @@ function addSection(container) {
 }
 
 function createSettingsPanel() {
-  const panel = Creator.createSlidingPanel();
-  panel.style.display = 'block'; // TODO: remove this line
+  const panelName = 'settings';
+  const panel = Creator.createSlidingPanel(panelName);
+  panel.style.display = 'flex'; // TODO: remove this line
 
-  panel.appendChild(createDarkModeToggle());
+  const panelContent = panel.children[0];
+  panelContent.appendChild(createCompactModeToggle());
+  panelContent.appendChild(createDarkModeToggle());
 
 
   return panel;
 }
 
 function createAboutPanel() {
-  const panel = Creator.createSlidingPanel();
+  const panel = Creator.createSlidingPanel('about');
   panel.innerHTML = 'about';
   return panel;
 }
 
 function populateSlidingPanelContainer() {
-  const container = document.getElementById('sliding-panel-container');
+  const container = document.getElementById('sliding-panels-container');
   container.appendChild(createSettingsPanel());
   container.appendChild(createAboutPanel());
 }
@@ -348,17 +365,17 @@ function createForwardAllWordsButton() {
 
 function createSettingsButton() {
   const settingsButton = Creator.createElementWithId('button', 'button-settings');
-  
+
   const text = Creator.createElementWithClass('span');
   text.innerHTML = 'Opcje';
   const icon = Creator.createIcon('settings');
-  
+
   settingsButton.addEventListener('click', function (e) {
     e.preventDefault();
     // TODO: toggle the settings view, sliding from the bottom
     // TODO: change the fab to 'close' button
   });
-  
+
   settingsButton.appendChild(text);
   settingsButton.appendChild(icon);
   addRipple(settingsButton);
@@ -367,17 +384,17 @@ function createSettingsButton() {
 
 function createAboutButton() {
   const aboutButton = Creator.createElementWithId('button', 'button-about');
-  
+
   const text = Creator.createElementWithClass('span');
   text.innerHTML = 'Info';
   const icon = Creator.createIcon('info-circle');
-  
+
   aboutButton.addEventListener('click', function (e) {
     e.preventDefault();
     // TODO: toggle the about view, sliding from the bottom
     // TODO: change the fab to 'close' button
   });
-  
+
   aboutButton.appendChild(text);
   aboutButton.appendChild(icon);
   addRipple(aboutButton);
@@ -427,23 +444,54 @@ function setDarkModeState(state) {
 }
 
 function createDarkModeToggle() {
-  const toggle = Creator.createElementWithId('input', 'dark-mode-checkbox');
+  const darkModeKeyName = 'dark-mode';
+  const toggle = Creator.createElementWithId('input', `${darkModeKeyName}-checkbox`);
   toggle.type = 'checkbox';
   // TODO if there is no key in local storage, read user's preferred color scheme
-  toggle.checked = localStorage.getItem('dark-mode') === 'true';
+  toggle.checked = localStorage.getItem(darkModeKeyName) === 'true';
   setDarkModeState(toggle.checked);
   toggle.addEventListener('change', (event) => {
     setDarkModeState(event.currentTarget.checked);
   });
-  
-  const labelElement = Creator.createElementWithId('label', 'dark-mode');
+
+  const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', darkModeKeyName);
   labelElement.appendChild(toggle);
+  labelElement.appendChild(Creator.createSpan('Tryb ciemny'));
+  addRipple(labelElement);
+  return labelElement;
+}
+
+function updateAllSwipers() {
+  for (let container of containers) {
+    wordsContainer[container.type].swiper.update();
+  }
+}
+
+function setCompactModeState(state) {
+  localStorage.setItem('compact-mode', state);
+  document.body.classList.toggle('compact', state);
+  updateAllSwipers();
+}
+
+function createCompactModeToggle() {
+  const compactModeKeyName = 'compact-mode';
+  const toggle = Creator.createElementWithId('input', `${compactModeKeyName}-checkbox`);
+  toggle.type = 'checkbox';
+  // TODO if there is no key in local storage, read device width?
+  toggle.checked = localStorage.getItem(compactModeKeyName) === 'false';
+  setCompactModeState(!toggle.checked);
+  toggle.addEventListener('change', (event) => {
+    setCompactModeState(!event.currentTarget.checked);
+  });
+
+  const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', compactModeKeyName);
+  labelElement.appendChild(toggle);
+  labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
   addRipple(labelElement);
   return labelElement;
 }
 
 function init() {
-  createDarkModeToggle();
   for (const container of containers) {
     wordsContainer[container.type] = new Container(container);
   }
