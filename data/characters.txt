@@ -1,35 +1,57 @@
 akrobata
+aktor głosowy
 aktor
 akwizytor
+alchemik
 alpinista
+android
+anestezjolog
+animator
 anioł
+ankieter
+antykwariusz
 aptekarz
+archeolog
 architekt
 artysta
+arystokrata
 astrolog
 astronauta
 baca
+bagażowy
+bankowiec
+barber
+barista
 barman
 bednarz
 bibliotekarz
 biedak
 biolog
+biskup
 bogacz
 bohater
 bokser
+botanik
 bóstwo
 bramkarz
+broker
 budowniczy
 burmistrz
+były prezydent
 casanova
 celebryta
+celnik
+cesarz
 chemik
 chirurg
 cieć
 clown
 coach
+cosplayer
 cukiernik
 czarodziej
+degustator
+dekarz
 dentysta
 dermatolog
 designer
@@ -44,71 +66,103 @@ drwal
 duch
 dyrektor
 dyrygent
+dziekan
 dziennikarz
 dzwonnik
+dźwiękowiec
+ekonomista
 ekspedient
 elektronik
 elektryk
+faraon
 farmaceuta
+filatelista
 filozof
+finansista
+fizjoterapeuta
 fizyk
 fotograf
+fotoreporter
+freelancer
+fryzjer zwierząt
+fryzjer
 gajowy
+genetyk
 geodeta
 geograf
 glina
 głowa rodziny
+gospodarz domu
 gość
 górnik
 grabarz
 gracz
+grafik
 guru
+handlarz
+hipnotyzer
 host airbnb
 hydraulik
 iluzjonista
+influencer
 informatyk
 instruktor
 introligator
 inżynier
+jaskiniowiec
 jasnowidz
 jeździec
 językoznawca
 jubiler
+kadrowy
 kamerzysta
 kapitan
 karczmarz
 kardiolog
+kardynał
 kasjer
 kaskader
 kat
+katecheta
 kelner
 kierowca
-kleptoman
+kierownik
 kolejarz
 komendant
+komentator
 kominiarz
 komornik
 konduktor
+konserwator zabytków
+konsjerż
+konsultant
 kontroler biletów
 korektor
+kosmetolog
+kosmonauta
 koszykarz
+kościelny
 kowal
 kowboj
 krawiec
 kreślarz
 kronikarz
 król
+krupier
 krytyk
 ksiądz
 książę
 księgarz
 księgowy
 kucharz
+kupiec
+kurier
 kuśnierz
 kwiaciarz
 lalkarz
 latarnik
 lekarz
+lektor
 leśniczy
 licytator
 listonosz
@@ -117,32 +171,46 @@ lodziarz
 łucznik
 magazynier
 magik
+majster
 makler
 malarz
+manager
+marketingowiec
 marynarz
 masażysta
 maszynista
 matematyk
 mechanik
 meteorolog
+mim
+ministrant
 mistrz
 mleczarz
 mnich
 model
+monarcha
 motorniczy
 murarz
 muzyk
 myśliwy
+nauczyciel przedszkola
+nauczyciel wuefu
 nauczyciel
 naukowiec
+niania
 nożownik
 ochroniarz
+oficer
 ogrodnik
+operator maszynerii
 optyk
 organizator
 ortopeda
 pacjent
+pakowacz
 palacz
+papież
+parobek
 pasterz
 pedagog
 pediatra
@@ -152,33 +220,49 @@ pilot
 piłkarz
 piosenkarz
 pisarz
+plastyk
 pływak
-podróżnik
 podróżnik w czasie
+podróżnik
 podrywacz
+podwójny agent
 poeta
 policjant
 polityk
+polonista
+portier
 porucznik
+poszukiwacz skarbów
+półbóg
+pracownik biurowy
 pracownik call center
+pracownik dziekanatu
+pracownik fundacji
 pracz
 praktykant
 prawnik
+prestidigitator
 prezenter
 prezydent
 profesor
 programista
+projektant
+promotor
 prostytutka
 przewodnik
 psychiatra
 psycholog
 pszczelarz
 rabin
+rachmistrz
 radny
 rajdowiec
 ratownik
+recenzent
+redaktor
 rekruter
 reżyser
+robot
 robotyk
 rodzic
 rolnik
@@ -189,17 +273,21 @@ rzeczoznawca
 rzemieślnik
 rzeźnik
 sanitariusz
+satyryk
 sekretarz
 sędzia
 skarbnik
 skoczek
+służący
 sokolnik
+sommelier
 spadochroniarz
 spawacz
 sportowiec
 sprinter
 sprzątacz
 sprzedawca
+stajenny
 stażysta
 steward
 stolarz
@@ -208,20 +296,32 @@ strażak
 strażnik
 strzelec
 student
+sufler
+sułtan
+superbohater
 szaman
+szatniarz
+szef kuchni
+szef wszystkich szefów
 szef
 szewc
 szpieg
+sztuczna inteligencja
 ślusarz
 śmieciarz
+śpiewak
 świeży rodzic
 tajny agent
 taksówkarz
 tancerz
 tatuażysta
 technik
+telemarketer
+terapeuta
 terrorysta
+tester oprogramowania
 tłumacz
+tokarz
 tragarz
 trener
 turysta
@@ -231,6 +331,7 @@ urolog
 urzędnik
 weterynarz
 wędkarz
+widz
 więzień
 włócznik
 wojownik
@@ -238,9 +339,12 @@ wojskowy
 wolontariusz
 wójt
 wróżbita
+wychowawca
 wykładowca
+wynalazca
 youtuber
 zakonnik
+zapomniany celebryta
 zegarmistrz
 zielarz
 złodziej
@@ -250,3 +354,4 @@ złotówa
 żeglarz
 żniwiarz
 żołnierz
+żongler

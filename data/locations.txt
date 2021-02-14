@@ -22,6 +22,7 @@ burdel
 centrum badawcze
 chłodnia
 chodnik
+ciasny transport publiczny
 ciasny tunel
 ciemny zaułek
 cmentarz
@@ -30,6 +31,7 @@ czerwony dywan
 dach
 dentysta
 disneyland
+długa kolejka
 dom
 domówka
 drapacz chmur
@@ -53,6 +55,7 @@ impreza firmowa
 jacht
 jaskinia
 jezioro
+kabina toaletowa
 kafejka internetowa
 kanał ściekowy
 kanciapa
@@ -62,12 +65,14 @@ katedra
 kawiarnia
 kino
 klatka schodowa
-kolejka
+kokpit samolotu
 kominek
 komisariat
 koncert
 konfesjonał
 kopalnia
+korek drogowy
+korytarz gmachu sądu
 kościół
 krematorium
 krypta
@@ -102,6 +107,8 @@ obuwniczy
 ogródek
 ołtarz
 open space
+opuszczone kino
+orbita okołoziemska
 pałac
 parawan
 park
@@ -112,6 +119,7 @@ pijalnia
 piramida
 piwnica
 plac zabaw
+plan zdjęciowy
 planeta
 plaża
 plebania
@@ -120,6 +128,7 @@ poczekalnia
 pod kioskiem
 pod mostem
 pod ścianą
+pogorzelisko
 pokaz mody
 pole uprawne
 pośredniak
@@ -128,6 +137,7 @@ pralnia
 prosektorium
 przedszkole
 przejście dla pieszych
+przejście graniczne
 przyczepa kempingowa
 przymierzalnia
 przystanek
@@ -135,30 +145,33 @@ psia buda
 pub
 punkt obserwacyjny
 pustynia
+rakieta
 recepcja
 redakcja
 restauracja
+rollercoaster
 rozlewnia
 ruiny
 rynek
 rzeźnia
 sad
 sala operacyjna
+sala rozpraw
 sala weselna
 salon fotograficzny
 salon gier
 salon masażu
 samochód
+samolot
 sauna
-sąd
 scena
 schody ruchome
 schronisko
 sesja zdjęciowa
 sex shop
 siłownia
-sklep
 sklep muzyczny
+sklep
 skrzyżowanie
 spotkanie rodzinne
 stacja benzynowa
@@ -174,6 +187,7 @@ supermarket
 suszarnia
 sypialnia
 szałas
+szczyt
 szklarnia
 szkoła
 szpital
@@ -193,9 +207,11 @@ wagon
 wars
 warsztat
 warzywniak
+wąska ścieżka
 wiatrak
+wieża Eiffela
+wieża kontroli lotów
 wieża
-wieża eiffela
 więzienie
 willa
 winda
@@ -206,6 +222,7 @@ wykopaliska
 wykopki
 wypożyczalnia
 wysoko nad ziemią
+wyspa
 wysypisko
 za garażami
 zagroda
