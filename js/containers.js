@@ -30,6 +30,30 @@ let containers = [
     icon: 'heart',
   },
   // {
+  //   type: "action",
+  //   label: "Czynność",
+  //   color: "#d40b0b",
+  //   icon: 'heart',
+  // },
+  // {
+  //   type: "body-part",
+  //   label: "Część ciała",
+  //   color: "#d40b0b",
+  //   icon: 'heart',
+  // },
+  // {
+  //   type: "genre",
+  //   label: "Gatunek",
+  //   color: "#d40b0b",
+  //   icon: 'heart',
+  // },
+  // {
+  //   type: "name",
+  //   label: "Imię",
+  //   color: "#d40b0b",
+  //   icon: 'heart',
+  // },
+  // {
   //   type: "noun",
   //   label: "Rzeczownik",
   //   color: "#1c74c1",
