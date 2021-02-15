@@ -303,6 +303,9 @@ function addSectionHeader(parentElement, container) {
 
 function addSection(container) {
   const section = Creator.createElementWithClassAndId('section', 'word-section', sectionId(container.type));
+  addSectionHeader(section, container);
+  addIcon(section, container.icon);
+  addSwiperPrevNextButtons(section);
 
   const mySwiperContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
   const swiperScriptsContainer = Creator.createElementWithClass('div', 'swiper-container');
@@ -310,9 +313,6 @@ function addSection(container) {
   mySwiperContainer.appendChild(swiperScriptsContainer);
   section.appendChild(mySwiperContainer);
 
-  addSectionHeader(section, container);
-  addIcon(section, container.icon);
-  addSwiperPrevNextButtons(section);
 
   appendElementToMainDocument(section);
 }
@@ -366,7 +366,9 @@ function createForwardAllWordsButton() {
     shuffle(types);
     for (const [index, type] of types.entries()) {
       const swiper = getSwiper(type);
-      setTimeout(() => swiper.slideNext(), 20 * index); // TODO: zero this if prefers-reduced-motion is on
+      setTimeout(() => {
+        requestAnimationFrame(() => swiper?.slideNext());
+      }, 20 * index); // TODO: zero this if prefers-reduced-motion is on
     }
   });
 
@@ -487,7 +489,7 @@ function createDarkModeToggle() {
 
 function updateAllSwipers() {
   for (let container of containers) {
-    wordsContainer[container.type].swiper.update();
+    wordsContainer[container.type]?.swiper?.update();
   }
 }
 
@@ -547,14 +549,13 @@ function attachEventsToSheetsAndScrim() {
 }
 
 function init() {
-  for (const container of containers) {
-    wordsContainer[container.type] = new Container(container);
-  }
-
   populateSlidingSheetsContainer();
   attachEventsToSheetsAndScrim();
   populateFooter();
   window.addEventListener('keydown', handleKeyboardInput);
+  for (const container of containers) {
+    wordsContainer[container.type] = new Container(container);
+  }
 }
 
 if (document.readyState != 'loading')
