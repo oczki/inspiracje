@@ -478,6 +478,10 @@ body.show-outline #button-about:focus {
   transition-property: transform;
   transition-duration: var(--sheet-hide-duration);
   transition-timing-function: var(--timing-function);
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .sliding-sheet.visible {

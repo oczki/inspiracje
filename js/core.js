@@ -41,7 +41,7 @@ class Container {
     this.type = container.type;
     this.color = container.color;
     this.label = container.label;
-    this.numberOfSlidesToGenerateFromWordsCache = 20;
+    this.numberOfSlidesToGenerateFromWordsCache = 5;
     this.wordsCache = [];
     this.wordsCacheIndex = 0;
     this.slideCount = 0;
@@ -84,8 +84,8 @@ class Container {
   }
 
   addSlidesIfNeeded() {
-    const marginFromEnd = 5;
-    const numberOfSlidesToAppendToEnd = 10;
+    const marginFromEnd = 2;
+    const numberOfSlidesToAppendToEnd = 3;
     this.recalculateSlideCountAndIndex();
     if (this.isActiveSlideCloseToEnd(marginFromEnd)) {
       this.appendSlidesFromWordsCache(numberOfSlidesToAppendToEnd, marginFromEnd);
@@ -93,8 +93,8 @@ class Container {
   }
 
   deleteSlidesIfNeeded() {
-    const marginFromBeginning = 20;
-    const numberOfSlidesToRemoveFromBeginning = 10;
+    const marginFromBeginning = 3;
+    const numberOfSlidesToRemoveFromBeginning = 2;
     this.recalculateSlideCountAndIndex();
     if (this.isActiveSlideFarFromBeginning(marginFromBeginning)) {
       this.removeFirstSlides(numberOfSlidesToRemoveFromBeginning);
@@ -466,6 +466,7 @@ function setDarkModeState(state) {
   });
 }
 
+// TODO: change checkbox to tabler icon
 function createDarkModeToggle() {
   const darkModeKeyName = 'dark-mode';
   const toggle = Creator.createElementWithId('input', `${darkModeKeyName}-checkbox`);
@@ -496,6 +497,7 @@ function setCompactModeState(state) {
   updateAllSwipers();
 }
 
+// TODO: change checkbox to tabler icon
 function createCompactModeToggle() {
   const compactModeKeyName = 'compact-mode';
   const toggle = Creator.createElementWithId('input', `${compactModeKeyName}-checkbox`);
