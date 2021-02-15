@@ -1,5 +1,6 @@
 let wordsContainer = [];
 let swiperAnimationDuration = 180;
+let sheetClosingAnimationDuration = 200;
 
 function sectionId(type) {
   return `section-${type}`;
@@ -241,19 +242,22 @@ class Creator {
     return spanElement;
   }
 
-  static createSlidingPanel(id) {
-    const panel = this.createElementWithClassAndId('div', 'sliding-panel', id);
-    panel.style.display = 'none';
+  static createSlidingSheet(id) {
+    const sheet = this.createElementWithClassAndId('div', 'sliding-sheet', id);
 
-    const content = this.createElementWithClass('div', 'sliding-panel-content');
+    const content = this.createElementWithClass('div', 'sliding-sheet-content');
 
-    panel.appendChild(content);
-    return panel;
+    sheet.appendChild(content);
+    return sheet;
   }
 }
 
-function getSlidingPanelContentById(id) {
-  return document.querySelector(`#${id} .sliding-panel-content`);
+function getSlidingSheetContentById(id) {
+  return document.querySelector(`#${id} .sliding-sheet-content`);
+}
+
+function getScrim() {
+  return document.getElementById('scrim');
 }
 
 function addRipple(parentElement) {
@@ -313,29 +317,37 @@ function addSection(container) {
   appendElementToMainDocument(section);
 }
 
-function createSettingsPanel() {
-  const panelName = 'settings';
-  const panel = Creator.createSlidingPanel(panelName);
-  panel.style.display = 'flex'; // TODO: remove this line
-
-  const panelContent = panel.children[0];
-  panelContent.appendChild(createCompactModeToggle());
-  panelContent.appendChild(createDarkModeToggle());
-
-
-  return panel;
+function preventTabbingToElement(element) {
+  element.style.visibility = 'hidden';
 }
 
-function createAboutPanel() {
-  const panel = Creator.createSlidingPanel('about');
-  panel.innerHTML = 'about';
-  return panel;
+function allowTabbingToElement(sheetElement) {
+  sheetElement.style.visibility = 'initial';
 }
 
-function populateSlidingPanelContainer() {
-  const container = document.getElementById('sliding-panels-container');
-  container.appendChild(createSettingsPanel());
-  container.appendChild(createAboutPanel());
+function createSettingsSheet() {
+  const sheetName = 'settings';
+  const sheet = Creator.createSlidingSheet(sheetName);
+  preventTabbingToElement(sheet);
+
+  const sheetContent = sheet.children[0];
+  sheetContent.appendChild(createCompactModeToggle());
+  sheetContent.appendChild(createDarkModeToggle());
+
+
+  return sheet;
+}
+
+function createAboutSheet() {
+  const sheet = Creator.createSlidingSheet('about');
+  sheet.innerHTML = 'about';
+  return sheet;
+}
+
+function populateSlidingSheetsContainer() {
+  const container = document.getElementById('sliding-sheets-container');
+  container.appendChild(createSettingsSheet());
+  container.appendChild(createAboutSheet());
 }
 
 function createForwardAllWordsButton() {
@@ -370,9 +382,20 @@ function createSettingsButton() {
   text.innerHTML = 'Opcje';
   const icon = Creator.createIcon('settings');
 
-  settingsButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    // TODO: toggle the settings view, sliding from the bottom
+  settingsButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    const visibleClass = 'visible';
+    const sheet = document.getElementById('settings');
+    const scrim = getScrim();
+    if (sheet.classList.contains(visibleClass)) {
+      sheet.classList.remove(visibleClass);
+      scrim.classList.remove(visibleClass);
+      setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
+    } else {
+      sheet.classList.add(visibleClass);
+      scrim.classList.add(visibleClass);
+      allowTabbingToElement(sheet);
+    }
     // TODO: change the fab to 'close' button
   });
 
@@ -389,8 +412,8 @@ function createAboutButton() {
   text.innerHTML = 'Info';
   const icon = Creator.createIcon('info-circle');
 
-  aboutButton.addEventListener('click', function (e) {
-    e.preventDefault();
+  aboutButton.addEventListener('click', function (event) {
+    event.preventDefault();
     // TODO: toggle the about view, sliding from the bottom
     // TODO: change the fab to 'close' button
   });
@@ -491,12 +514,43 @@ function createCompactModeToggle() {
   return labelElement;
 }
 
+function hideSlidingSheetsAndScrim() {
+  const visibleClass = 'visible';
+  const sheetsToHide = Array.from(document.querySelectorAll('.sliding-sheet'));
+  for (const sheet of sheetsToHide) {
+    if (sheet.classList.contains(visibleClass)) {
+      sheet.classList.remove(visibleClass);
+      setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
+    }
+  }
+  const scrim = getScrim();
+  if (scrim.classList.contains(visibleClass)) {
+    scrim.classList.remove(visibleClass);
+  }
+}
+
+function attachEventsToSheetsAndScrim() {
+  const scrim = getScrim();
+
+  scrim.addEventListener('click', (event) => {
+    event.preventDefault();
+    hideSlidingSheetsAndScrim();
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.keyCode === 27) {
+      hideSlidingSheetsAndScrim();
+    }
+  });
+}
+
 function init() {
   for (const container of containers) {
     wordsContainer[container.type] = new Container(container);
   }
 
-  populateSlidingPanelContainer();
+  populateSlidingSheetsContainer();
+  attachEventsToSheetsAndScrim();
   populateFooter();
   window.addEventListener('keydown', handleKeyboardInput);
 }

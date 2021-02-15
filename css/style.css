@@ -2,22 +2,17 @@
 
 :root {
   --hover-duration: 120ms;
+  --timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --sheet-reveal-duration: 250ms;
+  --sheet-hide-duration: 200ms;
 
-  --color-text: #333;
   --color-accent-h: 215deg;
-  --color-accent-s: 70%;
-  --color-accent-l: 50%;
-  --color-accent: hsl(var(--color-accent-h), var(--color-accent-s), var(--color-accent-l));
-  --color-accent-lighter: hsla(var(--color-accent-h), var(--color-accent-s), 95%);
-  --color-divider: rgba(0, 0, 0, 0.12);
+  
+
+  
 
   --gradient-under-slides-size: 1rem;
-  --gradient-under-slides: linear-gradient(to right,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0) var(--gradient-under-slides-size),
-    rgba(255, 255, 255, 0) calc(100% - var(--gradient-under-slides-size)),
-    rgba(255, 255, 255, 1) 100%
-  );
+  
 
   --body-padding: 1rem;
   --card-padding: 0.5rem;
@@ -31,11 +26,9 @@
   --fab-shadow-active: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
                        0 12px 17px 2px rgba(0, 0, 0, 0.14),
                        0 5px 22px 4px rgba(0, 0, 0, 0.12);
-  --card-background-color: white;
+
   --icon-size: 1.5rem;
   --footer-height: 5rem;
-  --swiper-navigation-color: var(--color-accent);
-  --swiper-navigation-background-color: var(--color-accent-lighter);
 }
 
 /* #region Initial definitions */
@@ -58,13 +51,37 @@ body {
 }
 
 body {
+  --color-text-l: 0%;
+  --color-text: hsla(0, 0%, var(--color-text-l), 0.87);
+  --color-secondary-text: hsla(0, 0%, var(--color-text-l), 0.6);
+  --color-accent-s: 70%;
+  --color-accent-l: 50%;
+  --color-accent: hsl(var(--color-accent-h), var(--color-accent-s), var(--color-accent-l));
+  --color-body-background-l: 94%;
+  --color-body-background: hsl(0, 0%, var(--color-body-background-l));
   --card-header-display: flex;
+  --color-accent-lighter: hsl(var(--color-accent-h), var(--color-accent-s), 95%);
+  --color-card-background-l: 100%;
+  --color-card-background: hsl(0, 0%, var(--color-card-background-l));
+  --gradient-under-slides: linear-gradient(to right,
+    hsla(0, 0%, var(--color-card-background-l), 1) 0%,
+    hsla(0, 0%, var(--color-card-background-l), 0) var(--gradient-under-slides-size),
+    hsla(0, 0%, var(--color-card-background-l), 0) calc(100% - var(--gradient-under-slides-size)),
+    hsla(0, 0%, var(--color-card-background-l), 1) 100%
+  );
+  --swiper-navigation-background-color: var(--color-accent-lighter);
+  --color-divider-l: 0%;
+  --color-divider: hsla(0, 0%, var(--color-divider-l), 0.12);
+
+  --color-footer-background-l: 100%;
+  --color-footer-background: hsl(0, 0%, var(--color-footer-background-l));
+  --color-footer-text: white;
 
   margin: 0;
   font-family: 'Roboto', sans-serif;
   font-size: 12pt;
   color: var(--color-text);
-  background: #f0f0f0;
+  background: var(--color-body-background);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -77,8 +94,14 @@ body.compact {
 }
 
 body.dark {
-  --card-background-color: black;
-  --color-text: white;
+  --color-text-l: 100%;
+  --color-accent-l: 70%;
+  --color-body-background-l: 7%;
+  --color-accent-lighter: hsl(var(--color-accent-h), var(--color-accent-s), 7%);
+  --color-card-background-l: 12%;
+  --color-divider-l: 100%;
+  --color-footer-background-l: 18%;
+  --color-footer-text: black; /* todo */
 }
 
 body.show-outline button:focus,
@@ -117,7 +140,7 @@ a {
   width: min(100%, 40rem);
   box-shadow: var(--card-shadow);
   border-radius: var(--card-border-radius);
-  background-color: var(--card-background-color);
+  background-color: var(--color-card-background);
   margin-bottom: 0.5rem;
   padding: var(--card-padding);
   display: grid;
@@ -181,7 +204,7 @@ body.compact button > span {
 }
 
 .word-section:last-child {
-  margin-bottom: 6rem;
+  margin-bottom: 9rem;
 }
 
 /* Contains the wrapper created by Swiper */
@@ -235,6 +258,8 @@ body:not(.compact) .swiper-slide {
   display: var(--card-header-display);
   align-items: center;
   margin-left: 0.5rem;
+  font-size: 1rem;
+  color: var(--color-secondary-text);
 }
 
 .navigation-button-prev {
@@ -268,7 +293,7 @@ body:not(.compact) .swiper-slide {
 }
 
 [class^='navigation-button-'] {
-  color: var(--swiper-navigation-color);
+  color: var(--color-accent);
   font-weight: 500;
   padding: 0.5rem;
   border-radius: 10rem;
@@ -331,7 +356,7 @@ footer {
   align-items: flex-start;
   justify-content: center;
   height: var(--footer-height);
-  background-color: white;
+  background-color: var(--color-footer-background);
   box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.2); /* TODO: shadow from material design */
 }
 
@@ -363,7 +388,7 @@ footer {
   text-transform: uppercase;
   cursor: pointer;
   background-color: var(--color-accent);
-  color: white;
+  color: var(--color-footer-text);
   transform: translate3d(-50%, -50%, 0);
   transition-property: box-shadow;
   transition-duration: 300ms;
@@ -409,7 +434,7 @@ body.show-outline #button-about:focus {
 
 /* #region Sliding panel (settings, about, ...) */
 
-#sliding-panels-container {
+#sliding-sheets-container {
   z-index: 9;
 }
 
@@ -421,24 +446,45 @@ body.show-outline #button-about:focus {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  /* display: none; */
+  background-color: black;
+  pointer-events: none;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: var(--sheet-hide-duration);
+  transition-timing-function: var(--timing-function);
+}
+
+#scrim.visible {
+  transition-duration: var(--sheet-reveal-duration);
+  opacity: 0.32;
+  pointer-events: initial;
 }
 
 /* TODO: animate appearing from behind the footer */
-.sliding-panel {
+.sliding-sheet {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: var(--card-background-color);
+  background-color: var(--color-card-background);
   padding-bottom: calc(4rem + var(--footer-height));
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  pointer-events: none;
+  transform: translate3d(0, calc(100% - var(--footer-height)), 0);
+  transition-property: transform;
+  transition-duration: var(--sheet-hide-duration);
+  transition-timing-function: var(--timing-function);
 }
 
-.sliding-panel-content {
+.sliding-sheet.visible {
+  transition-duration: var(--sheet-reveal-duration);
+  pointer-events: initial;
+  transform: translate3d(0, 0, 0);
+}
+
+.sliding-sheet-content {
   width: min(100%, 40rem);
   height: 100%;
   margin: 0 var(--body-padding);
