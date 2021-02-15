@@ -8,6 +8,9 @@
 
   --color-accent-h: 215deg;
   
+  --font-size-base: 12pt;
+  --font-size-multiplier: 1;
+  font-size: calc(var(--font-size-base) * var(--font-size-multiplier));
 
   
 
@@ -79,7 +82,6 @@ body {
 
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  font-size: 12pt;
   color: var(--color-text);
   background: var(--color-body-background);
   display: flex;
@@ -515,3 +517,25 @@ body.show-outline #button-about:focus {
 }
 
 /* #endregion Sliding panel (settings, about, ...) */
+
+/* #region Media queries */
+
+@media (min-width: 40em) and (max-width: 50em) {
+  :root {
+    --font-size-base: 10pt;
+  }
+}
+
+@media (max-width: 40em) {
+  :root {
+    --font-size-base: 9pt;
+  }
+}
+
+@media (max-width: 33em) {
+  :root {
+    --font-size-base: 8pt;
+  }
+}
+
+/* #endregion Media queries */

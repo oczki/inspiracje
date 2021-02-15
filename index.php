@@ -24,7 +24,6 @@ function addJs($name) {
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> <!-- TODO move to local -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> <!-- TODO move to local -->
     <?php addCss('style'); ?>
-    <?php addCss('media'); ?>
     <?php //addCss('swiper-bundle.min'); ?>
     <?php //addJs('swiper-bundle.min'); ?>
     <?php addJs('containers'); ?>
