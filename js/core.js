@@ -433,14 +433,6 @@ function createAboutButton() {
   return aboutButton;
 }
 
-// TODO: not used yet, needs styling and this method to be called in proper places
-function setForwardAllWordsButtonState() {
-  const buttons = document.querySelectorAll(`main button[id^="${nextButtonId('')}"]`);
-  const state = Array.from(buttons).every(button => !button.disabled);
-  const forwardAllWordsButton = document.getElementById('button-advance-all');
-  forwardAllWordsButton.disabled = !state;
-}
-
 function populateFooter() {
   const footer = document.getElementsByTagName('footer')[0];
 
