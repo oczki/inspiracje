@@ -32,6 +32,11 @@
 
   --icon-size: 1.5rem;
   --footer-height: 5rem;
+
+  --color-text-black-high: hsla(0, 0%, 0%, 0.87);
+  --color-text-black-medium: hsla(0, 0%, 0%, 0.6);
+  --color-text-white-high: hsla(0, 0%, 100%, 0.87);
+  --color-text-white-medium: hsla(0, 0%, 100%, 0.6);
 }
 
 /* #region Initial definitions */
@@ -54,12 +59,17 @@ body {
 }
 
 body {
-  --color-text-l: 0%;
-  --color-text: hsla(0, 0%, var(--color-text-l), 0.87);
-  --color-secondary-text: hsla(0, 0%, var(--color-text-l), 0.6);
+  --color-text: var(--color-text-black-high);
+  --color-secondary-text: var(--color-text-black-medium);
+  --color-text-negative: var(--color-text-white-high);
+
   --color-accent-s: 70%;
   --color-accent-l: 50%;
   --color-accent: hsl(var(--color-accent-h), var(--color-accent-s), var(--color-accent-l));
+
+  --color-destructive-l: 100%;
+  --color-destructive: hsl(0, 0%, var(--color-destructive-l));
+
   --color-body-background-l: 94%;
   --color-body-background: hsl(0, 0%, var(--color-body-background-l));
   --card-header-display: flex;
@@ -78,7 +88,6 @@ body {
 
   --color-footer-background-l: 100%;
   --color-footer-background: hsl(0, 0%, var(--color-footer-background-l));
-  --color-footer-text: white;
 
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -96,14 +105,17 @@ body.compact {
 }
 
 body.dark {
-  --color-text-l: 100%;
+  --color-text: var(--color-text-white-high);
+  --color-secondary-text: var(--color-text-white-medium);
+  --color-text-negative: var(--color-text-black-high);
+
   --color-accent-l: 70%;
+  --color-destructive-l: 70%;
   --color-body-background-l: 7%;
   --color-accent-lighter: hsl(var(--color-accent-h), var(--color-accent-s), 7%);
   --color-card-background-l: 12%;
   --color-divider-l: 100%;
   --color-footer-background-l: 18%;
-  --color-footer-text: black; /* todo */
 }
 
 body.show-outline button:focus,
@@ -161,7 +173,7 @@ body:not(.compact) .section-icon {
   display: none;
 }
 
-body:not(.compact) button {
+body:not(.compact) button:not(.floating-action-button) {
   border-radius: var(--card-border-radius);
 }
 
@@ -372,7 +384,7 @@ footer {
   justify-content: space-between;
 }
 
-#button-advance-all {
+.floating-action-button {
   --icon-size: 2.5rem;
 
   position: absolute;
@@ -390,20 +402,23 @@ footer {
   text-transform: uppercase;
   cursor: pointer;
   background-color: var(--color-accent);
-  color: var(--color-footer-text);
   transform: translate3d(-50%, -50%, 0);
   transition-property: box-shadow;
   transition-duration: 300ms;
 }
 
-#button-advance-all:active {
+.floating-action-button:active {
   box-shadow: var(--fab-shadow-active);
 }
 
-#button-advance-all span {
-  font-weight: 500;
-  margin-right: 0.5rem;
-  display: none;
+#button-advance-all {
+  color: var(--color-text-negative);
+  background-color: var(--color-accent);
+}
+
+#button-close-sheet {
+  color: var(--color-text-black-high);
+  background-color: var(--color-destructive);
 }
 
 #button-settings,
@@ -440,7 +455,6 @@ body.show-outline #button-about:focus {
   z-index: 9;
 }
 
-/* TODO: show the scrim behind container */
 #scrim {
   z-index: 8;
   position: fixed;
@@ -462,7 +476,6 @@ body.show-outline #button-about:focus {
   pointer-events: initial;
 }
 
-/* TODO: animate appearing from behind the footer */
 .sliding-sheet {
   position: fixed;
   bottom: 0;

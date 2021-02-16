@@ -350,15 +350,10 @@ function populateSlidingSheetsContainer() {
   container.appendChild(createAboutSheet());
 }
 
-function createForwardAllWordsButton() {
-  const forwardButton = Creator.createElementWithId('button', 'button-advance-all');
+function createForwardAllWordsFloatingActionButton() {
+  const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
   addRipple(forwardButton);
   //forwardButton.disabled = true; // TODO
-
-  const text = Creator.createElementWithClass('span');
-  text.innerHTML = 'Inspiruj';
-  const icon = Creator.createIcon('chevrons-right');
-  // TODO create additional icon for closing a panel?
 
   forwardButton.addEventListener('click', function (e) {
     e.preventDefault();
@@ -372,9 +367,22 @@ function createForwardAllWordsButton() {
     }
   });
 
-  forwardButton.appendChild(text);
-  forwardButton.appendChild(icon);
+  forwardButton.appendChild(Creator.createIcon('chevrons-right'));
   return forwardButton;
+}
+
+function createCloseSheetFloatingActionButton() {
+  const closeSheetButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-close-sheet');
+  addRipple(closeSheetButton);
+  //forwardButton.disabled = true; // TODO
+
+  closeSheetButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    hideSlidingSheetsAndScrim();
+  });
+
+  closeSheetButton.appendChild(Creator.createIcon('x'));
+  return closeSheetButton;
 }
 
 function createSettingsButton() {
@@ -388,14 +396,13 @@ function createSettingsButton() {
     event.preventDefault();
     const visibleClass = 'visible';
     const sheet = document.getElementById('settings');
-    const scrim = getScrim();
-    if (sheet.classList.contains(visibleClass)) {
+    if (sheet?.classList.contains(visibleClass)) {
       sheet.classList.remove(visibleClass);
-      scrim.classList.remove(visibleClass);
+      getScrim()?.classList.remove(visibleClass);
       setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
     } else {
       sheet.classList.add(visibleClass);
-      scrim.classList.add(visibleClass);
+      getScrim()?.classList.add(visibleClass);
       allowTabbingToElement(sheet);
     }
     // TODO: change the fab to 'close' button
@@ -438,7 +445,8 @@ function populateFooter() {
   const footer = document.getElementsByTagName('footer')[0];
 
   const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
-  innerContainer.appendChild(createForwardAllWordsButton());
+  innerContainer.appendChild(createForwardAllWordsFloatingActionButton());
+  innerContainer.appendChild(createCloseSheetFloatingActionButton());
   innerContainer.appendChild(createSettingsButton());
   innerContainer.appendChild(createAboutButton());
 
@@ -520,23 +528,16 @@ function createCompactModeToggle() {
 
 function hideSlidingSheetsAndScrim() {
   const visibleClass = 'visible';
-  const sheetsToHide = Array.from(document.querySelectorAll('.sliding-sheet'));
+  const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
   for (const sheet of sheetsToHide) {
-    if (sheet.classList.contains(visibleClass)) {
-      sheet.classList.remove(visibleClass);
-      setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
-    }
+    sheet.classList.remove(visibleClass);
+    setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
   }
-  const scrim = getScrim();
-  if (scrim.classList.contains(visibleClass)) {
-    scrim.classList.remove(visibleClass);
-  }
+  getScrim()?.classList.remove(visibleClass);
 }
 
 function attachEventsToSheetsAndScrim() {
-  const scrim = getScrim();
-
-  scrim.addEventListener('click', (event) => {
+  getScrim()?.addEventListener('click', (event) => {
     event.preventDefault();
     hideSlidingSheetsAndScrim();
   });
