@@ -350,10 +350,28 @@ function populateSlidingSheetsContainer() {
   container.appendChild(createAboutSheet());
 }
 
-function createForwardAllWordsFloatingActionButton() {
+function showElement(element) {
+  element?.classList.add('visible');
+}
+
+function hideElement(element) {
+  element?.classList.remove('visible');
+}
+
+function showCloseFab() {
+  hideElement(document.getElementById('button-advance-all'));
+  showElement(document.getElementById('button-close-sheet'));
+}
+
+function showAdvanceAllFab() {
+  hideElement(document.getElementById('button-close-sheet'));
+  showElement(document.getElementById('button-advance-all'));
+}
+
+function createAdvanceAllWordsFloatingActionButton() {
   const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
   addRipple(forwardButton);
-  //forwardButton.disabled = true; // TODO
+  showElement(forwardButton);
 
   forwardButton.addEventListener('click', function (e) {
     e.preventDefault();
@@ -374,7 +392,6 @@ function createForwardAllWordsFloatingActionButton() {
 function createCloseSheetFloatingActionButton() {
   const closeSheetButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-close-sheet');
   addRipple(closeSheetButton);
-  //forwardButton.disabled = true; // TODO
 
   closeSheetButton.addEventListener('click', function (e) {
     e.preventDefault();
@@ -397,15 +414,16 @@ function createSettingsButton() {
     const visibleClass = 'visible';
     const sheet = document.getElementById('settings');
     if (sheet?.classList.contains(visibleClass)) {
+      showAdvanceAllFab();
       sheet.classList.remove(visibleClass);
       getScrim()?.classList.remove(visibleClass);
       setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
     } else {
+      showCloseFab();
       sheet.classList.add(visibleClass);
       getScrim()?.classList.add(visibleClass);
       allowTabbingToElement(sheet);
     }
-    // TODO: change the fab to 'close' button
   });
 
   settingsButton.appendChild(text);
@@ -437,7 +455,7 @@ function populateFooter() {
   const footer = document.getElementsByTagName('footer')[0];
 
   const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
-  innerContainer.appendChild(createForwardAllWordsFloatingActionButton());
+  innerContainer.appendChild(createAdvanceAllWordsFloatingActionButton());
   innerContainer.appendChild(createCloseSheetFloatingActionButton());
   innerContainer.appendChild(createSettingsButton());
   innerContainer.appendChild(createAboutButton());
@@ -526,6 +544,7 @@ function hideSlidingSheetsAndScrim() {
     setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
   }
   getScrim()?.classList.remove(visibleClass);
+  showAdvanceAllFab();
 }
 
 function attachEventsToSheetsAndScrim() {

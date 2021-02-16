@@ -3,6 +3,7 @@
 :root {
   --hover-duration: 120ms;
   --timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --timing-function-fab-transform: cubic-bezier(0, 0, 0.2, 1);
   --sheet-reveal-duration: 250ms;
   --sheet-hide-duration: 200ms;
 
@@ -402,13 +403,22 @@ footer {
   text-transform: uppercase;
   cursor: pointer;
   background-color: var(--color-accent);
-  transform: translate3d(-50%, -50%, 0);
-  transition-property: box-shadow;
-  transition-duration: 300ms;
+  transform: scale(0) translate3d(-50%, -50%, 0);
+  transform-origin: 0 0;
+  opacity: 0;
+  transition: box-shadow 280ms var(--timing-function),
+              opacity 15ms linear 30ms,
+              transform 280ms var(--timing-function-fab-transform);
+  will-change: opacity, transform;
 }
 
 .floating-action-button:active {
   box-shadow: var(--fab-shadow-active);
+}
+
+.floating-action-button.visible {
+  transform: scale(1) translate3d(-50%, -50%, 0);
+  opacity: 1;
 }
 
 #button-advance-all {
