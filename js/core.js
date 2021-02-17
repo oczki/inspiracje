@@ -1,6 +1,11 @@
 let wordsContainer = [];
-let swiperAnimationDuration = 180;
-let sheetClosingAnimationDuration = 200;
+
+const defaulSwiperAnimationDuration = 180;
+const defaultSheetClosingAnimationDuration = 200;
+const defaultDelayBetweenLoadedWordsDuration = 20;
+let swiperAnimationDuration = defaulSwiperAnimationDuration;
+let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
+let delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
 
 function sectionId(type) {
   return `section-${type}`;
@@ -75,7 +80,7 @@ class Container {
     const transitionFinishedCallback = () => { this.isCleanupAllowed = true; }
     const swiperInitialized = Creator.createSwiper(this.type,
       prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback);
-    swiperInitialized.slideNext();
+    swiperInitialized.slideNext(swiperAnimationDuration);
     return getSwiper(this.type);
   }
 
@@ -332,6 +337,7 @@ function createSettingsSheet() {
 
   const sheetContent = sheet.children[0];
   sheetContent.appendChild(createFontScaleControl());
+  sheetContent.appendChild(createAnimationsDisabledToggle());
   sheetContent.appendChild(createCompactModeToggle());
   sheetContent.appendChild(createDarkModeToggle());
 
@@ -381,8 +387,8 @@ function createAdvanceAllWordsFloatingActionButton() {
     for (const [index, type] of types.entries()) {
       const swiper = getSwiper(type);
       setTimeout(() => {
-        requestAnimationFrame(() => swiper?.slideNext());
-      }, 20 * index); // TODO: zero this if prefers-reduced-motion is on
+        requestAnimationFrame(() => swiper?.slideNext(swiperAnimationDuration));
+      }, delayBetweenLoadedWordsDuration * index);
     }
   });
 
@@ -533,6 +539,39 @@ function createCompactModeToggle() {
   const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', compactModeKeyName);
   labelElement.appendChild(toggle);
   labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
+  addRipple(labelElement);
+  return labelElement;
+}
+
+function setAnimationsDisabledState(state) {
+  localStorage.setItem('animations-disabled', state);
+  document.body.classList.toggle('no-animations', state);
+  if (state) {
+    swiperAnimationDuration = 0;
+    sheetClosingAnimationDuration = 0;
+    delayBetweenLoadedWordsDuration = 0;
+  } else {
+    swiperAnimationDuration = defaulSwiperAnimationDuration;
+    sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
+    delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
+  }
+}
+
+// TODO: change checkbox to tabler icon
+function createAnimationsDisabledToggle() {
+  const animationsDisabledKeyName = 'animations-disabled';
+  const toggle = Creator.createElementWithId('input', `${animationsDisabledKeyName}-checkbox`);
+  toggle.type = 'checkbox';
+  // TODO if there is no key in local storage, read prefers-reduced-motion
+  toggle.checked = localStorage.getItem(animationsDisabledKeyName) === null || localStorage.getItem(animationsDisabledKeyName) === 'false';
+  setAnimationsDisabledState(!toggle.checked);
+  toggle.addEventListener('change', (event) => {
+    setAnimationsDisabledState(!event.currentTarget.checked);
+  });
+
+  const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', animationsDisabledKeyName);
+  labelElement.appendChild(toggle);
+  labelElement.appendChild(Creator.createSpan('Animacje'));
   addRipple(labelElement);
   return labelElement;
 }

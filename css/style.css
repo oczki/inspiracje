@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
 :root {
-  --hover-duration: 120ms;
   --timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
   --timing-function-fab-transform: cubic-bezier(0, 0, 0.2, 1);
-  --sheet-reveal-duration: 250ms;
-  --sheet-hide-duration: 200ms;
+  
 
   --color-accent-h: 215deg;
   
@@ -60,6 +58,12 @@ body {
 }
 
 body {
+  --hover-duration: 120ms;
+  --sheet-reveal-duration: 250ms;
+  --sheet-hide-duration: 200ms;
+  --fab-transition-duration: 280ms;
+  --fab-opacity-duration: 15ms;
+
   --color-text: var(--color-text-black-high);
   --color-secondary-text: var(--color-text-black-medium);
   --color-text-negative: var(--color-text-white-high);
@@ -123,6 +127,23 @@ body.show-outline button:focus,
 body.show-outline a:focus {
   outline: 2px dashed var(--color-text);
   outline-offset: -5px;
+}
+
+body.no-animations {
+  --hover-duration: 0.1ms;
+  --sheet-reveal-duration: 0.1ms;
+  --sheet-hide-duration: 0.1ms;
+  --fab-transition-duration: 0.1ms;
+  --fab-opacity-duration: 0.1ms;
+}
+
+body.no-animations .ripple {
+  transition-duration: 0.1ms;
+  opacity: 0.2 !important;
+}
+
+body.no-animations .ripple.done {
+  opacity: 0 !important;
 }
 
 main {
@@ -406,9 +427,9 @@ footer {
   transform: scale(0) translate3d(-50%, -50%, 0);
   transform-origin: 0 0;
   opacity: 0;
-  transition: box-shadow 280ms var(--timing-function),
-              opacity 15ms linear 30ms,
-              transform 280ms var(--timing-function-fab-transform);
+  transition: box-shadow var(--fab-transition-duration) var(--timing-function),
+              opacity var(--fab-opacity-duration) linear calc(2 * var(--fab-opacity-duration)),
+              transform var(--fab-transition-duration) var(--timing-function-fab-transform);
   will-change: opacity, transform;
 }
 
