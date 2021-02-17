@@ -581,16 +581,23 @@ function setFontScale(value) {
   document.documentElement.style.setProperty('--font-size-multiplier', value);
 }
 
+function increaseFontScale() {
+
+}
+
+function decreaseFontScale() {
+
+}
+
 function createFontScaleControl() {
   const fontScaleKeyName = 'font-scale';
   const fontScale = localStorage.getItem(fontScaleKeyName) || 1.0;
   setFontScale(fontScale);
-  
 
-  const labelElement = Creator.createSpan('Skala')
-  labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
-  addRipple(labelElement);
-  return labelElement;
+  const container = Creator.createElementWithId('div', 'scale-control-container');
+  container.appendChild(Creator.createSpan('Skala'));
+
+  return container;
 }
 
 function hideSlidingSheetsAndScrim() {
