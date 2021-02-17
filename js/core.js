@@ -331,6 +331,7 @@ function createSettingsSheet() {
   preventTabbingToElement(sheet);
 
   const sheetContent = sheet.children[0];
+  sheetContent.appendChild(createFontScaleControl());
   sheetContent.appendChild(createCompactModeToggle());
   sheetContent.appendChild(createDarkModeToggle());
 
@@ -531,6 +532,23 @@ function createCompactModeToggle() {
 
   const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', compactModeKeyName);
   labelElement.appendChild(toggle);
+  labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
+  addRipple(labelElement);
+  return labelElement;
+}
+
+function setFontScale(value) {
+  localStorage.setItem('font-scale', value);
+  document.documentElement.style.setProperty('--font-size-multiplier', value);
+}
+
+function createFontScaleControl() {
+  const fontScaleKeyName = 'font-scale';
+  const fontScale = localStorage.getItem(fontScaleKeyName) || 1.0;
+  setFontScale(fontScale);
+  
+
+  const labelElement = Creator.createSpan('Skala')
   labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
   addRipple(labelElement);
   return labelElement;
