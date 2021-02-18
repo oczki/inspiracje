@@ -586,11 +586,31 @@ function setFontScale(value) {
 }
 
 function increaseFontScale() {
-
+  setFontScale(1.2);
 }
 
 function decreaseFontScale() {
+  setFontScale(0.8);
+}
 
+function createIncreaseFontScaleButton() {
+  const buttonId = 'button-font-scale-plus';
+  const buttonText = 'Powiększ';
+  const iconName = 'plus';
+  const callback = () => {
+    increaseFontScale();
+  }
+  return createButton(buttonId, buttonText, iconName, callback);
+}
+
+function createDecreaseFontScaleButton() {
+  const buttonId = 'button-font-scale-minus';
+  const buttonText = 'Pomniejsz';
+  const iconName = 'minus';
+  const callback = () => {
+    decreaseFontScale();
+  }
+  return createButton(buttonId, buttonText, iconName, callback);
 }
 
 function createFontScaleControl() {
@@ -600,6 +620,8 @@ function createFontScaleControl() {
 
   const container = Creator.createElementWithId('div', 'scale-control-container');
   container.appendChild(Creator.createSpan('Skala'));
+  container.appendChild(createIncreaseFontScaleButton());
+  container.appendChild(createDecreaseFontScaleButton());
 
   return container;
 }
