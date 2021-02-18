@@ -12,10 +12,6 @@ function sectionId(type) {
   return `section-${type}`;
 }
 
-function nextButtonId(type) {
-  return `button-next-${type}`;
-}
-
 function swiperSelector(type) {
   return `#${sectionId(type)} .swiper-container`;
 }
