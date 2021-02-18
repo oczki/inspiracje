@@ -444,6 +444,7 @@ function createButton(buttonId, buttonText, iconName, callback) {
   const button = Creator.createElementWithId('button', buttonId);
   button.addEventListener('click', function (event) {
     event.preventDefault();
+    if (event.detail >= 2) return;
     callback();
   });
   button.appendChild(Creator.createSpan(buttonText));
