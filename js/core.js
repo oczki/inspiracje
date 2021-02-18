@@ -1,5 +1,6 @@
 let wordsContainer = [];
 
+const visibleClass = 'visible';
 const defaulSwiperAnimationDuration = 180;
 const defaultSheetClosingAnimationDuration = 200;
 const defaultDelayBetweenLoadedWordsDuration = 20;
@@ -358,11 +359,11 @@ function populateSlidingSheetsContainer() {
 }
 
 function showElement(element) {
-  element?.classList.add('visible');
+  element?.classList.add(visibleClass);
 }
 
 function hideElement(element) {
-  element?.classList.remove('visible');
+  element?.classList.remove(visibleClass);
 }
 
 function showCloseFab() {
@@ -410,52 +411,59 @@ function createCloseSheetFloatingActionButton() {
 }
 
 function createSettingsButton() {
-  const settingsButton = Creator.createElementWithId('button', 'button-settings');
+  const buttonId = 'button-settings';
+  const buttonText = 'Opcje';
+  const iconName = 'settings';
+  const callback = () => {
+    toggleSheetVisibility('settings');
+  }
+  return createButton(buttonId, buttonText, iconName, callback);
+}
 
-  const text = Creator.createElementWithClass('span');
-  text.innerHTML = 'Opcje';
-  const icon = Creator.createIcon('settings');
+function hideOtherSheets(idOfSheetNotToHide) {
+  const otherSheets = Array.from(document.querySelectorAll(`.sliding-sheet:not(#${idOfSheetNotToHide})`));
+  for (let otherSheet of otherSheets) {
+    otherSheet.classList.remove(visibleClass);
+    setTimeout(() => preventTabbingToElement(otherSheet), sheetClosingAnimationDuration);
+  }
+}
 
-  settingsButton.addEventListener('click', function (event) {
+function toggleSheetVisibility(sheetId) {
+  const sheet = document.getElementById(sheetId);
+  hideOtherSheets(sheetId);
+  if (sheet?.classList.contains(visibleClass)) {
+    showAdvanceAllFab();
+    sheet.classList.remove(visibleClass);
+    getScrim()?.classList.remove(visibleClass);
+    setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
+  } else {
+    showCloseFab();
+    sheet.classList.add(visibleClass);
+    getScrim()?.classList.add(visibleClass);
+    allowTabbingToElement(sheet);
+  }
+}
+
+function createButton(buttonId, buttonText, iconName, callback) {
+  const button = Creator.createElementWithId('button', buttonId);
+  button.addEventListener('click', function (event) {
     event.preventDefault();
-    const visibleClass = 'visible';
-    const sheet = document.getElementById('settings');
-    if (sheet?.classList.contains(visibleClass)) {
-      showAdvanceAllFab();
-      sheet.classList.remove(visibleClass);
-      getScrim()?.classList.remove(visibleClass);
-      setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
-    } else {
-      showCloseFab();
-      sheet.classList.add(visibleClass);
-      getScrim()?.classList.add(visibleClass);
-      allowTabbingToElement(sheet);
-    }
+    callback();
   });
-
-  settingsButton.appendChild(text);
-  settingsButton.appendChild(icon);
-  addRipple(settingsButton);
-  return settingsButton;
+  button.appendChild(Creator.createSpan(buttonText));
+  button.appendChild(Creator.createIcon(iconName));
+  addRipple(button);
+  return button;
 }
 
 function createAboutButton() {
-  const aboutButton = Creator.createElementWithId('button', 'button-about');
-
-  const text = Creator.createElementWithClass('span');
-  text.innerHTML = 'Info';
-  const icon = Creator.createIcon('info-circle');
-
-  aboutButton.addEventListener('click', function (event) {
-    event.preventDefault();
-    // TODO: toggle the about view, sliding from the bottom
-    // TODO: change the fab to 'close' button
-  });
-
-  aboutButton.appendChild(text);
-  aboutButton.appendChild(icon);
-  addRipple(aboutButton);
-  return aboutButton;
+  const buttonId = 'button-about';
+  const buttonText = 'Info';
+  const iconName = 'info-circle';
+  const callback = () => {
+    toggleSheetVisibility('about');
+  }
+  return createButton(buttonId, buttonText, iconName, callback);
 }
 
 function populateFooter() {
@@ -601,7 +609,6 @@ function createFontScaleControl() {
 }
 
 function hideSlidingSheetsAndScrim() {
-  const visibleClass = 'visible';
   const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
   for (const sheet of sheetsToHide) {
     sheet.classList.remove(visibleClass);
