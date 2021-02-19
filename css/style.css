@@ -453,7 +453,9 @@ footer {
 }
 
 #button-settings,
-#button-about {
+#button-about,
+#button-font-scale-plus,
+#button-font-scale-minus {
   position: relative;
   z-index: 5;
   display: flex;

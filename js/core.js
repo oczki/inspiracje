@@ -1,9 +1,11 @@
 let wordsContainer = [];
 
+const fontScaleValues = [0.67, 0.75, 0.9, 1.0, 1.1, 1.25, 1.5];
 const visibleClass = 'visible';
 const defaulSwiperAnimationDuration = 180;
 const defaultSheetClosingAnimationDuration = 200;
 const defaultDelayBetweenLoadedWordsDuration = 20;
+
 let swiperAnimationDuration = defaulSwiperAnimationDuration;
 let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
 let delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
@@ -581,17 +583,30 @@ function createAnimationsDisabledToggle() {
   return labelElement;
 }
 
+function getFontScale() {
+  const fontScaleKeyName = 'font-scale';
+  console.log('getFontScale returning', localStorage.getItem(fontScaleKeyName) || 1.0);
+  return localStorage.getItem(fontScaleKeyName) || 1.0;
+}
+
 function setFontScale(value) {
-  localStorage.setItem('font-scale', value);
+  const fontScaleKeyName = 'font-scale';
+  localStorage.setItem(fontScaleKeyName, value);
   document.documentElement.style.setProperty('--font-size-multiplier', value);
 }
 
 function increaseFontScale() {
-  setFontScale(1.2);
+  const currentFontScale = getFontScale();
+  const upperBound = fontScaleValues[fontScaleValues.length - 1];
+  const valueLargerThanCurrent = fontScaleValues.filter(value => value > currentFontScale)[0] || upperBound;
+  setFontScale(valueLargerThanCurrent);
 }
 
 function decreaseFontScale() {
-  setFontScale(0.8);
+  const currentScale = getFontScale();
+  const lowerBound = fontScaleValues[0];
+  const valueSmallerThanCurrent = Math.max(...fontScaleValues.filter(value => value < currentScale), lowerBound);
+  setFontScale(valueSmallerThanCurrent);
 }
 
 function createIncreaseFontScaleButton() {
@@ -615,9 +630,7 @@ function createDecreaseFontScaleButton() {
 }
 
 function createFontScaleControl() {
-  const fontScaleKeyName = 'font-scale';
-  const fontScale = localStorage.getItem(fontScaleKeyName) || 1.0;
-  setFontScale(fontScale);
+  setFontScale(getFontScale());
 
   const container = Creator.createElementWithId('div', 'scale-control-container');
   container.appendChild(Creator.createSpan('Skala'));
