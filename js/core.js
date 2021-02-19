@@ -585,7 +585,6 @@ function createAnimationsDisabledToggle() {
 
 function getFontScale() {
   const fontScaleKeyName = 'font-scale';
-  console.log('getFontScale returning', localStorage.getItem(fontScaleKeyName) || 1.0);
   return localStorage.getItem(fontScaleKeyName) || 1.0;
 }
 
