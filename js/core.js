@@ -415,7 +415,7 @@ function createSettingsButton() {
   const callback = () => {
     toggleSheetVisibility('settings');
   }
-  return createButton(buttonId, buttonText, iconName, callback);
+  return createCircularButton(buttonId, buttonText, iconName, callback);
 }
 
 function hideOtherSheets(idOfSheetNotToHide) {
@@ -442,8 +442,8 @@ function toggleSheetVisibility(sheetId) {
   }
 }
 
-function createButton(buttonId, buttonText, iconName, callback) {
-  const button = Creator.createElementWithId('button', buttonId);
+function createCircularButton(buttonId, buttonText, iconName, callback) {
+  const button = Creator.createElementWithClassAndId('button', 'circular-button', buttonId);
   button.addEventListener('click', function (event) {
     event.preventDefault();
     if (event.detail >= 2) return;
@@ -462,7 +462,7 @@ function createAboutButton() {
   const callback = () => {
     toggleSheetVisibility('about');
   }
-  return createButton(buttonId, buttonText, iconName, callback);
+  return createCircularButton(buttonId, buttonText, iconName, callback);
 }
 
 function populateFooter() {
@@ -592,6 +592,7 @@ function setFontScale(value) {
   const fontScaleKeyName = 'font-scale';
   localStorage.setItem(fontScaleKeyName, value);
   document.documentElement.style.setProperty('--font-size-multiplier', value);
+  updateAllSwipers();
 }
 
 function increaseFontScale() {
@@ -615,7 +616,7 @@ function createIncreaseFontScaleButton() {
   const callback = () => {
     increaseFontScale();
   }
-  return createButton(buttonId, buttonText, iconName, callback);
+  return createCircularButton(buttonId, buttonText, iconName, callback);
 }
 
 function createDecreaseFontScaleButton() {
@@ -625,7 +626,7 @@ function createDecreaseFontScaleButton() {
   const callback = () => {
     decreaseFontScale();
   }
-  return createButton(buttonId, buttonText, iconName, callback);
+  return createCircularButton(buttonId, buttonText, iconName, callback);
 }
 
 function createFontScaleControl() {

@@ -58,7 +58,7 @@ body {
 }
 
 body {
-  --hover-duration: 120ms;
+  --hover-duration: 150ms;
   --sheet-reveal-duration: 250ms;
   --sheet-hide-duration: 200ms;
   --fab-transition-duration: 280ms;
@@ -452,10 +452,7 @@ footer {
   background-color: var(--color-destructive);
 }
 
-#button-settings,
-#button-about,
-#button-font-scale-plus,
-#button-font-scale-minus {
+.circular-button {
   position: relative;
   z-index: 5;
   display: flex;
@@ -468,16 +465,18 @@ footer {
   text-transform: uppercase;
   cursor: pointer;
   background-color: transparent;
-  color: var(--color-text);
+  color: var(--color-accent);
   transition-property: background-color;
   transition-duration: var(--hover-duration);
 }
 
-#button-settings:hover,
-#button-about:hover,
-body.show-outline #button-settings:focus,
-body.show-outline #button-about:focus {
+.circular-button:hover,
+body.show-outline .circular-button:focus {
   background-color: var(--swiper-navigation-background-color);
+}
+
+footer .circular-button {
+  color: var(--color-text);
 }
 
 /* #endregion Footer */
