@@ -45,7 +45,6 @@
   padding: 0;
   line-height: 1;
   box-sizing: border-box;
-  /* box-shadow: 0 0 0 1px red; */
 }
 
 ::selection {
@@ -550,6 +549,7 @@ footer .circular-button {
   position: relative;
   width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
   padding: 1rem;
@@ -563,6 +563,30 @@ footer .circular-button {
 
 .checkbox-label > span {
   margin-left: 1rem;
+}
+
+.checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-icon .checked {
+  color: var(--color-accent);
+}
+
+.checkbox-label input:checked ~ .checkbox-icon .unchecked,
+.checkbox-label input:not(:checked) ~ .checkbox-icon .checked {
+  display: none;
+}
+
+#scale-control-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
 }
 
 /* #endregion Sliding panel (settings, about, ...) */

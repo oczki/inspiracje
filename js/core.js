@@ -514,6 +514,7 @@ function createDarkModeToggle() {
 
   const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', darkModeKeyName);
   labelElement.appendChild(toggle);
+  labelElement.appendChild(createCheckboxIcons());
   labelElement.appendChild(Creator.createSpan('Tryb ciemny'));
   addRipple(labelElement);
   return labelElement;
@@ -545,6 +546,7 @@ function createCompactModeToggle() {
 
   const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', compactModeKeyName);
   labelElement.appendChild(toggle);
+  labelElement.appendChild(createCheckboxIcons());
   labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
   addRipple(labelElement);
   return labelElement;
@@ -564,6 +566,13 @@ function setAnimationsDisabledState(state) {
   }
 }
 
+function createCheckboxIcons() {
+  const container = Creator.createElementWithClass('div', 'checkbox-icon');
+  container.appendChild(Creator.createIcon('square-check', 'checked')); // or 'checkbox'
+  container.appendChild(Creator.createIcon('square', 'unchecked')); // or 'square'
+  return container;
+}
+
 // TODO: change checkbox to tabler icon
 function createAnimationsDisabledToggle() {
   const animationsDisabledKeyName = 'animations-disabled';
@@ -578,6 +587,7 @@ function createAnimationsDisabledToggle() {
 
   const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', animationsDisabledKeyName);
   labelElement.appendChild(toggle);
+  labelElement.appendChild(createCheckboxIcons());
   labelElement.appendChild(Creator.createSpan('Animacje'));
   addRipple(labelElement);
   return labelElement;
@@ -634,8 +644,8 @@ function createFontScaleControl() {
 
   const container = Creator.createElementWithId('div', 'scale-control-container');
   container.appendChild(Creator.createSpan('Skala'));
-  container.appendChild(createIncreaseFontScaleButton());
   container.appendChild(createDecreaseFontScaleButton());
+  container.appendChild(createIncreaseFontScaleButton());
 
   return container;
 }
