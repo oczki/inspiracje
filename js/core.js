@@ -254,10 +254,82 @@ class Creator {
     sheet.appendChild(content);
     return sheet;
   }
+
+  static createCircularButton(buttonId, buttonText, iconName, callback) {
+    const button = this.createElementWithClassAndId('button', 'circular-button', buttonId);
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      if (event.detail >= 2) return;
+      callback();
+    });
+    button.appendChild(this.createSpan(buttonText));
+    button.appendChild(this.createIcon(iconName));
+    addRipple(button);
+    return button;
+  }
 }
 
-function getSlidingSheetContentById(id) {
-  return document.querySelector(`#${id} .sliding-sheet-content`);
+class SpecializedCreator {
+  static createSettingsButton() {
+    const buttonId = 'button-settings';
+    const buttonText = 'Opcje';
+    const iconName = 'settings';
+    const callback = () => {
+      toggleSheetVisibility('settings');
+    }
+    return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
+  }
+
+  static createAboutButton() {
+    const buttonId = 'button-about';
+    const buttonText = 'Info';
+    const iconName = 'info-circle';
+    const callback = () => {
+      toggleSheetVisibility('about');
+    }
+    return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
+  }
+
+  static createCheckboxIcons() {
+    const container = Creator.createElementWithClass('div', 'checkbox-icon');
+    container.appendChild(Creator.createIcon('square-check', 'checked'));
+    container.appendChild(Creator.createIcon('square', 'unchecked'));
+    return container;
+  }
+
+  static createAdvanceAllWordsFloatingActionButton() {
+    const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
+    addRipple(forwardButton);
+    showElement(forwardButton);
+
+    forwardButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      const types = Object.keys(containers).map(key => containers[key].type);
+      shuffle(types);
+      for (const [index, type] of types.entries()) {
+        const swiper = getSwiper(type);
+        setTimeout(() => {
+          requestAnimationFrame(() => swiper?.slideNext(swiperAnimationDuration));
+        }, delayBetweenLoadedWordsDuration * index);
+      }
+    });
+
+    forwardButton.appendChild(Creator.createIcon('chevrons-right'));
+    return forwardButton;
+  }
+
+  static createCloseSheetFloatingActionButton() {
+    const closeSheetButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-close-sheet');
+    addRipple(closeSheetButton);
+
+    closeSheetButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      hideSlidingSheetsAndScrim();
+    });
+
+    closeSheetButton.appendChild(Creator.createIcon('x'));
+    return closeSheetButton;
+  }
 }
 
 function getScrim() {
@@ -295,10 +367,6 @@ function addSwiperWrapper(parentElement) {
   parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
 }
 
-function appendElementToMainDocument(newElement) {
-  document.getElementsByTagName('main')[0].appendChild(newElement);
-}
-
 function addSectionHeader(parentElement, container) {
   const header = Creator.createElementWithClass('div', 'header-container');
   header.innerHTML = container.label;
@@ -317,8 +385,7 @@ function addSection(container) {
   mySwiperContainer.appendChild(swiperScriptsContainer);
   section.appendChild(mySwiperContainer);
 
-
-  appendElementToMainDocument(section);
+  document.getElementsByTagName('main')[0].appendChild(section);
 }
 
 function preventTabbingToElement(element) {
@@ -335,11 +402,10 @@ function createSettingsSheet() {
   preventTabbingToElement(sheet);
 
   const sheetContent = sheet.children[0];
-  sheetContent.appendChild(createFontScaleControl());
-  sheetContent.appendChild(createAnimationsDisabledToggle());
-  sheetContent.appendChild(createCompactModeToggle());
-  sheetContent.appendChild(createDarkModeToggle());
-
+  sheetContent.appendChild(Settings.createFontScaleControl());
+  sheetContent.appendChild(Settings.createAnimationsToggle());
+  sheetContent.appendChild(Settings.createCompactModeToggle());
+  sheetContent.appendChild(Settings.createDarkModeToggle());
 
   return sheet;
 }
@@ -374,50 +440,6 @@ function showAdvanceAllFab() {
   showElement(document.getElementById('button-advance-all'));
 }
 
-function createAdvanceAllWordsFloatingActionButton() {
-  const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
-  addRipple(forwardButton);
-  showElement(forwardButton);
-
-  forwardButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    const types = Object.keys(containers).map(key => containers[key].type);
-    shuffle(types);
-    for (const [index, type] of types.entries()) {
-      const swiper = getSwiper(type);
-      setTimeout(() => {
-        requestAnimationFrame(() => swiper?.slideNext(swiperAnimationDuration));
-      }, delayBetweenLoadedWordsDuration * index);
-    }
-  });
-
-  forwardButton.appendChild(Creator.createIcon('chevrons-right'));
-  return forwardButton;
-}
-
-function createCloseSheetFloatingActionButton() {
-  const closeSheetButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-close-sheet');
-  addRipple(closeSheetButton);
-
-  closeSheetButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    hideSlidingSheetsAndScrim();
-  });
-
-  closeSheetButton.appendChild(Creator.createIcon('x'));
-  return closeSheetButton;
-}
-
-function createSettingsButton() {
-  const buttonId = 'button-settings';
-  const buttonText = 'Opcje';
-  const iconName = 'settings';
-  const callback = () => {
-    toggleSheetVisibility('settings');
-  }
-  return createCircularButton(buttonId, buttonText, iconName, callback);
-}
-
 function hideOtherSheets(idOfSheetNotToHide) {
   const otherSheets = Array.from(document.querySelectorAll(`.sliding-sheet:not(#${idOfSheetNotToHide})`));
   for (let otherSheet of otherSheets) {
@@ -442,37 +464,14 @@ function toggleSheetVisibility(sheetId) {
   }
 }
 
-function createCircularButton(buttonId, buttonText, iconName, callback) {
-  const button = Creator.createElementWithClassAndId('button', 'circular-button', buttonId);
-  button.addEventListener('click', function (event) {
-    event.preventDefault();
-    if (event.detail >= 2) return;
-    callback();
-  });
-  button.appendChild(Creator.createSpan(buttonText));
-  button.appendChild(Creator.createIcon(iconName));
-  addRipple(button);
-  return button;
-}
-
-function createAboutButton() {
-  const buttonId = 'button-about';
-  const buttonText = 'Info';
-  const iconName = 'info-circle';
-  const callback = () => {
-    toggleSheetVisibility('about');
-  }
-  return createCircularButton(buttonId, buttonText, iconName, callback);
-}
-
 function populateFooter() {
   const footer = document.getElementsByTagName('footer')[0];
 
   const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
-  innerContainer.appendChild(createAdvanceAllWordsFloatingActionButton());
-  innerContainer.appendChild(createCloseSheetFloatingActionButton());
-  innerContainer.appendChild(createSettingsButton());
-  innerContainer.appendChild(createAboutButton());
+  innerContainer.appendChild(SpecializedCreator.createAdvanceAllWordsFloatingActionButton());
+  innerContainer.appendChild(SpecializedCreator.createCloseSheetFloatingActionButton());
+  innerContainer.appendChild(SpecializedCreator.createSettingsButton());
+  innerContainer.appendChild(SpecializedCreator.createAboutButton());
 
   footer.appendChild(innerContainer);
 }
@@ -491,182 +490,207 @@ function handleMouseInput() {
   window.removeEventListener('mousedown', handleMouseInput);
 }
 
-function setDarkModeState(state) {
-  localStorage.setItem('dark-mode', state);
-  document.body.classList.toggle('dark', state);
-  requestAnimationFrame(() => {
-    const bgColor = window.getComputedStyle(document.body).backgroundColor;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgColor); // TODO add attr to index head
-  });
-}
+class Settings {
+  static FontScale = class {
+    static keyName = 'font-scale';
 
-function doesTheUserPreferDarkMode() {
-  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-}
+    static getFontScale() {
+      return localStorage.getItem(this.keyName) || 1.0;
+    }
+    
+    static setFontScale(value) {
+      localStorage.setItem(this.keyName, value);
+      document.documentElement.style.setProperty('--font-size-multiplier', value);
+      updateAllSwipers();
+    }
+    
+    static increaseFontScale() {
+      const currentFontScale = this.getFontScale();
+      const upperBound = fontScaleValues[fontScaleValues.length - 1];
+      const valueLargerThanCurrent = fontScaleValues.filter(value => value > currentFontScale)[0] || upperBound;
+      this.setFontScale(valueLargerThanCurrent);
+    }
+    
+    static decreaseFontScale() {
+      const currentScale = this.getFontScale();
+      const lowerBound = fontScaleValues[0];
+      const valueSmallerThanCurrent = Math.max(...fontScaleValues.filter(value => value < currentScale), lowerBound);
+      this.setFontScale(valueSmallerThanCurrent);
+    }
+    
+    static createIncreaseFontScaleButton() {
+      const buttonId = 'button-font-scale-plus';
+      const buttonText = 'Powiększ';
+      const iconName = 'plus';
+      const callback = () => {
+        this.increaseFontScale();
+      }
+      return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
+    }
+    
+    static createDecreaseFontScaleButton() {
+      const buttonId = 'button-font-scale-minus';
+      const buttonText = 'Pomniejsz';
+      const iconName = 'minus';
+      const callback = () => {
+        this.decreaseFontScale();
+      }
+      return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
+    }
+    
+    static createControl() {
+      this.setFontScale(this.getFontScale());
+    
+      const container = Creator.createElementWithId('div', 'scale-control-container');
+      container.appendChild(Creator.createSpan('Skala'));
+      container.appendChild(this.createDecreaseFontScaleButton());
+      container.appendChild(this.createIncreaseFontScaleButton());
+    
+      return container;
+    }
+  };
 
-function shouldDarkModeToggleBeChecked(keyName) {
-  const currentDarkModeKeyValue = localStorage.getItem(keyName);
-  if (currentDarkModeKeyValue === null)
-    return doesTheUserPreferDarkMode();
-  else
-    return currentDarkModeKeyValue === 'true';
-}
+  static AnimationsToggle = class {
+    static keyName = 'animations-disabled';
 
-function createDarkModeToggle() {
-  const darkModeKeyName = 'dark-mode';
-  const toggle = Creator.createElementWithId('input', `${darkModeKeyName}-checkbox`);
-  toggle.type = 'checkbox';
-  toggle.checked = shouldDarkModeToggleBeChecked(darkModeKeyName);
-  setDarkModeState(toggle.checked);
-  toggle.addEventListener('change', (event) => {
-    setDarkModeState(event.currentTarget.checked);
-  });
+    static doesTheUserPreferReducedMotion() {
+      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
 
-  const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', darkModeKeyName);
-  labelElement.appendChild(toggle);
-  labelElement.appendChild(createCheckboxIcons());
-  labelElement.appendChild(Creator.createSpan('Tryb ciemny'));
-  addRipple(labelElement);
-  return labelElement;
+    static shouldAnimationsToggleBeChecked(keyName) {
+      const currentAnimationsDisabledKeyValue = localStorage.getItem(keyName);
+      if (currentAnimationsDisabledKeyValue === null)
+        return !this.doesTheUserPreferReducedMotion();
+      else
+        return currentAnimationsDisabledKeyValue === 'false';
+    }
+
+    static setAnimationsDisabledState(state) {
+      localStorage.setItem(this.keyName, state);
+      document.body.classList.toggle('no-animations', state);
+      if (state) {
+        swiperAnimationDuration = 0;
+        sheetClosingAnimationDuration = 0;
+        delayBetweenLoadedWordsDuration = 0;
+      } else {
+        swiperAnimationDuration = defaulSwiperAnimationDuration;
+        sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
+        delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
+      }
+    }
+
+    static createToggle() {
+      const toggle = Creator.createElementWithId('input', `${this.keyName}-checkbox`);
+      toggle.type = 'checkbox';
+      toggle.checked = this.shouldAnimationsToggleBeChecked(this.keyName);
+      this.setAnimationsDisabledState(!toggle.checked);
+      toggle.addEventListener('change', (event) => {
+        this.setAnimationsDisabledState(!event.currentTarget.checked);
+      });
+
+      const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
+      labelElement.appendChild(toggle);
+      labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
+      labelElement.appendChild(Creator.createSpan('Animacje'));
+      addRipple(labelElement);
+      return labelElement;
+    }
+  };
+
+  static CompactModeToggle = class {
+    static keyName = 'compact-mode';
+
+    static shouldToggleBeChecked() {
+      return localStorage.getItem(this.keyName) === 'false';
+    }
+
+    static setCompactModeState(state) {
+      localStorage.setItem(this.keyName, state);
+      document.body.classList.toggle('compact', state);
+      updateAllSwipers();
+    }
+
+    static createToggle() {
+      const toggle = Creator.createElementWithId('input', `${this.keyName}-checkbox`);
+      toggle.type = 'checkbox';
+      toggle.checked = this.shouldToggleBeChecked();
+      this.setCompactModeState(!toggle.checked);
+      toggle.addEventListener('change', (event) => {
+        this.setCompactModeState(!event.currentTarget.checked);
+      });
+
+      const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
+      labelElement.appendChild(toggle);
+      labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
+      labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
+      addRipple(labelElement);
+      return labelElement;
+    }
+  };
+
+  static DarkModeToggle = class {
+    static keyName = 'dark-mode';
+
+    static doesTheUserPreferDarkMode() {
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    static shouldToggleBeChecked() {
+      const currentDarkModeKeyValue = localStorage.getItem(this.keyName);
+      if (currentDarkModeKeyValue === null)
+        return this.doesTheUserPreferDarkMode();
+      else
+        return currentDarkModeKeyValue === 'true';
+    }
+
+    static setDarkModeState(state) {
+      localStorage.setItem(this.keyName, state);
+      document.body.classList.toggle('dark', state);
+      requestAnimationFrame(() => {
+        const bgColor = window.getComputedStyle(document.body).backgroundColor;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgColor); // TODO add attr to index head
+      });
+    }
+
+    static createToggle() {
+      const toggle = Creator.createElementWithId('input', `${this.keyName}-checkbox`);
+      toggle.type = 'checkbox';
+      toggle.checked = this.shouldToggleBeChecked();
+      this.setDarkModeState(toggle.checked);
+      toggle.addEventListener('change', (event) => {
+        this.setDarkModeState(event.currentTarget.checked);
+      });
+
+      const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
+      labelElement.appendChild(toggle);
+      labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
+      labelElement.appendChild(Creator.createSpan('Tryb ciemny'));
+      addRipple(labelElement);
+      return labelElement;
+    }
+  };
+
+  static createFontScaleControl() {
+    return this.FontScale.createControl();
+  }
+
+  static createAnimationsToggle() {
+    return this.AnimationsToggle.createToggle();
+  }
+
+  static createCompactModeToggle() {
+    return this.CompactModeToggle.createToggle();
+  }
+
+  static createDarkModeToggle() {
+    return this.DarkModeToggle.createToggle();
+  }
 }
 
 function updateAllSwipers() {
   for (let container of containers) {
     wordsContainer[container.type]?.swiper?.update();
   }
-}
-
-function setCompactModeState(state) {
-  localStorage.setItem('compact-mode', state);
-  document.body.classList.toggle('compact', state);
-  updateAllSwipers();
-}
-
-function createCompactModeToggle() {
-  const compactModeKeyName = 'compact-mode';
-  const toggle = Creator.createElementWithId('input', `${compactModeKeyName}-checkbox`);
-  toggle.type = 'checkbox';
-  // TODO if there is no key in local storage, read device height?
-  toggle.checked = localStorage.getItem(compactModeKeyName) === 'false';
-  setCompactModeState(!toggle.checked);
-  toggle.addEventListener('change', (event) => {
-    setCompactModeState(!event.currentTarget.checked);
-  });
-
-  const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', compactModeKeyName);
-  labelElement.appendChild(toggle);
-  labelElement.appendChild(createCheckboxIcons());
-  labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
-  addRipple(labelElement);
-  return labelElement;
-}
-
-function setAnimationsDisabledState(state) {
-  localStorage.setItem('animations-disabled', state);
-  document.body.classList.toggle('no-animations', state);
-  if (state) {
-    swiperAnimationDuration = 0;
-    sheetClosingAnimationDuration = 0;
-    delayBetweenLoadedWordsDuration = 0;
-  } else {
-    swiperAnimationDuration = defaulSwiperAnimationDuration;
-    sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
-    delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
-  }
-}
-
-function createCheckboxIcons() {
-  const container = Creator.createElementWithClass('div', 'checkbox-icon');
-  container.appendChild(Creator.createIcon('square-check', 'checked'));
-  container.appendChild(Creator.createIcon('square', 'unchecked'));
-  return container;
-}
-
-function doesTheUserPreferReducedMotion() {
-  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
-function shouldAnimationsToggleBeChecked(keyName) {
-  const currentAnimationsDisabledKeyValue = localStorage.getItem(keyName);
-  if (currentAnimationsDisabledKeyValue === null)
-    return !doesTheUserPreferReducedMotion();
-  else
-    return currentAnimationsDisabledKeyValue === 'false';
-}
-
-function createAnimationsDisabledToggle() {
-  const animationsDisabledKeyName = 'animations-disabled';
-  const toggle = Creator.createElementWithId('input', `${animationsDisabledKeyName}-checkbox`);
-  toggle.type = 'checkbox';
-  toggle.checked = shouldAnimationsToggleBeChecked(animationsDisabledKeyName);
-  setAnimationsDisabledState(!toggle.checked);
-  toggle.addEventListener('change', (event) => {
-    setAnimationsDisabledState(!event.currentTarget.checked);
-  });
-
-  const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', animationsDisabledKeyName);
-  labelElement.appendChild(toggle);
-  labelElement.appendChild(createCheckboxIcons());
-  labelElement.appendChild(Creator.createSpan('Animacje'));
-  addRipple(labelElement);
-  return labelElement;
-}
-
-function getFontScale() {
-  const fontScaleKeyName = 'font-scale';
-  return localStorage.getItem(fontScaleKeyName) || 1.0;
-}
-
-function setFontScale(value) {
-  const fontScaleKeyName = 'font-scale';
-  localStorage.setItem(fontScaleKeyName, value);
-  document.documentElement.style.setProperty('--font-size-multiplier', value);
-  updateAllSwipers();
-}
-
-function increaseFontScale() {
-  const currentFontScale = getFontScale();
-  const upperBound = fontScaleValues[fontScaleValues.length - 1];
-  const valueLargerThanCurrent = fontScaleValues.filter(value => value > currentFontScale)[0] || upperBound;
-  setFontScale(valueLargerThanCurrent);
-}
-
-function decreaseFontScale() {
-  const currentScale = getFontScale();
-  const lowerBound = fontScaleValues[0];
-  const valueSmallerThanCurrent = Math.max(...fontScaleValues.filter(value => value < currentScale), lowerBound);
-  setFontScale(valueSmallerThanCurrent);
-}
-
-function createIncreaseFontScaleButton() {
-  const buttonId = 'button-font-scale-plus';
-  const buttonText = 'Powiększ';
-  const iconName = 'plus';
-  const callback = () => {
-    increaseFontScale();
-  }
-  return createCircularButton(buttonId, buttonText, iconName, callback);
-}
-
-function createDecreaseFontScaleButton() {
-  const buttonId = 'button-font-scale-minus';
-  const buttonText = 'Pomniejsz';
-  const iconName = 'minus';
-  const callback = () => {
-    decreaseFontScale();
-  }
-  return createCircularButton(buttonId, buttonText, iconName, callback);
-}
-
-function createFontScaleControl() {
-  setFontScale(getFontScale());
-
-  const container = Creator.createElementWithId('div', 'scale-control-container');
-  container.appendChild(Creator.createSpan('Skala'));
-  container.appendChild(createDecreaseFontScaleButton());
-  container.appendChild(createIncreaseFontScaleButton());
-
-  return container;
 }
 
 function hideSlidingSheetsAndScrim() {
