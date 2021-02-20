@@ -500,13 +500,23 @@ function setDarkModeState(state) {
   });
 }
 
-// TODO: change checkbox to tabler icon
+function doesTheUserPreferDarkMode() {
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+function shouldDarkModeToggleBeChecked(keyName) {
+  const currentDarkModeKeyValue = localStorage.getItem(keyName);
+  if (currentDarkModeKeyValue === null)
+    return doesTheUserPreferDarkMode();
+  else
+    return currentDarkModeKeyValue === 'true';
+}
+
 function createDarkModeToggle() {
   const darkModeKeyName = 'dark-mode';
   const toggle = Creator.createElementWithId('input', `${darkModeKeyName}-checkbox`);
   toggle.type = 'checkbox';
-  // TODO if there is no key in local storage, read user's preferred color scheme
-  toggle.checked = localStorage.getItem(darkModeKeyName) === 'true';
+  toggle.checked = shouldDarkModeToggleBeChecked(darkModeKeyName);
   setDarkModeState(toggle.checked);
   toggle.addEventListener('change', (event) => {
     setDarkModeState(event.currentTarget.checked);
@@ -532,12 +542,11 @@ function setCompactModeState(state) {
   updateAllSwipers();
 }
 
-// TODO: change checkbox to tabler icon
 function createCompactModeToggle() {
   const compactModeKeyName = 'compact-mode';
   const toggle = Creator.createElementWithId('input', `${compactModeKeyName}-checkbox`);
   toggle.type = 'checkbox';
-  // TODO if there is no key in local storage, read device width?
+  // TODO if there is no key in local storage, read device height?
   toggle.checked = localStorage.getItem(compactModeKeyName) === 'false';
   setCompactModeState(!toggle.checked);
   toggle.addEventListener('change', (event) => {
@@ -568,18 +577,28 @@ function setAnimationsDisabledState(state) {
 
 function createCheckboxIcons() {
   const container = Creator.createElementWithClass('div', 'checkbox-icon');
-  container.appendChild(Creator.createIcon('square-check', 'checked')); // or 'checkbox'
-  container.appendChild(Creator.createIcon('square', 'unchecked')); // or 'square'
+  container.appendChild(Creator.createIcon('square-check', 'checked'));
+  container.appendChild(Creator.createIcon('square', 'unchecked'));
   return container;
 }
 
-// TODO: change checkbox to tabler icon
+function doesTheUserPreferReducedMotion() {
+  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function shouldAnimationsToggleBeChecked(keyName) {
+  const currentAnimationsDisabledKeyValue = localStorage.getItem(keyName);
+  if (currentAnimationsDisabledKeyValue === null)
+    return !doesTheUserPreferReducedMotion();
+  else
+    return currentAnimationsDisabledKeyValue === 'false';
+}
+
 function createAnimationsDisabledToggle() {
   const animationsDisabledKeyName = 'animations-disabled';
   const toggle = Creator.createElementWithId('input', `${animationsDisabledKeyName}-checkbox`);
   toggle.type = 'checkbox';
-  // TODO if there is no key in local storage, read prefers-reduced-motion
-  toggle.checked = localStorage.getItem(animationsDisabledKeyName) === null || localStorage.getItem(animationsDisabledKeyName) === 'false';
+  toggle.checked = shouldAnimationsToggleBeChecked(animationsDisabledKeyName);
   setAnimationsDisabledState(!toggle.checked);
   toggle.addEventListener('change', (event) => {
     setAnimationsDisabledState(!event.currentTarget.checked);
