@@ -476,20 +476,6 @@ function populateFooter() {
   footer.appendChild(innerContainer);
 }
 
-function handleKeyboardInput(event) {
-  if (event.keyCode === 9) {
-    document.body.classList.add('show-outline');
-    window.removeEventListener('keydown', handleKeyboardInput);
-    window.addEventListener('mousedown', handleMouseInput);
-  }
-}
-
-function handleMouseInput() {
-  document.body.classList.remove('show-outline');
-  window.addEventListener('keydown', handleKeyboardInput);
-  window.removeEventListener('mousedown', handleMouseInput);
-}
-
 class Settings {
   static FontScale = class {
     static keyName = 'font-scale';
@@ -703,24 +689,44 @@ function hideSlidingSheetsAndScrim() {
   showAdvanceAllFab();
 }
 
-function attachEventsToSheetsAndScrim() {
-  getScrim()?.addEventListener('click', (event) => {
-    event.preventDefault();
-    hideSlidingSheetsAndScrim();
-  });
-
-  window.addEventListener('keydown', (event) => {
-    if (event.keyCode === 27) {
+class GlobalEventHandler {
+  static attachEventsToSheetsAndScrim() {
+    getScrim()?.addEventListener('click', (event) => {
+      event.preventDefault();
       hideSlidingSheetsAndScrim();
+    });
+  
+    window.addEventListener('keydown', (event) => {
+      if (event.keyCode === 27) {
+        hideSlidingSheetsAndScrim();
+      }
+    });
+  }
+
+  static handleKeyboardInput(event) {
+    if (event.keyCode === 9) {
+      document.body.classList.add('show-outline');
+      window.removeEventListener('keydown', GlobalEventHandler.handleKeyboardInput);
+      window.addEventListener('mousedown', GlobalEventHandler.handleMouseInput);
     }
-  });
+  }
+  
+  static handleMouseInput() {
+    document.body.classList.remove('show-outline');
+    window.addEventListener('keydown', GlobalEventHandler.handleKeyboardInput);
+    window.removeEventListener('mousedown', GlobalEventHandler.handleMouseInput);
+  }
+
+  static handleFirstKeyboardInput() {
+    window.addEventListener('keydown', GlobalEventHandler.handleKeyboardInput);
+  }
 }
 
 function init() {
   populateSlidingSheetsContainer();
-  attachEventsToSheetsAndScrim();
+  GlobalEventHandler.attachEventsToSheetsAndScrim();
+  GlobalEventHandler.handleFirstKeyboardInput();
   populateFooter();
-  window.addEventListener('keydown', handleKeyboardInput);
   for (const container of containers) {
     wordsContainer[container.type] = new Container(container);
   }
