@@ -58,7 +58,7 @@ let containers = [
 
 let wordsContainer = [];
 
-const fontScaleValues = [0.67, 0.75, 0.9, 1.0, 1.1, 1.25, 1.5];
+const fontScaleValues = [0.67, 0.75, 0.9, 1.0, 1.1, 1.2, 1.35, 1.5];
 const visibleClass = 'visible';
 const defaulSwiperAnimationDuration = 180;
 const defaultSheetClosingAnimationDuration = 200;
@@ -291,8 +291,11 @@ class Creator {
     return iconContainer;
   }
 
-  static createSpan(text) {
+  static createSpan(text, additionalClass = undefined) {
     const spanElement = document.createElement('span');
+    if (additionalClass) {
+      spanElement.classList.add(additionalClass);
+    }
     spanElement.innerHTML = text;
     return spanElement;
   }
@@ -301,6 +304,33 @@ class Creator {
     const spanElement = this.createElementWithClass('span', 'hidden-when-narrow');
     spanElement.innerHTML = text;
     return spanElement;
+  }
+
+  static createParagraph(text, additionalClass = undefined) {
+    const paragraphElement = document.createElement('p');
+    if (additionalClass) {
+      paragraphElement.classList.add(additionalClass);
+    }
+    paragraphElement.innerHTML = text;
+    return paragraphElement;
+  }
+
+  static createLink(text, url, additionalClass = undefined) {
+    const linkElement = document.createElement('a');
+    if (additionalClass) {
+      linkElement.classList.add(additionalClass);
+    }
+    linkElement.innerHTML = text;
+    linkElement.setAttribute('href', url);
+    return linkElement;
+  }
+
+  static createLinkWithIcon(text, url, icon, additionalClass = undefined) {
+    const iconElement = Creator.createIcon(icon);
+    const textElement = Creator.createSpan(text);
+    const link = this.createLink(iconElement.outerHTML + textElement.outerHTML, url, additionalClass);
+    link.classList.add('link-with-icon');
+    return link;
   }
 
   static createSlidingSheet(id) {
@@ -329,7 +359,7 @@ class Creator {
 
   static createSlide(text) {
     const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
-    const textWithNonBreakingSpace = capitalizedText.replace(/ (i|z|w|oraz) /gi, ' $1&nbsp;');
+    const textWithNonBreakingSpace = capitalizedText.replace(/ (i|z|w|od|za|oraz) /gi, ' $1&nbsp;');
     return `<div class="swiper-slide">${textWithNonBreakingSpace}</div>`;
   }
 
@@ -340,12 +370,18 @@ class Creator {
     }
     return slides;
   }
+
+  static createSeparator() {
+    const separator = document.createElement('hr');
+    separator.classList.add('separator');
+    return separator;
+  }
 }
 
 class SpecializedCreator {
   static createSettingsButton() {
     const buttonId = 'button-settings';
-    const buttonText = 'Opcje';
+    const buttonText = 'Ustawienia';
     const iconName = 'settings';
     const callback = () => {
       VisibilityController.toggleSheetVisibility('settings');
@@ -355,7 +391,7 @@ class SpecializedCreator {
 
   static createAboutButton() {
     const buttonId = 'button-about';
-    const buttonText = 'Info';
+    const buttonText = 'Informacje';
     const iconName = 'info-circle';
     const callback = () => {
       VisibilityController.toggleSheetVisibility('about');
@@ -462,9 +498,16 @@ class SheetCreator {
     VisibilityController.preventTabbingToElement(sheet);
 
     const sheetContent = sheet.children[0];
+    sheetContent.appendChild(Creator.createParagraph('Ustawienia', 'sliding-sheet-header'));
+
+    sheetContent.appendChild(Creator.createSeparator());
+
     sheetContent.appendChild(Settings.createAnimationsToggle());
     sheetContent.appendChild(Settings.createCompactModeToggle());
     sheetContent.appendChild(Settings.createDarkModeToggle());
+
+    sheetContent.appendChild(Creator.createSeparator());
+
     sheetContent.appendChild(Settings.createFontScaleControl());
 
     return sheet;
@@ -472,7 +515,33 @@ class SheetCreator {
 
   static createAboutSheet() {
     const sheet = Creator.createSlidingSheet('about');
-    sheet.innerHTML = 'about';
+    VisibilityController.preventTabbingToElement(sheet);
+
+    const sheetContent = sheet.children[0];
+
+    sheetContent.appendChild(Creator.createParagraph('Magazyn Inspiracji', 'sliding-sheet-header'));
+
+    sheetContent.appendChild(Creator.createSeparator());
+
+    sheetContent.appendChild(Creator.createParagraph('Podręczny generator słów służących za początkową ' +
+      'inspirację do scenek teatru improwizowanego.'));
+    sheetContent.appendChild(Creator.createParagraph('Na występach źródłem inspiracji jest publiczność, ' +
+      'lecz ich pomoc nie jest dostępna podczas prób i ćwiczeń. Magazyn Inspiracji wypełnia tę lukę ' +
+      'zbiorem ponad 1500 pomysłów, podzielonych na wygodne kategorie.'
+    ));
+
+    sheetContent.appendChild(Creator.createSeparator());
+
+    sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w rozwoju aplikacji lub zgłosić błąd?'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na GitHub', 'https://github.com/oczki/inspiracje', 'brand-github'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', 'mail'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('Messenger', 'https://m.me/oczki', 'brand-messenger'));
+
+    sheetContent.appendChild(Creator.createSeparator());
+
+    const currentYear = Math.max(2021, new Date().getFullYear());
+    sheetContent.appendChild(Creator.createLinkWithIcon(`2018–${currentYear} Damian Oczki`, 'https://oczki.pl', 'copyright'));
+
     return sheet;
   }
 }
@@ -542,6 +611,7 @@ class VisibilityController {
 class Settings {
   static FontScale = class {
     static keyName = 'font-scale';
+    static scaleDisplayElementId = 'scale-control-value';
 
     static getFontScale() {
       return localStorage.getItem(this.keyName) || 1.0;
@@ -550,6 +620,7 @@ class Settings {
     static setFontScale(value) {
       localStorage.setItem(this.keyName, value);
       document.documentElement.style.setProperty('--font-size-multiplier', value);
+      this.updateCurrentScaleDisplay();
       Util.updateAllSwipers();
     }
 
@@ -587,13 +658,27 @@ class Settings {
       return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
     }
 
-    static createControl() {
-      this.setFontScale(this.getFontScale());
+    static createCurrentScaleDisplay() {
+      return Creator.createElementWithId('span', this.scaleDisplayElementId);
+    }
 
+    static updateCurrentScaleDisplay() {
+      const scaleDisplayElement = document.getElementById(this.scaleDisplayElementId);
+      if (scaleDisplayElement) {
+        const valueAsPercent = `${(this.getFontScale() * 100).toFixed(0)}%`;
+        scaleDisplayElement.innerHTML = valueAsPercent;
+      }
+    }
+
+    static createControl() {
       const container = Creator.createElementWithId('div', 'scale-control-container');
+      container.appendChild(Creator.createIcon('typography', 'decorative-icon'));
       container.appendChild(Creator.createSpan('Skala'));
       container.appendChild(this.createDecreaseFontScaleButton());
+      container.appendChild(this.createCurrentScaleDisplay());
       container.appendChild(this.createIncreaseFontScaleButton());
+
+      this.setFontScale(this.getFontScale());
 
       return container;
     }
@@ -719,6 +804,10 @@ class Settings {
     }
   };
 
+  static updateCurrentScaleDisplay() {
+    this.FontScale.updateCurrentScaleDisplay();
+  }
+
   static createFontScaleControl() {
     return this.FontScale.createControl();
   }
@@ -742,16 +831,16 @@ class ElementPopulator {
     container.appendChild(SheetCreator.createSettingsSheet());
     container.appendChild(SheetCreator.createAboutSheet());
   }
-  
+
   static populateFooter() {
     const footer = document.getElementsByTagName('footer')[0];
-  
+
     const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
     innerContainer.appendChild(SpecializedCreator.createAdvanceAllWordsFloatingActionButton());
     innerContainer.appendChild(SpecializedCreator.createCloseSheetFloatingActionButton());
     innerContainer.appendChild(SpecializedCreator.createSettingsButton());
     innerContainer.appendChild(SpecializedCreator.createAboutButton());
-  
+
     footer.appendChild(innerContainer);
   }
 
@@ -801,6 +890,7 @@ function init() {
   GlobalEventHandler.handleFirstKeyboardInput();
   ElementPopulator.populateFooter();
   ElementPopulator.populatePageWithWordContainers();
+  Settings.updateCurrentScaleDisplay();
 }
 
 if (document.readyState != 'loading')
