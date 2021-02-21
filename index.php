@@ -26,7 +26,6 @@ function addJs($name) {
     <?php addCss('style'); ?>
     <?php //addCss('swiper-bundle.min'); ?>
     <?php //addJs('swiper-bundle.min'); ?>
-    <?php addJs('containers'); ?>
     <?php addJs('core'); ?>
     <?php addJs('ripple.min'); ?>
   </head>
