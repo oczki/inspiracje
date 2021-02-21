@@ -2,67 +2,56 @@ let containers = [
   {
     type: "location",
     label: "Miejsce",
-    color: "#14a020",
     icon: 'map-2',
   },
   {
     type: "character",
     label: "Postać",
-    color: "#ce9900",
     icon: 'user',
   },
   {
     type: "character-modifier",
     label: "Cecha postaci",
-    color: "#e25b00",
     icon: 'user-plus',
   },
   {
     type: "relation",
     label: "Relacja",
-    color: "#bb2392",
     icon: 'friends',
   },
   {
     type: "emotion",
     label: "Emocja",
-    color: "#d40b0b",
     icon: 'heart',
   },
   {
     type: "action",
     label: "Czynność",
-    color: "#d40b0b",
     icon: 'run',
   },
   // {
   //   type: "body-part",
   //   label: "Część ciała",
-  //   color: "#d40b0b",
   //   icon: 'heart',
   // },
   // {
   //   type: "genre",
   //   label: "Gatunek",
-  //   color: "#d40b0b",
   //   icon: 'heart',
   // },
   // {
   //   type: "name",
   //   label: "Imię",
-  //   color: "#d40b0b",
   //   icon: 'heart',
   // },
   // {
   //   type: "noun",
   //   label: "Rzeczownik",
-  //   color: "#1c74c1",
   //   icon: 'box',
   // },
   // {
   //   type: "dictionary",
   //   label: "dowolne słowo",
-  //   color: "#777777",
   //   icon: 'question-mark',
   // },
 ];
@@ -130,7 +119,6 @@ class Util {
 class Container {
   constructor(container) {
     this.type = container.type;
-    this.color = container.color;
     this.label = container.label;
     this.numberOfSlidesToGenerateFromWordsCache = 20;
     this.wordsCache = [];
@@ -709,7 +697,7 @@ class Settings {
       document.body.classList.toggle('dark', state);
       requestAnimationFrame(() => {
         const bgColor = window.getComputedStyle(document.body).backgroundColor;
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgColor); // TODO add attr to index head
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgColor);
       });
     }
 

@@ -19,6 +19,7 @@ function addJs($name) {
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <meta name="theme-color" content="#7F7F7F">
     <title>Magazyn inspiracji</title>
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> <!-- TODO move to local -->
