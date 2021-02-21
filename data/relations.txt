@@ -6,6 +6,9 @@ babcia i wnuk
 bogacz i biedak
 bóg i szatan
 bóstwo i śmiertelnik
+byli przyjaciele
+byli wrogowie
+byli współlokatorzy
 celebryta i fan
 chirurg i anestezjolog
 chirurg plastyczny i pacjent
@@ -17,7 +20,10 @@ detektyw i podejrzany
 diabeł i anioł
 drogówka i kierowca
 druga randka
+dwójka laików
+dwójka specjalistów
 dziecko z lalką
+ex aequo pierwsze miejsce
 FBI i zwykły człowiek
 kaskader aktora
 kelner i klient
@@ -29,6 +35,7 @@ kooperacja przyjaciół
 kooperacja wrogów
 krwinka i bakteria
 lalkarz z lalką
+lekarz z lekarzem
 lekarz z pacjentem
 małżeństwo
 mechanik z klientem
@@ -51,8 +58,10 @@ położna i dziecko
 poprzednie wcielenie
 prawnik i klient
 profesor i świeżak
+przed i po
 przybrana rodzina
 przyjaciele z dzieciństwa
+przyszli współlokatorzy
 pytanie i odpowiedź
 randka w ciemno
 robot z twórcą
@@ -70,6 +79,7 @@ stare małżeństwo
 strażnik i więzień
 szeryf z kowbojem
 szewc z klientem
+światło i cień
 świeżo po ślubie
 teść i zięć
 tinderowa randka

@@ -4,6 +4,7 @@ altruista
 ambitny
 arogancki
 awanturnik
+bankrut
 bezczelny
 bezkompromisowy
 bezmyślny
@@ -11,19 +12,28 @@ bezpośredni
 bezużyteczny talent
 bezwstydny
 bezwzględny
+biedny
 blizna na ciele
 błaha supermoc
+bogaty
 bogobojny
 boi się zwierzątek
+brudas
+był wszędzie
+cebulak
 celebryta
 chamski
 chaotyczny
 chce mieć dzieci
 chce więcej!
 chciwy
+chłodny
+chorowity
 chory
 chytrus
+ciamajda
 ciągle żartuje
+cichy śmiech
 ciekawski
 cierpliwy
 coś za coś
@@ -39,6 +49,7 @@ daje innym wygrać
 dba o prywatność
 dba o skórę
 dba o szczegóły
+długie kroki
 dobroduszny
 dokładny
 doskonała pamięć
@@ -49,41 +60,56 @@ drapie się
 dresiarz
 drobiazgowy
 dumny
+dusigrosz
 dużo się rusza
 dzieli się wszystkim
 dziki
 dziurawe skarpety
 dziwny akcent sylab
+dżentelmen
 ekspert w dziedzinie
 ekstrawertyk
+emeryt
 empatyczny
 energiczny
+fanatyk
+farciarz
+gaduła
 gbur
 geniusz
 gestykuluje
 gibki
+głęboko oddycha
 głodny
+głośny śmiech
 głupi śmiech
 gościnny
 grubas
 gry słowne
 grzeczny
+gwiżdże
 hiperpoprawność wymowy
 hipochondryk
 hipokryta
 hojny
+hulaj dusza
 indywidualista
 introwertyk
 inwalida
+kapuś
 kieruje się zasadami
 klaszcze przy śmiechu
 kleptoman
 kłamczuch
 kocha muzykę
+kolana na zewnątrz
 kolekcjoner
+kontrola żywiołu
 kreatywny
+krótkie kroki
 kura domowa
 leniwy
+liczy pod nosem
 lizus
 lojalny
 lubi dotyk
@@ -95,11 +121,14 @@ macho
 maminsynek
 manipulant
 mazgaj
+mędrzec
 miesza polski z angielskim
+mieszczuch
 mlaska
 młody duchem
 mocarz
 modniś
+mowi bez 'ogonkow'
 mówca
 mówi do siebie
 mówi na 'ty'
@@ -117,6 +146,7 @@ nadmiar zarostu
 nagłe ruchy
 naiwny
 narcyz
+nazywa czynności
 nazywa wszystko
 nerd
 nie czyta książek
@@ -144,6 +174,7 @@ niechluj
 niecierpliwy
 niedoceniany
 niedoświadczony
+nieletni
 nieogarnięty
 niepoważny
 niespełniony
@@ -155,13 +186,17 @@ niezależny
 niezdecydowany
 niski głos
 niszowe zainteresowania
+nocny marek
 nosi broń
+nowobogacki
 nowoczesny
 nóż przy sobie
 obgaduje innych
 obgryza paznokcie
+obolały
 obżartuch
 oczytany
+oddycha przez usta
 odmawia pomocy sobie
 odpowiedzialny
 odważny
@@ -196,7 +231,9 @@ podrywacz
 podstępny
 poker face
 pomaga nieproszony
+poprawia fryzurę
 poprawia innych
+porównuje do siebie
 poważny
 powtarza swoje słówko
 pracoholik
@@ -207,6 +244,7 @@ próżny
 przebiegły
 przecenia swoje umiejętności
 przechwala się
+przełyka ślinę
 przesadne ruchy
 przesądny
 przeszkadza
@@ -219,15 +257,18 @@ psotny
 punktualny
 puszcza całusy
 ręce w kieszeni
+ręce za plecami
 rozgląda się
 rozrzutny
 rozsądny
 różne skarpety
+rymuje
 rytmiczne ruchy
 rzadko w domu
 rzut monetą na wszystko
 samotny z wyboru
 sceptyczny
+skarżypyta
 sknera
 skryty
 skupiony
@@ -244,29 +285,37 @@ sprawiedliwy
 sprawny fizycznie
 sprytny
 stalker
+starzec
 strach przed zarazkami
+suchoklates
 syczy
 szczegółowe zdania
 szczery
 szczęściarz
 szczodry
+szeryfuje
 szlachcic
 sztywniak
+szuka konspiracji
 szuka wrażeń
 szybki refleks
 śliwa pod okiem
 śmiały
+śmiech złoczyńcy
 śmieciuch
 śpioch
 świeżo po czterdziestce
 świeżo wykąpany
 tajemnica rodzinna
+tak bardzo dorosły
 taktowny
 tchórz
 tłumaczy żarty
 trendsetter
 twardziel
 uczciwy
+udaje głupiego
+udaje mądrego
 ukryte marzenie
 ukryty talent
 uległy
@@ -288,16 +337,20 @@ wierny
 wierzy w magię
 wieśniak
 wiodąca część ciała
+wojskowe zasady
 wrażliwy
 wstydzioch
 wszystko na 200%
+wszystko na 'chyba'
 wszystko w kalendarzu
 wścibski
+wtrąca historyjki
 wtrąca korpo-słówka
 wybuchowy
 wyluzowany
 wymagający
 wyprostowane łokcie
+wyprostowany
 wyrachowany
 wyrozumiały
 wysoki głos
@@ -305,6 +358,7 @@ wytyka błędy
 yolo
 z przyszłości
 za moich czasów...
+zachowuje symetrię
 zaciśnięte dłonie
 zadbany
 zajmuje dużo miejsca
@@ -328,6 +382,7 @@ zmyśla plotki
 zna przyszłość
 zna wszystkich
 zna wszystkie pokemony
+zna wszystkie żarty
 zorganizowany
 zziębnięty
 źle znosi hałas

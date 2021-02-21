@@ -1,9 +1,11 @@
+absolutna ciemność
 akademik
 apartament
 apteka
 arsenał
 autobus
 autostrada
+bagażnik
 bagna
 balkon
 bankiet
@@ -40,12 +42,14 @@ dyskoteka
 działka
 dżungla
 elektrownia
+epicentrum
 farma
 filharmonia
 fosa zamku
 galeria handlowa
 galeria sztuki
 garaż
+głębiny oceanu
 głęboko pod ziemią
 góra
 hangar
@@ -54,6 +58,8 @@ ikea
 impreza firmowa
 jacht
 jaskinia
+jasna pustka
+jądro Ziemi
 jezioro
 kabina toaletowa
 kafejka internetowa
@@ -68,6 +74,7 @@ klatka schodowa
 kokpit samolotu
 kominek
 komisariat
+komora bezechowa
 koncert
 konfesjonał
 kopalnia
@@ -98,6 +105,7 @@ morze
 most
 motocykl
 muzeum
+na powierzchni skóry
 namiot
 niebo
 oaza
@@ -107,8 +115,10 @@ obuwniczy
 ogródek
 ołtarz
 open space
+opuszczona galeria
 opuszczone kino
 orbita okołoziemska
+ostatni rząd w kinie
 pałac
 parawan
 park
@@ -123,15 +133,19 @@ plan zdjęciowy
 planeta
 plaża
 plebania
+płytko pod wodą
 pociąg
 poczekalnia
 pod kioskiem
 pod mostem
+pod powierzchnią
 pod ścianą
 pogorzelisko
 pokaz mody
 pole uprawne
 pośredniak
+pośród chmur
+powierzchnia Księżyca
 poza zasięgiem kamer
 pralnia
 prosektorium
@@ -169,6 +183,7 @@ schody ruchome
 schronisko
 sesja zdjęciowa
 sex shop
+silne pole magnetyczne
 siłownia
 sklep muzyczny
 sklep
@@ -187,6 +202,7 @@ supermarket
 suszarnia
 sypialnia
 szałas
+szatnia
 szczyt
 szklarnia
 szkoła
@@ -208,6 +224,8 @@ wars
 warsztat
 warzywniak
 wąska ścieżka
+we wnętrznościach
+wewnątrz drzewa
 wiatrak
 wieża Eiffela
 wieża kontroli lotów
