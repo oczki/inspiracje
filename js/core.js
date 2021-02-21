@@ -10,34 +10,52 @@ let swiperAnimationDuration = defaulSwiperAnimationDuration;
 let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
 let delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
 
-function sectionId(type) {
-  return `section-${type}`;
-}
+class Selector {
+  static sectionId(type) {
+    return `section-${type}`;
+  }
 
-function swiperSelector(type) {
-  return `#${sectionId(type)} .swiper-container`;
-}
+  static swiperSelector(type) {
+    return `#${this.sectionId(type)} .swiper-container`;
+  }
 
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+  static getSwiper(type) {
+    return document.querySelector(this.swiperSelector(type))?.swiper;
+  }
+
+  static getScrim() {
+    return document.getElementById('scrim');
   }
 }
 
-function ajax(url, callback) {
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      callback(xhr.responseText);
+class Util {
+  static shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
   }
-  xhr.open('GET', url, true);
-  xhr.send();
-}
 
-function getWords(type, callback) {
-  ajax('ajax/' + type + '.php', (output) => callback(output));
+  static ajax(url, callback) {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        callback(xhr.responseText);
+      }
+    }
+    xhr.open('GET', url, true);
+    xhr.send();
+  }
+
+  static getWords(type, callback) {
+    this.ajax('ajax/' + type + '.php', (output) => callback(output));
+  }
+
+  static updateAllSwipers() {
+    for (let container of containers) {
+      wordsContainer[container.type]?.swiper?.update();
+    }
+  }
 }
 
 class Container {
@@ -52,13 +70,13 @@ class Container {
     this.slideIndex = 0;
 
     this.initializeWords();
-    addSection(container);
+    WordSectionCreator.addSection(container);
     this.swiper = this.initializeSwiper();
     setInterval(() => this.runCleanup(), swiperAnimationDuration * 10 + 11);
   }
 
   initializeWords() {
-    getWords(this.type, (output) => {
+    Util.getWords(this.type, (output) => {
       this.wordsCache = eval(output);
       this.removeFirstSlides(0); // Removes the hardcoded first slide with 'Loading...' text
       this.recalculateSlideCountAndIndex();
@@ -80,7 +98,7 @@ class Container {
     const swiperInitialized = Creator.createSwiper(this.type,
       prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback);
     swiperInitialized.slideNext(swiperAnimationDuration);
-    return getSwiper(this.type);
+    return Selector.getSwiper(this.type);
   }
 
   isSwiperTransitionOngoing() {
@@ -142,52 +160,34 @@ class Container {
     const startIndex = this.wordsCacheIndex + marginFromEnd;
     const endIndex = startIndex + numberOfSlidesToAppend;
     const nextChunkOfWordsFromCache = this.wordsCache.slice(startIndex, endIndex);
-    this.swiper.appendSlide(textArrayToSlides(nextChunkOfWordsFromCache));
+    this.swiper.appendSlide(Creator.createSlides(nextChunkOfWordsFromCache));
     this.recalculateSlideCountAndIndex();
   }
 
   loadMoreWordsIntoCache() {
-    getWords(this.type, (output) => {
+    Util.getWords(this.type, (output) => {
       let newWords = eval(output);
       this.wordsCache = this.wordsCache.concat(newWords);
     });
   }
 }
 
-function getSwiper(type) {
-  return document.querySelector(swiperSelector(type))?.swiper;
-}
-
-function textToSlide(text) {
-  const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
-  const textWithNonBreakingSpace = capitalizedText.replace(/ (i|z|w|oraz) /gi, ' $1&nbsp;');
-  return `<div class="swiper-slide">${textWithNonBreakingSpace}</div>`;
-}
-
-function textArrayToSlides(texts = []) {
-  let slides = [];
-  for (let text of texts) {
-    slides.push(textToSlide(text));
-  }
-  return slides;
-}
-
 class Creator {
   static createSwiper(type, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) {
-    const swiper = new Swiper(swiperSelector(type), {
+    const swiper = new Swiper(Selector.swiperSelector(type), {
       speed: swiperAnimationDuration, // TODO: zero this if prefers-reduced-motion is on
       spaceBetween: 0,
       navigation: {
-        prevEl: `#${sectionId(type)} .navigation-button-prev`,
-        nextEl: `#${sectionId(type)} .navigation-button-next`,
+        prevEl: `#${Selector.sectionId(type)} .navigation-button-prev`,
+        nextEl: `#${Selector.sectionId(type)} .navigation-button-next`,
       },
     });
     swiper.on('slidePrevTransitionStart', prevSlideCallback);
     swiper.on('slideNextTransitionStart', nextSlideCallback);
     swiper.on('slideChangeTransitionStart', transitionStartedCallback);
     swiper.on('slideChangeTransitionEnd', transitionFinishedCallback);
-    const swiperInitialized = getSwiper(type);
-    swiperInitialized.appendSlide(textToSlide('Ładuję...'));
+    const swiperInitialized = Selector.getSwiper(type);
+    swiperInitialized.appendSlide(Creator.createSlide('Ładuję...'));
     return swiper;
   }
 
@@ -248,9 +248,7 @@ class Creator {
 
   static createSlidingSheet(id) {
     const sheet = this.createElementWithClassAndId('div', 'sliding-sheet', id);
-
     const content = this.createElementWithClass('div', 'sliding-sheet-content');
-
     sheet.appendChild(content);
     return sheet;
   }
@@ -264,8 +262,26 @@ class Creator {
     });
     button.appendChild(this.createSpan(buttonText));
     button.appendChild(this.createIcon(iconName));
-    addRipple(button);
+    this.addRipple(button);
     return button;
+  }
+
+  static addRipple(parentElement) {
+    parentElement.appendChild(this.createElementWithClass('div', 'rippleJS'));
+  }
+
+  static createSlide(text) {
+    const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
+    const textWithNonBreakingSpace = capitalizedText.replace(/ (i|z|w|oraz) /gi, ' $1&nbsp;');
+    return `<div class="swiper-slide">${textWithNonBreakingSpace}</div>`;
+  }
+
+  static createSlides(texts = []) {
+    let slides = [];
+    for (let text of texts) {
+      slides.push(this.createSlide(text));
+    }
+    return slides;
   }
 }
 
@@ -275,7 +291,7 @@ class SpecializedCreator {
     const buttonText = 'Opcje';
     const iconName = 'settings';
     const callback = () => {
-      toggleSheetVisibility('settings');
+      VisibilityController.toggleSheetVisibility('settings');
     }
     return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
   }
@@ -285,7 +301,7 @@ class SpecializedCreator {
     const buttonText = 'Info';
     const iconName = 'info-circle';
     const callback = () => {
-      toggleSheetVisibility('about');
+      VisibilityController.toggleSheetVisibility('about');
     }
     return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
   }
@@ -299,15 +315,15 @@ class SpecializedCreator {
 
   static createAdvanceAllWordsFloatingActionButton() {
     const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
-    addRipple(forwardButton);
-    showElement(forwardButton);
+    Creator.addRipple(forwardButton);
+    VisibilityController.showElement(forwardButton);
 
     forwardButton.addEventListener('click', function (e) {
       e.preventDefault();
       const types = Object.keys(containers).map(key => containers[key].type);
-      shuffle(types);
+      Util.shuffle(types);
       for (const [index, type] of types.entries()) {
-        const swiper = getSwiper(type);
+        const swiper = Selector.getSwiper(type);
         setTimeout(() => {
           requestAnimationFrame(() => swiper?.slideNext(swiperAnimationDuration));
         }, delayBetweenLoadedWordsDuration * index);
@@ -320,11 +336,11 @@ class SpecializedCreator {
 
   static createCloseSheetFloatingActionButton() {
     const closeSheetButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-close-sheet');
-    addRipple(closeSheetButton);
+    Creator.addRipple(closeSheetButton);
 
     closeSheetButton.addEventListener('click', function (e) {
       e.preventDefault();
-      hideSlidingSheetsAndScrim();
+      VisibilityController.hideSlidingSheetsAndScrim();
     });
 
     closeSheetButton.appendChild(Creator.createIcon('x'));
@@ -332,148 +348,138 @@ class SpecializedCreator {
   }
 }
 
-function getScrim() {
-  return document.getElementById('scrim');
-}
+class WordSectionCreator {
+  static addSwiperPrevNextButtons(parentElement) {
+    const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
+    prevButton.appendChild(Creator.createIcon('chevron-left'));
+    prevButton.appendChild(Creator.createHidingSpan('Wstecz'));
+    prevButton.style.position = 'relative';
+    Creator.addRipple(prevButton);
 
-function addRipple(parentElement) {
-  parentElement.appendChild(Creator.createElementWithClass('div', 'rippleJS'));
-}
+    const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
+    nextButton.appendChild(Creator.createHidingSpan('Dalej'));
+    nextButton.appendChild(Creator.createIcon('chevron-right'));
+    nextButton.style.position = 'relative';
+    Creator.addRipple(nextButton);
 
-function addSwiperPrevNextButtons(parentElement) {
-  const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
-  prevButton.appendChild(Creator.createIcon('chevron-left'));
-  prevButton.appendChild(Creator.createHidingSpan('Wstecz'));
-  prevButton.style.position = 'relative';
-  addRipple(prevButton);
+    parentElement.appendChild(prevButton);
+    parentElement.appendChild(nextButton);
+  }
 
-  const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
-  nextButton.appendChild(Creator.createHidingSpan('Dalej'));
-  nextButton.appendChild(Creator.createIcon('chevron-right'));
-  nextButton.style.position = 'relative';
-  addRipple(nextButton);
+  static addIcon(parentElement, iconName) {
+    const icon = Creator.createIcon(iconName, 'section-icon');
+    parentElement.appendChild(icon);
+  }
 
-  parentElement.appendChild(prevButton);
-  parentElement.appendChild(nextButton);
-}
+  static addSwiperWrapper(parentElement) {
+    parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay'));
+    parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
+  }
 
-function addIcon(parentElement, iconName) {
-  const icon = Creator.createIcon(iconName, 'section-icon');
-  parentElement.appendChild(icon);
-}
+  static addSectionHeader(parentElement, container) {
+    const header = Creator.createElementWithClass('div', 'header-container');
+    header.innerHTML = container.label;
+    parentElement.appendChild(header);
+  }
 
-function addSwiperWrapper(parentElement) {
-  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay'));
-  parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
-}
+  static addSection(container) {
+    const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(container.type));
+    this.addSectionHeader(section, container);
+    this.addIcon(section, container.icon);
+    this.addSwiperPrevNextButtons(section);
 
-function addSectionHeader(parentElement, container) {
-  const header = Creator.createElementWithClass('div', 'header-container');
-  header.innerHTML = container.label;
-  parentElement.appendChild(header);
-}
+    const mySwiperContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
+    const swiperScriptsContainer = Creator.createElementWithClass('div', 'swiper-container');
+    this.addSwiperWrapper(swiperScriptsContainer);
+    mySwiperContainer.appendChild(swiperScriptsContainer);
+    section.appendChild(mySwiperContainer);
 
-function addSection(container) {
-  const section = Creator.createElementWithClassAndId('section', 'word-section', sectionId(container.type));
-  addSectionHeader(section, container);
-  addIcon(section, container.icon);
-  addSwiperPrevNextButtons(section);
-
-  const mySwiperContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
-  const swiperScriptsContainer = Creator.createElementWithClass('div', 'swiper-container');
-  addSwiperWrapper(swiperScriptsContainer);
-  mySwiperContainer.appendChild(swiperScriptsContainer);
-  section.appendChild(mySwiperContainer);
-
-  document.getElementsByTagName('main')[0].appendChild(section);
-}
-
-function preventTabbingToElement(element) {
-  element.style.visibility = 'hidden';
-}
-
-function allowTabbingToElement(sheetElement) {
-  sheetElement.style.visibility = 'initial';
-}
-
-function createSettingsSheet() {
-  const sheetName = 'settings';
-  const sheet = Creator.createSlidingSheet(sheetName);
-  preventTabbingToElement(sheet);
-
-  const sheetContent = sheet.children[0];
-  sheetContent.appendChild(Settings.createFontScaleControl());
-  sheetContent.appendChild(Settings.createAnimationsToggle());
-  sheetContent.appendChild(Settings.createCompactModeToggle());
-  sheetContent.appendChild(Settings.createDarkModeToggle());
-
-  return sheet;
-}
-
-function createAboutSheet() {
-  const sheet = Creator.createSlidingSheet('about');
-  sheet.innerHTML = 'about';
-  return sheet;
-}
-
-function populateSlidingSheetsContainer() {
-  const container = document.getElementById('sliding-sheets-container');
-  container.appendChild(createSettingsSheet());
-  container.appendChild(createAboutSheet());
-}
-
-function showElement(element) {
-  element?.classList.add(visibleClass);
-}
-
-function hideElement(element) {
-  element?.classList.remove(visibleClass);
-}
-
-function showCloseFab() {
-  hideElement(document.getElementById('button-advance-all'));
-  showElement(document.getElementById('button-close-sheet'));
-}
-
-function showAdvanceAllFab() {
-  hideElement(document.getElementById('button-close-sheet'));
-  showElement(document.getElementById('button-advance-all'));
-}
-
-function hideOtherSheets(idOfSheetNotToHide) {
-  const otherSheets = Array.from(document.querySelectorAll(`.sliding-sheet:not(#${idOfSheetNotToHide})`));
-  for (let otherSheet of otherSheets) {
-    otherSheet.classList.remove(visibleClass);
-    setTimeout(() => preventTabbingToElement(otherSheet), sheetClosingAnimationDuration);
+    document.getElementsByTagName('main')[0].appendChild(section);
   }
 }
 
-function toggleSheetVisibility(sheetId) {
-  const sheet = document.getElementById(sheetId);
-  hideOtherSheets(sheetId);
-  if (sheet?.classList.contains(visibleClass)) {
-    showAdvanceAllFab();
-    sheet.classList.remove(visibleClass);
-    getScrim()?.classList.remove(visibleClass);
-    setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
-  } else {
-    showCloseFab();
-    sheet.classList.add(visibleClass);
-    getScrim()?.classList.add(visibleClass);
-    allowTabbingToElement(sheet);
+class SheetCreator {
+  static createSettingsSheet() {
+    const sheetName = 'settings';
+    const sheet = Creator.createSlidingSheet(sheetName);
+    VisibilityController.preventTabbingToElement(sheet);
+
+    const sheetContent = sheet.children[0];
+    sheetContent.appendChild(Settings.createFontScaleControl());
+    sheetContent.appendChild(Settings.createAnimationsToggle());
+    sheetContent.appendChild(Settings.createCompactModeToggle());
+    sheetContent.appendChild(Settings.createDarkModeToggle());
+
+    return sheet;
+  }
+
+  static createAboutSheet() {
+    const sheet = Creator.createSlidingSheet('about');
+    sheet.innerHTML = 'about';
+    return sheet;
   }
 }
 
-function populateFooter() {
-  const footer = document.getElementsByTagName('footer')[0];
+class VisibilityController {
+  static showElement(element) {
+    element?.classList.add(visibleClass);
+  }
 
-  const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
-  innerContainer.appendChild(SpecializedCreator.createAdvanceAllWordsFloatingActionButton());
-  innerContainer.appendChild(SpecializedCreator.createCloseSheetFloatingActionButton());
-  innerContainer.appendChild(SpecializedCreator.createSettingsButton());
-  innerContainer.appendChild(SpecializedCreator.createAboutButton());
+  static hideElement(element) {
+    element?.classList.remove(visibleClass);
+  }
 
-  footer.appendChild(innerContainer);
+  static preventTabbingToElement(element) {
+    element.style.visibility = 'hidden';
+  }
+
+  static allowTabbingToElement(sheetElement) {
+    sheetElement.style.visibility = 'initial';
+  }
+
+  static showCloseFab() {
+    this.hideElement(document.getElementById('button-advance-all'));
+    this.showElement(document.getElementById('button-close-sheet'));
+  }
+
+  static showAdvanceAllFab() {
+    this.hideElement(document.getElementById('button-close-sheet'));
+    this.showElement(document.getElementById('button-advance-all'));
+  }
+
+  static hideSlidingSheetsAndScrim() {
+    const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
+    for (const sheet of sheetsToHide) {
+      sheet.classList.remove(visibleClass);
+      setTimeout(() => this.preventTabbingToElement(sheet), sheetClosingAnimationDuration);
+    }
+    Selector.getScrim()?.classList.remove(visibleClass);
+    this.showAdvanceAllFab();
+  }
+
+  static toggleSheetVisibility(sheetId) {
+    const sheet = document.getElementById(sheetId);
+    this.hideOtherSheets(sheetId);
+    if (sheet?.classList.contains(visibleClass)) {
+      this.showAdvanceAllFab();
+      sheet.classList.remove(visibleClass);
+      Selector.getScrim()?.classList.remove(visibleClass);
+      setTimeout(() => this.preventTabbingToElement(sheet), sheetClosingAnimationDuration);
+    } else {
+      this.showCloseFab();
+      sheet.classList.add(visibleClass);
+      Selector.getScrim()?.classList.add(visibleClass);
+      this.allowTabbingToElement(sheet);
+    }
+  }
+
+  static hideOtherSheets(idOfSheetNotToHide) {
+    const otherSheets = Array.from(document.querySelectorAll(`.sliding-sheet:not(#${idOfSheetNotToHide})`));
+    for (let otherSheet of otherSheets) {
+      otherSheet.classList.remove(visibleClass);
+      setTimeout(() => this.preventTabbingToElement(otherSheet), sheetClosingAnimationDuration);
+    }
+  }
 }
 
 class Settings {
@@ -483,27 +489,27 @@ class Settings {
     static getFontScale() {
       return localStorage.getItem(this.keyName) || 1.0;
     }
-    
+
     static setFontScale(value) {
       localStorage.setItem(this.keyName, value);
       document.documentElement.style.setProperty('--font-size-multiplier', value);
-      updateAllSwipers();
+      Util.updateAllSwipers();
     }
-    
+
     static increaseFontScale() {
       const currentFontScale = this.getFontScale();
       const upperBound = fontScaleValues[fontScaleValues.length - 1];
       const valueLargerThanCurrent = fontScaleValues.filter(value => value > currentFontScale)[0] || upperBound;
       this.setFontScale(valueLargerThanCurrent);
     }
-    
+
     static decreaseFontScale() {
       const currentScale = this.getFontScale();
       const lowerBound = fontScaleValues[0];
       const valueSmallerThanCurrent = Math.max(...fontScaleValues.filter(value => value < currentScale), lowerBound);
       this.setFontScale(valueSmallerThanCurrent);
     }
-    
+
     static createIncreaseFontScaleButton() {
       const buttonId = 'button-font-scale-plus';
       const buttonText = 'Powiększ';
@@ -513,7 +519,7 @@ class Settings {
       }
       return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
     }
-    
+
     static createDecreaseFontScaleButton() {
       const buttonId = 'button-font-scale-minus';
       const buttonText = 'Pomniejsz';
@@ -523,15 +529,15 @@ class Settings {
       }
       return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
     }
-    
+
     static createControl() {
       this.setFontScale(this.getFontScale());
-    
+
       const container = Creator.createElementWithId('div', 'scale-control-container');
       container.appendChild(Creator.createSpan('Skala'));
       container.appendChild(this.createDecreaseFontScaleButton());
       container.appendChild(this.createIncreaseFontScaleButton());
-    
+
       return container;
     }
   };
@@ -578,7 +584,7 @@ class Settings {
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
       labelElement.appendChild(Creator.createSpan('Animacje'));
-      addRipple(labelElement);
+      Creator.addRipple(labelElement);
       return labelElement;
     }
   };
@@ -593,7 +599,7 @@ class Settings {
     static setCompactModeState(state) {
       localStorage.setItem(this.keyName, state);
       document.body.classList.toggle('compact', state);
-      updateAllSwipers();
+      Util.updateAllSwipers();
     }
 
     static createToggle() {
@@ -609,7 +615,7 @@ class Settings {
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
       labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
-      addRipple(labelElement);
+      Creator.addRipple(labelElement);
       return labelElement;
     }
   };
@@ -651,7 +657,7 @@ class Settings {
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
       labelElement.appendChild(Creator.createSpan('Tryb ciemny'));
-      addRipple(labelElement);
+      Creator.addRipple(labelElement);
       return labelElement;
     }
   };
@@ -673,32 +679,42 @@ class Settings {
   }
 }
 
-function updateAllSwipers() {
-  for (let container of containers) {
-    wordsContainer[container.type]?.swiper?.update();
+class ElementPopulator {
+  static populateSlidingSheetsContainer() {
+    const container = document.getElementById('sliding-sheets-container');
+    container.appendChild(SheetCreator.createSettingsSheet());
+    container.appendChild(SheetCreator.createAboutSheet());
   }
-}
+  
+  static populateFooter() {
+    const footer = document.getElementsByTagName('footer')[0];
+  
+    const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
+    innerContainer.appendChild(SpecializedCreator.createAdvanceAllWordsFloatingActionButton());
+    innerContainer.appendChild(SpecializedCreator.createCloseSheetFloatingActionButton());
+    innerContainer.appendChild(SpecializedCreator.createSettingsButton());
+    innerContainer.appendChild(SpecializedCreator.createAboutButton());
+  
+    footer.appendChild(innerContainer);
+  }
 
-function hideSlidingSheetsAndScrim() {
-  const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
-  for (const sheet of sheetsToHide) {
-    sheet.classList.remove(visibleClass);
-    setTimeout(() => preventTabbingToElement(sheet), sheetClosingAnimationDuration);
+  static populatePageWithWordContainers() {
+    for (const container of containers) {
+      wordsContainer[container.type] = new Container(container);
+    }
   }
-  getScrim()?.classList.remove(visibleClass);
-  showAdvanceAllFab();
 }
 
 class GlobalEventHandler {
   static attachEventsToSheetsAndScrim() {
-    getScrim()?.addEventListener('click', (event) => {
+    Selector.getScrim()?.addEventListener('click', (event) => {
       event.preventDefault();
-      hideSlidingSheetsAndScrim();
+      VisibilityController.hideSlidingSheetsAndScrim();
     });
-  
+
     window.addEventListener('keydown', (event) => {
       if (event.keyCode === 27) {
-        hideSlidingSheetsAndScrim();
+        VisibilityController.hideSlidingSheetsAndScrim();
       }
     });
   }
@@ -710,7 +726,7 @@ class GlobalEventHandler {
       window.addEventListener('mousedown', GlobalEventHandler.handleMouseInput);
     }
   }
-  
+
   static handleMouseInput() {
     document.body.classList.remove('show-outline');
     window.addEventListener('keydown', GlobalEventHandler.handleKeyboardInput);
@@ -723,13 +739,11 @@ class GlobalEventHandler {
 }
 
 function init() {
-  populateSlidingSheetsContainer();
+  ElementPopulator.populateSlidingSheetsContainer();
   GlobalEventHandler.attachEventsToSheetsAndScrim();
   GlobalEventHandler.handleFirstKeyboardInput();
-  populateFooter();
-  for (const container of containers) {
-    wordsContainer[container.type] = new Container(container);
-  }
+  ElementPopulator.populateFooter();
+  ElementPopulator.populatePageWithWordContainers();
 }
 
 if (document.readyState != 'loading')
