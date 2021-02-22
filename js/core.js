@@ -540,15 +540,15 @@ class SheetCreator {
     sheetContent.appendChild(Creator.createSeparator());
 
     sheetContent.appendChild(Creator.createParagraph('Podręczny generator słów służących za początkową ' +
-      'inspirację do scenek teatru improwizowanego.'));
+      'inspirację do scenek teatru improwizowanego.', 'sliding-sheet-text'));
     sheetContent.appendChild(Creator.createParagraph('Na występach źródłem inspiracji jest publiczność, ' +
       'lecz ich pomoc nie jest dostępna podczas prób i ćwiczeń. Magazyn Inspiracji wypełnia tę lukę ' +
-      'zbiorem ponad 1500 pomysłów, podzielonych na wygodne kategorie.'
+      'zbiorem ponad 1500 pomysłów, podzielonych na wygodne kategorie.', 'sliding-sheet-text'
     ));
 
     sheetContent.appendChild(Creator.createSeparator());
 
-    sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w rozwoju aplikacji lub zgłosić błąd?'));
+    sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w rozwoju aplikacji lub zgłosić błąd?', 'sliding-sheet-text'));
     sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na GitHub', 'https://github.com/oczki/inspiracje', iconGithub));
     sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail));
 

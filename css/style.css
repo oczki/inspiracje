@@ -525,7 +525,7 @@ footer .circular-button {
   overflow-y: auto;
   overscroll-behavior-y: contain;
   background-color: var(--color-card-background);
-  padding-bottom: calc(4rem + var(--footer-height));
+  padding-bottom: calc(3.5rem + var(--footer-height));
   border-top-left-radius: var(--sliding-sheet-border-radius);
   border-top-right-radius: var(--sliding-sheet-border-radius);
   display: flex;
@@ -554,7 +554,7 @@ footer .circular-button {
   margin: 0 calc(var(--body-padding) - var(--narrow-screen-padding-compensation));
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -565,6 +565,13 @@ footer .circular-button {
   display: flex;
   align-items: center;
   color: var(--color-secondary-text);
+}
+
+.sliding-sheet-text {
+  width: 100%;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  line-height: 1.5;
 }
 
 .checkbox-label {
@@ -579,7 +586,8 @@ footer .circular-button {
   border-radius: var(--sliding-sheet-item-border-radius);
 }
 
-.checkbox-label:hover {
+.checkbox-label:hover,
+body.show-outline .checkbox-label:focus {
   background-color: var(--swiper-navigation-background-color);
 }
 
@@ -634,6 +642,29 @@ footer .circular-button {
 
 .separator:first-of-type {
   margin-top: 0;
+}
+
+.link-with-icon {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: var(--color-text);
+  border-radius: var(--sliding-sheet-item-border-radius);
+}
+
+.link-with-icon:hover,
+body.show-outline .link-with-icon:focus {
+  background-color: var(--swiper-navigation-background-color);
+}
+
+.link-with-icon .icon {
+  color: var(--color-icon);
+}
+
+.link-with-icon span {
+  margin-left: 1.5rem;
 }
 
 /* #endregion Sliding panel (settings, about, ...) */
