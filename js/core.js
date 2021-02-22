@@ -1,33 +1,60 @@
+const iconMapMarker = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg>';
+const iconAccount = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg>';
+const iconAccountDetails = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M11 9C11 10.66 9.66 12 8 12C6.34 12 5 10.66 5 9C5 7.34 6.34 6 8 6C9.66 6 11 7.34 11 9M14 20H2V18C2 15.79 4.69 14 8 14C11.31 14 14 15.79 14 18M22 12V14H13V12M22 8V10H13V8M22 4V6H13V4Z" /></svg>';
+const iconAccountSwitch = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M16 9C22 9 22 13 22 13V15H16V13C16 13 16 11.31 14.85 9.8C14.68 9.57 14.47 9.35 14.25 9.14C14.77 9.06 15.34 9 16 9M2 13C2 13 2 9 8 9S14 13 14 13V15H2V13M9 17V19H15V17L18 20L15 23V21H9V23L6 20L9 17M8 1C6.34 1 5 2.34 5 4S6.34 7 8 7 11 5.66 11 4 9.66 1 8 1M16 1C14.34 1 13 2.34 13 4S14.34 7 16 7 19 5.66 19 4 17.66 1 16 1Z" /></svg>';
+const iconHeart = '<svg style="transform: scale(0.9);" viewBox="0 0 24 24"><path fill="currentColor" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" /></svg>';
+const iconRun = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.08L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z" /></svg>';
+
+const iconChevronLeft = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" /></svg>';
+const iconChevronRight = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>';
+
+const iconCog = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" /></svg>';
+const iconInfo = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>';
+const iconChevronDoubleRight = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M5.59,7.41L7,6L13,12L7,18L5.59,16.59L10.17,12L5.59,7.41M11.59,7.41L13,6L19,12L13,18L11.59,16.59L16.17,12L11.59,7.41Z" /></svg>';
+const iconClose = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>';
+
+const iconCheckboxBlankOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z" /></svg>';
+const iconCheckboxMarked = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>';
+const iconFormatSize = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 4V7H7V19H10V7H15V4H2M21 9H12V12H15V19H18V12H21V9Z" /></svg>';
+const iconPlusBox = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>';
+const iconMinusBox = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H7V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>';
+const iconPlusBoxOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,19V5H5V19H19M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5C3,3.89 3.9,3 5,3H19M11,7H13V11H17V13H13V17H11V13H7V11H11V7Z" /></svg>';
+const iconMinusBoxOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,19V5H5V19H19M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5C3,3.89 3.9,3 5,3H19M17,11V13H7V11H17Z" /></svg>';
+
+const iconEmail = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>';
+const iconGithub = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>';
+const iconCopyright = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M10.08,10.86C10.13,10.53 10.24,10.24 10.38,10C10.5,9.74 10.72,9.53 10.97,9.37C11.21,9.22 11.5,9.15 11.88,9.14C12.11,9.15 12.32,9.19 12.5,9.27C12.71,9.36 12.89,9.5 13.03,9.63C13.17,9.78 13.28,9.96 13.37,10.16C13.46,10.36 13.5,10.58 13.5,10.8H15.3C15.28,10.33 15.19,9.9 15,9.5C14.85,9.12 14.62,8.78 14.32,8.5C14,8.22 13.66,8 13.24,7.84C12.82,7.68 12.36,7.61 11.85,7.61C11.2,7.61 10.63,7.72 10.15,7.95C9.67,8.18 9.27,8.5 8.95,8.87C8.63,9.26 8.39,9.71 8.24,10.23C8.09,10.75 8,11.29 8,11.87V12.14C8,12.72 8.08,13.26 8.23,13.78C8.38,14.3 8.62,14.75 8.94,15.13C9.26,15.5 9.66,15.82 10.14,16.04C10.62,16.26 11.19,16.38 11.84,16.38C12.31,16.38 12.75,16.3 13.16,16.15C13.57,16 13.93,15.79 14.24,15.5C14.55,15.25 14.8,14.94 15,14.58C15.16,14.22 15.27,13.84 15.28,13.43H13.5C13.5,13.64 13.43,13.83 13.34,14C13.25,14.19 13.13,14.34 13,14.47C12.83,14.6 12.66,14.7 12.46,14.77C12.27,14.84 12.07,14.86 11.86,14.87C11.5,14.86 11.2,14.79 10.97,14.64C10.72,14.5 10.5,14.27 10.38,14C10.24,13.77 10.13,13.47 10.08,13.14C10.03,12.81 10,12.47 10,12.14V11.87C10,11.5 10.03,11.19 10.08,10.86M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20Z" /></svg>';
+
 let containers = [
   {
     type: "location",
     label: "Miejsce",
-    icon: 'map-2',
+    icon: iconMapMarker,
   },
   {
     type: "character",
     label: "Postać",
-    icon: 'user',
+    icon: iconAccount,
   },
   {
     type: "character-modifier",
     label: "Cecha postaci",
-    icon: 'user-plus',
+    icon: iconAccountDetails,
   },
   {
     type: "relation",
     label: "Relacja",
-    icon: 'friends',
+    icon: iconAccountSwitch,
   },
   {
     type: "emotion",
     label: "Emocja",
-    icon: 'heart',
+    icon: iconHeart,
   },
   {
     type: "action",
     label: "Czynność",
-    icon: 'run',
+    icon: iconRun,
   },
   // {
   //   type: "body-part",
@@ -272,22 +299,12 @@ class Creator {
     return element;
   }
 
-  static createIcon(iconName, additionalClass = undefined) {
-    const iconContainer = this.createElementWithClass('div', `icon`);
+  static createIcon(svgCode, additionalClass = undefined) {
+    const iconContainer = this.createElementWithClass('div', 'icon');
     if (additionalClass) {
       iconContainer.classList.add(additionalClass);
     }
-
-    const svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svgElement.setAttribute('width', '24');
-    svgElement.setAttribute('height', '24');
-
-    const useElement = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    const pathToIcon = `./media/icons/tabler-sprite.svg#tabler-${iconName}`;
-    useElement.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', pathToIcon);
-
-    svgElement.appendChild(useElement);
-    iconContainer.appendChild(svgElement);
+    iconContainer.innerHTML = svgCode;
     return iconContainer;
   }
 
@@ -325,8 +342,8 @@ class Creator {
     return linkElement;
   }
 
-  static createLinkWithIcon(text, url, icon, additionalClass = undefined) {
-    const iconElement = Creator.createIcon(icon);
+  static createLinkWithIcon(text, url, svgCode, additionalClass = undefined) {
+    const iconElement = Creator.createIcon(svgCode);
     const textElement = Creator.createSpan(text);
     const link = this.createLink(iconElement.outerHTML + textElement.outerHTML, url, additionalClass);
     link.classList.add('link-with-icon');
@@ -340,7 +357,7 @@ class Creator {
     return sheet;
   }
 
-  static createCircularButton(buttonId, buttonText, iconName, callback) {
+  static createCircularButton(buttonId, buttonText, svgCode, callback) {
     const button = this.createElementWithClassAndId('button', 'circular-button', buttonId);
     button.addEventListener('click', function (event) {
       event.preventDefault();
@@ -348,7 +365,7 @@ class Creator {
       callback();
     });
     button.appendChild(this.createSpan(buttonText));
-    button.appendChild(this.createIcon(iconName));
+    button.appendChild(this.createIcon(svgCode));
     this.addRipple(button);
     return button;
   }
@@ -382,27 +399,27 @@ class SpecializedCreator {
   static createSettingsButton() {
     const buttonId = 'button-settings';
     const buttonText = 'Ustawienia';
-    const iconName = 'settings';
+    const iconSvgCode = iconCog;
     const callback = () => {
       VisibilityController.toggleSheetVisibility('settings');
     }
-    return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
+    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
   }
 
   static createAboutButton() {
     const buttonId = 'button-about';
     const buttonText = 'Informacje';
-    const iconName = 'info-circle';
+    const iconSvgCode = iconInfo;
     const callback = () => {
       VisibilityController.toggleSheetVisibility('about');
     }
-    return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
+    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
   }
 
   static createCheckboxIcons() {
     const container = Creator.createElementWithClass('div', 'checkbox-icon');
-    container.appendChild(Creator.createIcon('square-check', 'checked'));
-    container.appendChild(Creator.createIcon('square', 'unchecked'));
+    container.appendChild(Creator.createIcon(iconCheckboxMarked, 'checked'));
+    container.appendChild(Creator.createIcon(iconCheckboxBlankOutline, 'unchecked'));
     return container;
   }
 
@@ -423,7 +440,7 @@ class SpecializedCreator {
       }
     });
 
-    forwardButton.appendChild(Creator.createIcon('chevrons-right'));
+    forwardButton.appendChild(Creator.createIcon(iconChevronDoubleRight));
     return forwardButton;
   }
 
@@ -436,7 +453,7 @@ class SpecializedCreator {
       VisibilityController.hideSlidingSheetsAndScrim();
     });
 
-    closeSheetButton.appendChild(Creator.createIcon('x'));
+    closeSheetButton.appendChild(Creator.createIcon(iconClose));
     return closeSheetButton;
   }
 }
@@ -444,14 +461,14 @@ class SpecializedCreator {
 class WordSectionCreator {
   static addSwiperPrevNextButtons(parentElement) {
     const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
-    prevButton.appendChild(Creator.createIcon('chevron-left'));
+    prevButton.appendChild(Creator.createIcon(iconChevronLeft));
     prevButton.appendChild(Creator.createHidingSpan('Wstecz'));
     prevButton.style.position = 'relative';
     Creator.addRipple(prevButton);
 
     const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
     nextButton.appendChild(Creator.createHidingSpan('Dalej'));
-    nextButton.appendChild(Creator.createIcon('chevron-right'));
+    nextButton.appendChild(Creator.createIcon(iconChevronRight));
     nextButton.style.position = 'relative';
     Creator.addRipple(nextButton);
 
@@ -459,9 +476,8 @@ class WordSectionCreator {
     parentElement.appendChild(nextButton);
   }
 
-  static addIcon(parentElement, iconName) {
-    const icon = Creator.createIcon(iconName, 'section-icon');
-    parentElement.appendChild(icon);
+  static addIcon(parentElement, svgCode) {
+    parentElement.appendChild(Creator.createIcon(svgCode, 'section-icon'));
   }
 
   static addSwiperWrapper(parentElement) {
@@ -533,14 +549,13 @@ class SheetCreator {
     sheetContent.appendChild(Creator.createSeparator());
 
     sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w rozwoju aplikacji lub zgłosić błąd?'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na GitHub', 'https://github.com/oczki/inspiracje', 'brand-github'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', 'mail'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('Messenger', 'https://m.me/oczki', 'brand-messenger'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na GitHub', 'https://github.com/oczki/inspiracje', iconGithub));
+    sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail));
 
     sheetContent.appendChild(Creator.createSeparator());
 
     const currentYear = Math.max(2021, new Date().getFullYear());
-    sheetContent.appendChild(Creator.createLinkWithIcon(`2018–${currentYear} Damian Oczki`, 'https://oczki.pl', 'copyright'));
+    sheetContent.appendChild(Creator.createLinkWithIcon(`2018–${currentYear} Damian Oczki`, 'https://oczki.pl', iconCopyright));
 
     return sheet;
   }
@@ -641,21 +656,21 @@ class Settings {
     static createIncreaseFontScaleButton() {
       const buttonId = 'button-font-scale-plus';
       const buttonText = 'Powiększ';
-      const iconName = 'plus';
+      const iconSvgCode = iconPlusBox;
       const callback = () => {
         this.increaseFontScale();
       }
-      return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
+      return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
     }
 
     static createDecreaseFontScaleButton() {
       const buttonId = 'button-font-scale-minus';
       const buttonText = 'Pomniejsz';
-      const iconName = 'minus';
+      const iconSvgCode = iconMinusBox;
       const callback = () => {
         this.decreaseFontScale();
       }
-      return Creator.createCircularButton(buttonId, buttonText, iconName, callback);
+      return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
     }
 
     static createCurrentScaleDisplay() {
@@ -672,7 +687,7 @@ class Settings {
 
     static createControl() {
       const container = Creator.createElementWithId('div', 'scale-control-container');
-      container.appendChild(Creator.createIcon('typography', 'decorative-icon'));
+      container.appendChild(Creator.createIcon(iconFormatSize, 'decorative-icon'));
       container.appendChild(Creator.createSpan('Skala'));
       container.appendChild(this.createDecreaseFontScaleButton());
       container.appendChild(this.createCurrentScaleDisplay());
