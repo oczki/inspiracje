@@ -364,7 +364,7 @@ class Creator {
       if (event.detail >= 2) return;
       callback();
     });
-    button.appendChild(this.createSpan(buttonText));
+    // button.appendChild(this.createSpan(buttonText));
     button.appendChild(this.createIcon(svgCode));
     this.addRipple(button);
     return button;

@@ -202,7 +202,7 @@ body:not(.compact) .section-icon {
   display: none;
 }
 
-body:not(.compact) button:not(.floating-action-button) {
+body:not(.compact) button[class^='navigation-button-'] {
   border-radius: var(--card-border-radius);
 }
 
