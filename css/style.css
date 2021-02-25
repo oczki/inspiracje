@@ -94,6 +94,7 @@ body {
     hsla(0, 0%, var(--color-card-background-l), 1) 100%
   );
   --swiper-navigation-background-color: var(--color-accent-lighter);
+  --swiper-navigation-background-color-unhovered: hsl(0, 0%, var(--color-card-background-l), 0.7);
   --color-divider-l: 0%;
   --color-divider: hsla(0, 0%, var(--color-divider-l), 0.12);
 
@@ -187,11 +188,12 @@ a {
   margin-bottom: 0.5rem;
   padding: var(--card-padding);
   display: grid;
-  grid-template-rows: auto auto;
-  grid-template-columns: 1fr auto auto;
-  grid-template-areas: 'section-header nav-prev nav-next'
-    'swiper-container swiper-container swiper-container';
-  grid-gap: 1rem 0.5rem;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto 1fr auto auto;
+  grid-template-areas: 'section-icon section-header section-header section-header'
+                       '.            .              .              .'
+                       '.            nav-prev       nav-prev       nav-next';
+  grid-gap: 0 0.5rem;
 }
 
 body:not(.compact) {
@@ -199,11 +201,20 @@ body:not(.compact) {
 }
 
 body:not(.compact) .section-icon {
-  display: none;
+  --icon-size: 1.1rem;
+
+  grid-area: section-icon;
+  margin-left: 0.5rem;
 }
 
 body:not(.compact) button[class^='navigation-button-'] {
   border-radius: var(--card-border-radius);
+  justify-self: flex-end;
+  z-index: 2;
+}
+
+body:not(.compact) button[class^='navigation-button-']:not(:hover) {
+  background-color: var(--swiper-navigation-background-color-unhovered);
 }
 
 body.compact .word-section {
@@ -215,17 +226,6 @@ body.compact .word-section {
 
 body:not(.compact) .swiper-outer-container {
   margin: calc(-1 * var(--card-padding)) -0.5rem;
-}
-
-body:not(.compact) .swiper-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0.5rem;
-  right: 0.5rem;
-  height: 1px;
-  background-color: var(--color-divider);
-  z-index: 5;
 }
 
 body:not(.compact) .navigation-button-prev {
@@ -260,6 +260,7 @@ body.compact button > span {
 /* Element created by Swiper */
 .swiper-container {
   height: 100%;
+  cursor: ew-resize;
 }
 
 .swiper-overlay {
@@ -272,16 +273,22 @@ body.compact button > span {
 }
 
 .swiper-wrapper {
-  cursor: ew-resize;
   min-height: 2rem;
 }
 
+body:not(.compact) .swiper-outer-container {
+  grid-area: 1 / 1 / -1 / -1;
+  min-height: 8rem;
+}
+
 body:not(.compact) .swiper-wrapper {
-  min-height: 4rem;
+  padding-top: 3rem;
+  box-sizing: border-box;
 }
 
 body:not(.compact) .swiper-slide {
   padding: 0 calc(2 * var(--gradient-under-slides-size));
+  align-items: flex-start;
 }
 
 .swiper-slide {
@@ -303,6 +310,7 @@ body:not(.compact) .swiper-slide {
   margin-left: 0.5rem;
   font-size: 1rem;
   color: var(--color-secondary-text);
+  height: 2rem;
 }
 
 .navigation-button-prev {
@@ -652,6 +660,7 @@ body.show-outline .checkbox-label:focus {
   text-decoration: none;
   color: var(--color-text);
   border-radius: var(--sliding-sheet-item-border-radius);
+  position: relative;
 }
 
 .link-with-icon:hover,
@@ -688,6 +697,12 @@ body.show-outline .link-with-icon:focus {
 @media (max-width: 33em) {
   :root {
     --font-size-base: 8pt;
+  }
+}
+
+@media (max-width: 12em) {
+  button > span {
+    display: none;
   }
 }
 

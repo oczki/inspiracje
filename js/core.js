@@ -347,6 +347,7 @@ class Creator {
     const textElement = Creator.createSpan(text);
     const link = this.createLink(iconElement.outerHTML + textElement.outerHTML, url, additionalClass);
     link.classList.add('link-with-icon');
+    Creator.addRipple(link);
     return link;
   }
 
