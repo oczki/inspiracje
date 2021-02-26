@@ -482,7 +482,7 @@ class WordSectionCreator {
   }
 
   static addSwiperWrapper(parentElement) {
-    parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay'));
+    // parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay')); // TODO: disabled until a dark-mode friendly alternative (masks?) is implemented
     parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
   }
 
