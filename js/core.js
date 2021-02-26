@@ -751,7 +751,7 @@ class Settings {
     static keyName = 'compact-mode';
 
     static shouldToggleBeChecked() {
-      return localStorage.getItem(this.keyName) === 'false';
+      return localStorage.getItem(this.keyName) === 'true';
     }
 
     static setCompactModeState(state) {
@@ -764,15 +764,15 @@ class Settings {
       const toggle = Creator.createElementWithId('input', `${this.keyName}-checkbox`);
       toggle.type = 'checkbox';
       toggle.checked = this.shouldToggleBeChecked();
-      this.setCompactModeState(!toggle.checked);
+      this.setCompactModeState(toggle.checked);
       toggle.addEventListener('change', (event) => {
-        this.setCompactModeState(!event.currentTarget.checked);
+        this.setCompactModeState(event.currentTarget.checked);
       });
 
       const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
-      labelElement.appendChild(Creator.createSpan('Nagłówki kategorii'));
+      labelElement.appendChild(Creator.createSpan('Tryb kompaktowy'));
       Creator.addRipple(labelElement);
       return labelElement;
     }
