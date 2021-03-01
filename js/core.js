@@ -362,7 +362,6 @@ class Creator {
     const button = this.createElementWithClassAndId('button', 'circular-button', buttonId);
     button.addEventListener('click', function (event) {
       event.preventDefault();
-      if (event.detail >= 2) return;
       callback();
     });
     // button.appendChild(this.createSpan(buttonText));
@@ -482,7 +481,6 @@ class WordSectionCreator {
   }
 
   static addSwiperWrapper(parentElement) {
-    // parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-overlay')); // TODO: disabled until a dark-mode friendly alternative (masks?) is implemented
     parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
   }
 
