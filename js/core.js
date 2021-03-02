@@ -85,7 +85,7 @@ let containers = [
 
 let wordsContainer = [];
 
-const fontScaleValues = [0.67, 0.75, 0.9, 1.0, 1.1, 1.2, 1.35, 1.5];
+const fontScaleValues = [0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.35, 1.5];
 const visibleClass = 'visible';
 const defaulSwiperAnimationDuration = 180;
 const defaultSheetClosingAnimationDuration = 200;
@@ -626,6 +626,8 @@ class Settings {
   static FontScale = class {
     static keyName = 'font-scale';
     static scaleDisplayElementId = 'scale-control-value';
+    static scalePlusElementId = 'button-font-scale-plus';
+    static scaleMinusElementId = 'button-font-scale-minus';
 
     static getFontScale() {
       return localStorage.getItem(this.keyName) || 1.0;
@@ -635,6 +637,7 @@ class Settings {
       localStorage.setItem(this.keyName, value);
       document.documentElement.style.setProperty('--font-size-multiplier', value);
       this.updateCurrentScaleDisplay();
+      this.updateButtonsStates();
       Util.updateAllSwipers();
     }
 
@@ -653,23 +656,21 @@ class Settings {
     }
 
     static createIncreaseFontScaleButton() {
-      const buttonId = 'button-font-scale-plus';
       const buttonText = 'Powiększ';
       const iconSvgCode = iconPlusBox;
       const callback = () => {
         this.increaseFontScale();
       }
-      return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
+      return Creator.createCircularButton(this.scalePlusElementId, buttonText, iconSvgCode, callback);
     }
 
     static createDecreaseFontScaleButton() {
-      const buttonId = 'button-font-scale-minus';
       const buttonText = 'Pomniejsz';
       const iconSvgCode = iconMinusBox;
       const callback = () => {
         this.decreaseFontScale();
       }
-      return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
+      return Creator.createCircularButton(this.scaleMinusElementId, buttonText, iconSvgCode, callback);
     }
 
     static createCurrentScaleDisplay() {
@@ -682,6 +683,20 @@ class Settings {
         const valueAsPercent = `${(this.getFontScale() * 100).toFixed(0)}%`;
         scaleDisplayElement.innerHTML = valueAsPercent;
       }
+    }
+
+    static setButtonState(buttonId, isDisabled) {
+      const button = document.getElementById(buttonId);
+      if (!button) return;
+      button.disabled = isDisabled;
+    }
+
+    static updateButtonsStates() {
+      const currentFontScale = this.getFontScale();
+      const lowerBound = fontScaleValues[0];
+      const upperBound = fontScaleValues[fontScaleValues.length - 1];
+      this.setButtonState(this.scaleMinusElementId, currentFontScale <= lowerBound);
+      this.setButtonState(this.scalePlusElementId, currentFontScale >= upperBound);
     }
 
     static createControl() {
@@ -818,8 +833,9 @@ class Settings {
     }
   };
 
-  static updateCurrentScaleDisplay() {
+  static updateFontScaleElements() {
     this.FontScale.updateCurrentScaleDisplay();
+    this.FontScale.updateButtonsStates();
   }
 
   static createFontScaleControl() {
@@ -904,7 +920,7 @@ function init() {
   GlobalEventHandler.handleFirstKeyboardInput();
   ElementPopulator.populateFooter();
   ElementPopulator.populatePageWithWordContainers();
-  Settings.updateCurrentScaleDisplay();
+  Settings.updateFontScaleElements();
 }
 
 if (document.readyState != 'loading')

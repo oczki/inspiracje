@@ -466,6 +466,11 @@ body.show-outline .circular-button:focus {
   background-color: var(--swiper-navigation-background-color);
 }
 
+.circular-button:disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}
+
 footer .circular-button {
   color: var(--color-icon);
 }
