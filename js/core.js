@@ -90,10 +90,12 @@ const visibleClass = 'visible';
 const defaulSwiperAnimationDuration = 180;
 const defaultSheetClosingAnimationDuration = 200;
 const defaultDelayBetweenLoadedWordsDuration = 20;
+const defaultFabTransitionDuration = 280;
 
 let swiperAnimationDuration = defaulSwiperAnimationDuration;
 let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
 let delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
+let fabTransitionDuration = defaultFabTransitionDuration;
 
 class Selector {
   static sectionId(type) {
@@ -570,28 +572,48 @@ class VisibilityController {
   }
 
   static preventTabbingToElement(element) {
+    if (!element) return;
     element.style.visibility = 'hidden';
   }
 
-  static allowTabbingToElement(sheetElement) {
-    sheetElement.style.visibility = 'initial';
+  static allowTabbingToElement(element) {
+    if (!element) return;
+    element.style.visibility = 'initial';
+  }
+
+  static delayedPreventTabbingToElement(element, delay) {
+    setTimeout(() => this.preventTabbingToElement(element), delay);
+  }
+
+  static showAndAllowTabbingToElement(element) {
+    this.showElement(element);
+    this.allowTabbingToElement(element);
+  }
+
+  static hideAndPreventTabbingToElement(element, delay = 0) {
+    this.hideElement(element);
+    this.delayedPreventTabbingToElement(element, delay);
   }
 
   static showCloseFab() {
-    this.hideElement(document.getElementById('button-advance-all'));
-    this.showElement(document.getElementById('button-close-sheet'));
+    const fabAdvanceAll = document.getElementById('button-advance-all');
+    const fabCloseSheet = document.getElementById('button-close-sheet');
+    this.hideAndPreventTabbingToElement(fabAdvanceAll, fabTransitionDuration);
+    this.showAndAllowTabbingToElement(fabCloseSheet);
   }
 
   static showAdvanceAllFab() {
-    this.hideElement(document.getElementById('button-close-sheet'));
-    this.showElement(document.getElementById('button-advance-all'));
+    const fabAdvanceAll = document.getElementById('button-advance-all');
+    const fabCloseSheet = document.getElementById('button-close-sheet');
+    this.hideAndPreventTabbingToElement(fabCloseSheet, fabTransitionDuration);
+    this.showAndAllowTabbingToElement(fabAdvanceAll);
   }
 
   static hideSlidingSheetsAndScrim() {
     const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
     for (const sheet of sheetsToHide) {
       sheet.classList.remove(visibleClass);
-      setTimeout(() => this.preventTabbingToElement(sheet), sheetClosingAnimationDuration);
+      this.delayedPreventTabbingToElement(sheet, sheetClosingAnimationDuration);
     }
     Selector.getScrim()?.classList.remove(visibleClass);
     this.showAdvanceAllFab();
@@ -602,14 +624,12 @@ class VisibilityController {
     this.hideOtherSheets(sheetId);
     if (sheet?.classList.contains(visibleClass)) {
       this.showAdvanceAllFab();
-      sheet.classList.remove(visibleClass);
-      Selector.getScrim()?.classList.remove(visibleClass);
-      setTimeout(() => this.preventTabbingToElement(sheet), sheetClosingAnimationDuration);
+      this.hideAndPreventTabbingToElement(sheet, sheetClosingAnimationDuration);
+      this.hideElement(Selector.getScrim());
     } else {
       this.showCloseFab();
-      sheet.classList.add(visibleClass);
-      Selector.getScrim()?.classList.add(visibleClass);
-      this.allowTabbingToElement(sheet);
+      this.showAndAllowTabbingToElement(sheet);
+      this.showElement(Selector.getScrim());
     }
   }
 
@@ -735,10 +755,12 @@ class Settings {
         swiperAnimationDuration = 0;
         sheetClosingAnimationDuration = 0;
         delayBetweenLoadedWordsDuration = 0;
+        fabTransitionDuration = 0;
       } else {
         swiperAnimationDuration = defaulSwiperAnimationDuration;
         sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
         delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
+        fabTransitionDuration = defaultFabTransitionDuration;
       }
     }
 
