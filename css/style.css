@@ -202,7 +202,8 @@ body.dark {
 /* #region Body variant: show outline for keyboard navigation */
 
 body.show-outline button:focus,
-body.show-outline a:focus {
+body.show-outline a:focus,
+body.show-outline .checkbox-label:focus-within {
   outline: 2px dashed var(--color-text);
   outline-offset: -5px;
 }
@@ -593,7 +594,7 @@ footer .circular-button {
 }
 
 .checkbox-label:hover,
-body.show-outline .checkbox-label:focus {
+body.show-outline .checkbox-label:focus-within {
   background-color: var(--swiper-navigation-background-color);
 }
 
