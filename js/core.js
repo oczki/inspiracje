@@ -442,6 +442,7 @@ class SpecializedCreator {
       }
     });
 
+    forwardButton.appendChild(Creator.createSpan('Inspiruj'));
     forwardButton.appendChild(Creator.createIcon(iconChevronDoubleRight));
     return forwardButton;
   }
@@ -455,6 +456,7 @@ class SpecializedCreator {
       VisibilityController.hideSlidingSheetsAndScrim();
     });
 
+    closeSheetButton.appendChild(Creator.createSpan('Zamknij'));
     closeSheetButton.appendChild(Creator.createIcon(iconClose));
     return closeSheetButton;
   }

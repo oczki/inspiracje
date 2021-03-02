@@ -176,7 +176,7 @@ body.compact .word-section {
   grid-gap: unset;
 }
 
-body.compact button > span {
+body.compact button:not(.floating-action-button) > span {
   display: none;
 }
 
@@ -433,13 +433,14 @@ footer.visible {
 }
 
 .floating-action-button {
-  --fab-size: 56px;
+  --fab-size: 48px;
 
   position: absolute;
   top: 0;
   left: 50%;
-  width: var(--fab-size);
+  width: auto;
   height: var(--fab-size);
+  padding: 0 12px 0 20px;
   z-index: 100;
   display: flex;
   flex-wrap: nowrap;
@@ -484,6 +485,13 @@ body.show-outline .floating-action-button:focus:after {
 .floating-action-button.visible {
   transform: scale(1) translate3d(-50%, -50%, 0);
   opacity: 1;
+}
+
+.floating-action-button span {
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-block;
+  margin: 1px 8px 0 0;
 }
 
 #button-advance-all {
@@ -717,6 +725,17 @@ body.show-outline .link-with-icon:focus {
   :root {
     --narrow-screen-padding-compensation: var(--body-padding);
     --sliding-sheet-item-border-radius: 0px;
+  }
+
+  .floating-action-button {
+    --fab-size: 56px;
+
+    width: var(--fab-size);
+    padding: 0;
+  }
+
+  .floating-action-button span {
+    display: none;
   }
 }
 
