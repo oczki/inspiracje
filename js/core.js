@@ -894,6 +894,7 @@ class ElementPopulator {
     innerContainer.appendChild(SpecializedCreator.createAboutButton());
 
     footer.appendChild(innerContainer);
+    VisibilityController.showElement(footer);
   }
 
   static populatePageWithWordContainers() {

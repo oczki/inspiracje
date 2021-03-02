@@ -53,6 +53,14 @@ body {
   height: 100%;
 }
 
+noscript p {
+  line-height: 1.5;
+}
+
+noscript p + p {
+  margin-top: 16px;
+}
+
 /* #region Body */
 
 body {
@@ -407,6 +415,11 @@ footer {
   height: var(--footer-height);
   background-color: var(--color-footer-background);
   box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.2); /* TODO: shadow from material design */
+  visibility: hidden;
+}
+
+footer.visible {
+  visibility: visible;
 }
 
 #footer-inner-container {

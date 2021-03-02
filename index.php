@@ -31,7 +31,14 @@ function addJs($name) {
     <?php addJs('ripple.min'); ?>
   </head>
   <body class="compact">
-    <main></main>
+    <main>
+      <noscript>
+        <p>Twoja przeglądarka nie&nbsp;wspiera JavaScript, który jest wymagany do&nbsp;działania Magazynu Inspiracji.</p>
+        <p>Bez&nbsp;obaw &ndash; strona nie&nbsp;używa plików cookie, nie&nbsp;śledzi Cię przez Google Analytics ani&nbsp;Facebookowe wtyczki.</p>
+        <p>Jeśli chcesz sprawdzić kod źródłowy aplikacji, zapraszam na <a href="https://github.com/oczki/inspiracje">repozytorium na&nbsp;GitHub</a>.</p>
+        <p>Aby uruchomić JavaScript, poszperaj w&nbsp;opcjach dla tej strony albo&nbsp;zmień przeglądarkę na&nbsp;nowszy model.</p>
+      </noscript>
+    </main>
     <div id="scrim"></div>
     <div id="sliding-sheets-container"></div>
     <footer></footer>
