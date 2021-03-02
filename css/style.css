@@ -359,6 +359,7 @@ a {
   align-self: center;
   justify-self: center;
   transition-duration: var(--hover-duration);
+  transition-timing-function: var(--timing-function);
 }
 
 [class^='navigation-button-'] > span {
@@ -449,6 +450,24 @@ footer {
   box-shadow: var(--fab-shadow-active);
 }
 
+.floating-action-button:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 48px;
+  background-color: currentColor;
+  transition: opacity var(--hover-duration) var(--timing-function);
+  opacity: 0;
+}
+
+.floating-action-button:hover:after,
+body.show-outline .floating-action-button:focus:after {
+  opacity: 0.06;
+}
+
 .floating-action-button.visible {
   transform: scale(1) translate3d(-50%, -50%, 0);
   opacity: 1;
@@ -479,6 +498,7 @@ footer {
   color: var(--color-accent);
   transition-property: background-color;
   transition-duration: var(--hover-duration);
+  transition-timing-function: var(--timing-function);
 }
 
 .circular-button:hover,
