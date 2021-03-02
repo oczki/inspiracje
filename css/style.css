@@ -141,7 +141,7 @@ body:not(.compact) button[class^='navigation-button-'] {
   padding: 8px;
 }
 
-body:not(.compact) button[class^='navigation-button-']:not(:hover) {
+body:not(.compact) button[class^='navigation-button-']:not(:hover):not(:focus) {
   background-color: var(--swiper-navigation-background-color-unhovered);
 }
 
