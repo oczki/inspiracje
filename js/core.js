@@ -939,6 +939,30 @@ class GlobalEventHandler {
   }
 }
 
+class Aria {
+  static setAttr(element, ariaAttribute, value) {
+    element.setAttribute(`aria-${ariaAttribute}`, value);
+  }
+
+  static setLabel(element, value) {
+    this.setAttr(element, 'label', value);
+  }
+
+  static speak(text) {
+    const id = 'speak-' + Date.now();
+    const ghostElement = Creator.createElementWithClassAndId('div', 'aria-only', id);
+    this.setAttr(ghostElement, 'live', 'assertive');
+    document.body.appendChild(ghostElement);
+
+    setTimeout(() => {
+      document.getElementById(id).innerHTML = text;
+    }, 100);
+    setTimeout(() => {
+      document.body.removeChild(document.getElementById(id));
+    }, 1000);
+  }
+}
+
 function init() {
   ElementPopulator.populateSlidingSheetsContainer();
   GlobalEventHandler.attachEventsToSheetsAndScrim();
