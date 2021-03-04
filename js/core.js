@@ -154,11 +154,13 @@ class Container {
     this.wordsCacheIndex = 0;
     this.slideCount = 0;
     this.slideIndex = 0;
+    this.hasSpokenSinceTransitionEnd = true;
 
     this.initializeWords();
     WordSectionCreator.addSection(container);
     this.swiper = this.initializeSwiper();
     setInterval(() => this.runCleanup(), swiperAnimationDuration * 10 + 11);
+    setInterval(() => this.speakCurrentSlideIfAllowed(), swiperAnimationDuration + 11);
   }
 
   initializeWords() {
@@ -180,7 +182,7 @@ class Container {
     const prevSlideCallback = () => { this.wordsCacheIndex--; }
     const nextSlideCallback = () => { this.wordsCacheIndex++; this.addSlidesIfNeeded(); }
     const transitionStartedCallback = () => { this.isCleanupAllowed = false; }
-    const transitionFinishedCallback = () => { this.isCleanupAllowed = true; }
+    const transitionFinishedCallback = () => { this.isCleanupAllowed = true; this.hasSpokenSinceTransitionEnd = false; }
     const swiperInitialized = Creator.createSwiper(this.type,
       prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback);
     swiperInitialized.slideNext(swiperAnimationDuration);
@@ -256,6 +258,20 @@ class Container {
       this.wordsCache = this.wordsCache.concat(newWords);
     });
   }
+
+  createTextToSpeak() {
+    return this.label + ': ' + this.wordsCache[this.wordsCacheIndex];
+  }
+
+  speakCurrentSlideIfAllowed() {
+    if (Aria.isAdvanceAllSpeaking()) {
+      this.hasSpokenSinceTransitionEnd = true;
+      return;
+    };
+    if (this.hasSpokenSinceTransitionEnd) return;
+    this.hasSpokenSinceTransitionEnd = true;
+    Aria.speak(this.createTextToSpeak());
+  }
 }
 
 class Creator {
@@ -267,6 +283,10 @@ class Creator {
         prevEl: `#${Selector.sectionId(type)} .navigation-button-prev`,
         nextEl: `#${Selector.sectionId(type)} .navigation-button-next`,
       },
+      a11y: {
+        prevSlideMessage: 'Wstecz',
+        nextSlideMessage: 'Dalej'
+      }
     });
     swiper.on('slidePrevTransitionStart', prevSlideCallback);
     swiper.on('slideNextTransitionStart', nextSlideCallback);
@@ -428,10 +448,11 @@ class SpecializedCreator {
   static createAdvanceAllWordsFloatingActionButton() {
     const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
     Creator.addRipple(forwardButton);
-    VisibilityController.showElement(forwardButton);
+    VisibilityController.showAndAllowTabbingToElement(forwardButton);
 
     forwardButton.addEventListener('click', function (e) {
       e.preventDefault();
+      Aria.setIsAdvanceAllSpeaking(true);
       const types = Object.keys(containers).map(key => containers[key].type);
       Util.shuffle(types);
       for (const [index, type] of types.entries()) {
@@ -440,6 +461,15 @@ class SpecializedCreator {
           requestAnimationFrame(() => swiper?.slideNext(swiperAnimationDuration));
         }, delayBetweenLoadedWordsDuration * index);
       }
+      setTimeout(() => {
+        Aria.setIsAdvanceAllSpeaking(false);
+        let textToSpeak = [];
+        for (let container of containers) {
+          textToSpeak.push(wordsContainer[container.type]?.createTextToSpeak());
+        }
+        console.log('text to speak', textToSpeak.join(', '));
+        Aria.speak(textToSpeak.join(', '));
+      }, delayBetweenLoadedWordsDuration * types.length + 50);
     });
 
     forwardButton.appendChild(Creator.createSpan('Inspiruj'));
@@ -450,6 +480,7 @@ class SpecializedCreator {
   static createCloseSheetFloatingActionButton() {
     const closeSheetButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-close-sheet');
     Creator.addRipple(closeSheetButton);
+    VisibilityController.hideAndPreventTabbingToElement(closeSheetButton);
 
     closeSheetButton.addEventListener('click', function (e) {
       e.preventDefault();
@@ -576,11 +607,13 @@ class VisibilityController {
   static preventTabbingToElement(element) {
     if (!element) return;
     element.style.visibility = 'hidden';
+    Aria.setAttr(element, 'hidden', 'true');
   }
-
+  
   static allowTabbingToElement(element) {
     if (!element) return;
     element.style.visibility = 'initial';
+    Aria.setAttr(element, 'hidden', 'false');
   }
 
   static delayedPreventTabbingToElement(element, delay) {
@@ -940,6 +973,8 @@ class GlobalEventHandler {
 }
 
 class Aria {
+  static isAdvanceAllSpeakingFlag = false;
+
   static setAttr(element, ariaAttribute, value) {
     element.setAttribute(`aria-${ariaAttribute}`, value);
   }
@@ -956,10 +991,18 @@ class Aria {
 
     setTimeout(() => {
       document.getElementById(id).innerHTML = text;
-    }, 100);
+    }, 500);
     setTimeout(() => {
       document.body.removeChild(document.getElementById(id));
     }, 1000);
+  }
+
+  static isAdvanceAllSpeaking() {
+    return this.isAdvanceAllSpeakingFlag;
+  }
+
+  static setIsAdvanceAllSpeaking(newValue) {
+    this.isAdvanceAllSpeakingFlag = newValue;
   }
 }
 
