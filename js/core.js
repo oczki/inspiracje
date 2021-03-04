@@ -361,6 +361,7 @@ class Creator {
     }
     linkElement.innerHTML = text;
     linkElement.setAttribute('href', url);
+    linkElement.setAttribute('target', '_blank');
     return linkElement;
   }
 
