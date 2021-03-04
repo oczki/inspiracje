@@ -37,6 +37,7 @@ function addJs($name) {
     <?php addJs('swiper-bundle.min'); ?>
     <?php addJs('core'); ?>
     <?php addJs('ripple.min'); ?>
+    <script async defer data-domain="inspirac.je" src="https://plausible.io/js/plausible.js"></script>
   </head>
   <body class="compact">
     <main>
