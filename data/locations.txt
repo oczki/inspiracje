@@ -12,7 +12,7 @@ bankiet
 bar mleczny
 basen
 biblioteka
-biurko
+biuro
 biurowiec
 boisko
 brama
@@ -20,7 +20,6 @@ browar
 budka z jedzeniem
 budowa
 bufet
-burdel
 centrum badawcze
 chłodnia
 chodnik
@@ -31,9 +30,9 @@ cmentarz
 cyrk
 czerwony dywan
 dach
-dentysta
 disneyland
 długa kolejka
+dom publiczny
 dom
 domówka
 drapacz chmur
@@ -46,6 +45,7 @@ epicentrum
 farma
 filharmonia
 fosa zamku
+gabinet stomatologiczny
 galeria handlowa
 galeria sztuki
 garaż
@@ -149,6 +149,7 @@ powierzchnia Księżyca
 poza zasięgiem kamer
 pralnia
 prosektorium
+przeciwne strony stołu
 przedszkole
 przejście dla pieszych
 przejście graniczne
