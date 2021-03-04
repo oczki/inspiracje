@@ -21,8 +21,17 @@ function addJs($name) {
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <meta name="theme-color" content="#7F7F7F">
     <meta name="description" content="Podręczny generator postaci, relacji, miejsc i innych słów do scenek teatru improwizowanego.">
-    <title>Magazyn inspiracji</title>
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <meta property="og:locale" content="pl">
+    <meta property="og:title" content="Podręczny generator postaci, relacji, miejsc i innych słów do scenek teatru improwizowanego.">
+    <meta property="og:image" content="/media/og-image.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2671d9">
+    <meta name="msapplication-TileColor" content="#f0f0f0">
+    <meta name="theme-color" content="#ffffff">
+    <title>Magazyn Inspiracji</title>
     <?php addCss('style'); ?>
     <?php addCss('swiper-bundle.min'); ?>
     <?php addJs('swiper-bundle.min'); ?>
