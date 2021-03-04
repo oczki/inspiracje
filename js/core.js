@@ -362,6 +362,7 @@ class Creator {
     linkElement.innerHTML = text;
     linkElement.setAttribute('href', url);
     linkElement.setAttribute('target', '_blank');
+    linkElement.setAttribute('rel', 'noopener');
     return linkElement;
   }
 
@@ -574,16 +575,16 @@ class SheetCreator {
 
     sheetContent.appendChild(Creator.createSeparator());
 
-    sheetContent.appendChild(Creator.createParagraph('Podręczny generator słów służących za początkową ' +
-      'inspirację do scenek teatru improwizowanego.', 'sliding-sheet-text'));
-    sheetContent.appendChild(Creator.createParagraph('Na występach źródłem inspiracji jest publiczność, ' +
-      'lecz ich pomoc nie jest dostępna podczas prób i ćwiczeń. Magazyn Inspiracji wypełnia tę lukę ' +
-      'zbiorem ponad 1500 pomysłów, podzielonych na wygodne kategorie.', 'sliding-sheet-text'
+    sheetContent.appendChild(Creator.createParagraph('Podręczny generator słów służących za&nbsp;punkt ' +
+      'zaczepienia scenek teatru improwizowanego.', 'sliding-sheet-text'));
+    sheetContent.appendChild(Creator.createParagraph('Na&nbsp;występach źródłem inspiracji jest publiczność, ' +
+      'lecz&nbsp;ich pomoc nie&nbsp;jest dostępna podczas prób i&nbsp;ćwiczeń. Magazyn Inspiracji wypełnia tę&nbsp;lukę ' +
+      'zbiorem ponad 1500 pomysłów, podzielonych na&nbsp;wygodne kategorie.', 'sliding-sheet-text'
     ));
 
     sheetContent.appendChild(Creator.createSeparator());
 
-    sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w rozwoju aplikacji lub zgłosić błąd?', 'sliding-sheet-text'));
+    sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w&nbsp;rozwoju aplikacji lub&nbsp;zgłosić błąd?', 'sliding-sheet-text'));
     sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na GitHub', 'https://github.com/oczki/inspiracje', iconGithub));
     sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail));
 

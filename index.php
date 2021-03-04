@@ -20,6 +20,7 @@ function addJs($name) {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <meta name="theme-color" content="#7F7F7F">
+    <meta name="description" content="Podręczny generator postaci, relacji, miejsc i innych słów do scenek teatru improwizowanego.">
     <title>Magazyn inspiracji</title>
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <?php addCss('style'); ?>
