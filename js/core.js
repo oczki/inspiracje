@@ -277,7 +277,7 @@ class Container {
 class Creator {
   static createSwiper(type, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) {
     const swiper = new Swiper(Selector.swiperSelector(type), {
-      speed: swiperAnimationDuration, // TODO: zero this if prefers-reduced-motion is on
+      speed: swiperAnimationDuration,
       spaceBetween: 0,
       navigation: {
         prevEl: `#${Selector.sectionId(type)} .navigation-button-prev`,
@@ -388,6 +388,7 @@ class Creator {
       event.preventDefault();
       callback();
     });
+    Aria.setLabel(button, buttonText);
     // button.appendChild(this.createSpan(buttonText));
     button.appendChild(this.createIcon(svgCode));
     this.addRipple(button);
@@ -451,6 +452,7 @@ class SpecializedCreator {
     const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
     Creator.addRipple(forwardButton);
     VisibilityController.showAndAllowTabbingToElement(forwardButton);
+    Aria.setLabel(forwardButton, 'Nowy zestaw słów');
 
     forwardButton.addEventListener('click', function (e) {
       e.preventDefault();
@@ -469,7 +471,6 @@ class SpecializedCreator {
         for (let container of containers) {
           textToSpeak.push(wordsContainer[container.type]?.createTextToSpeak());
         }
-        console.log('text to speak', textToSpeak.join(', '));
         Aria.speak(textToSpeak.join(', '));
       }, delayBetweenLoadedWordsDuration * types.length + 50);
     });
@@ -483,6 +484,7 @@ class SpecializedCreator {
     const closeSheetButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-close-sheet');
     Creator.addRipple(closeSheetButton);
     VisibilityController.hideAndPreventTabbingToElement(closeSheetButton);
+    Aria.setLabel(closeSheetButton, 'Zamknij panel');
 
     closeSheetButton.addEventListener('click', function (e) {
       e.preventDefault();
@@ -713,7 +715,7 @@ class Settings {
     }
 
     static createIncreaseFontScaleButton() {
-      const buttonText = 'Powiększ';
+      const buttonText = 'Powiększ tekst';
       const iconSvgCode = iconPlusBox;
       const callback = () => {
         this.increaseFontScale();
@@ -722,7 +724,7 @@ class Settings {
     }
 
     static createDecreaseFontScaleButton() {
-      const buttonText = 'Pomniejsz';
+      const buttonText = 'Pomniejsz tekst';
       const iconSvgCode = iconMinusBox;
       const callback = () => {
         this.decreaseFontScale();
@@ -809,7 +811,6 @@ class Settings {
       toggle.addEventListener('change', (event) => {
         this.setAnimationsDisabledState(!event.currentTarget.checked);
       });
-
       const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
