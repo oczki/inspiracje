@@ -159,8 +159,8 @@ class Container {
     this.initializeWords();
     WordSectionCreator.addSection(container);
     this.swiper = this.initializeSwiper();
-    setInterval(() => this.runCleanup(), swiperAnimationDuration * 10 + 11);
-    setInterval(() => this.speakCurrentSlideIfAllowed(), swiperAnimationDuration + 11);
+    setInterval(() => this.runCleanup(), Math.max(1500, swiperAnimationDuration * 10 + 11));
+    setInterval(() => this.speakCurrentSlideIfAllowed(), Math.max(150, swiperAnimationDuration + 11));
   }
 
   initializeWords() {
