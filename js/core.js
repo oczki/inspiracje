@@ -183,7 +183,7 @@ class Container {
     const nextSlideCallback = () => { this.wordsCacheIndex++; this.addSlidesIfNeeded(); }
     const transitionStartedCallback = () => { this.isCleanupAllowed = false; }
     const transitionFinishedCallback = () => { this.isCleanupAllowed = true; this.hasSpokenSinceTransitionEnd = false; }
-    const swiperInitialized = Creator.createSwiper(this.type,
+    const swiperInitialized = Creator.createSwiper(this.type, this.label,
       prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback);
     swiperInitialized.slideNext(swiperAnimationDuration);
     return Selector.getSwiper(this.type);
@@ -275,7 +275,7 @@ class Container {
 }
 
 class Creator {
-  static createSwiper(type, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) {
+  static createSwiper(type, label, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) {
     const swiper = new Swiper(Selector.swiperSelector(type), {
       speed: swiperAnimationDuration,
       spaceBetween: 0,
@@ -284,8 +284,8 @@ class Creator {
         nextEl: `#${Selector.sectionId(type)} .navigation-button-next`,
       },
       a11y: {
-        prevSlideMessage: 'Wstecz',
-        nextSlideMessage: 'Dalej'
+        prevSlideMessage: 'Wstecz: ' + label,
+        nextSlideMessage: 'Dalej: ' + label
       }
     });
     swiper.on('slidePrevTransitionStart', prevSlideCallback);
