@@ -284,8 +284,8 @@ let Creator = new function() {
         nextEl: `#${Selector.sectionId(type)} .navigation-button-next`,
       },
       a11y: {
-        prevSlideMessage: 'Wstecz: ' + label,
-        nextSlideMessage: 'Dalej: ' + label
+        prevSlideMessage: label + ' - poprzednie słowo',
+        nextSlideMessage: label + ' - następne słowo'
       }
     });
     swiper.on('slidePrevTransitionStart', prevSlideCallback);
@@ -456,7 +456,11 @@ let SpecializedCreator = new function() {
 
     forwardButton.addEventListener('click', function (e) {
       e.preventDefault();
+
+      // Block reading individual sections, to give way to combined forward-all reading
       Aria.setIsAdvanceAllSpeaking(true);
+
+      // Forward sections in randomized order
       const types = Object.keys(containers).map(key => containers[key].type);
       Util.shuffle(types);
       for (const [index, type] of types.entries()) {
@@ -465,14 +469,20 @@ let SpecializedCreator = new function() {
           requestAnimationFrame(() => swiper?.slideNext(swiperAnimationDuration));
         }, delayBetweenLoadedWordsDuration * index);
       }
+
+      // Prepare a combined text to speak
       setTimeout(() => {
-        Aria.setIsAdvanceAllSpeaking(false);
         let textToSpeak = [];
         for (let container of containers) {
           textToSpeak.push(wordsContainer[container.type]?.createTextToSpeak());
         }
         Aria.speak(textToSpeak.join(', '));
-      }, delayBetweenLoadedWordsDuration * types.length + 50);
+      }, delayBetweenLoadedWordsDuration * types.length);
+
+      // Unblock reading individual sections after a while
+      setTimeout(() => {
+        Aria.setIsAdvanceAllSpeaking(false);
+      }, 500 + swiperAnimationDuration + delayBetweenLoadedWordsDuration * types.length)
     });
 
     forwardButton.appendChild(Creator.createSpan('Nowy zestaw'));
