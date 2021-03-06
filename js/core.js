@@ -97,33 +97,33 @@ let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
 let delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
 let fabTransitionDuration = defaultFabTransitionDuration;
 
-class Selector {
-  static sectionId(type) {
+let Selector = new function() {
+  this.sectionId = (type) => {
     return `section-${type}`;
   }
 
-  static swiperSelector(type) {
+  this.swiperSelector = (type) => {
     return `#${this.sectionId(type)} .swiper-container`;
   }
 
-  static getSwiper(type) {
+  this.getSwiper = (type) => {
     return document.querySelector(this.swiperSelector(type))?.swiper;
   }
 
-  static getScrim() {
+  this.getScrim = () => {
     return document.getElementById('scrim');
   }
 }
 
-class Util {
-  static shuffle(arr) {
+let Util = new function() {
+  this.shuffle = (arr) => {
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
   }
 
-  static ajax(url, callback) {
+  this.ajax = (url, callback) => {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
@@ -134,11 +134,11 @@ class Util {
     xhr.send();
   }
 
-  static getWords(type, callback) {
+  this.getWords = (type, callback) => {
     this.ajax('ajax/' + type + '.php', (output) => callback(output));
   }
 
-  static updateAllSwipers() {
+  this.updateAllSwipers = () => {
     for (let container of containers) {
       wordsContainer[container.type]?.swiper?.update();
     }
@@ -274,8 +274,8 @@ class Container {
   }
 }
 
-class Creator {
-  static createSwiper(type, label, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) {
+let Creator = new function() {
+  this.createSwiper = (type, label, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) => {
     const swiper = new Swiper(Selector.swiperSelector(type), {
       speed: swiperAnimationDuration,
       spaceBetween: 0,
@@ -297,7 +297,7 @@ class Creator {
     return swiper;
   }
 
-  static createElementWithClass(tagName, className = undefined) {
+  this.createElementWithClass = (tagName, className = undefined) => {
     const element = document.createElement(tagName);
     if (className) {
       element.classList.add(className);
@@ -305,7 +305,7 @@ class Creator {
     return element;
   }
 
-  static createElementWithId(tagName, id = undefined) {
+  this.createElementWithId = (tagName, id = undefined) => {
     const element = document.createElement(tagName);
     if (id) {
       element.id = id;
@@ -313,7 +313,7 @@ class Creator {
     return element;
   }
 
-  static createElementWithClassAndId(tagName, className = undefined, id = undefined) {
+  this.createElementWithClassAndId = (tagName, className = undefined, id = undefined) => {
     const element = this.createElementWithClass(tagName, className);
     if (id) {
       element.id = id;
@@ -321,7 +321,7 @@ class Creator {
     return element;
   }
 
-  static createIcon(svgCode, additionalClass = undefined) {
+  this.createIcon = (svgCode, additionalClass = undefined) => {
     const iconContainer = this.createElementWithClass('div', 'icon');
     if (additionalClass) {
       iconContainer.classList.add(additionalClass);
@@ -330,7 +330,7 @@ class Creator {
     return iconContainer;
   }
 
-  static createSpan(text, additionalClass = undefined) {
+  this.createSpan = (text, additionalClass = undefined) => {
     const spanElement = document.createElement('span');
     if (additionalClass) {
       spanElement.classList.add(additionalClass);
@@ -339,13 +339,13 @@ class Creator {
     return spanElement;
   }
 
-  static createHidingSpan(text) {
+  this.createHidingSpan = (text) => {
     const spanElement = this.createElementWithClass('span', 'hidden-when-narrow');
     spanElement.innerHTML = text;
     return spanElement;
   }
 
-  static createParagraph(text, additionalClass = undefined) {
+  this.createParagraph = (text, additionalClass = undefined) => {
     const paragraphElement = document.createElement('p');
     if (additionalClass) {
       paragraphElement.classList.add(additionalClass);
@@ -354,7 +354,7 @@ class Creator {
     return paragraphElement;
   }
 
-  static createLink(text, url, additionalClass = undefined) {
+  this.createLink = (text, url, additionalClass = undefined) => {
     const linkElement = document.createElement('a');
     if (additionalClass) {
       linkElement.classList.add(additionalClass);
@@ -366,7 +366,7 @@ class Creator {
     return linkElement;
   }
 
-  static createLinkWithIcon(text, url, svgCode, additionalClass = undefined) {
+  this.createLinkWithIcon = (text, url, svgCode, additionalClass = undefined) => {
     const iconElement = Creator.createIcon(svgCode);
     const textElement = Creator.createSpan(text);
     const link = this.createLink(iconElement.outerHTML + textElement.outerHTML, url, additionalClass);
@@ -375,14 +375,14 @@ class Creator {
     return link;
   }
 
-  static createSlidingSheet(id) {
+  this.createSlidingSheet = (id) => {
     const sheet = this.createElementWithClassAndId('div', 'sliding-sheet', id);
     const content = this.createElementWithClass('div', 'sliding-sheet-content');
     sheet.appendChild(content);
     return sheet;
   }
 
-  static createCircularButton(buttonId, buttonText, svgCode, callback) {
+  this.createCircularButton = (buttonId, buttonText, svgCode, callback) => {
     const button = this.createElementWithClassAndId('button', 'circular-button', buttonId);
     button.addEventListener('click', function (event) {
       event.preventDefault();
@@ -395,17 +395,17 @@ class Creator {
     return button;
   }
 
-  static addRipple(parentElement) {
+  this.addRipple = (parentElement) => {
     parentElement.appendChild(this.createElementWithClass('div', 'rippleJS'));
   }
 
-  static createSlide(text) {
+  this.createSlide = (text) => {
     const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
     const textWithNonBreakingSpace = capitalizedText.replace(/ (i|z|w|od|za|oraz) /gi, ' $1&nbsp;');
     return `<div class="swiper-slide">${textWithNonBreakingSpace}</div>`;
   }
 
-  static createSlides(texts = []) {
+  this.createSlides = (texts = []) => {
     let slides = [];
     for (let text of texts) {
       slides.push(this.createSlide(text));
@@ -413,15 +413,15 @@ class Creator {
     return slides;
   }
 
-  static createSeparator() {
+  this.createSeparator = () => {
     const separator = document.createElement('hr');
     separator.classList.add('separator');
     return separator;
   }
 }
 
-class SpecializedCreator {
-  static createSettingsButton() {
+let SpecializedCreator = new function() {
+  this.createSettingsButton = () => {
     const buttonId = 'button-settings';
     const buttonText = 'Ustawienia';
     const iconSvgCode = iconCog;
@@ -431,7 +431,7 @@ class SpecializedCreator {
     return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
   }
 
-  static createAboutButton() {
+  this.createAboutButton = () => {
     const buttonId = 'button-about';
     const buttonText = 'Informacje';
     const iconSvgCode = iconInfo;
@@ -441,14 +441,14 @@ class SpecializedCreator {
     return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
   }
 
-  static createCheckboxIcons() {
+  this.createCheckboxIcons = () => {
     const container = Creator.createElementWithClass('div', 'checkbox-icon');
     container.appendChild(Creator.createIcon(iconCheckboxMarked, 'checked'));
     container.appendChild(Creator.createIcon(iconCheckboxBlankOutline, 'unchecked'));
     return container;
   }
 
-  static createAdvanceAllWordsFloatingActionButton() {
+  this.createAdvanceAllWordsFloatingActionButton = () => {
     const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
     Creator.addRipple(forwardButton);
     VisibilityController.showAndAllowTabbingToElement(forwardButton);
@@ -480,7 +480,7 @@ class SpecializedCreator {
     return forwardButton;
   }
 
-  static createCloseSheetFloatingActionButton() {
+  this.createCloseSheetFloatingActionButton = () => {
     const closeSheetButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-close-sheet');
     Creator.addRipple(closeSheetButton);
     VisibilityController.hideAndPreventTabbingToElement(closeSheetButton);
@@ -497,8 +497,8 @@ class SpecializedCreator {
   }
 }
 
-class WordSectionCreator {
-  static addSwiperPrevNextButtons(parentElement) {
+let WordSectionCreator = new function() {
+  this.addSwiperPrevNextButtons = (parentElement) => {
     const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
     prevButton.appendChild(Creator.createIcon(iconChevronLeft));
     prevButton.appendChild(Creator.createHidingSpan('Wstecz'));
@@ -515,21 +515,21 @@ class WordSectionCreator {
     parentElement.appendChild(nextButton);
   }
 
-  static addIcon(parentElement, svgCode) {
+  this.addIcon = (parentElement, svgCode) => {
     parentElement.appendChild(Creator.createIcon(svgCode, 'section-icon'));
   }
 
-  static addSwiperWrapper(parentElement) {
+  this.addSwiperWrapper = (parentElement) => {
     parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
   }
 
-  static addSectionHeader(parentElement, container) {
+  this.addSectionHeader = (parentElement, container) => {
     const header = Creator.createElementWithClass('div', 'header-container');
     header.innerHTML = container.label;
     parentElement.appendChild(header);
   }
 
-  static addSection(container) {
+  this.addSection = (container) => {
     const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(container.type));
     this.addSectionHeader(section, container);
     this.addIcon(section, container.icon);
@@ -545,8 +545,8 @@ class WordSectionCreator {
   }
 }
 
-class SheetCreator {
-  static createSettingsSheet() {
+let SheetCreator = new function() {
+  this.createSettingsSheet = () => {
     const sheetName = 'settings';
     const sheet = Creator.createSlidingSheet(sheetName);
     VisibilityController.preventTabbingToElement(sheet);
@@ -567,7 +567,7 @@ class SheetCreator {
     return sheet;
   }
 
-  static createAboutSheet() {
+  this.createAboutSheet = () => {
     const sheet = Creator.createSlidingSheet('about');
     VisibilityController.preventTabbingToElement(sheet);
 
@@ -599,56 +599,56 @@ class SheetCreator {
   }
 }
 
-class VisibilityController {
-  static showElement(element) {
+let VisibilityController = new function() {
+  this.showElement = (element) => {
     element?.classList.add(visibleClass);
   }
 
-  static hideElement(element) {
+  this.hideElement = (element) => {
     element?.classList.remove(visibleClass);
   }
 
-  static preventTabbingToElement(element) {
+  this.preventTabbingToElement = (element) => {
     if (!element) return;
     element.style.visibility = 'hidden';
     Aria.setAttr(element, 'hidden', 'true');
   }
   
-  static allowTabbingToElement(element) {
+  this.allowTabbingToElement = (element) => {
     if (!element) return;
     element.style.visibility = 'initial';
     Aria.setAttr(element, 'hidden', 'false');
   }
 
-  static delayedPreventTabbingToElement(element, delay) {
+  this.delayedPreventTabbingToElement = (element, delay) => {
     setTimeout(() => this.preventTabbingToElement(element), delay);
   }
 
-  static showAndAllowTabbingToElement(element) {
+  this.showAndAllowTabbingToElement = (element) => {
     this.showElement(element);
     this.allowTabbingToElement(element);
   }
 
-  static hideAndPreventTabbingToElement(element, delay = 0) {
+  this.hideAndPreventTabbingToElement = (element, delay = 0) => {
     this.hideElement(element);
     this.delayedPreventTabbingToElement(element, delay);
   }
 
-  static showCloseFab() {
+  this.showCloseFab = () => {
     const fabAdvanceAll = document.getElementById('button-advance-all');
     const fabCloseSheet = document.getElementById('button-close-sheet');
     this.hideAndPreventTabbingToElement(fabAdvanceAll, fabTransitionDuration);
     this.showAndAllowTabbingToElement(fabCloseSheet);
   }
 
-  static showAdvanceAllFab() {
+  this.showAdvanceAllFab = () => {
     const fabAdvanceAll = document.getElementById('button-advance-all');
     const fabCloseSheet = document.getElementById('button-close-sheet');
     this.hideAndPreventTabbingToElement(fabCloseSheet, fabTransitionDuration);
     this.showAndAllowTabbingToElement(fabAdvanceAll);
   }
 
-  static hideSlidingSheetsAndScrim() {
+  this.hideSlidingSheetsAndScrim = () => {
     const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
     for (const sheet of sheetsToHide) {
       sheet.classList.remove(visibleClass);
@@ -658,7 +658,7 @@ class VisibilityController {
     this.showAdvanceAllFab();
   }
 
-  static toggleSheetVisibility(sheetId) {
+  this.toggleSheetVisibility = (sheetId) => {
     const sheet = document.getElementById(sheetId);
     this.hideOtherSheets(sheetId);
     if (sheet?.classList.contains(visibleClass)) {
@@ -672,7 +672,7 @@ class VisibilityController {
     }
   }
 
-  static hideOtherSheets(idOfSheetNotToHide) {
+  this.hideOtherSheets = (idOfSheetNotToHide) => {
     const otherSheets = Array.from(document.querySelectorAll(`.sliding-sheet:not(#${idOfSheetNotToHide})`));
     for (let otherSheet of otherSheets) {
       otherSheet.classList.remove(visibleClass);
@@ -681,18 +681,18 @@ class VisibilityController {
   }
 }
 
-class Settings {
-  static FontScale = class {
-    static keyName = 'font-scale';
-    static scaleDisplayElementId = 'scale-control-value';
-    static scalePlusElementId = 'button-font-scale-plus';
-    static scaleMinusElementId = 'button-font-scale-minus';
+let Settings = new function() {
+  this.FontScale = new function() {
+    this.keyName = 'font-scale';
+    this.scaleDisplayElementId = 'scale-control-value';
+    this.scalePlusElementId = 'button-font-scale-plus';
+    this.scaleMinusElementId = 'button-font-scale-minus';
 
-    static getFontScale() {
+    this.getFontScale = () => {
       return localStorage.getItem(this.keyName) || 1.0;
     }
 
-    static setFontScale(value) {
+    this.setFontScale = (value) => {
       localStorage.setItem(this.keyName, value);
       document.documentElement.style.setProperty('--font-size-multiplier', value);
       this.updateCurrentScaleDisplay();
@@ -700,21 +700,21 @@ class Settings {
       Util.updateAllSwipers();
     }
 
-    static increaseFontScale() {
+    this.increaseFontScale = () => {
       const currentFontScale = this.getFontScale();
       const upperBound = fontScaleValues[fontScaleValues.length - 1];
       const valueLargerThanCurrent = fontScaleValues.filter(value => value > currentFontScale)[0] || upperBound;
       this.setFontScale(valueLargerThanCurrent);
     }
 
-    static decreaseFontScale() {
+    this.decreaseFontScale = () => {
       const currentScale = this.getFontScale();
       const lowerBound = fontScaleValues[0];
       const valueSmallerThanCurrent = Math.max(...fontScaleValues.filter(value => value < currentScale), lowerBound);
       this.setFontScale(valueSmallerThanCurrent);
     }
 
-    static createIncreaseFontScaleButton() {
+    this.createIncreaseFontScaleButton = () => {
       const buttonText = 'Powiększ tekst';
       const iconSvgCode = iconPlusBox;
       const callback = () => {
@@ -723,7 +723,7 @@ class Settings {
       return Creator.createCircularButton(this.scalePlusElementId, buttonText, iconSvgCode, callback);
     }
 
-    static createDecreaseFontScaleButton() {
+    this.createDecreaseFontScaleButton = () => {
       const buttonText = 'Pomniejsz tekst';
       const iconSvgCode = iconMinusBox;
       const callback = () => {
@@ -732,11 +732,11 @@ class Settings {
       return Creator.createCircularButton(this.scaleMinusElementId, buttonText, iconSvgCode, callback);
     }
 
-    static createCurrentScaleDisplay() {
+    this.createCurrentScaleDisplay = () => {
       return Creator.createElementWithId('span', this.scaleDisplayElementId);
     }
 
-    static updateCurrentScaleDisplay() {
+    this.updateCurrentScaleDisplay = () => {
       const scaleDisplayElement = document.getElementById(this.scaleDisplayElementId);
       if (scaleDisplayElement) {
         const valueAsPercent = `${(this.getFontScale() * 100).toFixed(0)}%`;
@@ -744,13 +744,13 @@ class Settings {
       }
     }
 
-    static setButtonState(buttonId, isDisabled) {
+    this.setButtonState = (buttonId, isDisabled) => {
       const button = document.getElementById(buttonId);
       if (!button) return;
       button.disabled = isDisabled;
     }
 
-    static updateButtonsStates() {
+    this.updateButtonsStates = () => {
       const currentFontScale = this.getFontScale();
       const lowerBound = fontScaleValues[0];
       const upperBound = fontScaleValues[fontScaleValues.length - 1];
@@ -758,7 +758,7 @@ class Settings {
       this.setButtonState(this.scalePlusElementId, currentFontScale >= upperBound);
     }
 
-    static createControl() {
+    this.createControl = () => {
       const container = Creator.createElementWithId('div', 'scale-control-container');
       container.appendChild(Creator.createIcon(iconFormatSize, 'decorative-icon'));
       container.appendChild(Creator.createSpan('Skala'));
@@ -772,14 +772,14 @@ class Settings {
     }
   };
 
-  static AnimationsToggle = class {
-    static keyName = 'animations-disabled';
+  this.AnimationsToggle = new function() {
+    this.keyName = 'animations-disabled';
 
-    static doesTheUserPreferReducedMotion() {
+    this.doesTheUserPreferReducedMotion = () => {
       return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
 
-    static shouldAnimationsToggleBeChecked(keyName) {
+    this.shouldAnimationsToggleBeChecked = (keyName) => {
       const currentAnimationsDisabledKeyValue = localStorage.getItem(keyName);
       if (currentAnimationsDisabledKeyValue === null)
         return !this.doesTheUserPreferReducedMotion();
@@ -787,7 +787,7 @@ class Settings {
         return currentAnimationsDisabledKeyValue === 'false';
     }
 
-    static setAnimationsDisabledState(state) {
+    this.setAnimationsDisabledState = (state) => {
       localStorage.setItem(this.keyName, state);
       document.body.classList.toggle('no-animations', state);
       if (state) {
@@ -803,7 +803,7 @@ class Settings {
       }
     }
 
-    static createToggle() {
+    this.createToggle = () => {
       const toggle = Creator.createElementWithId('input', `${this.keyName}-checkbox`);
       toggle.type = 'checkbox';
       toggle.checked = this.shouldAnimationsToggleBeChecked(this.keyName);
@@ -820,20 +820,20 @@ class Settings {
     }
   };
 
-  static CompactModeToggle = class {
-    static keyName = 'compact-mode';
+  this.CompactModeToggle = new function() {
+    this.keyName = 'compact-mode';
 
-    static shouldToggleBeChecked() {
+    this.shouldToggleBeChecked = () => {
       return localStorage.getItem(this.keyName) === 'true';
     }
 
-    static setCompactModeState(state) {
+    this.setCompactModeState = (state) => {
       localStorage.setItem(this.keyName, state);
       document.body.classList.toggle('compact', state);
       Util.updateAllSwipers();
     }
 
-    static createToggle() {
+    this.createToggle = () => {
       const toggle = Creator.createElementWithId('input', `${this.keyName}-checkbox`);
       toggle.type = 'checkbox';
       toggle.checked = this.shouldToggleBeChecked();
@@ -851,14 +851,14 @@ class Settings {
     }
   };
 
-  static DarkModeToggle = class {
-    static keyName = 'dark-mode';
+  this.DarkModeToggle = new function() {
+    this.keyName = 'dark-mode';
 
-    static doesTheUserPreferDarkMode() {
+    this.doesTheUserPreferDarkMode = () => {
       return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
-    static shouldToggleBeChecked() {
+    this.shouldToggleBeChecked = () => {
       const currentDarkModeKeyValue = localStorage.getItem(this.keyName);
       if (currentDarkModeKeyValue === null)
         return this.doesTheUserPreferDarkMode();
@@ -866,7 +866,7 @@ class Settings {
         return currentDarkModeKeyValue === 'true';
     }
 
-    static setDarkModeState(state) {
+    this.setDarkModeState = (state) => {
       localStorage.setItem(this.keyName, state);
       document.body.classList.toggle('dark', state);
       requestAnimationFrame(() => {
@@ -875,7 +875,7 @@ class Settings {
       });
     }
 
-    static createToggle() {
+    this.createToggle = () => {
       const toggle = Creator.createElementWithId('input', `${this.keyName}-checkbox`);
       toggle.type = 'checkbox';
       toggle.checked = this.shouldToggleBeChecked();
@@ -893,36 +893,36 @@ class Settings {
     }
   };
 
-  static updateFontScaleElements() {
+  this.updateFontScaleElements = () => {
     this.FontScale.updateCurrentScaleDisplay();
     this.FontScale.updateButtonsStates();
   }
 
-  static createFontScaleControl() {
+  this.createFontScaleControl = () => {
     return this.FontScale.createControl();
   }
 
-  static createAnimationsToggle() {
+  this.createAnimationsToggle = () => {
     return this.AnimationsToggle.createToggle();
   }
 
-  static createCompactModeToggle() {
+  this.createCompactModeToggle = () => {
     return this.CompactModeToggle.createToggle();
   }
 
-  static createDarkModeToggle() {
+  this.createDarkModeToggle = () => {
     return this.DarkModeToggle.createToggle();
   }
 }
 
-class ElementPopulator {
-  static populateSlidingSheetsContainer() {
+let ElementPopulator = new function() {
+  this.populateSlidingSheetsContainer = () => {
     const container = document.getElementById('sliding-sheets-container');
     container.appendChild(SheetCreator.createSettingsSheet());
     container.appendChild(SheetCreator.createAboutSheet());
   }
 
-  static populateFooter() {
+  this.populateFooter = () => {
     const footer = document.getElementsByTagName('footer')[0];
 
     const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
@@ -935,15 +935,15 @@ class ElementPopulator {
     VisibilityController.showElement(footer);
   }
 
-  static populatePageWithWordContainers() {
+  this.populatePageWithWordContainers = () => {
     for (const container of containers) {
       wordsContainer[container.type] = new Container(container);
     }
   }
 }
 
-class GlobalEventHandler {
-  static attachEventsToSheetsAndScrim() {
+let GlobalEventHandler = new function() {
+  this.attachEventsToSheetsAndScrim = () => {
     Selector.getScrim()?.addEventListener('click', (event) => {
       event.preventDefault();
       VisibilityController.hideSlidingSheetsAndScrim();
@@ -956,7 +956,7 @@ class GlobalEventHandler {
     });
   }
 
-  static handleKeyboardInput(event) {
+  this.handleKeyboardInput = (event) => {
     if (event.keyCode === 9) {
       document.body.classList.add('show-outline');
       window.removeEventListener('keydown', GlobalEventHandler.handleKeyboardInput);
@@ -964,29 +964,29 @@ class GlobalEventHandler {
     }
   }
 
-  static handleMouseInput() {
+  this.handleMouseInput = () => {
     document.body.classList.remove('show-outline');
     window.addEventListener('keydown', GlobalEventHandler.handleKeyboardInput);
     window.removeEventListener('mousedown', GlobalEventHandler.handleMouseInput);
   }
 
-  static handleFirstKeyboardInput() {
+  this.handleFirstKeyboardInput = () => {
     window.addEventListener('keydown', GlobalEventHandler.handleKeyboardInput);
   }
 }
 
-class Aria {
-  static isAdvanceAllSpeakingFlag = false;
+let Aria = new function() {
+  this.isAdvanceAllSpeakingFlag = false;
 
-  static setAttr(element, ariaAttribute, value) {
+  this.setAttr = (element, ariaAttribute, value) => {
     element.setAttribute(`aria-${ariaAttribute}`, value);
   }
 
-  static setLabel(element, value) {
+  this.setLabel = (element, value) => {
     this.setAttr(element, 'label', value);
   }
 
-  static speak(text) {
+  this.speak = (text) => {
     const id = 'speak-' + Date.now();
     const ghostElement = Creator.createElementWithClassAndId('div', 'aria-only', id);
     this.setAttr(ghostElement, 'live', 'assertive');
@@ -1000,11 +1000,11 @@ class Aria {
     }, 1000);
   }
 
-  static isAdvanceAllSpeaking() {
+  this.isAdvanceAllSpeaking = () => {
     return this.isAdvanceAllSpeakingFlag;
   }
 
-  static setIsAdvanceAllSpeaking(newValue) {
+  this.setIsAdvanceAllSpeaking = (newValue) => {
     this.isAdvanceAllSpeakingFlag = newValue;
   }
 }
