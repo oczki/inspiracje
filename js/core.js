@@ -30,31 +30,37 @@ let containers = [
     type: "location",
     label: "Miejsce",
     icon: iconMapMarker,
+    color: "#2222DD",
   },
   {
     type: "character",
     label: "Postać",
     icon: iconAccount,
+    color: "#22DDDD",
   },
   {
     type: "character-modifier",
     label: "Cecha postaci",
     icon: iconAccountDetails,
+    color: "#22DD22",
   },
   {
     type: "relation",
     label: "Relacja",
     icon: iconAccountSwitch,
+    color: "#DDDD22",
   },
   {
     type: "emotion",
     label: "Emocja",
     icon: iconHeart,
+    color: "#DD2222",
   },
   {
     type: "action",
     label: "Czynność",
     icon: iconRun,
+    color: "#DD22DD",
   },
   // {
   //   type: "body-part",
@@ -142,6 +148,53 @@ let Util = new function() {
     for (let container of containers) {
       wordsContainer[container.type]?.swiper?.update();
     }
+  }
+}
+
+class Color {
+  constructor(hex = "#000000") {
+    const rgb = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    this.r = parseInt(rgb[1], 16);
+    this.g = parseInt(rgb[2], 16);
+    this.b = parseInt(rgb[3], 16);
+  }
+
+  get rgb() {
+    return [this.r, this.g, this.b];
+  }
+
+  get hex() {
+    return "#" + ((1 << 24) + (this.r << 16) + (this.g << 8) + this.b).toString(16).slice(1);
+  }
+}
+
+let ColorUtil = new function() {
+  this.mixColors = (color1, color2, factor = 0.5) => {
+    let lerp = (val1, val2) => {
+      const result = (1 - factor) * val1 + factor * val2;
+      return Math.round(result);
+    }
+
+    if (!(color1 instanceof Color))
+      color1 = new Color(color1);
+    if (!(color2 instanceof Color))
+      color2 = new Color(color2);
+
+    let mixed = new Color();
+    mixed.r = lerp(color1.r, color2.r);
+    mixed.g = lerp(color1.g, color2.g);
+    mixed.b = lerp(color1.b, color2.b);
+    return mixed;
+  }
+  
+  this.darken = (color, factor = 0.5) => {
+    const black = new Color("#000000");
+    return this.mixColors(color, black, factor);
+  }
+  
+  this.lighten = (color, factor = 0.5) => {
+    const white = new Color("#ffffff");
+    return this.mixColors(color, white, factor);
   }
 }
 
@@ -508,41 +561,47 @@ let SpecializedCreator = new function() {
 }
 
 let WordSectionCreator = new function() {
-  this.addSwiperPrevNextButtons = (parentElement) => {
+  this.addSwiperPrevNextButtons = (parentElement, color) => {
     const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
     prevButton.appendChild(Creator.createIcon(iconArrowLeft));
     prevButton.style.position = 'relative';
+    prevButton.style.color = ColorUtil.darken(color).hex;
     Creator.addRipple(prevButton);
 
     const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
     nextButton.appendChild(Creator.createIcon(iconArrowRight));
     nextButton.style.position = 'relative';
+    nextButton.style.color = ColorUtil.darken(color).hex;
     Creator.addRipple(nextButton);
 
     parentElement.appendChild(prevButton);
     parentElement.appendChild(nextButton);
   }
 
-  this.addSwiperWrapper = (parentElement) => {
-    parentElement.appendChild(Creator.createElementWithClass('div', 'swiper-wrapper'));
+  this.addSwiperWrapper = (parentElement, color) => {
+    const swiperWrapper = Creator.createElementWithClass('div', 'swiper-wrapper');
+    swiperWrapper.style.color = ColorUtil.darken(color).hex;
+    parentElement.appendChild(swiperWrapper);
   }
 
   this.addSectionHeader = (parentElement, container) => {
     const header = Creator.createElementWithClass('div', 'header-container');
     header.innerHTML = container.label;
+    header.style.color = container.color;
     parentElement.appendChild(header);
   }
 
   this.addSection = (container) => {
     const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(container.type));
+    section.style.backgroundColor = ColorUtil.lighten(container.color, 0.85).hex;
     this.addSectionHeader(section, container);
-    this.addSwiperPrevNextButtons(section);
+    this.addSwiperPrevNextButtons(section, container.color);
 
-    const mySwiperContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
-    const swiperScriptsContainer = Creator.createElementWithClass('div', 'swiper-container');
-    this.addSwiperWrapper(swiperScriptsContainer);
-    mySwiperContainer.appendChild(swiperScriptsContainer);
-    section.appendChild(mySwiperContainer);
+    const swiperOuterContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
+    const swiperInnerContainer = Creator.createElementWithClass('div', 'swiper-container');
+    this.addSwiperWrapper(swiperInnerContainer, container.color);
+    swiperOuterContainer.appendChild(swiperInnerContainer);
+    section.appendChild(swiperOuterContainer);
 
     document.getElementsByTagName('main')[0].appendChild(section);
   }
