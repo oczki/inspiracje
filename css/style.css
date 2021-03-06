@@ -26,7 +26,7 @@
   --font-size-multiplier: 1;
 
   --body-padding: 8px;
-  --card-padding: 8px;
+  --card-padding: 4px;
   --card-border-radius: 4px;
   --icon-size: 24px;
   --footer-height: 56px;
@@ -131,50 +131,12 @@ body {
 
 /* #region Body variant: compact - no */
 
-body:not(.compact) .section-icon {
-  grid-area: section-icon;
-  margin-left: 8px;
+body:not(.compact) .word-section {
+  --card-margin-top: 32px;
 }
 
-body:not(.compact) .swiper-outer-container {
-  grid-area: 1 / 1 / -1 / -1;
-  min-height: 128px;
-  margin: calc(-1 * var(--card-padding));
-}
-
-body:not(.compact) .swiper-wrapper {
-  padding-top: 48px;
-  box-sizing: border-box;
-}
-
-body:not(.compact) .swiper-slide {
-  padding: 0 16px;
-  align-items: flex-start;
-}
-
-body:not(.compact) button[class^='navigation-button-'] {
-  border-radius: var(--card-border-radius);
-  justify-self: flex-end;
-  z-index: 2;
-  padding: 8px;
-}
-
-body:not(.compact) button[class^='navigation-button-']:not(:hover):not(:focus) {
-  background-color: var(--swiper-navigation-background-color-unhovered);
-}
-
-body:not(.compact) .navigation-button-prev {
-  background-color: transparent;
-  transition-property: background-color;
-}
-
-body:not(.compact) .navigation-button-prev.swiper-button-disabled {
-  opacity: 0.2;
-}
-
-body:not(.compact) .navigation-button-prev:hover,
-body.show-outline:not(.compact) .navigation-button-prev:focus {
-  background-color: var(--swiper-navigation-background-color);
+body:not(.compact) .word-section:first-of-type {
+  --card-margin-top: 24px;
 }
 
 /* #endregion Body variant: compact - no */
@@ -183,25 +145,6 @@ body.show-outline:not(.compact) .navigation-button-prev:focus {
 
 body.compact {
   --card-header-display: none;
-}
-
-body.compact .word-section {
-  --card-padding: 4px;
-
-  grid-template-rows: auto;
-  grid-template-columns: auto 1fr auto;
-  grid-template-areas: 'nav-prev swiper-container nav-next';
-  grid-gap: unset;
-}
-
-body.compact button:not(.floating-action-button) > span {
-  display: none;
-}
-
-body.compact .navigation-button-prev {
-  background-color: var(--swiper-navigation-background-color);
-  opacity: 0;
-  transition-property: opacity;
 }
 
 /* #endregion Body variant: compact - yes */
@@ -300,15 +243,12 @@ a {
   box-shadow: var(--card-shadow);
   border-radius: var(--card-border-radius);
   background-color: var(--color-card-background);
+  margin-top: var(--card-margin-top, 0px);
   margin-bottom: 8px;
   padding: var(--card-padding);
   display: grid;
-  grid-template-rows: auto auto auto;
-  grid-template-columns: auto 1fr auto auto;
-  grid-template-areas: 'section-icon section-header section-header section-header'
-                       '.            .              .              .'
-                       '.            nav-prev       nav-prev       nav-next';
-  grid-gap: 0 8px;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'nav-prev swiper-container nav-next';
 }
 
 .word-section:last-child {
@@ -336,24 +276,28 @@ a {
 .swiper-slide {
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   font-weight: 500;
   font-size: calc(20px * var(--font-size-multiplier));
   line-height: 1.25;
   letter-spacing: 0.15px;
   word-break: break-word;
-  padding-left: 8px;
 }
 
 .header-container {
-  grid-area: section-header;
   display: var(--card-header-display);
   align-items: center;
-  margin-left: 8px;
+  justify-content: center;
   font-size: 16px;
   letter-spacing: 0.15px;
   word-break: break-word;
   color: var(--color-secondary-text);
-  height: 32px;
+  height: 24px;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
 }
 
 .navigation-button-prev {
@@ -364,19 +308,9 @@ a {
   grid-area: nav-next;
 }
 
-.section-icon {
-  grid-area: nav-prev;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-icon);
-  pointer-events: none;
-  align-self: center;
-  justify-self: center;
-}
-
 [class^='navigation-button-'] {
   color: var(--color-accent);
+  background-color: transparent;
   font-weight: 500;
   padding: 12px;
   border-radius: 48px;
@@ -388,6 +322,7 @@ a {
   justify-self: center;
   transition-duration: var(--hover-duration);
   transition-timing-function: var(--timing-function);
+  transition-property: background-color;
 }
 
 [class^='navigation-button-'] > span {
@@ -401,23 +336,14 @@ a {
   transform: scale(1.25);
 }
 
-.navigation-button-next {
-  transition-property: background-color;
-  background-color: transparent;
-}
-
-.navigation-button-next:hover,
-body.show-outline .navigation-button-next:focus {
+[class^='navigation-button-']:hover,
+body.show-outline [class^='navigation-button-']:focus {
   background-color: var(--swiper-navigation-background-color);
 }
 
 .swiper-button-disabled {
   pointer-events: none;
-}
-
-.navigation-button-prev:not(.swiper-button-disabled):hover,
-body.show-outline .navigation-button-prev:not(.swiper-button-disabled):focus {
-  opacity: 1;
+  opacity: 0.2;
 }
 
 /* #endregion Single section with a word swiper */

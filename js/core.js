@@ -511,22 +511,16 @@ let WordSectionCreator = new function() {
   this.addSwiperPrevNextButtons = (parentElement) => {
     const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
     prevButton.appendChild(Creator.createIcon(iconArrowLeft));
-    prevButton.appendChild(Creator.createHidingSpan('Wstecz'));
     prevButton.style.position = 'relative';
     Creator.addRipple(prevButton);
 
     const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
-    nextButton.appendChild(Creator.createHidingSpan('Dalej'));
     nextButton.appendChild(Creator.createIcon(iconArrowRight));
     nextButton.style.position = 'relative';
     Creator.addRipple(nextButton);
 
     parentElement.appendChild(prevButton);
     parentElement.appendChild(nextButton);
-  }
-
-  this.addIcon = (parentElement, svgCode) => {
-    parentElement.appendChild(Creator.createIcon(svgCode, 'section-icon'));
   }
 
   this.addSwiperWrapper = (parentElement) => {
@@ -542,7 +536,6 @@ let WordSectionCreator = new function() {
   this.addSection = (container) => {
     const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(container.type));
     this.addSectionHeader(section, container);
-    this.addIcon(section, container.icon);
     this.addSwiperPrevNextButtons(section);
 
     const mySwiperContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
