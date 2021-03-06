@@ -163,6 +163,10 @@ body.dark {
   --color-footer-background-l: 18%;
 }
 
+body.dark .header-container {
+  font-weight: 400;
+}
+
 /* #endregion Body variant: dark mode */
 
 /* #region Body variant: show outline for keyboard navigation */
@@ -326,11 +330,6 @@ a {
   transform: scale(1.25);
 }
 
-.swiper-button-disabled {
-  pointer-events: none;
-  opacity: 0.2;
-}
-
 /* #endregion Single section with a word swiper */
 
 /* #region Footer */
@@ -431,11 +430,6 @@ footer.visible {
   cursor: pointer;
   background-color: transparent;
   color: var(--color-accent);
-}
-
-.circular-button:disabled {
-  pointer-events: none;
-  opacity: 0.2;
 }
 
 footer .circular-button {
@@ -616,7 +610,7 @@ footer .circular-button {
 
 /* #endregion Sliding panel (settings, about, ...) */
 
-/* #region Hover and focus styles */
+/* #region Hover, focus and disabled styles */
 
 .rippleJS {
   z-index: 3;
@@ -672,7 +666,21 @@ body.dark.show-outline .checkbox-label:focus-within:after {
   opacity: 0.24;
 }
 
-/* #endregion Hover and focus styles */
+button:disabled,
+[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.2;
+  outline-width: 0px !important;
+}
+
+button:disabled:before,
+button:disabled:after,
+[aria-disabled="true"]:before,
+[aria-disabled="true"]:after {
+  opacity: 0 !important;
+}
+
+/* #endregion Hover, focus and disabled styles */
 
 /* #region Media queries */
 
