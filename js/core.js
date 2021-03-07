@@ -1,10 +1,3 @@
-const iconMapMarker = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg>';
-const iconAccount = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg>';
-const iconAccountDetails = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M11 9C11 10.66 9.66 12 8 12C6.34 12 5 10.66 5 9C5 7.34 6.34 6 8 6C9.66 6 11 7.34 11 9M14 20H2V18C2 15.79 4.69 14 8 14C11.31 14 14 15.79 14 18M22 12V14H13V12M22 8V10H13V8M22 4V6H13V4Z" /></svg>';
-const iconAccountSwitch = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M16 9C22 9 22 13 22 13V15H16V13C16 13 16 11.31 14.85 9.8C14.68 9.57 14.47 9.35 14.25 9.14C14.77 9.06 15.34 9 16 9M2 13C2 13 2 9 8 9S14 13 14 13V15H2V13M9 17V19H15V17L18 20L15 23V21H9V23L6 20L9 17M8 1C6.34 1 5 2.34 5 4S6.34 7 8 7 11 5.66 11 4 9.66 1 8 1M16 1C14.34 1 13 2.34 13 4S14.34 7 16 7 19 5.66 19 4 17.66 1 16 1Z" /></svg>';
-const iconHeart = '<svg style="transform: scale(0.9);" viewBox="0 0 24 24"><path fill="currentColor" d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" /></svg>';
-const iconRun = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.08L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z" /></svg>';
-
 const iconArrowLeft = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>';
 const iconArrowRight = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>';
 
@@ -29,7 +22,6 @@ let containers = [
   {
     type: "location",
     label: "Miejsce",
-    icon: iconMapMarker,
     color: {
       hue: 80,
       saturation: {
@@ -51,7 +43,6 @@ let containers = [
   {
     type: "character",
     label: "Postać",
-    icon: iconAccount,
     color: {
       hue: 55,
       saturation: {
@@ -71,7 +62,6 @@ let containers = [
   {
     type: "character-modifier",
     label: "Cecha postaci",
-    icon: iconAccountDetails,
     color: {
       hue: 30,
       saturation: {
@@ -91,7 +81,6 @@ let containers = [
   {
     type: "emotion",
     label: "Emocja",
-    icon: iconHeart,
     color: {
       hue: 0,
       saturation: {
@@ -111,7 +100,6 @@ let containers = [
   {
     type: "relation",
     label: "Relacja",
-    icon: iconAccountSwitch,
     color: {
       hue: 325,
       saturation: {
@@ -131,7 +119,6 @@ let containers = [
   {
     type: "action",
     label: "Czynność",
-    icon: iconRun,
     color: {
       hue: 295,
       saturation: {
@@ -151,33 +138,28 @@ let containers = [
   // {
   //   type: "body-part",
   //   label: "Część ciała",
-  //   icon: '',
   // },
   // {
   //   type: "genre",
   //   label: "Gatunek filmowy",
-  //   icon: '',
   //   prevButtonPrefix: "Poprzedni",
   //   nextButtonPrefix: "Następny",
   // },
   // {
   //   type: "name",
   //   label: "Imię",
-  //   icon: '',
   //   prevButtonPrefix: "Poprzednie",
   //   nextButtonPrefix: "Następne",
   // },
   // {
   //   type: "noun",
   //   label: "Rzeczownik",
-  //   icon: 'box',
   //   prevButtonPrefix: "Poprzedni",
   //   nextButtonPrefix: "Następny",
   // },
   // {
   //   type: "dictionary",
   //   label: "Dowolne słowo",
-  //   icon: 'question-mark',
   //   prevButtonPrefix: "Poprzednie",
   //   nextButtonPrefix: "Następne",
   // },
