@@ -22,7 +22,7 @@
   --timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
   --timing-function-fab-transform: cubic-bezier(0, 0, 0.2, 1);
 
-  --color-accent-h: 215deg;
+  --color-accent-h: 220deg;
   --font-size-multiplier: 1;
 
   --body-padding: 8px;
@@ -92,7 +92,7 @@ body {
   --color-text-negative: var(--color-text-white-high);
   --color-icon: var(--color-icon-black);
 
-  --color-body-background-l: 96%;
+  --color-body-background-l: 97%;
   --color-body-background: hsl(0, 0%, var(--color-body-background-l));
 
   --color-card-background-l: 100%;
@@ -673,7 +673,7 @@ body.dark.show-outline .checkbox-label:focus-within:after {
 button:disabled,
 [aria-disabled="true"] {
   pointer-events: none;
-  opacity: 0.2;
+  opacity: 0.16;
   outline-width: 0px !important;
 }
 

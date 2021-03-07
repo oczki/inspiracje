@@ -30,7 +30,21 @@ let containers = [
     type: "location",
     label: "Miejsce",
     icon: iconMapMarker,
-    color: "#2222DD",
+    color: {
+      hue: 80,
+      saturation: {
+        card: 65,
+        header: 100,
+        word: 100,
+        icon: 100,
+      },
+      lightness: {
+        card: 95,
+        header: 24,
+        word: 24,
+        icon: 24,
+      },
+    },
     prevButtonPrefix: "Poprzednie",
     nextButtonPrefix: "Następne",
   },
@@ -38,31 +52,101 @@ let containers = [
     type: "character",
     label: "Postać",
     icon: iconAccount,
-    color: "#22DDDD",
+    color: {
+      hue: 55,
+      saturation: {
+        card: 65,
+        header: 100,
+        word: 100,
+        icon: 100,
+      },
+      lightness: {
+        card: 95,
+        header: 24,
+        word: 23,
+        icon: 23,
+      },
+    },
   },
   {
     type: "character-modifier",
     label: "Cecha postaci",
     icon: iconAccountDetails,
-    color: "#22DD22",
-  },
-  {
-    type: "relation",
-    label: "Relacja",
-    icon: iconAccountSwitch,
-    color: "#DDDD22",
+    color: {
+      hue: 30,
+      saturation: {
+        card: 65,
+        header: 100,
+        word: 100,
+        icon: 100,
+      },
+      lightness: {
+        card: 95,
+        header: 31,
+        word: 30,
+        icon: 30,
+      },
+    },
   },
   {
     type: "emotion",
     label: "Emocja",
     icon: iconHeart,
-    color: "#DD2222",
+    color: {
+      hue: 0,
+      saturation: {
+        card: 65,
+        header: 83,
+        word: 68,
+        icon: 68,
+      },
+      lightness: {
+        card: 96,
+        header: 37,
+        word: 40,
+        icon: 40,
+      },
+    },
+  },
+  {
+    type: "relation",
+    label: "Relacja",
+    icon: iconAccountSwitch,
+    color: {
+      hue: 325,
+      saturation: {
+        card: 70,
+        header: 96,
+        word: 67,
+        icon: 67,
+      },
+      lightness: {
+        card: 95.5,
+        header: 34,
+        word: 39,
+        icon: 39,
+      },
+    },
   },
   {
     type: "action",
     label: "Czynność",
     icon: iconRun,
-    color: "#DD22DD",
+    color: {
+      hue: 295,
+      saturation: {
+        card: 65,
+        header: 88,
+        word: 60,
+        icon: 60,
+      },
+      lightness: {
+        card: 95,
+        header: 36,
+        word: 38,
+        icon: 38,
+      },
+    },
   },
   // {
   //   type: "body-part",
@@ -162,19 +246,81 @@ let Util = new function() {
 }
 
 class Color {
-  constructor(hex = "#000000") {
-    const rgb = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    this.r = parseInt(rgb[1], 16);
-    this.g = parseInt(rgb[2], 16);
-    this.b = parseInt(rgb[3], 16);
+  constructor(hue, saturation, lightness) {
+    // If the passed lone argument was a string, parse it as hexadecimal color
+    if (typeof(hue) === 'string' && arguments.length === 1) {
+      const rgb = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hue);
+      const r = parseInt(rgb[1], 16);
+      const g = parseInt(rgb[2], 16);
+      const b = parseInt(rgb[3], 16);
+      [this.h, this.s, this.l] = this.rgb2hsl(r, g, b);
+    } else { // Otherwise treat the arguments as hue, saturation, lightness
+      this.h = hue;
+      this.s = saturation;
+      this.l = lightness;
+    }
+  }
+
+  // RGB <-> HSL code based on https://stackoverflow.com/a/9493060/5024905
+  rgb2hsl(r, g, b) {
+    r /= 255, g /= 255, b /= 255;
+    let max = Math.max(r, g, b);
+    let min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0;
+    } else {
+      let d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    return [h * 360, s * 100, l * 100];
+  }
+
+  get hsl() {
+    return [this.h, this.s, this.l];
+  }
+
+  get hslString() {
+    return `hsl(${this.h}deg, ${this.s}%, ${this.l}%)`;
   }
 
   get rgb() {
-    return [this.r, this.g, this.b];
+    let h = this.h / 360;
+    let s = this.s * 0.01;
+    let l = this.l * 0.01;
+    let r, g, b;
+    if (s == 0) {
+      r = g = b = l;
+    } else {
+      let hue2rgb = (p, q, t) => {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1 / 6) return p + (q - p) * 6 * t;
+        if (t < 1 / 2) return q;
+        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+        return p;
+      }
+
+      var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      var p = 2 * l - q;
+      r = hue2rgb(p, q, h + 1 / 3);
+      g = hue2rgb(p, q, h);
+      b = hue2rgb(p, q, h - 1 / 3);
+    }
+
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
   }
 
   get hex() {
-    return "#" + ((1 << 24) + (this.r << 16) + (this.g << 8) + this.b).toString(16).slice(1);
+    const [r, g, b] = this.rgb;
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
 }
 
@@ -572,49 +718,75 @@ let SpecializedCreator = new function() {
 }
 
 let WordSectionCreator = new function() {
-  this.addSwiperPrevNextButtons = (parentElement, color) => {
+  this.addSwiperPrevNextButtons = (parentElement, colorString) => {
     const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
     prevButton.appendChild(Creator.createIcon(iconArrowLeft));
     prevButton.style.position = 'relative';
-    prevButton.style.color = ColorUtil.darken(color).hex;
+    prevButton.style.color = colorString;
     Creator.addRipple(prevButton);
 
     const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
     nextButton.appendChild(Creator.createIcon(iconArrowRight));
     nextButton.style.position = 'relative';
-    nextButton.style.color = ColorUtil.darken(color).hex;
+    nextButton.style.color = colorString;
     Creator.addRipple(nextButton);
 
     parentElement.appendChild(prevButton);
     parentElement.appendChild(nextButton);
   }
 
-  this.addSwiperWrapper = (parentElement, color) => {
+  this.addSwiperWrapper = (parentElement, colorString) => {
     const swiperWrapper = Creator.createElementWithClass('div', 'swiper-wrapper');
-    swiperWrapper.style.color = ColorUtil.darken(color).hex;
+    swiperWrapper.style.color = colorString;
     parentElement.appendChild(swiperWrapper);
   }
 
-  this.addSectionHeader = (parentElement, container) => {
+  this.addSectionHeader = (parentElement, containerData) => {
     const header = Creator.createElementWithClass('div', 'header-container');
-    header.innerHTML = container.label;
-    header.style.color = container.color;
+    header.innerHTML = containerData.label;
+    header.style.color = this.color.header(containerData);
     parentElement.appendChild(header);
   }
 
-  this.addSection = (container) => {
-    const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(container.type));
-    section.style.backgroundColor = ColorUtil.lighten(container.color, 0.85).hex;
-    this.addSectionHeader(section, container);
-    this.addSwiperPrevNextButtons(section, container.color);
+  this.addSection = (containerData) => {
+    const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(containerData.type));
+    section.style.backgroundColor = this.color.card(containerData);
+    this.addSectionHeader(section, containerData);
+    this.addSwiperPrevNextButtons(section, this.color.icon(containerData));
 
     const swiperOuterContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
     const swiperInnerContainer = Creator.createElementWithClass('div', 'swiper-container');
-    this.addSwiperWrapper(swiperInnerContainer, container.color);
+    this.addSwiperWrapper(swiperInnerContainer, this.color.word(containerData));
     swiperOuterContainer.appendChild(swiperInnerContainer);
     section.appendChild(swiperOuterContainer);
 
     document.getElementsByTagName('main')[0].appendChild(section);
+  }
+
+  this.color = new function() {
+    this.card = (containerData) => {
+      const s = containerData.color.saturation.card;
+      const l = containerData.color.lightness.card;
+      return new Color(containerData.color.hue, s, l).hslString;
+    }
+
+    this.header = (containerData) => {
+      const s = containerData.color.saturation.header;
+      const l = containerData.color.lightness.header;
+      return new Color(containerData.color.hue, s, l).hslString;
+    }
+
+    this.word = (containerData) => {
+      const s = containerData.color.saturation.word;
+      const l = containerData.color.lightness.word;
+      return new Color(containerData.color.hue, s, l).hslString;
+    }
+
+    this.icon = (containerData) => {
+      const s = containerData.color.saturation.icon;
+      const l = containerData.color.lightness.icon;
+      return new Color(containerData.color.hue, s, l).hslString;
+    }
   }
 }
 
