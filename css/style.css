@@ -92,7 +92,7 @@ body {
   --color-text-negative: var(--color-text-white-high);
   --color-icon: var(--color-icon-black);
 
-  --color-body-background-l: 94%;
+  --color-body-background-l: 96%;
   --color-body-background: hsl(0, 0%, var(--color-body-background-l));
 
   --color-card-background-l: 100%;
@@ -429,10 +429,14 @@ footer.visible {
   border-radius: 48px;
   cursor: pointer;
   background-color: transparent;
+  color: var(--color-text);
+}
+
+.circular-button .icon {
   color: var(--color-accent);
 }
 
-footer .circular-button {
+footer .circular-button .icon {
   color: var(--color-icon);
 }
 
@@ -565,7 +569,7 @@ footer .circular-button {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 32px;
+  padding: 0 26px;
 }
 
 #scale-control-container > span:first-of-type {
