@@ -23,7 +23,7 @@ let containers = [
     type: "location",
     label: "Miejsce",
     color: {
-      hue: 80,
+      hue: 75,
       saturation: {
         card: 65,
         header: 100,
