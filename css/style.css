@@ -242,7 +242,7 @@ a {
 .word-section {
   position: relative;
   width: min(100%, 640px);
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--card-shadow-override, var(--card-shadow));
   border-radius: var(--card-border-radius);
   background-color: var(--color-card-background);
   margin-top: var(--card-margin-top, 0px);

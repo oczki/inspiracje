@@ -273,6 +273,10 @@ class Color {
     return `hsl(${this.h}deg, ${this.s}%, ${this.l}%)`;
   }
 
+  hslaString(alpha = 1.0) {
+    return `hsla(${this.h}deg, ${this.s}%, ${this.l}%, ${alpha})`;
+  }
+
   get rgb() {
     let h = this.h / 360;
     let s = this.s * 0.01;
@@ -733,6 +737,7 @@ let WordSectionCreator = new function() {
   this.addSection = (containerData) => {
     const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(containerData.type));
     section.style.backgroundColor = this.color.card(containerData);
+    section.style.setProperty('--card-shadow-override', this.color.cardShadow(containerData));
     this.addSectionHeader(section, containerData);
     this.addSwiperPrevNextButtons(section, this.color.icon(containerData));
 
@@ -747,27 +752,36 @@ let WordSectionCreator = new function() {
 
   this.color = new function() {
     this.card = (containerData) => {
-      const s = containerData.color.saturation.card;
-      const l = containerData.color.lightness.card;
-      return new Color(containerData.color.hue, s, l).hslString;
+      const s = containerData?.color?.saturation?.card;
+      const l = containerData?.color?.lightness?.card;
+      return new Color(containerData.color.hue, s, l)?.hslString;
+    }
+
+    this.cardShadow = (containerData) => {
+      const s = containerData?.color?.saturation?.word;
+      const l = containerData?.color?.lightness?.word;
+      const baseColor = new Color(containerData?.color?.hue, s, l);
+      return `0px 2px 1px -1px ${baseColor?.hslaString(0.2)},
+        0px 1px 2px 0px ${baseColor?.hslaString(0.14)},
+        0px 1px 3px 0px ${baseColor?.hslaString(0.12)}`;
     }
 
     this.header = (containerData) => {
-      const s = containerData.color.saturation.header;
-      const l = containerData.color.lightness.header;
-      return new Color(containerData.color.hue, s, l).hslString;
+      const s = containerData?.color?.saturation?.header;
+      const l = containerData?.color?.lightness?.header;
+      return new Color(containerData?.color?.hue, s, l)?.hslString;
     }
 
     this.word = (containerData) => {
-      const s = containerData.color.saturation.word;
-      const l = containerData.color.lightness.word;
-      return new Color(containerData.color.hue, s, l).hslString;
+      const s = containerData?.color?.saturation?.word;
+      const l = containerData?.color?.lightness?.word;
+      return new Color(containerData?.color?.hue, s, l)?.hslString;
     }
 
     this.icon = (containerData) => {
-      const s = containerData.color.saturation.icon;
-      const l = containerData.color.lightness.icon;
-      return new Color(containerData.color.hue, s, l).hslString;
+      const s = containerData?.color?.saturation?.icon;
+      const l = containerData?.color?.lightness?.icon;
+      return new Color(containerData?.color?.hue, s, l)?.hslString;
     }
   }
 }
