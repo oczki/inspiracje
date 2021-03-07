@@ -31,6 +31,8 @@ let containers = [
     label: "Miejsce",
     icon: iconMapMarker,
     color: "#2222DD",
+    prevButtonPrefix: "Poprzednie",
+    nextButtonPrefix: "Następne",
   },
   {
     type: "character",
@@ -65,27 +67,35 @@ let containers = [
   // {
   //   type: "body-part",
   //   label: "Część ciała",
-  //   icon: 'heart',
+  //   icon: '',
   // },
   // {
   //   type: "genre",
-  //   label: "Gatunek",
-  //   icon: 'heart',
+  //   label: "Gatunek filmowy",
+  //   icon: '',
+  //   prevButtonPrefix: "Poprzedni",
+  //   nextButtonPrefix: "Następny",
   // },
   // {
   //   type: "name",
   //   label: "Imię",
-  //   icon: 'heart',
+  //   icon: '',
+  //   prevButtonPrefix: "Poprzednie",
+  //   nextButtonPrefix: "Następne",
   // },
   // {
   //   type: "noun",
   //   label: "Rzeczownik",
   //   icon: 'box',
+  //   prevButtonPrefix: "Poprzedni",
+  //   nextButtonPrefix: "Następny",
   // },
   // {
   //   type: "dictionary",
-  //   label: "dowolne słowo",
+  //   label: "Dowolne słowo",
   //   icon: 'question-mark',
+  //   prevButtonPrefix: "Poprzednie",
+  //   nextButtonPrefix: "Następne",
   // },
 ];
 
@@ -199,9 +209,8 @@ let ColorUtil = new function() {
 }
 
 class Container {
-  constructor(container) {
-    this.type = container.type;
-    this.label = container.label;
+  constructor(containerData) {
+    this.data = containerData;
     this.numberOfSlidesToGenerateFromWordsCache = 20;
     this.wordsCache = [];
     this.wordsCacheIndex = 0;
@@ -210,14 +219,14 @@ class Container {
     this.hasSpokenSinceTransitionEnd = true;
 
     this.initializeWords();
-    WordSectionCreator.addSection(container);
+    WordSectionCreator.addSection(containerData);
     this.swiper = this.initializeSwiper();
     setInterval(() => this.runCleanup(), Math.max(1500, swiperAnimationDuration * 10 + 11));
     setInterval(() => this.speakCurrentSlideIfAllowed(), Math.max(150, swiperAnimationDuration + 11));
   }
 
   initializeWords() {
-    Util.getWords(this.type, (output) => {
+    Util.getWords(this.data.type, (output) => {
       this.wordsCache = eval(output);
       this.removeFirstSlides(0); // Removes the hardcoded first slide with 'Loading...' text
       this.recalculateSlideCountAndIndex();
@@ -236,10 +245,10 @@ class Container {
     const nextSlideCallback = () => { this.wordsCacheIndex++; this.addSlidesIfNeeded(); }
     const transitionStartedCallback = () => { this.isCleanupAllowed = false; }
     const transitionFinishedCallback = () => { this.isCleanupAllowed = true; this.hasSpokenSinceTransitionEnd = false; }
-    const swiperInitialized = Creator.createSwiper(this.type, this.label,
+    const swiperInitialized = Creator.createSwiper(this.data,
       prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback);
     swiperInitialized.slideNext(swiperAnimationDuration);
-    return Selector.getSwiper(this.type);
+    return Selector.getSwiper(this.data.type);
   }
 
   isSwiperTransitionOngoing() {
@@ -306,14 +315,14 @@ class Container {
   }
 
   loadMoreWordsIntoCache() {
-    Util.getWords(this.type, (output) => {
+    Util.getWords(this.data.type, (output) => {
       let newWords = eval(output);
       this.wordsCache = this.wordsCache.concat(newWords);
     });
   }
 
   createTextToSpeak() {
-    return this.label + ': ' + this.wordsCache[this.wordsCacheIndex];
+    return this.data.label + ': ' + this.wordsCache[this.wordsCacheIndex];
   }
 
   speakCurrentSlideIfAllowed() {
@@ -328,24 +337,26 @@ class Container {
 }
 
 let Creator = new function() {
-  this.createSwiper = (type, label, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) => {
-    const swiper = new Swiper(Selector.swiperSelector(type), {
+  this.createSwiper = (data, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) => {
+    const prevButtonPrefix = data.prevButtonPrefix || 'Poprzednia';
+    const nextButtonPrefix = data.nextButtonPrefix || 'Następna';
+    const swiper = new Swiper(Selector.swiperSelector(data.type), {
       speed: swiperAnimationDuration,
       spaceBetween: 0,
       navigation: {
-        prevEl: `#${Selector.sectionId(type)} .navigation-button-prev`,
-        nextEl: `#${Selector.sectionId(type)} .navigation-button-next`,
+        prevEl: `#${Selector.sectionId(data.type)} .navigation-button-prev`,
+        nextEl: `#${Selector.sectionId(data.type)} .navigation-button-next`,
       },
       a11y: {
-        prevSlideMessage: label + ' - poprzednie słowo',
-        nextSlideMessage: label + ' - następne słowo'
+        prevSlideMessage: `${prevButtonPrefix} ${data.label}`,
+        nextSlideMessage: `${nextButtonPrefix} ${data.label}`,
       }
     });
     swiper.on('slidePrevTransitionStart', prevSlideCallback);
     swiper.on('slideNextTransitionStart', nextSlideCallback);
     swiper.on('slideChangeTransitionStart', transitionStartedCallback);
     swiper.on('slideChangeTransitionEnd', transitionFinishedCallback);
-    const swiperInitialized = Selector.getSwiper(type);
+    const swiperInitialized = Selector.getSwiper(data.type);
     swiperInitialized.appendSlide(Creator.createSlide('Ładuję...'));
     return swiper;
   }
