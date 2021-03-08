@@ -20,6 +20,27 @@ const iconCopyright = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M10
 
 let containers = [
   {
+    type: "test",
+    label: "Test",
+    color: {
+      hue: 75,
+      saturation: {
+        card: 0,
+        header: 0,
+        word: 0,
+        icon: 0,
+      },
+      lightness: {
+        card: 95,
+        header: 24,
+        word: 23,
+        icon: 23,
+      },
+    },
+    prevButtonPrefix: "Poprzednie",
+    nextButtonPrefix: "Następne",
+  },
+  {
     type: "location",
     label: "Miejsce",
     color: {
@@ -343,7 +364,7 @@ let ColorUtil = new function() {
 class Container {
   constructor(containerData) {
     this.data = containerData;
-    this.numberOfSlidesToGenerateFromWordsCache = 20;
+    this.numberOfSlidesToGenerateFromWordsCache = 5;
     this.wordsCache = [];
     this.wordsCacheIndex = 0;
     this.slideCount = 0;
@@ -353,18 +374,48 @@ class Container {
     this.initializeWords();
     WordSectionCreator.addSection(containerData);
     this.swiper = this.initializeSwiper();
-    setInterval(() => this.runCleanup(), Math.max(1500, swiperAnimationDuration * 10 + 11));
     setInterval(() => this.speakCurrentSlideIfAllowed(), Math.max(150, swiperAnimationDuration + 11));
   }
 
   initializeWords() {
     Util.getWords(this.data.type, (output) => {
       this.wordsCache = eval(output);
-      this.removeFirstSlides(0); // Removes the hardcoded first slide with 'Loading...' text
+      this.wordsCacheIndex = Math.floor(this.wordsCache.length * 0.5);
+      this.removeFarSlides(0); // Removes the hardcoded first slide with 'Loading...' text
       this.recalculateSlideCountAndIndex();
-      this.appendSlidesFromWordsCache(this.numberOfSlidesToGenerateFromWordsCache, 0);
+      this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache, 0);
+      this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache, 1);
+      // this.appendSlidesFromWordsCache(this.numberOfSlidesToGenerateFromWordsCache, 0);
     });
   }
+
+  appendSlidesToTheLeft(numberOfSlidesToAppend, marginFromEdge) {
+    const startingIndex = this.wordsCacheIndex - marginFromEdge;
+    const newSlides = [];
+    for (let index = 0; index < numberOfSlidesToAppend; index++) {
+      newSlides.push(this.getWordByIndex(startingIndex - index));
+    }
+    this.swiper.prependSlide(Creator.createSlides(newSlides));
+    this.recalculateSlideCountAndIndex();
+  }
+
+  appendSlidesToTheRight(numberOfSlidesToAppend, marginFromEdge) {
+    const startingIndex = this.wordsCacheIndex + marginFromEdge;
+    const newSlides = [];
+    for (let index = 0; index < numberOfSlidesToAppend; index++) {
+      newSlides.push(this.getWordByIndex(startingIndex + index));
+    }
+    this.swiper.appendSlide(Creator.createSlides(newSlides));
+    this.recalculateSlideCountAndIndex();
+  }
+
+  // DONE: on load, store COMPLETE word array and move the index pointer to the middle
+  // DONE: load a few slides to the left and right of the index
+  // DONE: function to generate slide by word cache index, wrapping around the cache
+  // DONE: if close to the edge of slides, generate more using the same function
+  // TODO: if far from edge, remove slides from that far edge
+  // TODO: when moving to the left, fix zero-animation jumps (caused by appending new slides before current one) - maybe use a different swiper callback?
+  // DONE: test with an array of words in known order, e.g. 42 slides numbered 1 to 42
 
   runCleanup() {
     if (!this.isCleanupAllowed) return;
@@ -373,12 +424,12 @@ class Container {
   }
 
   initializeSwiper() {
-    const prevSlideCallback = () => { this.wordsCacheIndex--; }
-    const nextSlideCallback = () => { this.wordsCacheIndex++; this.addSlidesIfNeeded(); }
-    const transitionStartedCallback = () => { this.isCleanupAllowed = false; }
-    const transitionFinishedCallback = () => { this.isCleanupAllowed = true; this.hasSpokenSinceTransitionEnd = false; }
+    const prevSlideCallbackStart = () => { this.wordsCacheIndex--; }
+    const nextSlideCallbackStart = () => { this.wordsCacheIndex++; }
+    const prevSlideCallbackEnd = () => { this.appendSlidesToTheLeftIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
+    const nextSlideCallbackEnd = () => { this.appendSlidesToTheRightIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
     const swiperInitialized = Creator.createSwiper(this.data,
-      prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback);
+      prevSlideCallbackStart, nextSlideCallbackStart, prevSlideCallbackEnd, nextSlideCallbackEnd);
     swiperInitialized.slideNext(swiperAnimationDuration);
     return Selector.getSwiper(this.data.type);
   }
@@ -387,30 +438,75 @@ class Container {
     return this.swiper.animating;
   }
 
-  addSlidesIfNeeded() {
-    const marginFromEnd = 5;
-    const numberOfSlidesToAppendToEnd = 10;
+  appendSlidesToTheLeftIfNeeded() {
+    const marginFromEdge = 3;
+    const deltaNumberOfSlides = 5;
     this.recalculateSlideCountAndIndex();
-    if (this.isActiveSlideCloseToEnd(marginFromEnd)) {
-      this.appendSlidesFromWordsCache(numberOfSlidesToAppendToEnd, marginFromEnd);
+    if (this.isActiveSlideCloseToLeftEdge(marginFromEdge)) {
+      this.appendSlidesToTheLeft(deltaNumberOfSlides, marginFromEdge + 1);
+      this.removeSlidesFromRightEdge(deltaNumberOfSlides);
+    }
+  }
+
+  appendSlidesToTheRightIfNeeded() {
+    const marginFromEdge = 3;
+    const deltaNumberOfSlides = 5;
+    this.recalculateSlideCountAndIndex();
+    if (this.isActiveSlideCloseToRightEdge(marginFromEdge)) {
+      this.appendSlidesToTheRight(deltaNumberOfSlides, marginFromEdge);
+      this.removeSlidesFromLeftEdge(deltaNumberOfSlides);
     }
   }
 
   deleteSlidesIfNeeded() {
-    const marginFromBeginning = 20;
-    const numberOfSlidesToRemoveFromBeginning = 10;
+    const marginFromOtherEdge = 20;
+    const numberOfSlidesToRemoveFromOtherEdge = 10;
     this.recalculateSlideCountAndIndex();
-    if (this.isActiveSlideFarFromBeginning(marginFromBeginning)) {
-      this.removeFirstSlides(numberOfSlidesToRemoveFromBeginning);
+    if (this.isActiveSlideFarFromBeginning(marginFromOtherEdge)) {
+      this.removeFarSlides(numberOfSlidesToRemoveFromOtherEdge);
     }
   }
 
-  isWordCacheAboutToRunOut(minimumRemainingWordCacheLength) {
-    return this.wordsCacheIndex + minimumRemainingWordCacheLength >= this.wordsCache.length;
+  isActiveSlideCloseToLeftEdge(marginFromEnd) {
+    return this.slideIndex <= marginFromEnd;
   }
 
-  isActiveSlideCloseToEnd(marginFromEnd) {
+  isActiveSlideCloseToRightEdge(marginFromEnd) {
     return this.slideIndex >= this.slideCount - marginFromEnd;
+  }
+
+  removeSlidesFromLeftEdge(numberOfSlidesToRemove) {
+    if (numberOfSlidesToRemove > 1) {
+      const range = (x, y) => Array.from((function* () { while (x <= y) yield x++; })());
+      this.swiper.removeSlide(range(0, numberOfSlidesToRemove - 1));
+    } else {
+      this.swiper.removeSlide(0);
+    }
+    this.recalculateSlideCountAndIndex();
+  }
+
+  removeSlidesFromRightEdge(numberOfSlidesToRemove) {
+    const startingIndex = this.slideCount - numberOfSlidesToRemove;
+    if (numberOfSlidesToRemove > 1) {
+      const range = (x, y) => Array.from((function* () { while (x <= y) yield x++; })());
+      this.swiper.removeSlide(range(startingIndex, numberOfSlidesToRemove - 1));
+    } else {
+      this.swiper.removeSlide(startingIndex);
+    }
+    this.recalculateSlideCountAndIndex();
+  }
+
+  removeFarSlides(numberOfSlidesToRemove) {
+    if (this.isSwiperTransitionOngoing()) return;
+    //this.wordsCache.splice(0, numberOfSlidesToRemove);
+    //this.wordsCacheIndex -= numberOfSlidesToRemove;
+    if (numberOfSlidesToRemove > 1) {
+      const range = (x, y) => Array.from((function* () { while (x <= y) yield x++; })());
+      this.swiper.removeSlide(range(0, numberOfSlidesToRemove - 1));
+    } else {
+      this.swiper.removeSlide(0);
+    }
+    this.recalculateSlideCountAndIndex();
   }
 
   isActiveSlideFarFromBeginning(marginFromBeginning) {
@@ -422,39 +518,16 @@ class Container {
     this.slideIndex = this.swiper.activeIndex;
   }
 
-  removeFirstSlides(numberOfSlidesToRemove) {
-    if (this.isSwiperTransitionOngoing()) return;
-    this.wordsCache.splice(0, numberOfSlidesToRemove);
-    this.wordsCacheIndex -= numberOfSlidesToRemove;
-    if (numberOfSlidesToRemove > 1) {
-      const range = (x, y) => Array.from((function* () { while (x <= y) yield x++; })());
-      this.swiper.removeSlide(range(0, numberOfSlidesToRemove - 1));
-    } else {
-      this.swiper.removeSlide(0);
-    }
-    this.recalculateSlideCountAndIndex();
-  }
-
-  appendSlidesFromWordsCache(numberOfSlidesToAppend, marginFromEnd, safetyMargin = 5) {
-    if (this.isWordCacheAboutToRunOut(numberOfSlidesToAppend + safetyMargin)) {
-      this.loadMoreWordsIntoCache();
-    }
-    const startIndex = this.wordsCacheIndex + marginFromEnd;
-    const endIndex = startIndex + numberOfSlidesToAppend;
-    const nextChunkOfWordsFromCache = this.wordsCache.slice(startIndex, endIndex);
-    this.swiper.appendSlide(Creator.createSlides(nextChunkOfWordsFromCache));
-    this.recalculateSlideCountAndIndex();
-  }
-
-  loadMoreWordsIntoCache() {
-    Util.getWords(this.data.type, (output) => {
-      let newWords = eval(output);
-      this.wordsCache = this.wordsCache.concat(newWords);
-    });
+  getWordByIndex(index) {
+    if (index < 0)
+      return this.getWordByIndex(this.wordsCache.length + index);
+    if (index >= this.wordsCache.length)
+      return this.getWordByIndex(index - this.wordsCache.length);
+    return this.wordsCache[index] || '?';
   }
 
   createTextToSpeak() {
-    return this.data.label + ': ' + this.wordsCache[this.wordsCacheIndex];
+    return this.data.label + ': ' + this.getWordByIndex(this.wordsCacheIndex);
   }
 
   speakCurrentSlideIfAllowed() {
@@ -469,7 +542,9 @@ class Container {
 }
 
 let Creator = new function() {
-  this.createSwiper = (data, prevSlideCallback, nextSlideCallback, transitionStartedCallback, transitionFinishedCallback) => {
+  this.createSwiper = (data,
+    prevTransitionStartCallback, nextTransitionStartCallback,
+    prevTransitionEndCallback, nextTransitionEndCallback) => {
     const prevButtonPrefix = data.prevButtonPrefix || 'Poprzednia';
     const nextButtonPrefix = data.nextButtonPrefix || 'Następna';
     const swiper = new Swiper(Selector.swiperSelector(data.type), {
@@ -484,10 +559,10 @@ let Creator = new function() {
         nextSlideMessage: `${nextButtonPrefix} ${data.label}`,
       }
     });
-    swiper.on('slidePrevTransitionStart', prevSlideCallback);
-    swiper.on('slideNextTransitionStart', nextSlideCallback);
-    swiper.on('slideChangeTransitionStart', transitionStartedCallback);
-    swiper.on('slideChangeTransitionEnd', transitionFinishedCallback);
+    swiper.on('slidePrevTransitionStart', prevTransitionStartCallback);
+    swiper.on('slideNextTransitionStart', nextTransitionStartCallback);
+    swiper.on('slidePrevTransitionEnd', prevTransitionEndCallback);
+    swiper.on('slideNextTransitionEnd', nextTransitionEndCallback);
     const swiperInitialized = Selector.getSwiper(data.type);
     swiperInitialized.appendSlide(Creator.createSlide('Ładuję...'));
     return swiper;
@@ -648,7 +723,7 @@ let SpecializedCreator = new function() {
     const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
     Creator.addRipple(forwardButton);
     VisibilityController.showAndAllowTabbingToElement(forwardButton);
-    Aria.setLabel(forwardButton, 'Nowy zestaw słów');
+    Aria.setLabel(forwardButton, 'Kolejny zestaw słów');
 
     forwardButton.addEventListener('click', function (e) {
       e.preventDefault();
@@ -681,7 +756,7 @@ let SpecializedCreator = new function() {
       }, 500 + swiperAnimationDuration + delayBetweenLoadedWordsDuration * types.length)
     });
 
-    forwardButton.appendChild(Creator.createSpan('Nowy zestaw'));
+    forwardButton.appendChild(Creator.createSpan('Kolejny zestaw'));
     forwardButton.appendChild(Creator.createIcon(iconAutoRenew));
     return forwardButton;
   }
@@ -1179,6 +1254,7 @@ let ElementPopulator = new function() {
   this.populatePageWithWordContainers = () => {
     for (const container of containers) {
       wordsContainer[container.type] = new Container(container);
+      return;
     }
   }
 }
