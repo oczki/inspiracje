@@ -20,27 +20,6 @@ const iconCopyright = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M10
 
 let containers = [
   {
-    type: "test",
-    label: "Test",
-    color: {
-      hue: 75,
-      saturation: {
-        card: 0,
-        header: 0,
-        word: 0,
-        icon: 0,
-      },
-      lightness: {
-        card: 95,
-        header: 24,
-        word: 23,
-        icon: 23,
-      },
-    },
-    prevButtonPrefix: "Poprzednie",
-    nextButtonPrefix: "Następne",
-  },
-  {
     type: "location",
     label: "Miejsce",
     color: {
@@ -387,13 +366,22 @@ class Container {
     });
   }
 
+  initializeSwiper() {
+    const prevSlideCallbackStart = () => { this.wordsCacheIndex--; }
+    const nextSlideCallbackStart = () => { this.wordsCacheIndex++; }
+    const prevSlideCallbackEnd = () => { this.appendSlidesToTheLeftIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
+    const nextSlideCallbackEnd = () => { this.appendSlidesToTheRightIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
+    return Creator.createSwiper(this.data,
+      prevSlideCallbackStart, nextSlideCallbackStart, prevSlideCallbackEnd, nextSlideCallbackEnd);
+  }
+
   appendSlidesToTheLeft(numberOfSlidesToAppend, offset = 0) {
     this.recalculateSlideCountAndIndex();
     const marginFromBeginning = this.slideIndex;
     const startingIndex = this.wordsCacheIndex - marginFromBeginning + offset;
     const newSlides = [];
     for (let index = 0; index < numberOfSlidesToAppend; index++) {
-      newSlides.push('left: ' + this.getWordByIndex(startingIndex - index));
+      newSlides.push(this.getWordByIndex(startingIndex - index));
     }
     this.swiper.prependSlide(Creator.createSlides(newSlides));
     this.recalculateSlideCountAndIndex();
@@ -409,27 +397,6 @@ class Container {
     }
     this.swiper.appendSlide(Creator.createSlides(newSlides));
     this.recalculateSlideCountAndIndex();
-  }
-
-  // DONE: on load, store COMPLETE word array and move the index pointer to the middle
-  // DONE: load a few slides to the left and right of the index
-  // DONE: function to generate slide by word cache index, wrapping around the cache
-  // DONE: if close to the edge of slides, generate more using the same function
-  // TODO: if far from edge, remove slides from that far edge
-  // TODO: when moving to the left, fix zero-animation jumps (caused by appending new slides before current one) - maybe use a different swiper callback?
-  // DONE: test with an array of words in known order, e.g. 42 slides numbered 1 to 42
-
-  initializeSwiper() {
-    const prevSlideCallbackStart = () => { this.wordsCacheIndex--; }
-    const nextSlideCallbackStart = () => { this.wordsCacheIndex++; }
-    const prevSlideCallbackEnd = () => { this.appendSlidesToTheLeftIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
-    const nextSlideCallbackEnd = () => { this.appendSlidesToTheRightIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
-    return Creator.createSwiper(this.data,
-      prevSlideCallbackStart, nextSlideCallbackStart, prevSlideCallbackEnd, nextSlideCallbackEnd);
-  }
-
-  isSwiperTransitionOngoing() {
-    return this.swiper.animating;
   }
 
   appendSlidesToTheLeftIfNeeded() {
@@ -461,14 +428,14 @@ class Container {
   }
 
   removeSlidesFromLeftEdge(numberOfSlidesToRemove) {
+    // To prevent an unwanted index change (Swiper issue?), remove first N-1 slides, THEN remove the first slide individually.
+    // Removing all N slides makes Swiper jump to the next slide for some reason.
     if (numberOfSlidesToRemove > 1) {
       const range = (x, y) => Array.from((function* () { while (x < y) yield x++; })());
-      const slidesToRemove = range(0, numberOfSlidesToRemove);
-      console.log('slides to remove:', slidesToRemove);
-      this.swiper.removeSlide(slidesToRemove); // TODO: words blink from A to B after each call to removeSlidesFromLeftEdge. removing 6 slides prevents this, but the total number of slides grows then.
-    } else {
-      this.swiper.removeSlide(0);
+      const slidesToRemove = range(0, numberOfSlidesToRemove - 1);
+      this.swiper.removeSlide(slidesToRemove);
     }
+    this.swiper.removeSlide(0);
     this.recalculateSlideCountAndIndex();
   }
 
@@ -483,14 +450,9 @@ class Container {
     this.recalculateSlideCountAndIndex();
   }
 
-  isActiveSlideFarFromBeginning(marginFromBeginning) {
-    return this.slideIndex >= marginFromBeginning;
-  }
-
   recalculateSlideCountAndIndex() {
     this.slideCount = this.swiper?.slides?.length || 0;
     this.slideIndex = this.swiper?.activeIndex || 0;
-    console.log('words cache index =', this.wordsCacheIndex, ', slide index =', this.slideIndex);
   }
 
   getWordByIndex(index) {
@@ -1230,7 +1192,6 @@ let ElementPopulator = new function() {
   this.populatePageWithWordContainers = () => {
     for (const container of containers) {
       wordsContainer[container.type] = new Container(container);
-      return;
     }
   }
 }
