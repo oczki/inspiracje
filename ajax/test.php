@@ -6,6 +6,7 @@ function format($words) {
 }
 
 $words = [
+  "Word 0",
   "Word 1",
   "Word 2",
   "Word 3",

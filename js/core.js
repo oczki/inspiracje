@@ -364,7 +364,7 @@ let ColorUtil = new function() {
 class Container {
   constructor(containerData) {
     this.data = containerData;
-    this.numberOfSlidesToGenerateFromWordsCache = 5;
+    this.numberOfSlidesToGenerateFromWordsCache = 7;
     this.wordsCache = [];
     this.wordsCacheIndex = 0;
     this.slideCount = 0;
@@ -381,26 +381,28 @@ class Container {
     Util.getWords(this.data.type, (output) => {
       this.wordsCache = eval(output);
       this.wordsCacheIndex = Math.floor(this.wordsCache.length * 0.5);
-      this.removeFarSlides(0); // Removes the hardcoded first slide with 'Loading...' text
-      this.recalculateSlideCountAndIndex();
-      this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache, 0);
-      this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache, 1);
-      // this.appendSlidesFromWordsCache(this.numberOfSlidesToGenerateFromWordsCache, 0);
+      this.hideSpinner();
+      this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache + 1);
+      this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache);
     });
   }
 
-  appendSlidesToTheLeft(numberOfSlidesToAppend, marginFromEdge) {
-    const startingIndex = this.wordsCacheIndex - marginFromEdge;
+  appendSlidesToTheLeft(numberOfSlidesToAppend, offset = 0) {
+    this.recalculateSlideCountAndIndex();
+    const marginFromBeginning = this.slideIndex;
+    const startingIndex = this.wordsCacheIndex - marginFromBeginning + offset;
     const newSlides = [];
     for (let index = 0; index < numberOfSlidesToAppend; index++) {
-      newSlides.push(this.getWordByIndex(startingIndex - index));
+      newSlides.push('left: ' + this.getWordByIndex(startingIndex - index));
     }
     this.swiper.prependSlide(Creator.createSlides(newSlides));
     this.recalculateSlideCountAndIndex();
   }
 
-  appendSlidesToTheRight(numberOfSlidesToAppend, marginFromEdge) {
-    const startingIndex = this.wordsCacheIndex + marginFromEdge;
+  appendSlidesToTheRight(numberOfSlidesToAppend, offset = 0) {
+    this.recalculateSlideCountAndIndex();
+    const marginFromEnd = this.slideCount - this.slideIndex;
+    const startingIndex = this.wordsCacheIndex + marginFromEnd + offset;
     const newSlides = [];
     for (let index = 0; index < numberOfSlidesToAppend; index++) {
       newSlides.push(this.getWordByIndex(startingIndex + index));
@@ -417,21 +419,13 @@ class Container {
   // TODO: when moving to the left, fix zero-animation jumps (caused by appending new slides before current one) - maybe use a different swiper callback?
   // DONE: test with an array of words in known order, e.g. 42 slides numbered 1 to 42
 
-  runCleanup() {
-    if (!this.isCleanupAllowed) return;
-    if (this.isSwiperTransitionOngoing()) return; // Let's clean up later, so animations are not disrupted.
-    this.deleteSlidesIfNeeded();
-  }
-
   initializeSwiper() {
     const prevSlideCallbackStart = () => { this.wordsCacheIndex--; }
     const nextSlideCallbackStart = () => { this.wordsCacheIndex++; }
     const prevSlideCallbackEnd = () => { this.appendSlidesToTheLeftIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
     const nextSlideCallbackEnd = () => { this.appendSlidesToTheRightIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
-    const swiperInitialized = Creator.createSwiper(this.data,
+    return Creator.createSwiper(this.data,
       prevSlideCallbackStart, nextSlideCallbackStart, prevSlideCallbackEnd, nextSlideCallbackEnd);
-    swiperInitialized.slideNext(swiperAnimationDuration);
-    return Selector.getSwiper(this.data.type);
   }
 
   isSwiperTransitionOngoing() {
@@ -439,31 +433,22 @@ class Container {
   }
 
   appendSlidesToTheLeftIfNeeded() {
-    const marginFromEdge = 3;
-    const deltaNumberOfSlides = 5;
+    const marginFromEdge = 4;
+    const deltaNumberOfSlides = 7;
     this.recalculateSlideCountAndIndex();
     if (this.isActiveSlideCloseToLeftEdge(marginFromEdge)) {
-      this.appendSlidesToTheLeft(deltaNumberOfSlides, marginFromEdge + 1);
+      this.appendSlidesToTheLeft(deltaNumberOfSlides, -1);
       this.removeSlidesFromRightEdge(deltaNumberOfSlides);
     }
   }
 
   appendSlidesToTheRightIfNeeded() {
-    const marginFromEdge = 3;
-    const deltaNumberOfSlides = 5;
+    const marginFromEdge = 4;
+    const deltaNumberOfSlides = 7;
     this.recalculateSlideCountAndIndex();
     if (this.isActiveSlideCloseToRightEdge(marginFromEdge)) {
-      this.appendSlidesToTheRight(deltaNumberOfSlides, marginFromEdge);
+      this.appendSlidesToTheRight(deltaNumberOfSlides);
       this.removeSlidesFromLeftEdge(deltaNumberOfSlides);
-    }
-  }
-
-  deleteSlidesIfNeeded() {
-    const marginFromOtherEdge = 20;
-    const numberOfSlidesToRemoveFromOtherEdge = 10;
-    this.recalculateSlideCountAndIndex();
-    if (this.isActiveSlideFarFromBeginning(marginFromOtherEdge)) {
-      this.removeFarSlides(numberOfSlidesToRemoveFromOtherEdge);
     }
   }
 
@@ -477,8 +462,10 @@ class Container {
 
   removeSlidesFromLeftEdge(numberOfSlidesToRemove) {
     if (numberOfSlidesToRemove > 1) {
-      const range = (x, y) => Array.from((function* () { while (x <= y) yield x++; })());
-      this.swiper.removeSlide(range(0, numberOfSlidesToRemove - 1));
+      const range = (x, y) => Array.from((function* () { while (x < y) yield x++; })());
+      const slidesToRemove = range(0, numberOfSlidesToRemove);
+      console.log('slides to remove:', slidesToRemove);
+      this.swiper.removeSlide(slidesToRemove); // TODO: words blink from A to B after each call to removeSlidesFromLeftEdge. removing 6 slides prevents this, but the total number of slides grows then.
     } else {
       this.swiper.removeSlide(0);
     }
@@ -488,23 +475,10 @@ class Container {
   removeSlidesFromRightEdge(numberOfSlidesToRemove) {
     const startingIndex = this.slideCount - numberOfSlidesToRemove;
     if (numberOfSlidesToRemove > 1) {
-      const range = (x, y) => Array.from((function* () { while (x <= y) yield x++; })());
-      this.swiper.removeSlide(range(startingIndex, numberOfSlidesToRemove - 1));
+      const range = (x, y) => Array.from((function* () { while (x < y) yield x++; })());
+      this.swiper.removeSlide(range(startingIndex, startingIndex + numberOfSlidesToRemove));
     } else {
       this.swiper.removeSlide(startingIndex);
-    }
-    this.recalculateSlideCountAndIndex();
-  }
-
-  removeFarSlides(numberOfSlidesToRemove) {
-    if (this.isSwiperTransitionOngoing()) return;
-    //this.wordsCache.splice(0, numberOfSlidesToRemove);
-    //this.wordsCacheIndex -= numberOfSlidesToRemove;
-    if (numberOfSlidesToRemove > 1) {
-      const range = (x, y) => Array.from((function* () { while (x <= y) yield x++; })());
-      this.swiper.removeSlide(range(0, numberOfSlidesToRemove - 1));
-    } else {
-      this.swiper.removeSlide(0);
     }
     this.recalculateSlideCountAndIndex();
   }
@@ -514,8 +488,9 @@ class Container {
   }
 
   recalculateSlideCountAndIndex() {
-    this.slideCount = this.swiper.slides.length;
-    this.slideIndex = this.swiper.activeIndex;
+    this.slideCount = this.swiper?.slides?.length || 0;
+    this.slideIndex = this.swiper?.activeIndex || 0;
+    console.log('words cache index =', this.wordsCacheIndex, ', slide index =', this.slideIndex);
   }
 
   getWordByIndex(index) {
@@ -538,6 +513,10 @@ class Container {
     if (this.hasSpokenSinceTransitionEnd) return;
     this.hasSpokenSinceTransitionEnd = true;
     Aria.speak(this.createTextToSpeak());
+  }
+
+  hideSpinner() {
+    console.log('hideSpinner not implemented');
   }
 }
 
@@ -563,8 +542,6 @@ let Creator = new function() {
     swiper.on('slideNextTransitionStart', nextTransitionStartCallback);
     swiper.on('slidePrevTransitionEnd', prevTransitionEndCallback);
     swiper.on('slideNextTransitionEnd', nextTransitionEndCallback);
-    const swiperInitialized = Selector.getSwiper(data.type);
-    swiperInitialized.appendSlide(Creator.createSlide('Ładuję...'));
     return swiper;
   }
 
@@ -660,7 +637,6 @@ let Creator = new function() {
       callback();
     });
     Aria.setLabel(button, buttonText);
-    // button.appendChild(this.createSpan(buttonText));
     button.appendChild(this.createIcon(svgCode));
     this.addRipple(button);
     return button;
