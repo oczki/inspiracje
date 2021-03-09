@@ -24,17 +24,33 @@ let containers = [
     label: "Miejsce",
     color: {
       hue: 75,
-      saturation: {
-        card: 65,
-        header: 100,
-        word: 84,
-        icon: 84,
+      lightMode: {
+        saturation: {
+          card: 65,
+          header: 100,
+          word: 84,
+          icon: 84,
+        },
+        lightness: {
+          card: 95,
+          header: 24,
+          word: 23,
+          icon: 23,
+        },
       },
-      lightness: {
-        card: 95,
-        header: 24,
-        word: 23,
-        icon: 23,
+      darkMode: {
+        saturation: {
+          card: 35,
+          header: 100,
+          word: 56,
+          icon: 56,
+        },
+        lightness: {
+          card: 10,
+          header: 24,
+          word: 65,
+          icon: 65,
+        },
       },
     },
     prevButtonPrefix: "Poprzednie",
@@ -178,6 +194,8 @@ let swiperAnimationDuration = defaulSwiperAnimationDuration;
 let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
 let delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
 let fabTransitionDuration = defaultFabTransitionDuration;
+
+let isDarkModeEnabled = false;
 
 let Selector = new function() {
   this.sectionId = (type) => {
@@ -745,6 +763,7 @@ let WordSectionCreator = new function() {
     const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(containerData.type));
     section.style.backgroundColor = this.color.card(containerData);
     section.style.setProperty('--card-shadow-override', this.color.cardShadow(containerData));
+    if (isDarkModeEnabled) section.style.removeProperty('--card-shadow-override'); // TODO: this, along with other methods that set the color, should be called when dark mode state changes
     this.addSectionHeader(section, containerData);
     this.addSwiperPrevNextButtons(section, this.color.icon(containerData));
 
@@ -758,15 +777,22 @@ let WordSectionCreator = new function() {
   }
 
   this.color = new function() {
+    this.getColorData = (containerData) => {
+      if (isDarkModeEnabled) return containerData?.color?.darkMode;
+      return containerData?.color?.lightMode;
+    }
+
     this.card = (containerData) => {
-      const s = containerData?.color?.saturation?.card;
-      const l = containerData?.color?.lightness?.card;
+      let colorData = this.getColorData(containerData);
+      const s = colorData?.saturation?.card;
+      const l = colorData?.lightness?.card;
       return new Color(containerData.color.hue, s, l)?.hslString;
     }
 
     this.cardShadow = (containerData) => {
-      const s = containerData?.color?.saturation?.word;
-      const l = containerData?.color?.lightness?.word;
+      let colorData = this.getColorData(containerData);
+      const s = colorData?.saturation?.word;
+      const l = colorData?.lightness?.word;
       const baseColor = new Color(containerData?.color?.hue, s, l);
       return `0px 2px 1px -1px ${baseColor?.hslaString(0.2)},
         0px 1px 2px 0px ${baseColor?.hslaString(0.14)},
@@ -774,20 +800,23 @@ let WordSectionCreator = new function() {
     }
 
     this.header = (containerData) => {
-      const s = containerData?.color?.saturation?.header;
-      const l = containerData?.color?.lightness?.header;
+      let colorData = this.getColorData(containerData);
+      const s = colorData?.saturation?.header;
+      const l = colorData?.lightness?.header;
       return new Color(containerData?.color?.hue, s, l)?.hslString;
     }
 
     this.word = (containerData) => {
-      const s = containerData?.color?.saturation?.word;
-      const l = containerData?.color?.lightness?.word;
+      let colorData = this.getColorData(containerData);
+      const s = colorData?.saturation?.word;
+      const l = colorData?.lightness?.word;
       return new Color(containerData?.color?.hue, s, l)?.hslString;
     }
 
     this.icon = (containerData) => {
-      const s = containerData?.color?.saturation?.icon;
-      const l = containerData?.color?.lightness?.icon;
+      let colorData = this.getColorData(containerData);
+      const s = colorData?.saturation?.icon;
+      const l = colorData?.lightness?.icon;
       return new Color(containerData?.color?.hue, s, l)?.hslString;
     }
   }
@@ -1115,6 +1144,7 @@ let Settings = new function() {
     this.setDarkModeState = (state) => {
       localStorage.setItem(this.keyName, state);
       document.body.classList.toggle('dark', state);
+      isDarkModeEnabled = state;
       requestAnimationFrame(() => {
         const bgColor = window.getComputedStyle(document.body).backgroundColor;
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgColor);
@@ -1184,6 +1214,7 @@ let ElementPopulator = new function() {
   this.populatePageWithWordContainers = () => {
     for (const container of containers) {
       wordsContainer[container.type] = new Container(container);
+      return;
     }
   }
 }
