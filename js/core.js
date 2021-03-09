@@ -219,12 +219,6 @@ let Util = new function() {
   this.getWords = (type, callback) => {
     this.ajax('ajax/' + type + '.php', (output) => callback(output));
   }
-
-  this.updateAllSwipers = () => {
-    for (let container of containers) {
-      wordsContainer[container.type]?.swiper?.update();
-    }
-  }
 }
 
 class Color {
@@ -951,7 +945,6 @@ let Settings = new function() {
       document.documentElement.style.setProperty('--font-size-multiplier', value);
       this.updateCurrentScaleDisplay();
       this.updateButtonsStates();
-      Util.updateAllSwipers();
     }
 
     this.increaseFontScale = () => {
@@ -1084,7 +1077,6 @@ let Settings = new function() {
     this.setCompactModeState = (state) => {
       localStorage.setItem(this.keyName, state);
       document.body.classList.toggle('compact', state);
-      Util.updateAllSwipers();
     }
 
     this.createToggle = () => {
