@@ -48,8 +48,8 @@ let containers = [
         lightness: {
           card: 10,
           header: 29,
-          word: 56,
-          icon: 56,
+          word: 58,
+          icon: 58,
         },
       },
     },
@@ -85,8 +85,8 @@ let containers = [
         lightness: {
           card: 10,
           header: 30,
-          word: 58,
-          icon: 58,
+          word: 60,
+          icon: 60,
         },
       },
     },
@@ -114,8 +114,8 @@ let containers = [
         saturation: {
           card: 32,
           header: 55,
-          word: 97,
-          icon: 97,
+          word: 92,
+          icon: 92,
         },
         lightness: {
           card: 11,
@@ -149,8 +149,8 @@ let containers = [
         saturation: {
           card: 24,
           header: 40,
-          word: 95,
-          icon: 95,
+          word: 90,
+          icon: 90,
         },
         lightness: {
           card: 13,
