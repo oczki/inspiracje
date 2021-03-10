@@ -41,15 +41,15 @@ let containers = [
       darkMode: {
         saturation: {
           card: 35,
-          header: 100,
-          word: 56,
-          icon: 56,
+          header: 85,
+          word: 63,
+          icon: 63,
         },
         lightness: {
           card: 10,
-          header: 24,
-          word: 65,
-          icon: 65,
+          header: 29,
+          word: 56,
+          icon: 56,
         },
       },
     },
@@ -61,17 +61,33 @@ let containers = [
     label: "Postać",
     color: {
       hue: 55,
-      saturation: {
-        card: 65,
-        header: 100,
-        word: 100,
-        icon: 100,
+      lightMode: {
+        saturation: {
+          card: 65,
+          header: 100,
+          word: 100,
+          icon: 100,
+        },
+        lightness: {
+          card: 95,
+          header: 24,
+          word: 22,
+          icon: 22,
+        },
       },
-      lightness: {
-        card: 95,
-        header: 24,
-        word: 22,
-        icon: 22,
+      darkMode: {
+        saturation: {
+          card: 31,
+          header: 100,
+          word: 64,
+          icon: 64,
+        },
+        lightness: {
+          card: 10,
+          header: 30,
+          word: 58,
+          icon: 58,
+        },
       },
     },
   },
@@ -80,17 +96,33 @@ let containers = [
     label: "Cecha postaci",
     color: {
       hue: 30,
-      saturation: {
-        card: 65,
-        header: 100,
-        word: 100,
-        icon: 100,
+      lightMode: {
+        saturation: {
+          card: 65,
+          header: 100,
+          word: 100,
+          icon: 100,
+        },
+        lightness: {
+          card: 95,
+          header: 31,
+          word: 30,
+          icon: 30,
+        },
       },
-      lightness: {
-        card: 95,
-        header: 31,
-        word: 30,
-        icon: 30,
+      darkMode: {
+        saturation: {
+          card: 32,
+          header: 55,
+          word: 97,
+          icon: 97,
+        },
+        lightness: {
+          card: 11,
+          header: 45,
+          word: 69,
+          icon: 69,
+        },
       },
     },
   },
@@ -99,17 +131,33 @@ let containers = [
     label: "Emocja",
     color: {
       hue: 0,
-      saturation: {
-        card: 65,
-        header: 83,
-        word: 68,
-        icon: 68,
+      lightMode: {
+        saturation: {
+          card: 65,
+          header: 83,
+          word: 68,
+          icon: 68,
+        },
+        lightness: {
+          card: 96,
+          header: 37,
+          word: 40,
+          icon: 40,
+        },
       },
-      lightness: {
-        card: 96,
-        header: 37,
-        word: 40,
-        icon: 40,
+      darkMode: {
+        saturation: {
+          card: 24,
+          header: 40,
+          word: 95,
+          icon: 95,
+        },
+        lightness: {
+          card: 13,
+          header: 56,
+          word: 81,
+          icon: 81,
+        },
       },
     },
   },
@@ -118,17 +166,33 @@ let containers = [
     label: "Relacja",
     color: {
       hue: 325,
-      saturation: {
-        card: 70,
-        header: 96,
-        word: 67,
-        icon: 67,
+      lightMode: {
+        saturation: {
+          card: 70,
+          header: 96,
+          word: 67,
+          icon: 67,
+        },
+        lightness: {
+          card: 95.5,
+          header: 34,
+          word: 39,
+          icon: 39,
+        },
       },
-      lightness: {
-        card: 95.5,
-        header: 34,
-        word: 39,
-        icon: 39,
+      darkMode: {
+        saturation: {
+          card: 29,
+          header: 45,
+          word: 89,
+          icon: 89,
+        },
+        lightness: {
+          card: 12,
+          header: 55,
+          word: 78,
+          icon: 78,
+        },
       },
     },
   },
@@ -137,17 +201,33 @@ let containers = [
     label: "Czynność",
     color: {
       hue: 295,
-      saturation: {
-        card: 65,
-        header: 88,
-        word: 60,
-        icon: 60,
+      lightMode: {
+        saturation: {
+          card: 65,
+          header: 88,
+          word: 60,
+          icon: 60,
+        },
+        lightness: {
+          card: 95,
+          header: 36,
+          word: 38,
+          icon: 38,
+        },
       },
-      lightness: {
-        card: 95,
-        header: 36,
-        word: 38,
-        icon: 38,
+      darkMode: {
+        saturation: {
+          card: 27,
+          header: 37,
+          word: 75,
+          icon: 75,
+        },
+        lightness: {
+          card: 12,
+          header: 54,
+          word: 77,
+          icon: 77,
+        },
       },
     },
   },
@@ -1238,7 +1318,6 @@ let ElementPopulator = new function() {
   this.populatePageWithWordContainers = () => {
     for (const container of containers) {
       wordsContainer[container.type] = new Container(container);
-      return;
     }
   }
 }
