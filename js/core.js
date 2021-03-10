@@ -42,14 +42,14 @@ let containers = [
         saturation: {
           card: 35,
           header: 85,
-          word: 63,
-          icon: 63,
+          word: 60,
+          icon: 60,
         },
         lightness: {
           card: 10,
           header: 29,
-          word: 58,
-          icon: 58,
+          word: 54,
+          icon: 54,
         },
       },
     },
@@ -85,8 +85,8 @@ let containers = [
         lightness: {
           card: 10,
           header: 30,
-          word: 60,
-          icon: 60,
+          word: 56,
+          icon: 56,
         },
       },
     },
@@ -149,14 +149,14 @@ let containers = [
         saturation: {
           card: 24,
           header: 40,
-          word: 90,
-          icon: 90,
+          word: 100,
+          icon: 100,
         },
         lightness: {
-          card: 13,
+          card: 12.5,
           header: 56,
-          word: 81,
-          icon: 81,
+          word: 80,
+          icon: 80,
         },
       },
     },
@@ -182,7 +182,7 @@ let containers = [
       },
       darkMode: {
         saturation: {
-          card: 29,
+          card: 26,
           header: 45,
           word: 89,
           icon: 89,
@@ -217,7 +217,7 @@ let containers = [
       },
       darkMode: {
         saturation: {
-          card: 27,
+          card: 28,
           header: 37,
           word: 75,
           icon: 75,
