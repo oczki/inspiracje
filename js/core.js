@@ -240,7 +240,7 @@ let Util = new function() {
 }
 
 class Color {
-  constructor(hue, saturation, lightness) {
+  constructor(hue = 0, saturation = 0, lightness = 0) {
     // If the passed lone argument was a string, parse it as hexadecimal color
     if (typeof(hue) === 'string' && arguments.length === 1) {
       const rgb = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hue);
@@ -319,6 +319,75 @@ class Color {
   get hex() {
     const [r, g, b] = this.rgb;
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+}
+
+class ColorSetter {
+  constructor(containerData) {
+    this.colorData = isDarkModeEnabled ? containerData?.color?.darkMode : containerData?.color?.lightMode;
+    this.hue = containerData?.color?.hue || 0;
+    this.sectionElement = document.getElementById(Selector.sectionId(containerData.type));
+  }
+
+  setColors() {
+    if (!this.sectionElement) return;
+    this.setSectionBackground();
+    this.setSectionShadow();
+    this.setHeaderTextColor();
+    this.setWordTextColor();
+    this.setNavigationButtonsColor();
+  }
+
+  setSectionBackground() {
+    const s = this.colorData?.saturation?.card || 0;
+    const l = this.colorData?.lightness?.card || 0;
+    const color = new Color(this.hue, s, l);
+    this.sectionElement.style.backgroundColor = color?.hslString;
+  }
+
+  setSectionShadow() {
+    const shadowPropertyName = '--card-shadow-override';
+    if (isDarkModeEnabled) {
+      this.sectionElement.style.removeProperty(shadowPropertyName);
+      return;
+    }
+    const s = this.colorData?.saturation?.word || 0;
+    const l = this.colorData?.lightness?.word || 0;
+    const color = new Color(this.hue, s, l);
+    const shadowDefinition = `0px 2px 1px -1px ${color?.hslaString(0.2)},
+      0px 1px 2px 0px ${color?.hslaString(0.14)},
+      0px 1px 3px 0px ${color?.hslaString(0.12)}`;
+    this.sectionElement.style.setProperty(shadowPropertyName, shadowDefinition);
+  }
+
+  setHeaderTextColor() {
+    const header = this.sectionElement.querySelector('.header-container');
+    if (!header) return;
+
+    const s = this.colorData?.saturation?.header;
+    const l = this.colorData?.lightness?.header;
+    const color = new Color(this.hue, s, l);
+    header.style.color = color?.hslString;
+  }
+
+  setWordTextColor() {
+    const wordWrapper = this.sectionElement.querySelector('.swiper-wrapper');
+    if (!wordWrapper) return;
+
+    const s = this.colorData?.saturation?.word;
+    const l = this.colorData?.lightness?.word;
+    const color = new Color(this.hue, s, l);
+    wordWrapper.style.color = color?.hslString;
+  }
+
+  setNavigationButtonsColor() {
+    const navigationButtons = this.sectionElement.querySelectorAll('button');
+    if (!navigationButtons) return;
+
+    const s = this.colorData?.saturation?.icon;
+    const l = this.colorData?.lightness?.icon;
+    const color = new Color(this.hue, s, l);
+    Array.from(navigationButtons).forEach(button => button.style.color = color?.hslString);
   }
 }
 
@@ -729,96 +798,44 @@ let SpecializedCreator = new function() {
 }
 
 let WordSectionCreator = new function() {
-  this.addSwiperPrevNextButtons = (parentElement, colorString) => {
+  this.addSwiperPrevNextButtons = (parentElement) => {
     const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
     prevButton.appendChild(Creator.createIcon(iconArrowLeft));
     prevButton.style.position = 'relative';
-    prevButton.style.color = colorString;
     Creator.addRipple(prevButton);
 
     const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
     nextButton.appendChild(Creator.createIcon(iconArrowRight));
     nextButton.style.position = 'relative';
-    nextButton.style.color = colorString;
     Creator.addRipple(nextButton);
 
     parentElement.appendChild(prevButton);
     parentElement.appendChild(nextButton);
   }
 
-  this.addSwiperWrapper = (parentElement, colorString) => {
+  this.addSwiperWrapper = (parentElement) => {
     const swiperWrapper = Creator.createElementWithClass('div', 'swiper-wrapper');
-    swiperWrapper.style.color = colorString;
     parentElement.appendChild(swiperWrapper);
   }
 
-  this.addSectionHeader = (parentElement, containerData) => {
+  this.addSectionHeader = (parentElement, headerText) => {
     const header = Creator.createElementWithClass('div', 'header-container');
-    header.innerHTML = containerData.label;
-    header.style.color = this.color.header(containerData);
+    header.innerHTML = headerText;
     parentElement.appendChild(header);
   }
 
   this.addSection = (containerData) => {
     const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(containerData.type));
-    section.style.backgroundColor = this.color.card(containerData);
-    section.style.setProperty('--card-shadow-override', this.color.cardShadow(containerData));
-    if (isDarkModeEnabled) section.style.removeProperty('--card-shadow-override'); // TODO: this, along with other methods that set the color, should be called when dark mode state changes
-    this.addSectionHeader(section, containerData);
-    this.addSwiperPrevNextButtons(section, this.color.icon(containerData));
+    this.addSectionHeader(section, containerData.label);
+    this.addSwiperPrevNextButtons(section);
 
     const swiperOuterContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
     const swiperInnerContainer = Creator.createElementWithClass('div', 'swiper-container');
-    this.addSwiperWrapper(swiperInnerContainer, this.color.word(containerData));
+    this.addSwiperWrapper(swiperInnerContainer);
     swiperOuterContainer.appendChild(swiperInnerContainer);
     section.appendChild(swiperOuterContainer);
 
     document.getElementsByTagName('main')[0].appendChild(section);
-  }
-
-  this.color = new function() {
-    this.getColorData = (containerData) => {
-      if (isDarkModeEnabled) return containerData?.color?.darkMode;
-      return containerData?.color?.lightMode;
-    }
-
-    this.card = (containerData) => {
-      let colorData = this.getColorData(containerData);
-      const s = colorData?.saturation?.card;
-      const l = colorData?.lightness?.card;
-      return new Color(containerData.color.hue, s, l)?.hslString;
-    }
-
-    this.cardShadow = (containerData) => {
-      let colorData = this.getColorData(containerData);
-      const s = colorData?.saturation?.word;
-      const l = colorData?.lightness?.word;
-      const baseColor = new Color(containerData?.color?.hue, s, l);
-      return `0px 2px 1px -1px ${baseColor?.hslaString(0.2)},
-        0px 1px 2px 0px ${baseColor?.hslaString(0.14)},
-        0px 1px 3px 0px ${baseColor?.hslaString(0.12)}`;
-    }
-
-    this.header = (containerData) => {
-      let colorData = this.getColorData(containerData);
-      const s = colorData?.saturation?.header;
-      const l = colorData?.lightness?.header;
-      return new Color(containerData?.color?.hue, s, l)?.hslString;
-    }
-
-    this.word = (containerData) => {
-      let colorData = this.getColorData(containerData);
-      const s = colorData?.saturation?.word;
-      const l = colorData?.lightness?.word;
-      return new Color(containerData?.color?.hue, s, l)?.hslString;
-    }
-
-    this.icon = (containerData) => {
-      let colorData = this.getColorData(containerData);
-      const s = colorData?.saturation?.icon;
-      const l = colorData?.lightness?.icon;
-      return new Color(containerData?.color?.hue, s, l)?.hslString;
-    }
   }
 }
 
@@ -1145,6 +1162,7 @@ let Settings = new function() {
       localStorage.setItem(this.keyName, state);
       document.body.classList.toggle('dark', state);
       isDarkModeEnabled = state;
+      Settings.updateColors();
       requestAnimationFrame(() => {
         const bgColor = window.getComputedStyle(document.body).backgroundColor;
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bgColor);
@@ -1172,6 +1190,12 @@ let Settings = new function() {
   this.updateFontScaleElements = () => {
     this.FontScale.updateCurrentScaleDisplay();
     this.FontScale.updateButtonsStates();
+  }
+
+  this.updateColors = () => {
+    for (let container of containers) {
+      new ColorSetter(container).setColors();
+    }
   }
 
   this.createFontScaleControl = () => {
@@ -1292,6 +1316,7 @@ function init() {
   GlobalEventHandler.handleFirstKeyboardInput();
   ElementPopulator.populateFooter();
   ElementPopulator.populatePageWithWordContainers();
+  Settings.updateColors();
   Settings.updateFontScaleElements();
 }
 
