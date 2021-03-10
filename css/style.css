@@ -327,7 +327,7 @@ a {
 }
 
 [class^='navigation-button-'] > .icon {
-  transform: scale(1.25);
+  opacity: 0.7;
 }
 
 /* #endregion Single section with a word swiper */
