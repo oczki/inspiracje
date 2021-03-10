@@ -345,7 +345,7 @@ footer {
   justify-content: center;
   height: var(--footer-height);
   background-color: var(--color-footer-background);
-  box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.2); /* TODO: shadow from material design */
+  box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.26);
   visibility: hidden;
 }
 
