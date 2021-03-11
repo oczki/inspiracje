@@ -504,7 +504,7 @@ let ColorUtil = new function() {
 class Container {
   constructor(containerData) {
     this.data = containerData;
-    this.numberOfSlidesToGenerateFromWordsCache = 7;
+    this.numberOfSlidesToGenerateFromWordsCache = 12;
     this.wordsCache = [];
     this.wordsCacheIndex = 0;
     this.slideCount = 0;
@@ -561,8 +561,8 @@ class Container {
   }
 
   appendSlidesToTheLeftIfNeeded() {
-    const marginFromEdge = 4;
-    const deltaNumberOfSlides = 7;
+    const marginFromEdge = 6;
+    const deltaNumberOfSlides = 12;
     this.recalculateSlideCountAndIndex();
     if (this.isActiveSlideCloseToLeftEdge(marginFromEdge)) {
       this.appendSlidesToTheLeft(deltaNumberOfSlides, -1);
@@ -571,8 +571,8 @@ class Container {
   }
 
   appendSlidesToTheRightIfNeeded() {
-    const marginFromEdge = 4;
-    const deltaNumberOfSlides = 7;
+    const marginFromEdge = 6;
+    const deltaNumberOfSlides = 12;
     this.recalculateSlideCountAndIndex();
     if (this.isActiveSlideCloseToRightEdge(marginFromEdge)) {
       this.appendSlidesToTheRight(deltaNumberOfSlides);
