@@ -319,6 +319,7 @@ let Util = new function() {
   }
 
   this.roundTransformationProperties = (element) => {
+    this.clearTransformationProperties(element);
     const elementStyle = window.getComputedStyle(element);
     let matrix;
     if (typeof DOMMatrix !== 'undefined') {
@@ -348,9 +349,9 @@ let Util = new function() {
 
   this.debounce = (callback, timeout, immediate = false) => {
     let timer;
-    return () => {
+    return function() {
       let context = this, args = arguments;
-      let later = () => {
+      let later = function() {
         timer = null;
         if (!immediate) callback.apply(context, args);
       };
@@ -1085,11 +1086,6 @@ let VisibilityController = new function() {
     Util.roundTransformationProperties(fabCloseSheet);
   }
 
-  this.redoFabTransformations = () => {
-    this.clearFabTransformations();
-    setTimeout(() => this.roundFabTransformations(), fabTransitionDuration);
-  }
-
   this.hideSlidingSheetsAndScrim = () => {
     const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
     for (const sheet of sheetsToHide) {
@@ -1112,6 +1108,7 @@ let VisibilityController = new function() {
       this.showAndAllowTabbingToElement(sheet);
       this.showElement(Selector.getScrim());
     }
+    this.roundFabTransformations();
   }
 
   this.hideOtherSheets = (idOfSheetNotToHide) => {
@@ -1220,17 +1217,21 @@ let Settings = new function() {
       return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
 
-    this.shouldAnimationsToggleBeChecked = (keyName) => {
-      const currentAnimationsDisabledKeyValue = localStorage.getItem(keyName);
+    this.shouldAnimationsToggleBeChecked = () => {
+      const currentAnimationsDisabledKeyValue = localStorage.getItem(this.keyName);
       if (currentAnimationsDisabledKeyValue === null)
         return !this.doesTheUserPreferReducedMotion();
       else
         return currentAnimationsDisabledKeyValue === 'false';
     }
 
+    this.setAnimationsDisabledBodyClass = (state) => {
+      document.body.classList.toggle('no-animations', state);
+    }
+
     this.setAnimationsDisabledState = (state) => {
       localStorage.setItem(this.keyName, state);
-      document.body.classList.toggle('no-animations', state);
+      this.setAnimationsDisabledBodyClass(state);
       if (state) {
         swiperAnimationDuration = 0;
         sheetClosingAnimationDuration = 0;
@@ -1346,6 +1347,16 @@ let Settings = new function() {
     }
   }
 
+  this.disableAnimationsDuringResize = () => {
+    this.AnimationsToggle.setAnimationsDisabledBodyClass(true);
+  }
+
+  this.enableAnimationsAfterResize = () => {
+    if (this.AnimationsToggle.shouldAnimationsToggleBeChecked()) {
+      this.AnimationsToggle.setAnimationsDisabledBodyClass(false);
+    }
+  }
+
   this.createFontScaleControl = () => {
     return this.FontScale.createControl();
   }
@@ -1424,8 +1435,14 @@ let GlobalEventHandler = new function() {
 
   this.handleWindowResize = () => {
     const delayBetweenFunctionCalls = 100;
-    const callbackResizeStart = () => { VisibilityController.clearFabTransformations(); };
-    const callbackResizeEnd = () => { VisibilityController.roundFabTransformations(); };
+    const callbackResizeStart = () => {
+      Settings.disableAnimationsDuringResize();
+      VisibilityController.clearFabTransformations();
+    };
+    const callbackResizeEnd = () => {
+      Settings.enableAnimationsAfterResize();
+      VisibilityController.roundFabTransformations();
+    };
     window.addEventListener('resize', Util.debounce(callbackResizeStart, delayBetweenFunctionCalls, true));
     window.addEventListener('resize', Util.debounce(callbackResizeEnd, delayBetweenFunctionCalls));
   }
