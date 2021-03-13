@@ -25,7 +25,7 @@
   --color-accent-h: 220deg;
   --font-size-multiplier: 1;
 
-  --body-padding: 8px;
+  --body-padding: 4px;
   --card-padding: 4px;
   --card-border-radius: 4px;
   --icon-size: 24px;
@@ -122,7 +122,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: var(--body-padding);
+  padding: 8px var(--body-padding);
   position: relative;
 }
 
