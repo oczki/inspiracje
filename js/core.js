@@ -317,6 +317,49 @@ let Util = new function() {
   this.getWords = (type, callback) => {
     this.ajax('ajax/' + type + '.php', (output) => callback(output));
   }
+
+  this.roundTransformationMatrix = (element) => {
+    const elementStyle = window.getComputedStyle(element);
+    let matrix;
+    if (typeof DOMMatrix !== 'undefined') {
+      matrix = new DOMMatrix(elementStyle.transform);
+    } else if (typeof CSSMatrix !== 'undefined') {
+      matrix = new CSSMatrix(elementStyle.transform);
+    } else if (typeof MSCSSMatrix !== 'undefined') {
+      matrix = new MSCSSMatrix(elementStyle.transform);
+    } else if (typeof WebKitCSSMatrix !== 'undefined') {
+      matrix = new WebKitCSSMatrix(elementStyle.webkitTransform);
+    }
+
+    const translateX = matrix.m41;
+    if (translateX % 2) {
+      element.style.setProperty('--translateX', `${translateX.toFixed(0)}px`);
+    }
+    const translateY = matrix.m42;
+    if (translateY % 2) {
+      element.style.setProperty('--translateY', `${translateY.toFixed(0)}px`);
+    }
+  }
+
+  this.clearTransformationProperties = (element) => {
+    element.style.removeProperty('--translateX');
+    element.style.removeProperty('--translateY');
+  }
+
+  this.debounce = (callback, timeout, immediate = false) => {
+    let timer;
+    return () => {
+      let context = this, args = arguments;
+		  let later = () => {
+			  timer = null;
+			  if (!immediate) callback.apply(context, args);
+		  };
+		  var callNow = immediate && !timer;
+		  clearTimeout(timer);
+		  timer = setTimeout(later, timeout);
+		  if (callNow) callback.apply(context, args);
+    };
+  }
 }
 
 class Color {
@@ -974,6 +1017,9 @@ let SheetCreator = new function() {
 }
 
 let VisibilityController = new function() {
+  this.fabForwardAllId = 'button-advance-all';
+  this.fabCloseSheetId = 'button-close-sheet';
+
   this.showElement = (element) => {
     element?.classList.add(visibleClass);
   }
@@ -1008,18 +1054,40 @@ let VisibilityController = new function() {
     this.delayedPreventTabbingToElement(element, delay);
   }
 
+  this.getFabs = () => {
+    return [
+      document.getElementById(this.fabForwardAllId),
+      document.getElementById(this.fabCloseSheetId),
+    ];
+  }
+
   this.showCloseFab = () => {
-    const fabAdvanceAll = document.getElementById('button-advance-all');
-    const fabCloseSheet = document.getElementById('button-close-sheet');
+    const [fabAdvanceAll, fabCloseSheet] = this.getFabs();
     this.hideAndPreventTabbingToElement(fabAdvanceAll, fabTransitionDuration);
     this.showAndAllowTabbingToElement(fabCloseSheet);
   }
 
   this.showAdvanceAllFab = () => {
-    const fabAdvanceAll = document.getElementById('button-advance-all');
-    const fabCloseSheet = document.getElementById('button-close-sheet');
+    const [fabAdvanceAll, fabCloseSheet] = this.getFabs();
     this.hideAndPreventTabbingToElement(fabCloseSheet, fabTransitionDuration);
     this.showAndAllowTabbingToElement(fabAdvanceAll);
+  }
+
+  this.clearFabTransformations = () => {
+    const [fabAdvanceAll, fabCloseSheet] = this.getFabs();
+    Util.clearTransformationProperties(fabAdvanceAll);
+    Util.clearTransformationProperties(fabCloseSheet);
+  }
+
+  this.roundFabTransformations = () => {
+    const [fabAdvanceAll, fabCloseSheet] = this.getFabs();
+    Util.roundTransformationMatrix(fabAdvanceAll);
+    Util.roundTransformationMatrix(fabCloseSheet);
+  }
+
+  this.redoFabTransformations = () => {
+    this.clearFabTransformations();
+    setTimeout(() => this.roundFabTransformations(), fabTransitionDuration);
   }
 
   this.hideSlidingSheetsAndScrim = () => {
@@ -1353,6 +1421,14 @@ let GlobalEventHandler = new function() {
   this.handleFirstKeyboardInput = () => {
     window.addEventListener('keydown', GlobalEventHandler.handleKeyboardInput);
   }
+
+  this.handleWindowResize = () => {
+    const delayBetweenFunctionCalls = 100;
+    const callbackResizeStart = () => { VisibilityController.clearFabTransformations(); };
+    const callbackResizeEnd = () => { VisibilityController.roundFabTransformations(); };
+    window.addEventListener('resize', Util.debounce(callbackResizeStart, delayBetweenFunctionCalls, true));
+    window.addEventListener('resize', Util.debounce(callbackResizeEnd, delayBetweenFunctionCalls));
+  }
 }
 
 let Aria = new function() {
@@ -1397,6 +1473,8 @@ function init() {
   ElementPopulator.populatePageWithWordContainers();
   Settings.updateColors();
   Settings.updateFontScaleElements();
+  GlobalEventHandler.handleWindowResize();
+  VisibilityController.roundFabTransformations();
 }
 
 if (document.readyState != 'loading')
