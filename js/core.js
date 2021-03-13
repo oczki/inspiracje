@@ -555,9 +555,10 @@ class Container {
     this.slideIndex = 0;
     this.hasSpokenSinceTransitionEnd = true;
 
-    this.initializeWords();
     WordSectionCreator.addSection(containerData);
     this.swiper = this.initializeSwiper();
+    this.initializeWords();
+
     setInterval(() => this.speakCurrentSlideIfAllowed(), Math.max(150, swiperAnimationDuration + 11));
   }
 
