@@ -114,6 +114,7 @@ body {
   --sheet-hide-duration: 200ms;
   --fab-transition-duration: 280ms;
   --fab-opacity-duration: 15ms;
+  --icon-rotation-duration: 500ms;
 
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -177,6 +178,7 @@ body.no-animations {
   --sheet-hide-duration: 0.1ms;
   --fab-transition-duration: 0.1ms;
   --fab-opacity-duration: 0.1ms;
+  --icon-rotation-duration: 0.1ms;
 }
 
 body.no-animations .ripple {
@@ -351,6 +353,11 @@ footer.visible {
   justify-content: space-between;
 }
 
+@keyframes spin-360 {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(360deg); }
+}
+
 .floating-action-button {
   --fab-size: 48px;
 
@@ -394,6 +401,12 @@ footer.visible {
   display: inline-block;
   margin: 1px 0 0 12px;
   letter-spacing: 1.25px;
+}
+
+.floating-action-button.rotate .icon {
+  animation-name: spin-360;
+  animation-fill-mode: forwards;
+  animation-duration: var(--icon-rotation-duration);
 }
 
 #button-advance-all {

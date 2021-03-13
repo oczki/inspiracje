@@ -269,11 +269,13 @@ const defaulSwiperAnimationDuration = 180;
 const defaultSheetClosingAnimationDuration = 200;
 const defaultDelayBetweenLoadedWordsDuration = 20;
 const defaultFabTransitionDuration = 280;
+const defaultIconRotationDuration = 500;
 
 let swiperAnimationDuration = defaulSwiperAnimationDuration;
 let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
 let delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
 let fabTransitionDuration = defaultFabTransitionDuration;
+let iconRotationDuration = defaultIconRotationDuration;
 
 let isDarkModeEnabled = false;
 
@@ -1447,6 +1449,23 @@ let GlobalEventHandler = new function() {
     });
   }
 
+  this.attachClickEventToAdvanceAllFabToRotateIcon = () => {
+    const advanceAllButton = document.getElementById('button-advance-all');
+    const callbackFabClicked = (e) => {
+      e.preventDefault();
+
+      // Start animating the icon
+      advanceAllButton.classList.add('rotate');
+
+      // Stop animating the icon after a while
+      setTimeout(() => {
+        advanceAllButton.classList.remove('rotate');
+      }, iconRotationDuration);
+    }
+
+    advanceAllButton.addEventListener('click', Util.debounce(callbackFabClicked, defaultIconRotationDuration, true));
+  }
+
   this.handleKeyboardInput = (event) => {
     if (event.keyCode === 9) {
       document.body.classList.add('show-outline');
@@ -1523,6 +1542,7 @@ function init() {
   Settings.updateColors();
   Settings.updateFontScaleElements();
   GlobalEventHandler.handleWindowResize();
+  GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
   VisibilityController.delayedRoundFabTransformations();
 }
 
