@@ -877,18 +877,18 @@ let SpecializedCreator = new function() {
   }
 
   this.createAdvanceAllWordsFloatingActionButton = () => {
-    const forwardButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
-    Creator.addRipple(forwardButton);
-    VisibilityController.showAndAllowTabbingToElement(forwardButton);
-    Aria.setLabel(forwardButton, 'Kolejny zestaw słów');
+    const advanceAllButton = Creator.createElementWithClassAndId('button', 'floating-action-button', 'button-advance-all');
+    Creator.addRipple(advanceAllButton);
+    VisibilityController.showAndAllowTabbingToElement(advanceAllButton);
+    Aria.setLabel(advanceAllButton, 'Kolejny zestaw słów');
 
-    forwardButton.addEventListener('click', function (e) {
+    advanceAllButton.addEventListener('click', function (e) {
       e.preventDefault();
 
-      // Block reading individual sections, to give way to combined forward-all reading
+      // Block reading of individual sections, to give way to combined advance-all reading
       Aria.setIsAdvanceAllSpeaking(true);
 
-      // Forward sections in randomized order
+      // Advance sections in randomized order
       const types = Object.keys(containers).map(key => containers[key].type);
       Util.shuffle(types);
       for (const [index, type] of types.entries()) {
@@ -913,9 +913,9 @@ let SpecializedCreator = new function() {
       }, 500 + swiperAnimationDuration + delayBetweenLoadedWordsDuration * types.length)
     });
 
-    forwardButton.appendChild(Creator.createIcon(iconAutoRenew));
-    forwardButton.appendChild(Creator.createSpan('Kolejny zestaw'));
-    return forwardButton;
+    advanceAllButton.appendChild(Creator.createIcon(iconAutoRenew));
+    advanceAllButton.appendChild(Creator.createSpan('Kolejny zestaw'));
+    return advanceAllButton;
   }
 
   this.createCloseSheetFloatingActionButton = () => {
@@ -1032,7 +1032,7 @@ let SheetCreator = new function() {
 }
 
 let VisibilityController = new function() {
-  this.fabForwardAllId = 'button-advance-all';
+  this.fabAdvanceAllId = 'button-advance-all';
   this.fabCloseSheetId = 'button-close-sheet';
 
   this.showElement = (element) => {
@@ -1071,7 +1071,7 @@ let VisibilityController = new function() {
 
   this.getFabs = () => {
     return [
-      document.getElementById(this.fabForwardAllId),
+      document.getElementById(this.fabAdvanceAllId),
       document.getElementById(this.fabCloseSheetId),
     ];
   }
