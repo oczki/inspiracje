@@ -319,7 +319,6 @@ let Util = new function() {
   }
 
   this.roundTransformationProperties = (element) => {
-    this.clearTransformationProperties(element);
     const elementStyle = window.getComputedStyle(element);
     let matrix;
     if (typeof DOMMatrix !== 'undefined') {
@@ -1108,6 +1107,10 @@ let VisibilityController = new function() {
     Util.roundTransformationProperties(fabCloseSheet);
   }
 
+  this.delayedRoundFabTransformations = (delay = 1000) => {
+    setTimeout(() => this.roundFabTransformations(), delay);
+  }
+
   this.hideSlidingSheetsAndScrim = () => {
     const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
     for (const sheet of sheetsToHide) {
@@ -1130,7 +1133,6 @@ let VisibilityController = new function() {
       this.showAndAllowTabbingToElement(sheet);
       this.showElement(Selector.getScrim());
     }
-    //this.roundFabTransformations();
   }
 
   this.hideOtherSheets = (idOfSheetNotToHide) => {
@@ -1521,7 +1523,7 @@ function init() {
   Settings.updateColors();
   Settings.updateFontScaleElements();
   GlobalEventHandler.handleWindowResize();
-  VisibilityController.roundFabTransformations();
+  VisibilityController.delayedRoundFabTransformations();
 }
 
 if (document.readyState != 'loading')
