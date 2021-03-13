@@ -581,6 +581,19 @@ class Container {
       prevSlideCallbackStart, nextSlideCallbackStart, prevSlideCallbackEnd, nextSlideCallbackEnd);
   }
 
+  reinitializeSwiper() {
+    if (this.swiper) {
+      this.swiper.destroy();
+      const swiperContainer = document.querySelector(Selector.swiperSelector(this.data.type));
+      while (swiperContainer.firstChild)
+        swiperContainer.removeChild(swiperContainer.firstChild);
+      WordSectionCreator.addSwiperWrapper(swiperContainer);
+    }
+    this.swiper = this.initializeSwiper();
+    this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache + 1);
+    this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache);
+  }
+
   appendSlidesToTheLeft(numberOfSlidesToAppend, offset = 0) {
     this.recalculateSlideCountAndIndex();
     const marginFromBeginning = this.slideIndex;
@@ -1253,6 +1266,7 @@ let Settings = new function() {
       this.setAnimationsDisabledState(!toggle.checked);
       toggle.addEventListener('change', (event) => {
         this.setAnimationsDisabledState(!event.currentTarget.checked);
+        this.reinitializeAllSwipers();
       });
       const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
       labelElement.appendChild(toggle);
@@ -1260,6 +1274,13 @@ let Settings = new function() {
       labelElement.appendChild(Creator.createSpan('Animacje'));
       Creator.addRipple(labelElement);
       return labelElement;
+    }
+
+    this.reinitializeAllSwipers = () => {
+      for (const containerData of containers) {
+        wordsContainer[containerData.type].reinitializeSwiper();
+        new ColorSetter(containerData).setColors();
+      }
     }
   };
 
