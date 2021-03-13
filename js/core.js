@@ -855,8 +855,8 @@ let SpecializedCreator = new function() {
       }, 500 + swiperAnimationDuration + delayBetweenLoadedWordsDuration * types.length)
     });
 
-    forwardButton.appendChild(Creator.createSpan('Kolejny zestaw'));
     forwardButton.appendChild(Creator.createIcon(iconAutoRenew));
+    forwardButton.appendChild(Creator.createSpan('Kolejny zestaw'));
     return forwardButton;
   }
 
@@ -871,8 +871,8 @@ let SpecializedCreator = new function() {
       VisibilityController.hideSlidingSheetsAndScrim();
     });
 
-    closeSheetButton.appendChild(Creator.createSpan('Zamknij'));
     closeSheetButton.appendChild(Creator.createIcon(iconClose));
+    closeSheetButton.appendChild(Creator.createSpan('Zamknij'));
     return closeSheetButton;
   }
 }

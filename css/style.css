@@ -371,7 +371,7 @@ footer.visible {
   left: 50%;
   width: auto;
   height: var(--fab-size);
-  padding: 0 12px 0 20px;
+  padding: 0 20px 0 12px;
   z-index: 100;
   display: flex;
   flex-wrap: nowrap;
@@ -404,7 +404,7 @@ footer.visible {
   font-weight: 500;
   font-size: 14px;
   display: inline-block;
-  margin: 1px 8px 0 0;
+  margin: 1px 0 0 12px;
   letter-spacing: 1.25px;
 }
 
