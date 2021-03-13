@@ -169,18 +169,6 @@ body.dark .header-container {
 
 /* #endregion Body variant: dark mode */
 
-/* #region Body variant: show outline for keyboard navigation */
-
-body.show-outline button:focus,
-body.show-outline a:focus,
-body.show-outline .checkbox-label:focus-within {
-  outline: 2px dashed var(--color-text);
-  outline-color: invert;
-  outline-offset: -5px;
-}
-
-/* #endregion Body variant: show outline for keyboard navigation */
-
 /* #region Body variant: no animations */
 
 body.no-animations {
@@ -641,33 +629,63 @@ a:after,
   right: 0;
   z-index: 1;
   border-radius: inherit;
-  background-color: currentColor;
   opacity: 0;
   transition: opacity var(--hover-duration) var(--timing-function);
 }
 
+/* Hover: background color */
+button:before,
+a:before,
+.checkbox-label:before {
+  background-color: currentColor;
+}
+
+/* Focus: ring around the element */
+button:after,
+a:after,
+.checkbox-label:after {
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+/* Light mode - Only hovered */
 button:hover:before,
 a:hover:before,
 .checkbox-label:hover:before {
-  opacity: 0.04;
+  opacity: 0.08;
+}
+
+/* Light mode - Focused */
+body.show-outline button:focus:before,
+body.show-outline a:focus:before,
+body.show-outline .checkbox-label:focus-within:before {
+  opacity: 0.12;
 }
 
 body.show-outline button:focus:after,
 body.show-outline a:focus:after,
 body.show-outline .checkbox-label:focus-within:after {
-  opacity: 0.12;
+  box-shadow: inset 0 0 0 2px currentColor;
+  opacity: 0.5;
 }
 
+/* Dark mode - Only hovered */
 body.dark button:hover:before,
 body.dark a:hover:before,
 body.dark .checkbox-label:hover:before {
-  opacity: 0.08;
+  opacity: 0.12;
+}
+
+/* Dark mode - Focused */
+body.dark.show-outline button:focus:before,
+body.dark.show-outline a:focus:before,
+body.dark.show-outline .checkbox-label:focus-within:before {
+  opacity: 0.24;
 }
 
 body.dark.show-outline button:focus:after,
 body.dark.show-outline a:focus:after,
 body.dark.show-outline .checkbox-label:focus-within:after {
-  opacity: 0.24;
+  opacity: 0.5;
 }
 
 button:disabled,
