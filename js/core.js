@@ -318,7 +318,7 @@ let Util = new function() {
     this.ajax('ajax/' + type + '.php', (output) => callback(output));
   }
 
-  this.roundTransformationMatrix = (element) => {
+  this.roundTransformationProperties = (element) => {
     const elementStyle = window.getComputedStyle(element);
     let matrix;
     if (typeof DOMMatrix !== 'undefined') {
@@ -350,14 +350,14 @@ let Util = new function() {
     let timer;
     return () => {
       let context = this, args = arguments;
-		  let later = () => {
-			  timer = null;
-			  if (!immediate) callback.apply(context, args);
-		  };
-		  var callNow = immediate && !timer;
-		  clearTimeout(timer);
-		  timer = setTimeout(later, timeout);
-		  if (callNow) callback.apply(context, args);
+      let later = () => {
+        timer = null;
+        if (!immediate) callback.apply(context, args);
+      };
+      var callNow = immediate && !timer;
+      clearTimeout(timer);
+      timer = setTimeout(later, timeout);
+      if (callNow) callback.apply(context, args);
     };
   }
 }
@@ -1081,8 +1081,8 @@ let VisibilityController = new function() {
 
   this.roundFabTransformations = () => {
     const [fabAdvanceAll, fabCloseSheet] = this.getFabs();
-    Util.roundTransformationMatrix(fabAdvanceAll);
-    Util.roundTransformationMatrix(fabCloseSheet);
+    Util.roundTransformationProperties(fabAdvanceAll);
+    Util.roundTransformationProperties(fabCloseSheet);
   }
 
   this.redoFabTransformations = () => {
