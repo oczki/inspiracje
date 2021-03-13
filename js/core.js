@@ -811,12 +811,18 @@ let Creator = new function() {
     return sheet;
   }
 
-  this.createCircularButton = (buttonId, buttonText, svgCode, callback) => {
+  this.createCircularButton = (buttonId, buttonText, svgCode, callback, preventDoubleClick = false) => {
     const button = this.createElementWithClassAndId('button', 'circular-button', buttonId);
-    button.addEventListener('click', function (event) {
-      event.preventDefault();
+    const callbackOnSingleClick = (e) => {
+      e.preventDefault();
       callback();
-    });
+    }
+    if (preventDoubleClick) {
+      button.addEventListener('click', Util.debounce(callbackOnSingleClick, defaultFabTransitionDuration, true));
+    } else {
+      button.addEventListener('click', callbackOnSingleClick);
+    }
+
     Aria.setLabel(button, buttonText);
     button.appendChild(this.createIcon(svgCode));
     this.addRipple(button);
@@ -856,7 +862,8 @@ let SpecializedCreator = new function() {
     const callback = () => {
       VisibilityController.toggleSheetVisibility('settings');
     }
-    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
+    const preventDoubleClick = true;
+    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
   }
 
   this.createAboutButton = () => {
@@ -866,7 +873,8 @@ let SpecializedCreator = new function() {
     const callback = () => {
       VisibilityController.toggleSheetVisibility('about');
     }
-    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback);
+    const preventDoubleClick = true;
+    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
   }
 
   this.createCheckboxIcons = () => {
@@ -1122,7 +1130,7 @@ let VisibilityController = new function() {
       this.showAndAllowTabbingToElement(sheet);
       this.showElement(Selector.getScrim());
     }
-    this.roundFabTransformations();
+    //this.roundFabTransformations();
   }
 
   this.hideOtherSheets = (idOfSheetNotToHide) => {
