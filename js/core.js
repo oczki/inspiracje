@@ -364,6 +364,18 @@ let Util = new function() {
       if (callNow) callback.apply(context, args);
     };
   }
+
+  this.throttle = (callback, timeout) => {
+    let timer;
+    let blocked = false;
+    return function() {
+      if (blocked) return;
+      blocked = true;
+      callback.apply(this, arguments)
+      clearTimeout(timer);
+      timer = setTimeout(() => blocked = false, timeout);
+    }
+  }
 }
 
 class Color {
@@ -1502,7 +1514,7 @@ let GlobalEventHandler = new function() {
       }, iconRotationDuration);
     }
 
-    advanceAllButton.addEventListener('click', Util.debounce(callbackFabClicked, defaultIconRotationDuration, true));
+    advanceAllButton.addEventListener('click', Util.throttle(callbackFabClicked, defaultIconRotationDuration));
   }
 
   this.handleKeyboardInput = (event) => {
