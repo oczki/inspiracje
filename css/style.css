@@ -71,14 +71,6 @@ body {
   height: 100%;
 }
 
-noscript p {
-  line-height: 1.5;
-}
-
-noscript p + p {
-  margin-top: 16px;
-}
-
 /* #region Body */
 
 body {

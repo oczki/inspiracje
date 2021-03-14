@@ -38,14 +38,28 @@ function addJs($name) {
     <?php addJs('core'); ?>
     <?php addJs('ripple.min'); ?>
     <script async defer data-domain="inspirac.je" src="https://plausible.io/js/plausible.js"></script>
+    <style type="text/css">
+      p.noscript {
+        line-height: 1.5;
+      }
+
+      p.noscript + p {
+        margin-top: 16px;
+      }
+
+      p.noscript a::before,
+      p.noscript a::after {
+        display: none;
+      }
+    </style>
   </head>
   <body class="compact">
     <main>
       <noscript>
-        <p>Twoja przeglądarka nie&nbsp;wspiera JavaScript, który jest wymagany do&nbsp;działania Magazynu Inspiracji.</p>
-        <p>Bez&nbsp;obaw &ndash; strona nie&nbsp;używa plików cookie, nie&nbsp;śledzi Cię przez Google Analytics ani&nbsp;Facebookowe wtyczki.</p>
-        <p>Jeśli chcesz sprawdzić kod źródłowy aplikacji, zapraszam na <a href="https://github.com/oczki/inspiracje">repozytorium na&nbsp;GitHub</a>.</p>
-        <p>Aby uruchomić JavaScript, poszperaj w&nbsp;opcjach dla tej strony albo&nbsp;zmień przeglądarkę na&nbsp;nowszy model.</p>
+        <p class="noscript">Twoja przeglądarka nie&nbsp;wspiera JavaScript, który jest wymagany do&nbsp;działania Magazynu Inspiracji.</p>
+        <p class="noscript">Bez&nbsp;obaw &ndash; strona nie&nbsp;używa plików cookie, nie&nbsp;śledzi Cię przez Google Analytics ani&nbsp;Facebookowe wtyczki.</p>
+        <p class="noscript">Jeśli chcesz sprawdzić kod źródłowy aplikacji, zapraszam na <a href="https://github.com/oczki/inspiracje">repozytorium na&nbsp;GitHub</a>.</p>
+        <p class="noscript">Aby uruchomić JavaScript, poszperaj w&nbsp;opcjach dla tej strony albo&nbsp;zmień przeglądarkę na&nbsp;nowszy model.</p>
       </noscript>
     </main>
     <div id="scrim"></div>
