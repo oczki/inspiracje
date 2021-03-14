@@ -270,12 +270,14 @@ const defaultSheetClosingAnimationDuration = 200;
 const defaultDelayBetweenLoadedWordsDuration = 20;
 const defaultFabTransitionDuration = 280;
 const defaultIconRotationDuration = 500;
+const defaultSpinnerOverlayFadeDuration = 120;
 
 let swiperAnimationDuration = defaulSwiperAnimationDuration;
 let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
 let delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
 let fabTransitionDuration = defaultFabTransitionDuration;
 let iconRotationDuration = defaultIconRotationDuration;
+let spinnerOverlayFadeDuration = defaultSpinnerOverlayFadeDuration;
 
 let isDarkModeEnabled = false;
 
@@ -461,6 +463,7 @@ class ColorSetter {
     this.setHeaderTextColor();
     this.setWordTextColor();
     this.setNavigationButtonsColor();
+    this.setOverlayDotColor();
   }
 
   setSectionBackground() {
@@ -513,6 +516,17 @@ class ColorSetter {
     const l = this.colorData?.lightness?.icon;
     const color = new Color(this.hue, s, l);
     Array.from(navigationButtons).forEach(button => button.style.color = color?.hslString);
+  }
+
+  setOverlayDotColor() {
+    const dotColorPropertyName = '--dot-color';
+    const overlay = this.sectionElement.querySelector('.section-overlay');
+    if (!overlay) return;
+
+    const s = this.colorData?.saturation?.word;
+    const l = this.colorData?.lightness?.word;
+    const color = new Color(this.hue, s, l);
+    overlay.style.setProperty(dotColorPropertyName, color.hslString);
   }
 }
 
@@ -596,6 +610,7 @@ class Container {
   }
 
   appendSlidesToTheLeft(numberOfSlidesToAppend, offset = 0) {
+    if (this.wordsCache.length === 0) return;
     this.recalculateSlideCountAndIndex();
     const marginFromBeginning = this.slideIndex;
     const startingIndex = this.wordsCacheIndex - marginFromBeginning + offset;
@@ -608,6 +623,7 @@ class Container {
   }
 
   appendSlidesToTheRight(numberOfSlidesToAppend, offset = 0) {
+    if (this.wordsCache.length === 0) return;
     this.recalculateSlideCountAndIndex();
     const marginFromEnd = this.slideCount - this.slideIndex;
     const startingIndex = this.wordsCacheIndex + marginFromEnd + offset;
@@ -648,6 +664,7 @@ class Container {
   }
 
   removeSlidesFromLeftEdge(numberOfSlidesToRemove) {
+    if (numberOfSlidesToRemove > this.slideCount) numberOfSlidesToRemove = this.slideCount;
     // To prevent an unwanted index change (Swiper issue?), remove first N-1 slides, THEN remove the first slide individually.
     // Removing all N slides makes Swiper jump to the next slide for some reason.
     if (numberOfSlidesToRemove > 1) {
@@ -660,6 +677,7 @@ class Container {
   }
 
   removeSlidesFromRightEdge(numberOfSlidesToRemove) {
+    if (numberOfSlidesToRemove > this.slideCount) numberOfSlidesToRemove = this.slideCount;
     const startingIndex = this.slideCount - numberOfSlidesToRemove;
     if (numberOfSlidesToRemove > 1) {
       const range = (x, y) => Array.from((function* () { while (x < y) yield x++; })());
@@ -676,6 +694,7 @@ class Container {
   }
 
   getWordByIndex(index) {
+    if (this.wordsCache.length === 0) return '?';
     if (index < 0)
       return this.getWordByIndex(this.wordsCache.length + index);
     if (index >= this.wordsCache.length)
@@ -698,7 +717,11 @@ class Container {
   }
 
   hideSpinner() {
-    console.log('hideSpinner not implemented');
+    const overlay = document.getElementById(Selector.sectionId(this.data.type)).getElementsByClassName('section-overlay')[0];
+    VisibilityController.hideElement(overlay);
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, spinnerOverlayFadeDuration);
   }
 }
 
@@ -971,9 +994,23 @@ let WordSectionCreator = new function() {
     parentElement.appendChild(header);
   }
 
+  this.addSectionOverlay = (parentElement) => {
+    const overlay = Creator.createElementWithClass('div', 'section-overlay');
+    VisibilityController.showElement(overlay);
+
+    const numberOfDots = 3;
+    for (let i = 0; i < numberOfDots; i++) {
+      const dot = Creator.createElementWithClass('div', 'dot');
+      overlay.appendChild(dot);
+    }
+
+    parentElement.appendChild(overlay);
+  }
+
   this.addSection = (containerData) => {
     const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(containerData.type));
     this.addSectionHeader(section, containerData.label);
+    this.addSectionOverlay(section);
     this.addSwiperPrevNextButtons(section);
 
     const swiperOuterContainer = Creator.createElementWithClass('div', 'swiper-outer-container');
@@ -1263,11 +1300,13 @@ let Settings = new function() {
         sheetClosingAnimationDuration = 0;
         delayBetweenLoadedWordsDuration = 0;
         fabTransitionDuration = 0;
+        spinnerOverlayFadeDuration = 0;
       } else {
         swiperAnimationDuration = defaulSwiperAnimationDuration;
         sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
         delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
         fabTransitionDuration = defaultFabTransitionDuration;
+        spinnerOverlayFadeDuration = defaultSpinnerOverlayFadeDuration;
       }
     }
 
