@@ -677,12 +677,12 @@ a *,
 }
 
 /* Hover: before, Focus: after */
-button:before,
-a:before,
-.checkbox-label:before,
-button:after,
-a:after,
-.checkbox-label:after {
+button::before,
+a::before,
+.checkbox-label::before,
+button::after,
+a::after,
+.checkbox-label::after {
   content: '';
   position: absolute;
   top: 0;
@@ -696,57 +696,57 @@ a:after,
 }
 
 /* Hover: background color */
-button:before,
-a:before,
-.checkbox-label:before {
+button::before,
+a::before,
+.checkbox-label::before {
   background-color: currentColor;
 }
 
 /* Focus: ring around the element */
-button:after,
-a:after,
-.checkbox-label:after {
+button::after,
+a::after,
+.checkbox-label::after {
   box-shadow: inset 0 0 0 2px currentColor;
 }
 
 /* Light mode - Only hovered */
-button:hover:before,
-a:hover:before,
-.checkbox-label:hover:before {
+button:hover::before,
+a:hover::before,
+.checkbox-label:hover::before {
   opacity: 0.08;
 }
 
 /* Light mode - Focused */
-body.show-outline button:focus:before,
-body.show-outline a:focus:before,
-body.show-outline .checkbox-label:focus-within:before {
+body.show-outline button:focus::before,
+body.show-outline a:focus::before,
+body.show-outline .checkbox-label:focus-within::before {
   opacity: 0.12;
 }
 
-body.show-outline button:focus:after,
-body.show-outline a:focus:after,
-body.show-outline .checkbox-label:focus-within:after {
+body.show-outline button:focus::after,
+body.show-outline a:focus::after,
+body.show-outline .checkbox-label:focus-within::after {
   box-shadow: inset 0 0 0 2px currentColor;
   opacity: 0.5;
 }
 
 /* Dark mode - Only hovered */
-body.dark button:hover:before,
-body.dark a:hover:before,
-body.dark .checkbox-label:hover:before {
+body.dark button:hover::before,
+body.dark a:hover::before,
+body.dark .checkbox-label:hover::before {
   opacity: 0.12;
 }
 
 /* Dark mode - Focused */
-body.dark.show-outline button:focus:before,
-body.dark.show-outline a:focus:before,
-body.dark.show-outline .checkbox-label:focus-within:before {
+body.dark.show-outline button:focus::before,
+body.dark.show-outline a:focus::before,
+body.dark.show-outline .checkbox-label:focus-within::before {
   opacity: 0.24;
 }
 
-body.dark.show-outline button:focus:after,
-body.dark.show-outline a:focus:after,
-body.dark.show-outline .checkbox-label:focus-within:after {
+body.dark.show-outline button:focus::after,
+body.dark.show-outline a:focus::after,
+body.dark.show-outline .checkbox-label:focus-within::after {
   opacity: 0.5;
 }
 
@@ -757,10 +757,10 @@ button:disabled,
   outline-width: 0px !important;
 }
 
-button:disabled:before,
-button:disabled:after,
-[aria-disabled="true"]:before,
-[aria-disabled="true"]:after {
+button:disabled::before,
+button:disabled::after,
+[aria-disabled="true"]::before,
+[aria-disabled="true"]::after {
   opacity: 0 !important;
 }
 
@@ -793,12 +793,12 @@ button:disabled:after,
 }
 
 @media (pointer: coarse) {
-  button:before,
-  a:before,
-  .checkbox-label:before,
-  button:after,
-  a:after,
-  .checkbox-label:after {
+  button::before,
+  a::before,
+  .checkbox-label::before,
+  button::after,
+  a::after,
+  .checkbox-label::after {
     opacity: 0 !important;
   }
 }
