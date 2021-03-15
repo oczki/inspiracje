@@ -196,6 +196,7 @@ main {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  flex-grow: 1;
 }
 
 button,
@@ -239,7 +240,7 @@ a {
   grid-template-areas: 'nav-prev swiper-container nav-next';
 }
 
-.word-section:last-child {
+main section:last-child {
   margin-bottom: 96px;
 }
 
@@ -327,16 +328,21 @@ a {
 }
 
 .header-container {
-  display: var(--card-header-display);
+  display: flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  text-align: center;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 1px;
   word-break: break-word;
   color: var(--color-secondary-text);
   height: 24px;
+}
+
+.word-section .header-container {
+  display: var(--card-header-display);
   position: absolute;
   bottom: 100%;
   left: 0;
@@ -370,6 +376,121 @@ a {
 }
 
 /* #endregion Single section with a word swiper */
+
+/* #region Prompt to open settings for the first time */
+
+@keyframes appear-and-slide-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0px, 0);
+  }
+}
+
+.prompt {
+  --arrow-margin-left: 18px;
+  --arrow-width: 12px;
+  --arrow-height: 18px;
+  --arrow-head-size: 20px;
+  --arrow-clip-path-margin: 10px;
+  --arrow-shadow-blur: 1px;
+
+  position: relative;
+  width: min(100%, 640px);
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  will-change: opacity, transform;
+  transform: translate3d(0, 20px, 0);
+  animation-name: appear-and-slide-up;
+  animation-duration: 500ms;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+.prompt .header-container {
+  margin-top: 8px;
+}
+
+.prompt-card {
+  position: relative;
+  width: min(100%, 640px);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--card-border-radius);
+  background-color: var(--color-card-background);
+  margin-top: auto;
+  padding: var(--card-padding);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: 'text button-close';
+  z-index: 3;
+}
+
+.prompt-text-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--card-padding) 8px;
+}
+
+.prompt-text-wrapper span {
+  line-height: 1.5;
+}
+
+#close-prompt-settings .icon {
+  color: var(--color-icon);
+}
+
+/* Arrow */
+.prompt::before,
+.prompt::after,
+.prompt-card::before,
+.prompt-card::after {
+  content: '';
+  position: absolute;
+  background-color: var(--color-card-background);
+  z-index: 2;
+}
+
+/* Arrow's shadow */
+.prompt::before,
+.prompt::after {
+  --vertical-shift: 0.5px;
+
+  filter: blur(var(--arrow-shadow-blur));
+  background-color: var(--color-text-black-medium);
+  z-index: 1;
+  opacity: 0.75;
+}
+
+/* Arrow's body */
+.prompt::before,
+.prompt-card::before {
+  top: calc(100% - 2px);
+  left: var(--arrow-margin-left);
+  width: var(--arrow-width);
+  height: var(--arrow-height);
+}
+
+/* Arrow's head */
+.prompt::after,
+.prompt-card::after {
+  --pos0: calc(0% - var(--arrow-clip-path-margin));
+  --pos100: calc(100% + var(--arrow-clip-path-margin));
+
+  top: calc(100% + var(--arrow-height) - 0.5 * var(--arrow-head-size) - 4px + var(--vertical-shift, 0px));
+  left: calc(var(--arrow-margin-left) + 0.5 * var(--arrow-width) - var(--arrow-head-size) * 0.5);
+  width: var(--arrow-head-size);
+  height: var(--arrow-head-size);
+  transform: rotate(-135deg);
+  clip-path: polygon(var(--pos0) var(--pos0), var(--pos100) var(--pos0), var(--pos0) var(--pos100));
+}
+
+/* #endregion Prompt to open settings for the first time */
 
 /* #region Footer */
 
@@ -660,6 +781,7 @@ footer .circular-button .icon {
 
 .link-with-icon span {
   margin-left: 32px;
+  line-height: 1.5;
 }
 
 /* #endregion Sliding panel (settings, about, ...) */

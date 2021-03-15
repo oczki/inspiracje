@@ -897,6 +897,7 @@ let SpecializedCreator = new function() {
     const iconSvgCode = iconCog;
     const callback = () => {
       VisibilityController.toggleSheetVisibility('settings');
+      this.closeSettingsPrompt();
     }
     const preventDoubleClick = true;
     return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
@@ -976,6 +977,49 @@ let SpecializedCreator = new function() {
     closeSheetButton.appendChild(Creator.createIcon(iconClose));
     closeSheetButton.appendChild(Creator.createSpan('Zamknij'));
     return closeSheetButton;
+  }
+
+  this.closeSettingsPrompt = () => {
+    const keyName = 'settings-prompt-dismissed';
+    if (localStorage.getItem(keyName) === 'true') return; // Prompt was already dismissed before, exit.
+
+    const promptCardId = 'prompt-settings';
+    localStorage.setItem(keyName, 'true');
+    document.getElementById(promptCardId)?.remove();
+  }
+
+  this.createSettingsPromptCard = () => {
+    const promptSectionId = 'prompt-settings';
+    const promptSection = Creator.createElementWithClassAndId('section', 'prompt', promptSectionId);
+
+    const cardElement = Creator.createElementWithClass('div', 'prompt-card');
+
+    const textWrapper = Creator.createElementWithClass('div', 'prompt-text-wrapper');
+    const textElement = Creator.createSpan('Dostosuj wygląd, animacje i&nbsp;rozmiar tekstu.');
+    textWrapper.appendChild(textElement);
+    
+    const closePromptCallback = () => {
+      this.closeSettingsPrompt();
+    }
+    const closeButton = Creator.createCircularButton('close-prompt-settings', 'Zamknij', iconClose, closePromptCallback);
+    Creator.addRipple(closeButton);
+    
+    cardElement.appendChild(textWrapper);
+    cardElement.appendChild(closeButton);
+
+    promptSection.appendChild(Creator.createSpan('Sprawdź też ustawienia!', 'header-container'));
+    promptSection.appendChild(cardElement);
+
+    return promptSection;
+  }
+
+  this.createSettingsPromptCardIfItWasNotDismissedAlready = () => {
+    const keyName = 'settings-prompt-dismissed';
+    const shouldShowPrompt = localStorage.getItem(keyName) !== 'true';
+    if (shouldShowPrompt) {
+      const prompt = this.createSettingsPromptCard();
+      document.getElementsByTagName('main')[0].appendChild(prompt);
+    }
   }
 }
 
@@ -1077,13 +1121,13 @@ let SheetCreator = new function() {
     sheetContent.appendChild(Creator.createSeparator());
 
     sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w&nbsp;rozwoju aplikacji lub&nbsp;zgłosić błąd?', 'sliding-sheet-text'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na GitHub', 'https://github.com/oczki/inspiracje', iconGithub));
+    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na&nbsp;GitHub', 'https://github.com/oczki/inspiracje', iconGithub));
     sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail));
 
     sheetContent.appendChild(Creator.createSeparator());
 
     const currentYear = Math.max(2021, new Date().getFullYear());
-    sheetContent.appendChild(Creator.createLinkWithIcon(`2018–${currentYear} Damian Oczki`, 'https://oczki.pl', iconCopyright));
+    sheetContent.appendChild(Creator.createLinkWithIcon(`2018–${currentYear} Damian&nbsp;Oczki`, 'https://oczki.pl', iconCopyright));
 
     return sheet;
   }
@@ -1595,6 +1639,7 @@ function init() {
   GlobalEventHandler.handleWindowResize();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
   VisibilityController.delayedRoundFabTransformations();
+  SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
 }
 
 if (document.readyState != 'loading')
