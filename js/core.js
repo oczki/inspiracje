@@ -322,34 +322,6 @@ let Util = new function() {
     this.ajax('ajax/' + type + '.php', (output) => callback(output));
   }
 
-  this.roundTransformationProperties = (element) => {
-    const elementStyle = window.getComputedStyle(element);
-    let matrix;
-    if (typeof DOMMatrix !== 'undefined') {
-      matrix = new DOMMatrix(elementStyle.transform);
-    } else if (typeof CSSMatrix !== 'undefined') {
-      matrix = new CSSMatrix(elementStyle.transform);
-    } else if (typeof MSCSSMatrix !== 'undefined') {
-      matrix = new MSCSSMatrix(elementStyle.transform);
-    } else if (typeof WebKitCSSMatrix !== 'undefined') {
-      matrix = new WebKitCSSMatrix(elementStyle.webkitTransform);
-    }
-
-    const translateX = matrix.m41;
-    if (translateX % 2) {
-      element.style.setProperty('--translateX', `${translateX.toFixed(0)}px`);
-    }
-    const translateY = matrix.m42;
-    if (translateY % 2) {
-      element.style.setProperty('--translateY', `${translateY.toFixed(0)}px`);
-    }
-  }
-
-  this.clearTransformationProperties = (element) => {
-    element.style.removeProperty('--translateX');
-    element.style.removeProperty('--translateY');
-  }
-
   this.debounce = (callback, timeout, immediate = false) => {
     let timer;
     return function() {
@@ -1190,22 +1162,6 @@ let VisibilityController = new function() {
     this.showAndAllowTabbingToElement(fabAdvanceAll);
   }
 
-  this.clearFabTransformations = () => {
-    const [fabAdvanceAll, fabCloseSheet] = this.getFabs();
-    Util.clearTransformationProperties(fabAdvanceAll);
-    Util.clearTransformationProperties(fabCloseSheet);
-  }
-
-  this.roundFabTransformations = () => {
-    const [fabAdvanceAll, fabCloseSheet] = this.getFabs();
-    Util.roundTransformationProperties(fabAdvanceAll);
-    Util.roundTransformationProperties(fabCloseSheet);
-  }
-
-  this.delayedRoundFabTransformations = (delay = 1000) => {
-    setTimeout(() => this.roundFabTransformations(), delay);
-  }
-
   this.hideSlidingSheetsAndScrim = () => {
     const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
     for (const sheet of sheetsToHide) {
@@ -1476,16 +1432,6 @@ let Settings = new function() {
     }
   }
 
-  this.disableAnimationsDuringResize = () => {
-    this.AnimationsToggle.setAnimationsDisabledBodyClass(true);
-  }
-
-  this.enableAnimationsAfterResize = () => {
-    if (this.AnimationsToggle.shouldAnimationsToggleBeChecked()) {
-      this.AnimationsToggle.setAnimationsDisabledBodyClass(false);
-    }
-  }
-
   this.createFontScaleControl = () => {
     return this.FontScale.createControl();
   }
@@ -1578,20 +1524,6 @@ let GlobalEventHandler = new function() {
   this.handleFirstKeyboardInput = () => {
     window.addEventListener('keydown', GlobalEventHandler.handleKeyboardInput);
   }
-
-  this.handleWindowResize = () => {
-    const delayBetweenFunctionCalls = 100;
-    const callbackResizeStart = () => {
-      Settings.disableAnimationsDuringResize();
-      VisibilityController.clearFabTransformations();
-    };
-    const callbackResizeEnd = () => {
-      Settings.enableAnimationsAfterResize();
-      VisibilityController.roundFabTransformations();
-    };
-    window.addEventListener('resize', Util.debounce(callbackResizeStart, delayBetweenFunctionCalls, true));
-    window.addEventListener('resize', Util.debounce(callbackResizeEnd, delayBetweenFunctionCalls));
-  }
 }
 
 let Aria = new function() {
@@ -1636,9 +1568,7 @@ function init() {
   ElementPopulator.populatePageWithWordContainers();
   Settings.updateColors();
   Settings.updateFontScaleElements();
-  GlobalEventHandler.handleWindowResize();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
-  VisibilityController.delayedRoundFabTransformations();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
 }
 

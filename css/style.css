@@ -547,7 +547,7 @@ footer.visible {
   text-transform: uppercase;
   cursor: pointer;
   background-color: var(--color-accent);
-  transform: scale(0) translate3d(var(--translateX, -50%), var(--translateY, -50%), 0);
+  transform: scale(0) translate3d(-50%, -50%, 0);
   transform-origin: 0 0;
   opacity: 0;
   transition: box-shadow var(--fab-transition-duration) var(--timing-function),
@@ -561,7 +561,7 @@ footer.visible {
 }
 
 .floating-action-button.visible {
-  transform: scale(1) translate3d(var(--translateX, -50%), var(--translateY, -50%), 0);
+  transform: scale(1) translate3d(-50%, -50%, 0);
   opacity: 1;
 }
 
