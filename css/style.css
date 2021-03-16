@@ -744,7 +744,7 @@ footer .circular-button .icon {
 }
 
 #scale-control-container > span:first-of-type {
-  margin: 0 32px;
+  margin: 0 20px 0 32px;
 }
 
 #scale-control-value {
