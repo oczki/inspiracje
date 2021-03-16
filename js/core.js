@@ -23,19 +23,19 @@ let containers = [
     type: "location",
     label: "Miejsce",
     color: {
-      hue: 75,
+      hue: 70,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 95,
           header: 100,
-          word: 84,
-          icon: 84,
+          word: 100,
+          icon: 100,
         },
         lightness: {
           card: 95,
           header: 24,
-          word: 23,
-          icon: 23,
+          word: 22,
+          icon: 22,
         },
       },
       darkMode: {
@@ -60,10 +60,10 @@ let containers = [
     type: "character",
     label: "Postać",
     color: {
-      hue: 55,
+      hue: 50,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 95,
           header: 100,
           word: 100,
           icon: 100,
@@ -71,8 +71,8 @@ let containers = [
         lightness: {
           card: 95,
           header: 24,
-          word: 22,
-          icon: 22,
+          word: 23,
+          icon: 23,
         },
       },
       darkMode: {
@@ -98,7 +98,7 @@ let containers = [
       hue: 30,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 95,
           header: 100,
           word: 100,
           icon: 100,
@@ -106,8 +106,8 @@ let containers = [
         lightness: {
           card: 95,
           header: 31,
-          word: 30,
-          icon: 30,
+          word: 31,
+          icon: 31,
         },
       },
       darkMode: {
@@ -133,10 +133,10 @@ let containers = [
       hue: 0,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 95,
           header: 83,
-          word: 68,
-          icon: 68,
+          word: 75,
+          icon: 75,
         },
         lightness: {
           card: 96,
@@ -165,13 +165,13 @@ let containers = [
     type: "relation",
     label: "Relacja",
     color: {
-      hue: 325,
+      hue: 320,
       lightMode: {
         saturation: {
-          card: 70,
+          card: 100,
           header: 96,
-          word: 67,
-          icon: 67,
+          word: 75,
+          icon: 75,
         },
         lightness: {
           card: 95.5,
@@ -200,13 +200,13 @@ let containers = [
     type: "action",
     label: "Czynność",
     color: {
-      hue: 295,
+      hue: 290,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 93,
           header: 88,
-          word: 60,
-          icon: 60,
+          word: 68,
+          icon: 68,
         },
         lightness: {
           card: 95,
