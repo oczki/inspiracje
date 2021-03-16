@@ -28,8 +28,10 @@ function addJs($name) {
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2671d9">
-    <meta name="msapplication-TileColor" content="#f0f0f0">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3563dc">
+    <meta name="apple-mobile-web-app-title" content="Magazyn Inspiracji">
+    <meta name="application-name" content="Magazyn Inspiracji">
+    <meta name="msapplication-TileColor" content="#2d89ef">
     <meta name="theme-color" content="#ffffff">
     <title>Magazyn Inspiracji</title>
     <?php addCss('style'); ?>
