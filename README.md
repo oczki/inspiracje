@@ -1,4 +1,4 @@
-# <img src="android-chrome-192x192.png" width="24" height="24"> [inspirac.je](http://inspirac.je)
+# [<img src="android-chrome-192x192.png" width="24" height="24"> inspirac.je](http://inspirac.je)
 
 For English, scroll below.
 
@@ -7,7 +7,7 @@ For English, scroll below.
 
 ## Magazyn Inspiracji
 
-Podręczny generator słów służących za punkt zaczepienia scenek teatru improwizowanego.
+Generator słów do scenek teatru improwizowanego.
 
 Na występach źródłem inspiracji jest publiczność, lecz ich pomoc nie jest dostępna podczas prób i ćwiczeń. Magazyn Inspiracji wypełnia tę lukę zbiorem ponad 1500 pomysłów, podzielonych na wygodne kategorie.
 
