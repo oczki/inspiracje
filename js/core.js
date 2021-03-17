@@ -1083,8 +1083,7 @@ let SheetCreator = new function() {
 
     sheetContent.appendChild(Creator.createSeparator());
 
-    sheetContent.appendChild(Creator.createParagraph('Podręczny generator słów służących za&nbsp;punkt ' +
-      'zaczepienia scenek teatru improwizowanego.', 'sliding-sheet-text'));
+    sheetContent.appendChild(Creator.createParagraph('Generator słów do scenek teatru improwizowanego.', 'sliding-sheet-text'));
     sheetContent.appendChild(Creator.createParagraph('Na&nbsp;występach źródłem inspiracji jest publiczność, ' +
       'lecz&nbsp;ich pomoc nie&nbsp;jest dostępna podczas prób i&nbsp;ćwiczeń. Magazyn Inspiracji wypełnia tę&nbsp;lukę ' +
       'zbiorem ponad 1500 pomysłów, podzielonych na&nbsp;wygodne kategorie.', 'sliding-sheet-text'
