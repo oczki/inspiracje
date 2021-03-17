@@ -36,9 +36,6 @@ function addJs($name) {
     <title>Magazyn Inspiracji</title>
     <?php addCss('style'); ?>
     <?php addCss('swiper-bundle.min'); ?>
-    <?php addJs('swiper-bundle.min'); ?>
-    <?php addJs('core'); ?>
-    <?php addJs('ripple.min'); ?>
     <script async defer data-domain="inspirac.je" src="https://plausible.io/js/plausible.js"></script>
     <style type="text/css">
       p.noscript {
@@ -67,5 +64,8 @@ function addJs($name) {
     <div id="scrim"></div>
     <div id="sliding-sheets-container"></div>
     <footer></footer>
+    <?php addJs('swiper-bundle.min'); ?>
+    <?php addJs('core'); ?>
+    <?php addJs('ripple.min'); ?>
   </body>
 </html>
