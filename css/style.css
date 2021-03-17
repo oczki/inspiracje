@@ -714,8 +714,17 @@ footer .circular-button .icon {
   border-radius: var(--sliding-sheet-item-border-radius);
 }
 
-.checkbox-label > span {
+.checkbox-label .label-text {
   margin-left: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-label .label-text-secondary {
+  font-size: 12px;
+  color: var(--color-secondary-text);
+  margin-top: 6px;
+  letter-spacing: 0.15px;
 }
 
 .checkbox-label input {

@@ -587,10 +587,14 @@ class Container {
       while (swiperContainer.firstChild)
         swiperContainer.removeChild(swiperContainer.firstChild);
       WordSectionCreator.addSwiperWrapper(swiperContainer);
+      this.showSpinner();
     }
-    this.swiper = this.initializeSwiper();
-    this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache + 1);
-    this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache);
+    setTimeout(() => {
+      this.swiper = this.initializeSwiper();
+      this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache + 1);
+      this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache);
+      this.hideSpinner();
+    }, 100);
   }
 
   appendSlidesToTheLeft(numberOfSlidesToAppend, offset = 0) {
@@ -698,6 +702,12 @@ class Container {
     if (this.hasSpokenSinceTransitionEnd) return;
     this.hasSpokenSinceTransitionEnd = true;
     Aria.speak(this.createTextToSpeak());
+  }
+
+  showSpinner() {
+    const overlay = document.getElementById(Selector.sectionId(this.data.type)).getElementsByClassName('section-overlay')[0];
+    VisibilityController.showElement(overlay);
+    overlay.style.display = 'flex';
   }
 
   hideSpinner() {
@@ -859,6 +869,16 @@ let Creator = new function() {
     const separator = document.createElement('hr');
     separator.classList.add('separator');
     return separator;
+  }
+
+  this.createToggleLabels = (primaryText, secondaryText = '') => {
+    const primaryLabelElement = this.createSpan(primaryText, 'label-text-primary');
+    const secondaryLabelElement = this.createSpan(secondaryText, 'label-text-secondary');
+
+    const labelsContainer = this.createElementWithClass('div', 'label-text');
+    labelsContainer.appendChild(primaryLabelElement);
+    labelsContainer.appendChild(secondaryLabelElement);
+    return labelsContainer;
   }
 }
 
@@ -1342,7 +1362,7 @@ let Settings = new function() {
       const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
-      labelElement.appendChild(Creator.createSpan('Animacje'));
+      labelElement.appendChild(Creator.createToggleLabels('Animacje', 'Płynne przejścia słów i paneli'));
       Creator.addRipple(labelElement);
       return labelElement;
     }
@@ -1379,7 +1399,7 @@ let Settings = new function() {
       const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
-      labelElement.appendChild(Creator.createSpan('Tryb kompaktowy'));
+      labelElement.appendChild(Creator.createToggleLabels('Tryb kompaktowy', 'Schowaj nagłówki kategorii'));
       Creator.addRipple(labelElement);
       return labelElement;
     }
@@ -1423,7 +1443,7 @@ let Settings = new function() {
       const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
-      labelElement.appendChild(Creator.createSpan('Tryb ciemny'));
+      labelElement.appendChild(Creator.createToggleLabels('Tryb ciemny', 'Do improwizacji po nocach'));
       Creator.addRipple(labelElement);
       return labelElement;
     }
