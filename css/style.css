@@ -308,7 +308,11 @@ main section:last-child {
 /* Element created by Swiper */
 .swiper-container {
   height: 100%;
-  cursor: ew-resize;
+  cursor: grab;
+}
+
+.swiper-container:active {
+  cursor: grabbing;
 }
 
 .swiper-wrapper {
