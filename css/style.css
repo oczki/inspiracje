@@ -646,21 +646,21 @@ footer .circular-button .icon {
 
 .sliding-sheet {
   position: fixed;
-  bottom: 0;
+  bottom: var(--footer-height);
   left: 0;
   right: 0;
-  max-height: calc(100% - 56px);
+  max-height: calc(100% - var(--footer-height) - 56px);
   overflow-y: auto;
   overscroll-behavior-y: contain;
   background-color: var(--color-card-background);
-  padding-bottom: calc(52px + var(--footer-height));
+  padding-bottom: 52px;
   border-top-left-radius: var(--sliding-sheet-border-radius);
   border-top-right-radius: var(--sliding-sheet-border-radius);
   display: flex;
   align-items: flex-start;
   justify-content: center;
   pointer-events: none;
-  transform: translate3d(0, calc(100% - var(--footer-height)), 0);
+  transform: translate3d(0, 100%, 0);
   transition-property: transform;
   transition-duration: var(--sheet-hide-duration);
   transition-timing-function: var(--timing-function);
