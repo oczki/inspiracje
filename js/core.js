@@ -1145,6 +1145,10 @@ let VisibilityController = new function() {
     this.delayedPreventTabbingToElement(element, delay);
   }
 
+  this.allowScrollingBody = (allowScrolling = true) => {
+    document.body.style.overflow = allowScrolling ? 'initial' : 'hidden';
+  }
+
   this.getFabs = () => {
     return [
       document.getElementById(this.fabAdvanceAllId),
@@ -1172,6 +1176,7 @@ let VisibilityController = new function() {
     }
     Selector.getScrim()?.classList.remove(visibleClass);
     this.showAdvanceAllFab();
+    this.allowScrollingBody(true);
   }
 
   this.toggleSheetVisibility = (sheetId) => {
@@ -1181,10 +1186,12 @@ let VisibilityController = new function() {
       this.showAdvanceAllFab();
       this.hideAndPreventTabbingToElement(sheet, sheetClosingAnimationDuration);
       this.hideElement(Selector.getScrim());
+      this.allowScrollingBody(true);
     } else {
       this.showCloseFab();
       this.showAndAllowTabbingToElement(sheet);
       this.showElement(Selector.getScrim());
+      this.allowScrollingBody(false);
     }
   }
 
