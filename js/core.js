@@ -452,7 +452,7 @@ class ColorSetter {
     let color = new Color(this.hue, s, l);
 
     if (!isDarkModeEnabled) {
-      color = color.lighten(10);
+      color = color.lighten(15);
     }
 
     this.sectionElement.style.backgroundColor = color?.hslString;
