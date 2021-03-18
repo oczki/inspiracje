@@ -570,6 +570,7 @@ class Container {
   initializeWords() {
     Util.getWords(this.data.type, (output) => {
       this.wordsCache = eval(output);
+      Util.shuffle(this.wordsCache);
       this.wordsCacheIndex = Math.floor(this.wordsCache.length * 0.5);
       this.hideSpinner();
       this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache + 1);
