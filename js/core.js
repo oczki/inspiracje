@@ -23,19 +23,17 @@ let containers = [
     type: "location",
     label: "Miejsce",
     color: {
-      hue: 75,
+      hue: 69,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 74,
           header: 100,
           word: 84,
-          icon: 84,
         },
         lightness: {
-          card: 95,
-          header: 24,
+          card: 90,
+          header: 23,
           word: 23,
-          icon: 23,
         },
       },
       darkMode: {
@@ -43,13 +41,11 @@ let containers = [
           card: 35,
           header: 85,
           word: 60,
-          icon: 60,
         },
         lightness: {
           card: 10,
           header: 29,
-          word: 54,
-          icon: 54,
+          word: 60,
         },
       },
     },
@@ -60,19 +56,17 @@ let containers = [
     type: "character",
     label: "Postać",
     color: {
-      hue: 55,
+      hue: 53,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 68,
           header: 100,
           word: 100,
-          icon: 100,
         },
         lightness: {
-          card: 95,
+          card: 90,
           header: 24,
-          word: 22,
-          icon: 22,
+          word: 23,
         },
       },
       darkMode: {
@@ -80,13 +74,11 @@ let containers = [
           card: 31,
           header: 100,
           word: 64,
-          icon: 64,
         },
         lightness: {
           card: 10,
           header: 30,
-          word: 56,
-          icon: 56,
+          word: 61,
         },
       },
     },
@@ -95,19 +87,17 @@ let containers = [
     type: "character-modifier",
     label: "Cecha postaci",
     color: {
-      hue: 30,
+      hue: 32,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 80,
           header: 100,
           word: 100,
-          icon: 100,
         },
         lightness: {
-          card: 95,
+          card: 92,
           header: 31,
           word: 30,
-          icon: 30,
         },
       },
       darkMode: {
@@ -115,13 +105,11 @@ let containers = [
           card: 32,
           header: 55,
           word: 92,
-          icon: 92,
         },
         lightness: {
           card: 11,
           header: 45,
           word: 69,
-          icon: 69,
         },
       },
     },
@@ -130,19 +118,17 @@ let containers = [
     type: "emotion",
     label: "Emocja",
     color: {
-      hue: 0,
+      hue: 5,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 82,
           header: 83,
-          word: 68,
-          icon: 68,
+          word: 60,
         },
         lightness: {
-          card: 96,
+          card: 94,
           header: 37,
-          word: 40,
-          icon: 40,
+          word: 43,
         },
       },
       darkMode: {
@@ -150,13 +136,11 @@ let containers = [
           card: 24,
           header: 40,
           word: 100,
-          icon: 100,
         },
         lightness: {
           card: 12.5,
           header: 56,
-          word: 80,
-          icon: 80,
+          word: 77.5,
         },
       },
     },
@@ -165,19 +149,17 @@ let containers = [
     type: "relation",
     label: "Relacja",
     color: {
-      hue: 325,
+      hue: 330,
       lightMode: {
         saturation: {
-          card: 70,
+          card: 76,
           header: 96,
           word: 67,
-          icon: 67,
         },
         lightness: {
-          card: 95.5,
+          card: 93.5,
           header: 34,
           word: 39,
-          icon: 39,
         },
       },
       darkMode: {
@@ -185,13 +167,11 @@ let containers = [
           card: 26,
           header: 45,
           word: 89,
-          icon: 89,
         },
         lightness: {
           card: 12,
           header: 55,
           word: 78,
-          icon: 78,
         },
       },
     },
@@ -200,19 +180,17 @@ let containers = [
     type: "action",
     label: "Czynność",
     color: {
-      hue: 295,
+      hue: 300,
       lightMode: {
         saturation: {
-          card: 65,
+          card: 61,
           header: 88,
           word: 60,
-          icon: 60,
         },
         lightness: {
-          card: 95,
+          card: 93,
           header: 36,
           word: 38,
-          icon: 38,
         },
       },
       darkMode: {
@@ -220,13 +198,11 @@ let containers = [
           card: 28,
           header: 37,
           word: 75,
-          icon: 75,
         },
         lightness: {
           card: 12,
           header: 54,
           word: 77,
-          icon: 77,
         },
       },
     },
@@ -431,6 +407,26 @@ class Color {
     const [r, g, b] = this.rgb;
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
+
+  clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  applyDelta(value, percentDelta, min = 0, max = 100) {
+    if (percentDelta > 0)
+      return this.clamp(value + ((max - value) * 0.01 * percentDelta), min, max);
+    return this.clamp(value * (1 + 0.01 * percentDelta), min, max);
+  }
+
+  saturate(percentDelta = 50) { 
+    this.s = this.applyDelta(this.s, percentDelta);
+    return this;
+  }
+
+  lighten(percentDelta = 50) { 
+    this.l = this.applyDelta(this.l, percentDelta);
+    return this;
+  }
 }
 
 class ColorSetter {
@@ -453,7 +449,12 @@ class ColorSetter {
   setSectionBackground() {
     const s = this.colorData?.saturation?.card || 0;
     const l = this.colorData?.lightness?.card || 0;
-    const color = new Color(this.hue, s, l);
+    let color = new Color(this.hue, s, l);
+
+    if (!isDarkModeEnabled) {
+      color = color.lighten(10);
+    }
+
     this.sectionElement.style.backgroundColor = color?.hslString;
   }
 
@@ -488,7 +489,12 @@ class ColorSetter {
 
     const s = this.colorData?.saturation?.word;
     const l = this.colorData?.lightness?.word;
-    const color = new Color(this.hue, s, l);
+    let color = new Color(this.hue, s, l);
+
+    if (isDarkModeEnabled) {
+      color = color.saturate(-30);
+    }
+
     wordWrapper.style.color = color?.hslString;
   }
 
@@ -496,8 +502,8 @@ class ColorSetter {
     const navigationButtons = this.sectionElement.querySelectorAll('button');
     if (!navigationButtons) return;
 
-    const s = this.colorData?.saturation?.icon;
-    const l = this.colorData?.lightness?.icon;
+    const s = this.colorData?.saturation?.word;
+    const l = this.colorData?.lightness?.word;
     const color = new Color(this.hue, s, l);
     Array.from(navigationButtons).forEach(button => button.style.color = color?.hslString);
   }
