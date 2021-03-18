@@ -236,7 +236,7 @@ u {
   margin-top: var(--card-margin-top, 0px);
   margin-bottom: 8px;
   padding: var(--card-padding);
-  display: grid;
+  display: grid !important;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'nav-prev swiper-container nav-next';
 }

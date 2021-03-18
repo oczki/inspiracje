@@ -1066,6 +1066,7 @@ let WordSectionCreator = new function() {
     this.addSwiperWrapper(swiperInnerContainer);
     swiperOuterContainer.appendChild(swiperInnerContainer);
     section.appendChild(swiperOuterContainer);
+    section.style.display = 'none'; // This will be overridden once CSS is loaded. Before then, a skeleton is shown.
 
     document.getElementsByTagName('main')[0].appendChild(section);
   }
@@ -1499,8 +1500,13 @@ let ElementPopulator = new function() {
 
   this.populatePageWithWordContainers = () => {
     for (const container of containers) {
+      this.removeFirstRemainingSkeletonElement();
       wordsContainer[container.type] = new Container(container);
     }
+  }
+
+  this.removeFirstRemainingSkeletonElement = () => {
+    document.getElementsByClassName('skeleton')[0]?.remove();
   }
 }
 

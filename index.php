@@ -13,7 +13,6 @@ function addJs($name) {
   echo '<script src="' . timestampUrl('./js/' . $name . '.js') . '"></script>'
      . "\n";
 }
-
 ?><!DOCTYPE html>
 <html lang="pl-PL">
   <head>
@@ -37,18 +36,54 @@ function addJs($name) {
     <?php addCss('swiper-bundle.min'); ?>
     <script async defer data-domain="inspirac.je" src="https://plausible.io/js/plausible.js"></script>
     <style type="text/css">
-      p.noscript {
-        line-height: 1.5;
+      p.noscript { line-height: 1.5; }
+      p.noscript + p { margin-top: 16px; }
+      p.noscript a::before, p.noscript a::after { display: none; }
+      .skeleton {
+        position: relative;
+        width: min(100%, 640px);
+        height: 56px;
+        margin: 24px 4px 8px 4px;
+        background-color: white;
+        box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 250ms;
       }
-
-      p.noscript + p {
-        margin-top: 16px;
+      .skeleton.visible { opacity: 1; }
+      .skeleton::before {
+        content: '\b7 \b7 \b7';
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-
-      p.noscript a::before,
-      p.noscript a::after {
-        display: none;
+      .skeleton + .skeleton { margin-top: 32px; }
+      @keyframes dot-animation {
+        0%, 60%, 100% { opacity: 0.24; transform: scale(1); }
+        20% { opacity: 1; transform: scale(1.1); }
       }
+      .skeleton .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #1b1b1b;
+        animation: dot-animation 1s infinite;
+        opacity: 0.24;
+      }
+      .skeleton .dot:nth-child(1) { animation-delay: 0.2s; }
+      .skeleton .dot:nth-child(2) { animation-delay: 0.4s; }
+      .skeleton .dot:nth-child(3) { animation-delay: 0.6s; }
+      .skeleton .dot + .dot { margin-left: 8px; }
     </style>
   </head>
   <body class="compact">
@@ -63,6 +98,22 @@ function addJs($name) {
     <div id="scrim"></div>
     <div id="sliding-sheets-container"></div>
     <footer></footer>
+    <script>
+      const createSkeletons = (skeletonsCount, dotsPerSkeleton) => {
+        for (let skeletonIndex = 0; skeletonIndex < skeletonsCount; skeletonIndex++) {
+          const skeleton = document.createElement('section');
+          skeleton.classList.add('skeleton');
+          for (let dotIndex = 0; dotIndex < dotsPerSkeleton; dotIndex++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            skeleton.appendChild(dot);
+          }
+          document.getElementsByTagName('main')[0].appendChild(skeleton);
+          setTimeout(() => skeleton.classList.add('visible'), 250);
+        }
+      }
+      createSkeletons(6, 3);
+    </script>
     <?php addJs('swiper-bundle.min'); ?>
     <?php addJs('core'); ?>
     <?php addJs('ripple.min'); ?>
