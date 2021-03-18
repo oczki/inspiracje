@@ -4,34 +4,54 @@ altruista
 ambitny
 arogancki
 awanturnik
+bankrut
 bezczelny
+bezkompromisowy
 bezmyślny
+bezpośredni
 bezużyteczny talent
 bezwstydny
 bezwzględny
+biedny
 blizna na ciele
+błaha supermoc
+bogaty
 bogobojny
 boi się zwierzątek
+brudas
+był wszędzie
+cebulak
 celebryta
 chamski
 chaotyczny
 chce mieć dzieci
 chce więcej!
 chciwy
+chłodny
+chorowity
 chory
 chytrus
+ciamajda
 ciągle żartuje
+cichy śmiech
+ciekawski
 cierpliwy
+coś za coś
 cwaniak
 cyniczny
+częste przejęzyczenia
 często dotyka twarzy
+często oblizuje wargi
 często przesadza
 często wyłącza się
+czuły węch
 czyścioch
 czyta w myślach
 daje innym wygrać
+dba o prywatność
 dba o skórę
 dba o szczegóły
+długie kroki
 dobroduszny
 dokładny
 doskonała pamięć
@@ -42,37 +62,56 @@ drapie się
 dresiarz
 drobiazgowy
 dumny
+dusigrosz
 dużo się rusza
+dzieli się wszystkim
 dziki
 dziurawe skarpety
 dziwny akcent sylab
+dżentelmen
 ekspert w dziedzinie
 ekstrawertyk
+emeryt
 empatyczny
 energiczny
+fanatyk
+farciarz
+gaduła
 gbur
+geniusz
 gestykuluje
 gibki
+głęboko oddycha
 głodny
+głośny śmiech
 głupi śmiech
 gościnny
 grubas
 gry słowne
 grzeczny
+gwiżdże
+hiperpoprawność wymowy
 hipochondryk
 hipokryta
 hojny
+hulaj dusza
 indywidualista
 introwertyk
 inwalida
+kapuś
+kieruje się zasadami
 klaszcze przy śmiechu
 kleptoman
 kłamczuch
 kocha muzykę
+kolana na zewnątrz
 kolekcjoner
+kontrola żywiołu
 kreatywny
+krótkie kroki
 kura domowa
 leniwy
+liczy pod nosem
 lizus
 lojalny
 lubi dotyk
@@ -80,40 +119,65 @@ lubi zwierzęta
 łakomczuch
 łatwowierny
 ma swój trigger
+macho
 maminsynek
 manipulant
 mazgaj
+mędrzec
+miesza polski z angielskim
+mieszczuch
 mlaska
+młody duchem
 mocarz
 modniś
+mowi bez 'ogonkow'
 mówca
 mówi do siebie
 mówi na 'ty'
 mówi tylko o sobie
+mówi tylko w ruchu
 mówi w trzeciej osobie
+mruży oczy
+musi coś trzymać
+musi się ruszać
 myli kierunki
+myśli na głos
+nadmiar elektroniki
 nadmiar perfum
 nadmiar zarostu
 nagłe ruchy
 naiwny
+narastająca euforia
 narcyz
+nazywa czynności
+nazywa wszystko
 nerd
 nie czyta książek
+nie docenia siebie
 nie dotrzymuje słowa
 nie lubi dzieci
 nie lubi siedzieć
+nie lubi się dzielić
 nie lubi stać
 nie lubi zmian
 nie lubi zwierząt
+nie na czasie
 nie oddaje długów
+nie ogarnia technologii
 nie patrzy w oczy
 nie sprząta
+nie śledzi wydarzeń
 nie taki jak kiedyś
+nie wybacza
 nie znosi porażki
 nieadekwatne miny
+nieadekwatne reakcje
+nieadekwatny ubiór
 niechluj
+niecierpliwy
 niedoceniany
 niedoświadczony
+nieletni
 nieogarnięty
 niepoważny
 niespełniony
@@ -121,30 +185,49 @@ nieśmiertelny
 nieufny
 niewierny
 niewinny
+niezależny
 niezdecydowany
 niski głos
 niszowe zainteresowania
+nocny marek
 nosi broń
+nowobogacki
 nowoczesny
 nóż przy sobie
+obgaduje innych
 obgryza paznokcie
+obolały
+obrażalski
 obżartuch
 oczytany
+oddycha przez usta
+odmawia pomocy sobie
 odpowiedzialny
 odważny
+odwraca się od rozmówcy
 opiekuńczy
+opinia na każdy temat
 opóźniony o 2 s
 optymista
+osiłek
+ostatni przedstawiciel fachu
 ostrożny
 oszczędny
 oszust
+owija w bawełnę
 pamięta cytaty
+pamiętliwy
 papuguje innych
+parcie na szkło
+patriota
 patrzy w oczy
+patrzy z góry
+pechowiec
 pedantyczny
 pewny siebie
 piękność
 pilnuje wagi
+planuje każdą czynność
 pobożny
 pochlebca
 pociąga nosem
@@ -153,28 +236,46 @@ podlizywacz
 podrywacz
 podstępny
 poker face
+pomaga nieproszony
+poprawia fryzurę
+poprawia innych
+porównuje do siebie
 poważny
-powtarza słówko
+powtarza swoje słówko
 pracoholik
 prawiczek
-prący na szkło
 prehistoryczny
+prekursor fachu
 prokrastynacja
 próżny
 przebiegły
+przecenia swoje umiejętności
 przechwala się
+przełyka ślinę
 przesadne ruchy
 przesądny
+przeszkadza
 przezorny
+przygląda się
+przystojny
+przytacza historyjki
 przytakiwacz
+psotny
 punktualny
 puszcza całusy
+ręce w kieszeni
+ręce za plecami
 rozgląda się
 rozrzutny
 rozsądny
 różne skarpety
+rymuje
+rytmiczne ruchy
 rzadko w domu
+rzut monetą na wszystko
+samotny z wyboru
 sceptyczny
+skarżypyta
 sknera
 skryty
 skupiony
@@ -182,28 +283,47 @@ sokole oko
 spełniony
 spocony
 spóźnia się
+spragniony wolności
 spragniony
 sprawdza horoskop
 sprawdza każdy fakt
+sprawdza powiadomienia
 sprawiedliwy
+sprawny fizycznie
 sprytny
 stalker
+starzec
+strach przed zarazkami
+suchoklates
+syczy
 szczegółowe zdania
 szczery
+szczęściarz
+szczodry
+szeryfuje
 szlachcic
+sztuczny uśmiech
+sztywniak
+szuka konspiracji
 szuka wrażeń
 szybki refleks
 śliwa pod okiem
 śmiały
+śmiech złoczyńcy
 śmieciuch
 śpioch
+świeżo po czterdziestce
 świeżo wykąpany
 tajemnica rodzinna
+tak bardzo dorosły
 taktowny
 tchórz
+tłumaczy żarty
 trendsetter
 twardziel
 uczciwy
+udaje głupiego
+udaje mądrego
 ukryte marzenie
 ukryty talent
 uległy
@@ -211,27 +331,42 @@ unika dotyku
 unika słońca
 uparty
 uprzejmy
+urywa myśl
 utalentowany
 uzależniony
-wchodzi w słowo
+waleczny
+wchodzi w zdanie
 wcześnie dojrzał
 wie wszystko
 wieczny student
+wiedza podręcznikowa
 wiedza z tabloidów
 wierny
+wierzy w magię
 wieśniak
 wiodąca część ciała
+wojskowe zasady
 wrażliwy
 wstydzioch
+wszystko na 200%
+wszystko na 'chyba'
+wszystko w kalendarzu
 wścibski
+wtrąca historyjki
+wtrąca korpo-słówka
 wybuchowy
 wyluzowany
+wymagający
+wyprostowane łokcie
+wyprostowany
 wyrachowany
 wyrozumiały
 wysoki głos
+wytyka błędy
 yolo
 z przyszłości
 za moich czasów...
+zachowuje symetrię
 zaciśnięte dłonie
 zadbany
 zajmuje dużo miejsca
@@ -241,15 +376,24 @@ zapisuje wszystko
 zapominalski
 zawsze był drugi
 zawsze musi wygrać
+zawsze na tak
 zawsze wygrywa
+zbiera statystyki
 zdolny
 zdrów jak ryba
 złamana kość
+złośliwy
+złożony ciąg skojarzeń
+zmienia temat
 zmienia zdanie
+zmienna wysokość głosu
+zmyśla plotki
 zna przyszłość
 zna wszystkich
 zna wszystkie pokemony
+zna wszystkie żarty
 zorganizowany
 zziębnięty
 źle znosi hałas
+życie na ASAPie
 życzliwy

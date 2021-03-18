@@ -3,9 +3,13 @@ aktor z reżyserem
 artysta i dzieło
 astronauta i kosmita
 babcia i wnuk
+bliźniacy
 bogacz i biedak
 bóg i szatan
 bóstwo i śmiertelnik
+byli przyjaciele
+byli wrogowie
+byli współlokatorzy
 celebryta i fan
 chirurg i anestezjolog
 chirurg plastyczny i pacjent
@@ -17,7 +21,10 @@ detektyw i podejrzany
 diabeł i anioł
 drogówka i kierowca
 druga randka
+dwójka laików
+dwójka specjalistów
 dziecko z lalką
+ex aequo pierwsze miejsce
 FBI i zwykły człowiek
 kaskader aktora
 kelner i klient
@@ -29,6 +36,7 @@ kooperacja przyjaciół
 kooperacja wrogów
 krwinka i bakteria
 lalkarz z lalką
+lekarz z lekarzem
 lekarz z pacjentem
 małżeństwo
 mechanik z klientem
@@ -43,16 +51,20 @@ obserwator i obserwowany
 ósme spotkanie dzisiaj
 papież i kardynał
 para homoseksualna
+partnerzy w zbrodni
 pierwsze spotkanie
 pies i kość
 plemnik i jajeczko
+po roku kwarantanny
 polityk z wyborcą
 położna i dziecko
 poprzednie wcielenie
 prawnik i klient
 profesor i świeżak
+przed i po
 przybrana rodzina
 przyjaciele z dzieciństwa
+przyszli współlokatorzy
 pytanie i odpowiedź
 randka w ciemno
 robot z twórcą
@@ -64,18 +76,25 @@ ryba i robak na haku
 rywalizacja przyjaciół
 sędzia i prawnik
 sędzia i skazany
+skłóceni o błahostkę
+spadkodawca i spadkobierca
 spotkanie biznesowe
 sprzedawca i kupujący
 stare małżeństwo
 strażnik i więzień
 szeryf z kowbojem
 szewc z klientem
+światło i cień
 świeżo po ślubie
 teść i zięć
 tinderowa randka
 trójkąt miłosny
+uczciwy i oszust
 weterynarz i właściciel
 weterynarz i zwierzę
 wymuszone małżeństwo
+za cienką ścianą
+za grubą ścianą
 zakładnik terrorysty
+zamiana ciał
 żaba i królewna

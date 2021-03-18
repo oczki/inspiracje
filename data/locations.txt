@@ -1,16 +1,18 @@
+absolutna ciemność
 akademik
 apartament
 apteka
 arsenał
 autobus
 autostrada
+bagażnik
 bagna
 balkon
 bankiet
 bar mleczny
 basen
 biblioteka
-biurko
+biuro
 biurowiec
 boisko
 brama
@@ -18,18 +20,19 @@ browar
 budka z jedzeniem
 budowa
 bufet
-burdel
 centrum badawcze
 chłodnia
 chodnik
+ciasny transport publiczny
 ciasny tunel
 ciemny zaułek
 cmentarz
 cyrk
 czerwony dywan
 dach
-dentysta
 disneyland
+długa kolejka
+dom publiczny
 dom
 domówka
 drapacz chmur
@@ -38,12 +41,15 @@ dyskoteka
 działka
 dżungla
 elektrownia
+epicentrum
 farma
 filharmonia
 fosa zamku
+gabinet stomatologiczny
 galeria handlowa
 galeria sztuki
 garaż
+głębiny oceanu
 głęboko pod ziemią
 góra
 hangar
@@ -52,7 +58,10 @@ ikea
 impreza firmowa
 jacht
 jaskinia
+jasna pustka
+jądro Ziemi
 jezioro
+kabina toaletowa
 kafejka internetowa
 kanał ściekowy
 kanciapa
@@ -62,12 +71,15 @@ katedra
 kawiarnia
 kino
 klatka schodowa
-kolejka
+kokpit samolotu
 kominek
 komisariat
+komora bezechowa
 koncert
 konfesjonał
 kopalnia
+korek drogowy
+korytarz gmachu sądu
 kościół
 krematorium
 krypta
@@ -93,6 +105,7 @@ morze
 most
 motocykl
 muzeum
+na powierzchni skóry
 namiot
 niebo
 oaza
@@ -102,6 +115,10 @@ obuwniczy
 ogródek
 ołtarz
 open space
+opuszczona galeria
+opuszczone kino
+orbita okołoziemska
+ostatni rząd w kinie
 pałac
 parawan
 park
@@ -112,22 +129,30 @@ pijalnia
 piramida
 piwnica
 plac zabaw
+plan zdjęciowy
 planeta
 plaża
 plebania
+płytko pod wodą
 pociąg
 poczekalnia
 pod kioskiem
 pod mostem
+pod powierzchnią
 pod ścianą
+pogorzelisko
 pokaz mody
 pole uprawne
 pośredniak
+pośród chmur
+powierzchnia Księżyca
 poza zasięgiem kamer
 pralnia
 prosektorium
+przeciwne strony stołu
 przedszkole
 przejście dla pieszych
+przejście graniczne
 przyczepa kempingowa
 przymierzalnia
 przystanek
@@ -135,30 +160,36 @@ psia buda
 pub
 punkt obserwacyjny
 pustynia
+rakieta
 recepcja
 redakcja
 restauracja
+rollercoaster
 rozlewnia
 ruiny
 rynek
 rzeźnia
 sad
 sala operacyjna
+sala rozpraw
 sala weselna
 salon fotograficzny
 salon gier
 salon masażu
 samochód
+samolot
 sauna
-sąd
+scena występu impro
 scena
 schody ruchome
 schronisko
 sesja zdjęciowa
 sex shop
+side'y sceny impro
+silne pole magnetyczne
 siłownia
-sklep
 sklep muzyczny
+sklep
 skrzyżowanie
 spotkanie rodzinne
 stacja benzynowa
@@ -174,6 +205,8 @@ supermarket
 suszarnia
 sypialnia
 szałas
+szatnia
+szczyt
 szklarnia
 szkoła
 szpital
@@ -193,9 +226,13 @@ wagon
 wars
 warsztat
 warzywniak
+wąska ścieżka
+we wnętrznościach
+wewnątrz drzewa
 wiatrak
+wieża Eiffela
+wieża kontroli lotów
 wieża
-wieża eiffela
 więzienie
 willa
 winda
@@ -206,6 +243,7 @@ wykopaliska
 wykopki
 wypożyczalnia
 wysoko nad ziemią
+wyspa
 wysypisko
 za garażami
 zagroda
