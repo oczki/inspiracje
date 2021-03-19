@@ -464,7 +464,9 @@ class ColorSetter {
     let color = new Color(this.hue, s, l);
 
     if (isDarkModeEnabled) {
-      color = color.saturate(-30);
+      color = color.saturate(-30).lighten(2);
+    } else {
+      color = color.lighten(-5);
     }
 
     wordWrapper.style.color = color?.hslString;
