@@ -29,10 +29,12 @@
   --card-padding: 4px;
   --card-border-radius: 4px;
   --icon-size: 24px;
+  --icon-padding: 12px;
   --footer-height: 56px;
+  --narrow-screen-padding-compensation: 0px;
   --sliding-sheet-border-radius: 12px;
   --sliding-sheet-item-border-radius: 4px;
-  --narrow-screen-padding-compensation: 0px;
+  --sliding-sheet-item-horizontal-padding: calc(var(--icon-padding) + var(--card-padding) + var(--narrow-screen-padding-compensation));
 
   --color-text-black-high: hsla(0, 0%, 0%, 0.87);
   --color-text-black-medium: hsla(0, 0%, 0%, 0.6);
@@ -365,7 +367,7 @@ main section:last-child {
   color: var(--color-accent);
   background-color: transparent;
   font-weight: 500;
-  padding: 12px;
+  padding: var(--icon-padding);
   border-radius: 48px;
   cursor: pointer;
   display: flex;
@@ -521,7 +523,7 @@ footer.visible {
   position: relative;
   width: min(100%, 640px);
   height: 100%;
-  padding: 0 var(--body-padding);
+  padding: 0 var(--card-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -540,7 +542,7 @@ footer.visible {
   left: 50%;
   width: auto;
   height: var(--fab-size);
-  padding: 0 20px 0 12px;
+  padding: 0 20px 0 var(--icon-padding);
   z-index: 100;
   display: flex;
   flex-wrap: nowrap;
@@ -573,7 +575,7 @@ footer.visible {
   font-weight: 500;
   font-size: 14px;
   display: inline-block;
-  margin: 1px 0 0 12px;
+  margin: 1px 0 0 var(--icon-padding);
   letter-spacing: 1.25px;
 }
 
@@ -600,7 +602,7 @@ footer.visible {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: var(--icon-padding);
   border-radius: 48px;
   cursor: pointer;
   background-color: transparent;
@@ -689,15 +691,16 @@ footer .circular-button .icon {
 .sliding-sheet-header {
   width: 100%;
   height: 56px;
-  padding-left: 26px;
+  padding-left: var(--sliding-sheet-item-horizontal-padding);
   display: flex;
   align-items: center;
   color: var(--color-secondary-text);
+  font-weight: 500;
 }
 
 .sliding-sheet-text {
   width: 100%;
-  padding: 8px 26px;
+  padding: 8px var(--sliding-sheet-item-horizontal-padding);
   line-height: 1.5;
 }
 
@@ -708,7 +711,7 @@ footer .circular-button .icon {
   align-items: center;
   flex-direction: row;
   flex-wrap: nowrap;
-  padding: 16px 26px;
+  padding: 16px var(--sliding-sheet-item-horizontal-padding);
   cursor: pointer;
   color: var(--color-text);
   border-radius: var(--sliding-sheet-item-border-radius);
@@ -753,7 +756,7 @@ footer .circular-button .icon {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 0 26px;
+  padding: 0 var(--sliding-sheet-item-horizontal-padding);
 }
 
 #scale-control-container > span:first-of-type {
@@ -781,7 +784,7 @@ footer .circular-button .icon {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 16px 26px;
+  padding: 16px var(--sliding-sheet-item-horizontal-padding);
   text-decoration: none;
   color: var(--color-text);
   border-radius: var(--sliding-sheet-item-border-radius);
@@ -907,6 +910,10 @@ button:disabled::after,
   :root {
     --narrow-screen-padding-compensation: var(--body-padding);
     --sliding-sheet-item-border-radius: 0px;
+  }
+
+  #footer-inner-container {
+    padding: 0 calc(var(--body-padding) + var(--card-padding));
   }
 
   .floating-action-button {
