@@ -15,6 +15,6 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "start_url": "http://inspirac.je",
+    "start_url": "https://inspirac.je",
     "display": "standalone"
 }
