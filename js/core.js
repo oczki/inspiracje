@@ -207,34 +207,6 @@ let containers = [
       },
     },
   },
-  // {
-  //   type: "body-part",
-  //   label: "Część ciała",
-  // },
-  // {
-  //   type: "genre",
-  //   label: "Gatunek filmowy",
-  //   prevButtonPrefix: "Poprzedni",
-  //   nextButtonPrefix: "Następny",
-  // },
-  // {
-  //   type: "name",
-  //   label: "Imię",
-  //   prevButtonPrefix: "Poprzednie",
-  //   nextButtonPrefix: "Następne",
-  // },
-  // {
-  //   type: "noun",
-  //   label: "Rzeczownik",
-  //   prevButtonPrefix: "Poprzedni",
-  //   nextButtonPrefix: "Następny",
-  // },
-  // {
-  //   type: "dictionary",
-  //   label: "Dowolne słowo",
-  //   prevButtonPrefix: "Poprzednie",
-  //   nextButtonPrefix: "Następne",
-  // },
 ];
 
 let wordsContainer = [];
