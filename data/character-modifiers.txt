@@ -187,6 +187,7 @@ niewierny
 niewinny
 niezależny
 niezdecydowany
+niska samoocena
 niski głos
 niszowe zainteresowania
 nocny marek
@@ -269,6 +270,7 @@ rozgląda się
 rozrzutny
 rozsądny
 różne skarpety
+ruchy rąk gdy mówi
 rymuje
 rytmiczne ruchy
 rzadko w domu
@@ -361,6 +363,7 @@ wyprostowane łokcie
 wyprostowany
 wyrachowany
 wyrozumiały
+wysoka samoocena
 wysoki głos
 wytyka błędy
 yolo
