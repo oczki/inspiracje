@@ -492,36 +492,6 @@ class ColorSetter {
   }
 }
 
-let ColorUtil = new function() {
-  this.mixColors = (color1, color2, factor = 0.5) => {
-    let lerp = (val1, val2) => {
-      const result = (1 - factor) * val1 + factor * val2;
-      return Math.round(result);
-    }
-
-    if (!(color1 instanceof Color))
-      color1 = new Color(color1);
-    if (!(color2 instanceof Color))
-      color2 = new Color(color2);
-
-    let mixed = new Color();
-    mixed.r = lerp(color1.r, color2.r);
-    mixed.g = lerp(color1.g, color2.g);
-    mixed.b = lerp(color1.b, color2.b);
-    return mixed;
-  }
-  
-  this.darken = (color, factor = 0.5) => {
-    const black = new Color("#000000");
-    return this.mixColors(color, black, factor);
-  }
-  
-  this.lighten = (color, factor = 0.5) => {
-    const white = new Color("#ffffff");
-    return this.mixColors(color, white, factor);
-  }
-}
-
 class Container {
   constructor(containerData) {
     this.data = containerData;
