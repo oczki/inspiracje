@@ -1126,12 +1126,24 @@ let VisibilityController = new function() {
   this.fabAdvanceAllId = 'button-advance-all';
   this.fabCloseSheetId = 'button-close-sheet';
 
-  this.showElement = (element) => {
-    element?.classList.add(visibleClass);
+  this.enableElement = (element) => {
+    if (!element) return;
+    element.disabled = false;
   }
 
+  this.disableElement = (element) => {
+    if (!element) return;
+    element.disabled = true;
+  }
+  
+  this.showElement = (element) => {
+    if (!element) return;
+    element.classList.add(visibleClass);
+  }
+  
   this.hideElement = (element) => {
-    element?.classList.remove(visibleClass);
+    if (!element) return;
+    element.classList.remove(visibleClass);
   }
 
   this.preventTabbingToElement = (element) => {
@@ -1448,12 +1460,34 @@ let Settings = new function() {
   this.CategoriesList = new function() {
     this.keyName = 'categories';
 
+    this.typeToMoveUpButtonId = (type) => {
+      return `${type}-move-up`;
+    }
+
+    this.typeToMoveDownButtonId = (type) => {
+      return `${type}-move-down`;
+    }
+
+    this.getListOfContainers = () => {
+      return containers; // TODO: Can't really iterate over this, as it's going to change. Need to prepare an array (esp if it's not in local storage yet) and iterate over that instead.
+    }
+
     this.updateMoveUpDownButtonsStates = () => {
-      // TODO: Go through the list and set 'first move up' and 'last move down' to disabled.
+      const listOfContainers = this.getListOfContainers();
+      for (let [index, container] of listOfContainers.entries()) {
+        if (index === 0) {
+          const buttonToDisable = document.getElementById(this.typeToMoveUpButtonId(container.type));
+          VisibilityController.disableElement(buttonToDisable);
+        }
+        if (index === listOfContainers.length - 1) {
+          const buttonToDisable = document.getElementById(this.typeToMoveDownButtonId(container.type));
+          VisibilityController.disableElement(buttonToDisable);
+        }
+      }
     }
 
     this.createMoveUpButton = (itemId) => {
-      const buttonId = `${itemId}-move-up`;
+      const buttonId = this.typeToMoveUpButtonId(itemId);
       const buttonText = 'Przesuń w górę';
       const icon = Creator.createIcon(iconArrow, 'rotate-270');
       const callback = () => {
@@ -1465,7 +1499,7 @@ let Settings = new function() {
     }
 
     this.createMoveDownButton = (itemId) => {
-      const buttonId = `${itemId}-move-down`;
+      const buttonId = this.typeToMoveDownButtonId(itemId);
       const buttonText = 'Przesuń w dół';
       const icon = Creator.createIcon(iconArrow, 'rotate-90');
       const callback = () => {
@@ -1485,7 +1519,7 @@ let Settings = new function() {
     this.createControl = () => {
       const list = Creator.createElementWithClass('div', 'categories-list-container');
 
-      for (let container of containers) { // TODO: Can't really iterate over this, as it's going to change. Need to prepare an array (esp if it's not in local storage yet) and iterate over that instead.
+      for (let container of this.getListOfContainers()) {
         const itemId = `category-${container.type}-item`;
         const labelId = `category-${container.type}-label`;
         const checkboxId = `category-${container.type}-checkbox`;
@@ -1520,6 +1554,10 @@ let Settings = new function() {
     for (let container of containers) {
       new ColorSetter(container).setColors();
     }
+  }
+
+  this.updateMoveUpDownButtonsStates = () => {
+    this.CategoriesList.updateMoveUpDownButtonsStates();
   }
 
   this.createFontScaleControl = () => {
@@ -1668,6 +1706,7 @@ function init() {
   ElementPopulator.populatePageWithWordContainers();
   Settings.updateColors();
   Settings.updateFontScaleElements();
+  Settings.updateMoveUpDownButtonsStates();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
   VisibilityController.toggleSheetVisibility('category-management');
