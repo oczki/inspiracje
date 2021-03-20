@@ -18,9 +18,10 @@ function addJs($name) {
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
-    <meta name="description" content="Podręczny generator postaci, relacji, miejsc i innych słów do scenek teatru improwizowanego.">
+    <meta name="description" content="Podręczny generator postaci, relacji, miejsc i innych słów do scen teatru improwizowanego.">
     <meta property="og:locale" content="pl">
-    <meta property="og:title" content="Podręczny generator postaci, relacji, miejsc i innych słów do scenek teatru improwizowanego.">
+    <meta property="og:title" content="Magazyn Inspiracji">
+    <meta property="og:description" content="Podręczny generator postaci, relacji, miejsc i innych słów do scen teatru improwizowanego.">
     <meta property="og:image" content="/media/og-image.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
