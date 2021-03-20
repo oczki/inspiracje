@@ -397,9 +397,9 @@ main section:last-child {
 }
 
 .prompt {
-  --arrow-margin-left: 18px;
   --arrow-width: 12px;
   --arrow-height: 18px;
+  --arrow-margin-left: calc(var(--card-padding) + var(--icon-padding) + 0.5 * var(--icon-size) - 0.5 * var(--arrow-width));
   --arrow-head-size: 20px;
   --arrow-clip-path-margin: 10px;
   --arrow-shadow-blur: 1px;
