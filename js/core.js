@@ -787,7 +787,7 @@ let Creator = new function() {
     return headerContainer;
   }
 
-  this.createCircularButton = (buttonId, buttonText, svgCode, callback, preventDoubleClick = false) => {
+  this.createCircularButton = (buttonId, buttonText, iconElement, callback, preventDoubleClick = false) => {
     const button = this.createElementWithClassAndId('button', 'circular-button', buttonId);
     const callbackOnSingleClick = (e) => {
       e.preventDefault();
@@ -800,7 +800,7 @@ let Creator = new function() {
     }
 
     Aria.setLabel(button, buttonText);
-    button.appendChild(this.createIcon(svgCode));
+    button.appendChild(iconElement);
     this.addRipple(button);
     return button;
   }
@@ -847,36 +847,36 @@ let SpecializedCreator = new function() {
   this.createAppearanceSettingsButton = () => {
     const buttonId = 'button-appearance-settings';
     const buttonText = 'Ustawienia wyglądu';
-    const iconSvgCode = iconCog;
+    const icon = Creator.createIcon(iconCog);
     const callback = () => {
       VisibilityController.toggleSheetVisibility('appearance-settings');
       this.closeSettingsPrompt();
     }
     const preventDoubleClick = true;
-    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
+    return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
   }
 
   this.createCategoryManagementButton = () => {
     const buttonId = 'button-category-management';
     const buttonText = 'Kategorie słów';
-    const iconSvgCode = iconEditList;
+    const icon = Creator.createIcon(iconEditList);
     const callback = () => {
       VisibilityController.toggleSheetVisibility('category-management');
       this.closeSettingsPrompt();
     }
     const preventDoubleClick = true;
-    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
+    return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
   }
 
   this.createAboutButton = () => {
     const buttonId = 'button-about';
     const buttonText = 'Informacje';
-    const iconSvgCode = iconInfo;
+    const icon = Creator.createIcon(iconInfo);
     const callback = () => {
       VisibilityController.toggleSheetVisibility('about');
     }
     const preventDoubleClick = true;
-    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
+    return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
   }
 
   this.createFooterLeftSideButtons = () => {
@@ -979,7 +979,7 @@ let SpecializedCreator = new function() {
     const closePromptCallback = () => {
       this.closeSettingsPrompt();
     }
-    const closeButton = Creator.createCircularButton('close-prompt-settings', 'Zamknij', iconClose, closePromptCallback);
+    const closeButton = Creator.createCircularButton('close-prompt-settings', 'Zamknij', Creator.createIcon(iconClose), closePromptCallback);
     Creator.addRipple(closeButton);
     
     cardElement.appendChild(textWrapper);
@@ -1253,20 +1253,20 @@ let Settings = new function() {
 
     this.createIncreaseFontScaleButton = () => {
       const buttonText = 'Powiększ tekst';
-      const iconSvgCode = iconPlusBox;
+      const icon = Creator.createIcon(iconPlusBox);
       const callback = () => {
         this.increaseFontScale();
       }
-      return Creator.createCircularButton(this.scalePlusElementId, buttonText, iconSvgCode, callback);
+      return Creator.createCircularButton(this.scalePlusElementId, buttonText, icon, callback);
     }
 
     this.createDecreaseFontScaleButton = () => {
       const buttonText = 'Pomniejsz tekst';
-      const iconSvgCode = iconMinusBox;
+      const icon = Creator.createIcon(iconMinusBox);
       const callback = () => {
         this.decreaseFontScale();
       }
-      return Creator.createCircularButton(this.scaleMinusElementId, buttonText, iconSvgCode, callback);
+      return Creator.createCircularButton(this.scaleMinusElementId, buttonText, icon, callback);
     }
 
     this.createCurrentScaleDisplay = () => {
@@ -1448,18 +1448,50 @@ let Settings = new function() {
   this.CategoriesList = new function() {
     this.keyName = 'categories';
 
+    this.updateMoveUpDownButtonsStates = () => {
+      // TODO: Go through the list and set 'first move up' and 'last move down' to disabled.
+    }
+
+    this.createMoveUpButton = (itemId) => {
+      const buttonId = `${itemId}-move-up`;
+      const buttonText = 'Przesuń w górę';
+      const icon = Creator.createIcon(iconArrow, 'rotate-270');
+      const callback = () => {
+        // TODO: Move this item up if possible.
+        // TODO: Move the above item down if possible.
+      }
+      const preventDoubleClick = true;
+      return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
+    }
+
+    this.createMoveDownButton = (itemId) => {
+      const buttonId = `${itemId}-move-down`;
+      const buttonText = 'Przesuń w dół';
+      const icon = Creator.createIcon(iconArrow, 'rotate-90');
+      const callback = () => {
+        // TODO: Move this item down if possible.
+        // TODO: Move the below item up if possible.
+      }
+      const preventDoubleClick = true;
+      return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
+    }
+
     this.updateCategoriesData = (newCategoriesData) => {
       localStorage.setItem(this.keyName, newCategoriesData);
-      // TODO: reorder categories in <main>
+      // TODO: Reorder categories in <main>.
       Settings.updateColors();
     }
 
     this.createControl = () => {
       const list = Creator.createElementWithClass('div', 'categories-list-container');
 
-      for (let container of containers) {
+      for (let container of containers) { // TODO: Can't really iterate over this, as it's going to change. Need to prepare an array (esp if it's not in local storage yet) and iterate over that instead.
+        const itemId = `category-${container.type}-item`;
         const labelId = `category-${container.type}-label`;
         const checkboxId = `category-${container.type}-checkbox`;
+
+        const categoryContainer = Creator.createElementWithClassAndId('div', 'category-list-item', itemId);
+
         const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', labelId);
         const toggle = Creator.createElementWithId('input', checkboxId);
 
@@ -1468,7 +1500,11 @@ let Settings = new function() {
         labelElement.appendChild(Creator.createToggleLabels(container.label));
         Creator.addRipple(labelElement);
 
-        list.appendChild(labelElement);
+        categoryContainer.appendChild(labelElement);
+        categoryContainer.appendChild(this.createMoveUpButton(container.type));
+        categoryContainer.appendChild(this.createMoveDownButton(container.type));
+
+        list.appendChild(categoryContainer);
       }
 
       return list;
@@ -1634,6 +1670,7 @@ function init() {
   Settings.updateFontScaleElements();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
+  VisibilityController.toggleSheetVisibility('category-management');
 }
 
 if (document.readyState != 'loading')

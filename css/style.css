@@ -621,6 +621,7 @@ footer.visible {
   cursor: pointer;
   background-color: transparent;
   color: var(--color-text);
+  height: 100%;
 }
 
 .circular-button .icon {
@@ -832,6 +833,17 @@ footer .circular-button .icon {
 
 .categories-list-container {
   width: 100%;
+}
+
+.category-list-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.category-list-item > * + * {
+  margin-left: var(--distance-between-buttons);
 }
 
 /* #endregion Categories list */
