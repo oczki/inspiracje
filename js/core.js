@@ -1063,7 +1063,7 @@ let SheetCreator = new function() {
     VisibilityController.preventTabbingToElement(sheet);
 
     const sheetContent = sheet.children[0];
-    sheetContent.appendChild(Creator.createSlidingSheetHeader('Ustawienia wyglądu'));
+    sheetContent.appendChild(Creator.createSlidingSheetHeader('Ustawienia'));
 
     sheetContent.appendChild(Settings.createAnimationsToggle());
     sheetContent.appendChild(Settings.createCompactModeToggle());
@@ -1082,7 +1082,7 @@ let SheetCreator = new function() {
     VisibilityController.preventTabbingToElement(sheet);
 
     const sheetContent = sheet.children[0];
-    sheetContent.appendChild(Creator.createSlidingSheetHeader('Kategorie słów'));
+    sheetContent.appendChild(Creator.createSlidingSheetHeader('Kategorie'));
 
     sheetContent.appendChild(Settings.createCategoriesList());
 
