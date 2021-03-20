@@ -7,9 +7,9 @@ For English, scroll below.
 
 ## Magazyn Inspiracji
 
-Generator słów do scenek teatru improwizowanego.
+Generator słów do scen teatru improwizowanego.
 
-Na występach źródłem inspiracji jest publiczność, lecz ich pomoc nie jest dostępna podczas prób i ćwiczeń. Magazyn Inspiracji wypełnia tę lukę zbiorem ponad 1500 pomysłów, podzielonych na wygodne kategorie.
+Na występach źródłem inspiracji jest publiczność, lecz jej pomoc nie jest dostępna podczas prób i ćwiczeń. Magazyn Inspiracji wypełnia tę lukę zbiorem ponad 1500 pomysłów, podzielonych na wygodne kategorie.
 
 Aplikacja dostosowuje się do ustawień urządzenia (automatyczne wyłączanie animacji i przechodzenie w tryb ciemny), ale te wartości można łatwo nadpisać w panelu ustawień. Można tam również zmienić wielkość czcionki dla wylosowanych słów oraz ustawić tryb kompaktowy, dzięki któremu kategorie zmieszczą się na ekranach mniejszych telefonów.
 
@@ -28,7 +28,7 @@ Licencja znajduje się w pliku [LICENSE](LICENSE.md).
 
 ## Inspiration Depot
 
-Magazyn Inspiracji (Polish for "inspiration depot") is a web application that outputs Polish words, split into categories.
+Magazyn Inspiracji (Polish for "inspiration depot") is a words generator for improvisational theatre scenes.
 
 It's intended for improv groups that need some anchor words for practice. They would usually get such data from the audience during performances, but there's no audience during private training sessions – Magazyn Inspiracji fills that hole with over 1500 ideas.
 
