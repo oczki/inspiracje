@@ -835,12 +835,24 @@ let Creator = new function() {
 }
 
 let SpecializedCreator = new function() {
-  this.createSettingsButton = () => {
+  this.createAppearanceSettingsButton = () => {
     const buttonId = 'button-appearance-settings';
-    const buttonText = 'Ustawienia';
+    const buttonText = 'Ustawienia wyglądu';
     const iconSvgCode = iconCog;
     const callback = () => {
       VisibilityController.toggleSheetVisibility('appearance-settings');
+      this.closeSettingsPrompt();
+    }
+    const preventDoubleClick = true;
+    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
+  }
+
+  this.createCategoryManagementButton = () => {
+    const buttonId = 'button-category-management';
+    const buttonText = 'Kategorie słów';
+    const iconSvgCode = iconEditList;
+    const callback = () => {
+      VisibilityController.toggleSheetVisibility('category-management');
       this.closeSettingsPrompt();
     }
     const preventDoubleClick = true;
@@ -856,6 +868,19 @@ let SpecializedCreator = new function() {
     }
     const preventDoubleClick = true;
     return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
+  }
+
+  this.createFooterLeftSideButtons = () => {
+    const buttonsContainer = Creator.createElementWithClass('div', 'footer-buttons-container');
+    buttonsContainer.appendChild(this.createAppearanceSettingsButton());
+    buttonsContainer.appendChild(this.createCategoryManagementButton());
+    return buttonsContainer;
+  }
+
+  this.createFooterRightSideButtons = () => {
+    const buttonsContainer = Creator.createElementWithClass('div', 'footer-buttons-container');
+    buttonsContainer.appendChild(this.createAboutButton());
+    return buttonsContainer;
   }
 
   this.createCheckboxIcons = () => {
@@ -1042,6 +1067,21 @@ let SheetCreator = new function() {
     sheetContent.appendChild(Creator.createSeparator());
 
     sheetContent.appendChild(Settings.createFontScaleControl());
+
+    return sheet;
+  }
+
+  this.createCategoryManagementSheet = () => {
+    const sheetName = 'category-management';
+    const sheet = Creator.createSlidingSheet(sheetName);
+    VisibilityController.preventTabbingToElement(sheet);
+
+    const sheetContent = sheet.children[0];
+    sheetContent.appendChild(Creator.createParagraph('Kategorie słów', 'sliding-sheet-header'));
+
+    sheetContent.appendChild(Creator.createSeparator());
+
+    sheetContent.appendChild(Settings.createCategoriesList());
 
     return sheet;
   }
@@ -1402,6 +1442,36 @@ let Settings = new function() {
     }
   };
 
+  this.CategoriesList = new function() {
+    this.keyName = 'categories';
+
+    this.updateCategoriesData = (newCategoriesData) => {
+      localStorage.setItem(this.keyName, newCategoriesData);
+      // TODO: reorder categories in <main>
+      Settings.updateColors();
+    }
+
+    this.createControl = () => {
+      const list = Creator.createElementWithClass('div', 'categories-list-container');
+
+      for (let container of containers) {
+        const labelId = `category-${container.type}-label`;
+        const checkboxId = `category-${container.type}-checkbox`;
+        const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', labelId);
+        const toggle = Creator.createElementWithId('input', checkboxId);
+
+        labelElement.appendChild(toggle);
+        labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
+        labelElement.appendChild(Creator.createToggleLabels(container.label));
+        Creator.addRipple(labelElement);
+
+        list.appendChild(labelElement);
+      }
+
+      return list;
+    }
+  };
+
   this.updateFontScaleElements = () => {
     this.FontScale.updateCurrentScaleDisplay();
     this.FontScale.updateButtonsStates();
@@ -1428,12 +1498,17 @@ let Settings = new function() {
   this.createDarkModeToggle = () => {
     return this.DarkModeToggle.createToggle();
   }
+
+  this.createCategoriesList = () => {
+    return this.CategoriesList.createControl();
+  }
 }
 
 let ElementPopulator = new function() {
   this.populateSlidingSheetsContainer = () => {
     const container = document.getElementById('sliding-sheets-container');
     container.appendChild(SheetCreator.createAppearanceSettingsSheet());
+    container.appendChild(SheetCreator.createCategoryManagementSheet());
     container.appendChild(SheetCreator.createAboutSheet());
   }
 
@@ -1443,8 +1518,8 @@ let ElementPopulator = new function() {
     const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
     innerContainer.appendChild(SpecializedCreator.createAdvanceAllWordsFloatingActionButton());
     innerContainer.appendChild(SpecializedCreator.createCloseSheetFloatingActionButton());
-    innerContainer.appendChild(SpecializedCreator.createSettingsButton());
-    innerContainer.appendChild(SpecializedCreator.createAboutButton());
+    innerContainer.appendChild(SpecializedCreator.createFooterLeftSideButtons());
+    innerContainer.appendChild(SpecializedCreator.createFooterRightSideButtons());
 
     footer.appendChild(innerContainer);
     VisibilityController.showElement(footer);

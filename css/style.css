@@ -30,6 +30,7 @@
   --card-border-radius: 4px;
   --icon-size: 24px;
   --icon-padding: 12px;
+  --distance-between-buttons: 8px;
   --footer-height: 56px;
   --narrow-screen-padding-compensation: 0px;
   --sliding-sheet-border-radius: 12px;
@@ -527,6 +528,15 @@ footer.visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.footer-buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-buttons-container > button + button {
+  margin-left: var(--distance-between-buttons);
 }
 
 @keyframes spin-360 {
