@@ -1356,7 +1356,7 @@ let Settings = new function() {
       const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
-      labelElement.appendChild(Creator.createToggleLabels('Animacje', 'Płynne przejścia słów i paneli'));
+      labelElement.appendChild(Creator.createToggleLabels('Animacje', 'Płynne przejścia słów i&nbsp;paneli'));
       Creator.addRipple(labelElement);
       return labelElement;
     }
@@ -1437,7 +1437,7 @@ let Settings = new function() {
       const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
-      labelElement.appendChild(Creator.createToggleLabels('Tryb ciemny', 'Do improwizacji po nocach'));
+      labelElement.appendChild(Creator.createToggleLabels('Tryb ciemny', 'Do improwizacji po&nbsp;nocach'));
       Creator.addRipple(labelElement);
       return labelElement;
     }
