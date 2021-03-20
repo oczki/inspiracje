@@ -221,6 +221,10 @@ a {
   height: var(--icon-size);
 }
 
+.rotate-90  { transform: rotate(90deg); }
+.rotate-180 { transform: rotate(180deg); }
+.rotate-270 { transform: rotate(270deg); }
+
 u {
   text-decoration: none;
   border-bottom: 1px solid currentColor;
@@ -629,7 +633,7 @@ footer .circular-button .icon {
 
 /* #endregion Footer */
 
-/* #region Sliding panel (settings, about, ...) */
+/* #region Sliding panel (settings, categories, about, ...) */
 
 #sliding-sheets-container {
   z-index: 9;
@@ -824,7 +828,15 @@ footer .circular-button .icon {
   line-height: 1.5;
 }
 
-/* #endregion Sliding panel (settings, about, ...) */
+/* #region Categories list */
+
+.categories-list-container {
+  width: 100%;
+}
+
+/* #endregion Categories list */
+
+/* #endregion Sliding panel (settings, categories, about, ...) */
 
 /* #region Hover, focus and disabled styles */
 
