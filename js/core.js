@@ -781,6 +781,13 @@ let Creator = new function() {
     return sheet;
   }
 
+  this.createSlidingSheetHeader = (text) => {
+    const headerContainer = this.createElementWithClass('div', 'sliding-sheet-header-container');
+    headerContainer.appendChild(Creator.createParagraph(text, 'sliding-sheet-header'));
+    headerContainer.appendChild(Creator.createSeparator());
+    return headerContainer;
+  }
+
   this.createCircularButton = (buttonId, buttonText, svgCode, callback, preventDoubleClick = false) => {
     const button = this.createElementWithClassAndId('button', 'circular-button', buttonId);
     const callbackOnSingleClick = (e) => {
@@ -1056,9 +1063,7 @@ let SheetCreator = new function() {
     VisibilityController.preventTabbingToElement(sheet);
 
     const sheetContent = sheet.children[0];
-    sheetContent.appendChild(Creator.createParagraph('Ustawienia wyglądu', 'sliding-sheet-header'));
-
-    sheetContent.appendChild(Creator.createSeparator());
+    sheetContent.appendChild(Creator.createSlidingSheetHeader('Ustawienia wyglądu'));
 
     sheetContent.appendChild(Settings.createAnimationsToggle());
     sheetContent.appendChild(Settings.createCompactModeToggle());
@@ -1077,9 +1082,7 @@ let SheetCreator = new function() {
     VisibilityController.preventTabbingToElement(sheet);
 
     const sheetContent = sheet.children[0];
-    sheetContent.appendChild(Creator.createParagraph('Kategorie słów', 'sliding-sheet-header'));
-
-    sheetContent.appendChild(Creator.createSeparator());
+    sheetContent.appendChild(Creator.createSlidingSheetHeader('Kategorie słów'));
 
     sheetContent.appendChild(Settings.createCategoriesList());
 
@@ -1092,9 +1095,7 @@ let SheetCreator = new function() {
 
     const sheetContent = sheet.children[0];
 
-    sheetContent.appendChild(Creator.createParagraph('Magazyn Inspiracji', 'sliding-sheet-header'));
-
-    sheetContent.appendChild(Creator.createSeparator());
+    sheetContent.appendChild(Creator.createSlidingSheetHeader('Magazyn Inspiracji'));
 
     sheetContent.appendChild(Creator.createParagraph('Generator słów do scen teatru improwizowanego.', 'sliding-sheet-text'));
     sheetContent.appendChild(Creator.createParagraph('Na&nbsp;występach źródłem inspiracji jest publiczność, ' +

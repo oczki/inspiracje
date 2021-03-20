@@ -698,6 +698,24 @@ footer .circular-button .icon {
   justify-content: space-between;
 }
 
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-divider);
+  border: none;
+  margin: 8px 0;
+}
+
+.sliding-sheet-header-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-card-background);
+  z-index: 5;
+}
+
 .sliding-sheet-header {
   width: 100%;
   height: 56px;
@@ -706,6 +724,14 @@ footer .circular-button .icon {
   align-items: center;
   color: var(--color-secondary-text);
   font-weight: 500;
+}
+
+.sliding-sheet-header-container .separator {
+  margin: 0;
+}
+
+.sliding-sheet-header-container + * {
+  margin-top: 8px;
 }
 
 .sliding-sheet-text {
@@ -776,18 +802,6 @@ footer .circular-button .icon {
 #scale-control-value {
   text-align: center;
   min-width: 48px;
-}
-
-.separator {
-  width: 100%;
-  height: 1px;
-  background-color: var(--color-divider);
-  border: none;
-  margin: 8px 0;
-}
-
-.separator:first-of-type {
-  margin-top: 0;
 }
 
 .link-with-icon {
