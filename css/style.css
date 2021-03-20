@@ -952,9 +952,15 @@ button:disabled::after,
   }
 }
 
-@media (max-width: 256px) {
-  button > span {
-    display: none;
+@media (max-width: 340px) {
+  :root {
+    --distance-between-buttons: 4px;
+  }
+}
+
+@media (max-width: 300px) {
+  :root {
+    --distance-between-buttons: 0px;
   }
 }
 
