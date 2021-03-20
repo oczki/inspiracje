@@ -836,11 +836,11 @@ let Creator = new function() {
 
 let SpecializedCreator = new function() {
   this.createSettingsButton = () => {
-    const buttonId = 'button-settings';
+    const buttonId = 'button-appearance-settings';
     const buttonText = 'Ustawienia';
     const iconSvgCode = iconCog;
     const callback = () => {
-      VisibilityController.toggleSheetVisibility('settings');
+      VisibilityController.toggleSheetVisibility('appearance-settings');
       this.closeSettingsPrompt();
     }
     const preventDoubleClick = true;
@@ -1025,13 +1025,13 @@ let WordSectionCreator = new function() {
 }
 
 let SheetCreator = new function() {
-  this.createSettingsSheet = () => {
-    const sheetName = 'settings';
+  this.createAppearanceSettingsSheet = () => {
+    const sheetName = 'appearance-settings';
     const sheet = Creator.createSlidingSheet(sheetName);
     VisibilityController.preventTabbingToElement(sheet);
 
     const sheetContent = sheet.children[0];
-    sheetContent.appendChild(Creator.createParagraph('Ustawienia', 'sliding-sheet-header'));
+    sheetContent.appendChild(Creator.createParagraph('Ustawienia wyglądu', 'sliding-sheet-header'));
 
     sheetContent.appendChild(Creator.createSeparator());
 
@@ -1433,7 +1433,7 @@ let Settings = new function() {
 let ElementPopulator = new function() {
   this.populateSlidingSheetsContainer = () => {
     const container = document.getElementById('sliding-sheets-container');
-    container.appendChild(SheetCreator.createSettingsSheet());
+    container.appendChild(SheetCreator.createAppearanceSettingsSheet());
     container.appendChild(SheetCreator.createAboutSheet());
   }
 
