@@ -831,12 +831,15 @@ let Creator = new function() {
   }
 
   this.createToggleLabels = (primaryText, secondaryText = '') => {
-    const primaryLabelElement = this.createSpan(primaryText, 'label-text-primary');
-    const secondaryLabelElement = this.createSpan(secondaryText, 'label-text-secondary');
-
     const labelsContainer = this.createElementWithClass('div', 'label-text');
+    const primaryLabelElement = this.createSpan(primaryText, 'label-text-primary');
     labelsContainer.appendChild(primaryLabelElement);
-    labelsContainer.appendChild(secondaryLabelElement);
+
+    if (secondaryText.length > 0) {
+      const secondaryLabelElement = this.createSpan(secondaryText, 'label-text-secondary');
+      labelsContainer.appendChild(secondaryLabelElement);
+    }
+
     return labelsContainer;
   }
 }
