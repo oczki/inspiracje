@@ -494,9 +494,9 @@ class ColorSetter {
   }
 }
 
-class Container {
-  constructor(containerData) {
-    this.data = containerData;
+class CategoryContainer {
+  constructor(categoryData) {
+    this.data = categoryData;
     this.numberOfSlidesToGenerateFromWordsCache = 12;
     this.wordsCache = [];
     this.wordsCacheIndex = 0;
@@ -504,7 +504,7 @@ class Container {
     this.slideIndex = 0;
     this.hasSpokenSinceTransitionEnd = true;
 
-    WordSectionCreator.addSection(containerData);
+    WordSectionCreator.addSection(categoryData);
     this.swiper = this.initializeSwiper();
     this.initializeWords();
 
@@ -912,7 +912,7 @@ let SpecializedCreator = new function() {
       Aria.setIsAdvanceAllSpeaking(true);
 
       // Advance sections in randomized order
-      const types = Object.keys(containers).map(key => containers[key].type);
+      const types = Object.keys(containers).map(key => containers[key].type); // TODO here
       Util.shuffle(types);
       for (const [index, type] of types.entries()) {
         const swiper = Selector.getSwiper(type);
@@ -924,8 +924,8 @@ let SpecializedCreator = new function() {
       // Prepare a combined text to speak
       setTimeout(() => {
         let textToSpeak = [];
-        for (let container of containers) {
-          textToSpeak.push(wordsContainer[container.type]?.createTextToSpeak());
+        for (let container of containers) { // TODO here
+          textToSpeak.push(wordsContainer[container.type]?.createTextToSpeak()); // TODO here
         }
         Aria.speak(textToSpeak.join(', '));
       }, delayBetweenLoadedWordsDuration * types.length);
@@ -1041,9 +1041,9 @@ let WordSectionCreator = new function() {
     parentElement.appendChild(overlay);
   }
 
-  this.addSection = (containerData) => {
-    const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(containerData.type));
-    this.addSectionHeader(section, containerData.label);
+  this.addSection = (categoryData) => {
+    const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(categoryData.type));
+    this.addSectionHeader(section, categoryData.label);
     this.addSectionOverlay(section);
     this.addSwiperPrevNextButtons(section);
 
@@ -1381,9 +1381,9 @@ let Settings = new function() {
     }
 
     this.reinitializeAllSwipers = () => {
-      for (const containerData of containers) {
-        wordsContainer[containerData.type].reinitializeSwiper();
-        new ColorSetter(containerData).setColors();
+      for (const categoryData of containers) { // TODO here
+        wordsContainer[categoryData.type].reinitializeSwiper();
+        new ColorSetter(categoryData).setColors();
       }
     }
   };
@@ -1475,15 +1475,15 @@ let Settings = new function() {
     }
 
     this.getListOfCategories = () => {
-      return JSON.parse(localStorage.getItem(this.keyName)) || containers;
+      return JSON.parse(localStorage.getItem(this.keyName)) || containers; // TODO here
     }
 
     this.saveListOfCategories = () => {
       localStorage.setItem(this.keyName, JSON.stringify(this.categories));
     }
 
-    this.getListItemElementByType = (containerType) => {
-      const elementId = `category-${containerType}-item`;
+    this.getListItemElementByType = (categoryType) => {
+      const elementId = `category-${categoryType}-item`;
       return document.getElementById(elementId);
     }
 
@@ -1491,18 +1491,18 @@ let Settings = new function() {
       return this.getListItemElementByType(this.categories[index].type);
     }
 
-    this.getIndexOfContainerByType = (containerType) => {
-      const item = this.categories.find(container => container.type === containerType);
+    this.getIndexOfContainerByType = (categoryType) => {
+      const item = this.categories.find(category => category.type === categoryType);
       return this.categories.indexOf(item);
     }
 
-    this.getIndexOfPreviousItemInList = (currentContainerType) => {
-      const index = this.getIndexOfContainerByType(currentContainerType);
+    this.getIndexOfPreviousItemInList = (currentCategoryType) => {
+      const index = this.getIndexOfContainerByType(currentCategoryType);
       return index > 0 ? index - 1 : undefined;
     }
     
-    this.getIndexOfNextItemInList = (currentContainerType) => {
-      const index = this.getIndexOfContainerByType(currentContainerType);
+    this.getIndexOfNextItemInList = (currentCategoryType) => {
+      const index = this.getIndexOfContainerByType(currentCategoryType);
       if (index >= 0 && index < this.categories.length - 1) {
         return index + 1;
       }
@@ -1517,49 +1517,51 @@ let Settings = new function() {
       [this.categories[firstIndex], this.categories[secondIndex]] = [this.categories[secondIndex], this.categories[firstIndex]];
       this.saveListOfCategories();
 
+      // TODO: Aria.speak('zamieniono kategorie "miejsce" i "czynność"') or similar. Check how "" affects speech.
+
       this.updateMoveUpDownButtonsStates();
     }
 
-    this.moveUp = (containerType) => {
-      const previousItemIndex = this.getIndexOfPreviousItemInList(containerType);
+    this.moveUp = (categoryType) => {
+      const previousItemIndex = this.getIndexOfPreviousItemInList(categoryType);
       if (previousItemIndex === undefined) return;
-      const currentItemIndex = this.getIndexOfContainerByType(containerType);
+      const currentItemIndex = this.getIndexOfContainerByType(categoryType);
       this.swapItems(currentItemIndex, previousItemIndex);
     }
 
-    this.moveDown = (containerType) => {
-      const nextItemIndex = this.getIndexOfNextItemInList(containerType);
+    this.moveDown = (categoryType) => {
+      const nextItemIndex = this.getIndexOfNextItemInList(categoryType);
       if (nextItemIndex === undefined) return;
-      const currentItemIndex = this.getIndexOfContainerByType(containerType);
+      const currentItemIndex = this.getIndexOfContainerByType(categoryType);
       this.swapItems(nextItemIndex, currentItemIndex);
     }
 
     this.updateMoveUpDownButtonsStates = () => {
-      for (let [index, container] of this.categories.entries()) {
+      for (let [index, categoryData] of this.categories.entries()) {
         let upEnabled = index > 0;
         let downEnabled = index < this.categories.length - 1;
-        VisibilityController.setElementEnabledState(document.getElementById(this.moveUpButtonId(container.type)), upEnabled);
-        VisibilityController.setElementEnabledState(document.getElementById(this.moveDownButtonId(container.type)), downEnabled);
+        VisibilityController.setElementEnabledState(document.getElementById(this.moveUpButtonId(categoryData.type)), upEnabled);
+        VisibilityController.setElementEnabledState(document.getElementById(this.moveDownButtonId(categoryData.type)), downEnabled);
       }
     }
 
-    this.createMoveUpButton = (containerType) => {
-      const buttonId = this.moveUpButtonId(containerType);
+    this.createMoveUpButton = (categoryType) => {
+      const buttonId = this.moveUpButtonId(categoryType);
       const buttonText = 'Przesuń w górę';
       const icon = Creator.createIcon(iconArrow, 'rotate-270');
       const callback = () => {
-        this.moveUp(containerType);
+        this.moveUp(categoryType);
       }
       const preventDoubleClick = true;
       return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
     }
 
-    this.createMoveDownButton = (containerType) => {
-      const buttonId = this.moveDownButtonId(containerType);
+    this.createMoveDownButton = (categoryType) => {
+      const buttonId = this.moveDownButtonId(categoryType);
       const buttonText = 'Przesuń w dół';
       const icon = Creator.createIcon(iconArrow, 'rotate-90');
       const callback = () => {
-        this.moveDown(containerType);
+        this.moveDown(categoryType);
       }
       const preventDoubleClick = true;
       return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
@@ -1569,10 +1571,10 @@ let Settings = new function() {
       this.categories = this.getListOfCategories();
       const list = Creator.createElementWithId('div', 'categories-list-container');
 
-      for (let container of this.categories) {
-        const itemId = `category-${container.type}-item`;
-        const labelId = `category-${container.type}-label`;
-        const checkboxId = `category-${container.type}-checkbox`;
+      for (let categoryData of this.categories) { // TODO here
+        const itemId = `category-${categoryData.type}-item`;
+        const labelId = `category-${categoryData.type}-label`;
+        const checkboxId = `category-${categoryData.type}-checkbox`;
 
         const categoryContainer = Creator.createElementWithClassAndId('div', 'category-list-item', itemId);
 
@@ -1581,12 +1583,12 @@ let Settings = new function() {
 
         labelElement.appendChild(toggle);
         labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
-        labelElement.appendChild(Creator.createToggleLabels(container.label));
+        labelElement.appendChild(Creator.createToggleLabels(categoryData.label));
         Creator.addRipple(labelElement);
 
         categoryContainer.appendChild(labelElement);
-        categoryContainer.appendChild(this.createMoveUpButton(container.type));
-        categoryContainer.appendChild(this.createMoveDownButton(container.type));
+        categoryContainer.appendChild(this.createMoveUpButton(categoryData.type));
+        categoryContainer.appendChild(this.createMoveDownButton(categoryData.type));
 
         list.appendChild(categoryContainer);
       }
@@ -1601,8 +1603,8 @@ let Settings = new function() {
   }
 
   this.updateColors = () => {
-    for (let container of containers) {
-      new ColorSetter(container).setColors();
+    for (let categoryData of containers) { // TODO here
+      new ColorSetter(categoryData).setColors();
     }
   }
 
@@ -1652,10 +1654,10 @@ let ElementPopulator = new function() {
     VisibilityController.showElement(footer);
   }
 
-  this.populatePageWithWordContainers = () => {
-    for (const container of containers) {
+  this.populatePageWithCategoryContainers = () => {
+    for (const categoryData of containers) { // TODO here
       this.removeFirstRemainingSkeletonElement();
-      wordsContainer[container.type] = new Container(container);
+      wordsContainer[categoryData.type] = new CategoryContainer(categoryData);
     }
   }
 
@@ -1753,7 +1755,7 @@ function init() {
   GlobalEventHandler.attachEventsToSheetsAndScrim();
   GlobalEventHandler.handleFirstKeyboardInput();
   ElementPopulator.populateFooter();
-  ElementPopulator.populatePageWithWordContainers();
+  ElementPopulator.populatePageWithCategoryContainers();
   Settings.updateColors();
   Settings.updateFontScaleElements();
   Settings.updateMoveUpDownButtonsStates();
