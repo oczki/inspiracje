@@ -520,20 +520,33 @@ let Categories = new function() {
     parentElement.insertBefore(secondElement, firstElement);
   }
 
-  this.getItemByIndex = (index) => {
+  this.getDataByIndex = (index) => {
     return this.categoriesData[index];
   }
 
+  this.getDataByType = (categoryType) => {
+    const item = this.categoriesData.find(category => category.type === categoryType);
+    return this.getDataByIndex(this.categoriesData.indexOf(item));
+  }
+
   this.getSectionElementByIndex = (index) => {
-    const id = `section-${this.getItemByIndex(index).type}`;
+    const id = `section-${this.getDataByIndex(index).type}`;
     return document.getElementById(id);
   }
 
-  this.setVisibilityByType = (categoryType) => {
-    // TODO show/hide a category in <main>
-    // TODO might need recreating the swiper after showing!
-    // TODO might need COMPLETE init of the swiper (with ajax) after showing!
-    // TODO destroy swiper after hiding
+  this.setVisibilityByType = (categoryType, isVisible) => {
+    const category = wordsContainer[categoryType];
+    if (isVisible) {
+      if (category) {
+        category.reinitializeSwiper();
+      } else {
+        category = new CategoryContainer(this.getDataByType(categoryType));
+      }
+    } else {
+      category?.destroy();
+    }
+    // TODO: Set an 'isVisible' flag for this category (in local storage)
+    Settings.updateColors();
   }
 }
 
@@ -566,6 +579,7 @@ class CategoryContainer {
   }
 
   initializeSwiper() {
+    this.toggleSectionVisibility(true);
     const prevSlideCallbackStart = () => { this.wordsCacheIndex--; }
     const nextSlideCallbackStart = () => { this.wordsCacheIndex++; }
     const prevSlideCallbackEnd = () => { this.appendSlidesToTheLeftIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
@@ -589,6 +603,18 @@ class CategoryContainer {
       this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache);
       this.hideSpinner();
     }, 100);
+  }
+
+  destroy() {
+    if (this.swiper) {
+      this.swiper.destroy();
+      this.toggleSectionVisibility(false);
+    }
+  }
+
+  toggleSectionVisibility(isVisible) {
+    const section = document.getElementById(Selector.sectionId(this.data.type));
+    isVisible ? VisibilityController.showElement(section) : VisibilityController.hideElement(section);
   }
 
   appendSlidesToTheLeft(numberOfSlidesToAppend, offset = 0) {
@@ -1562,6 +1588,7 @@ let Settings = new function() {
       Categories.swap(firstIndex, secondIndex);
 
       // TODO: Aria.speak('zamieniono kategorie "miejsce" i "czynność"') or similar. Check how "" affects speech.
+      // TODO: Make sure keyboard focus stays in the element that was recently pressed. If not, focus it.
 
       this.updateMoveUpDownButtonsStates();
     }
@@ -1624,6 +1651,11 @@ let Settings = new function() {
 
         const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', labelId);
         const toggle = Creator.createElementWithId('input', checkboxId);
+        toggle.type = 'checkbox';
+        toggle.checked = true; // TODO
+        toggle.addEventListener('change', (event) => {
+          Categories.setVisibilityByType(categoryData.type, event.currentTarget.checked);
+        });
 
         labelElement.appendChild(toggle);
         labelElement.appendChild(SpecializedCreator.createCheckboxIcons());

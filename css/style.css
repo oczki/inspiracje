@@ -131,7 +131,7 @@ body:not(.compact) .word-section {
 }
 
 body:not(.compact) .word-section:first-of-type {
-  --card-margin-top: 24px;
+  --card-margin-top: 24px; /* TODO: this causes a shift if the first section is removed! */
 }
 
 /* #endregion Body variant: compact - no */
@@ -246,6 +246,10 @@ u {
   display: grid !important;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'nav-prev swiper-container nav-next';
+}
+
+.word-section:not(.visible) {
+  display: none !important;
 }
 
 main section:last-child {
