@@ -494,6 +494,49 @@ class ColorSetter {
   }
 }
 
+let Categories = new function() {
+  this.categoriesData = [];
+  this.keyName = 'categories-data';
+
+  this.initialize = () => {
+    this.categoriesData = JSON.parse(localStorage.getItem(this.keyName)) || containers;
+  }
+
+  this.getData = () => {
+    return this.categoriesData;
+  }
+
+  this.saveData = () => {
+    localStorage.setItem(this.keyName, JSON.stringify(this.categoriesData));
+  }
+
+  this.swap = (index1, index2) => {
+    [this.categoriesData[index1], this.categoriesData[index2]] = [this.categoriesData[index2], this.categoriesData[index1]];
+    this.saveData();
+
+    const firstElement = this.getSectionElementByIndex(index1);
+    const secondElement = this.getSectionElementByIndex(index2);
+    const parentElement = firstElement.parentElement;
+    parentElement.insertBefore(secondElement, firstElement);
+  }
+
+  this.getItemByIndex = (index) => {
+    return this.categoriesData[index];
+  }
+
+  this.getSectionElementByIndex = (index) => {
+    const id = `section-${this.getItemByIndex(index).type}`;
+    return document.getElementById(id);
+  }
+
+  this.setVisibilityByType = (categoryType) => {
+    // TODO show/hide a category in <main>
+    // TODO might need recreating the swiper after showing!
+    // TODO might need COMPLETE init of the swiper (with ajax) after showing!
+    // TODO destroy swiper after hiding
+  }
+}
+
 class CategoryContainer {
   constructor(categoryData) {
     this.data = categoryData;
@@ -912,7 +955,8 @@ let SpecializedCreator = new function() {
       Aria.setIsAdvanceAllSpeaking(true);
 
       // Advance sections in randomized order
-      const types = Object.keys(containers).map(key => containers[key].type); // TODO here
+      const categories = Categories.getData();
+      const types = Object.keys(categories).map(key => categories[key].type);
       Util.shuffle(types);
       for (const [index, type] of types.entries()) {
         const swiper = Selector.getSwiper(type);
@@ -924,8 +968,8 @@ let SpecializedCreator = new function() {
       // Prepare a combined text to speak
       setTimeout(() => {
         let textToSpeak = [];
-        for (let container of containers) { // TODO here
-          textToSpeak.push(wordsContainer[container.type]?.createTextToSpeak()); // TODO here
+        for (let categoryData of Categories.getData()) {
+          textToSpeak.push(wordsContainer[categoryData.type]?.createTextToSpeak());
         }
         Aria.speak(textToSpeak.join(', '));
       }, delayBetweenLoadedWordsDuration * types.length);
@@ -1462,7 +1506,7 @@ let Settings = new function() {
     }
   };
 
-  this.CategoriesList = new function() {
+  this.CategoriesManagementList = new function() {
     this.keyName = 'categories';
     this.categories = [];
 
@@ -1475,11 +1519,11 @@ let Settings = new function() {
     }
 
     this.getListOfCategories = () => {
-      return JSON.parse(localStorage.getItem(this.keyName)) || containers; // TODO here
+      return Categories.getData(); // TODO here
     }
 
     this.saveListOfCategories = () => {
-      localStorage.setItem(this.keyName, JSON.stringify(this.categories));
+      Categories.saveData();
     }
 
     this.getListItemElementByType = (categoryType) => {
@@ -1492,8 +1536,9 @@ let Settings = new function() {
     }
 
     this.getIndexOfContainerByType = (categoryType) => {
-      const item = this.categories.find(category => category.type === categoryType);
-      return this.categories.indexOf(item);
+      const categoriesList = Categories.getData();
+      const item = categoriesList.find(category => category.type === categoryType);
+      return categoriesList.indexOf(item);
     }
 
     this.getIndexOfPreviousItemInList = (currentCategoryType) => {
@@ -1514,8 +1559,7 @@ let Settings = new function() {
       const secondElement = this.getListItemElementByIndex(secondIndex);
       const parentElement = firstElement.parentElement;
       parentElement.insertBefore(firstElement, secondElement);
-      [this.categories[firstIndex], this.categories[secondIndex]] = [this.categories[secondIndex], this.categories[firstIndex]];
-      this.saveListOfCategories();
+      Categories.swap(firstIndex, secondIndex);
 
       // TODO: Aria.speak('zamieniono kategorie "miejsce" i "czynność"') or similar. Check how "" affects speech.
 
@@ -1609,7 +1653,7 @@ let Settings = new function() {
   }
 
   this.updateMoveUpDownButtonsStates = () => {
-    this.CategoriesList.updateMoveUpDownButtonsStates();
+    this.CategoriesManagementList.updateMoveUpDownButtonsStates();
   }
 
   this.createFontScaleControl = () => {
@@ -1629,7 +1673,7 @@ let Settings = new function() {
   }
 
   this.createCategoriesList = () => {
-    return this.CategoriesList.createControl();
+    return this.CategoriesManagementList.createControl();
   }
 }
 
@@ -1655,7 +1699,7 @@ let ElementPopulator = new function() {
   }
 
   this.populatePageWithCategoryContainers = () => {
-    for (const categoryData of containers) { // TODO here
+    for (const categoryData of Categories.getData()) { // TODO here
       this.removeFirstRemainingSkeletonElement();
       wordsContainer[categoryData.type] = new CategoryContainer(categoryData);
     }
@@ -1751,6 +1795,7 @@ let Aria = new function() {
 }
 
 function init() {
+  Categories.initialize();
   ElementPopulator.populateSlidingSheetsContainer();
   GlobalEventHandler.attachEventsToSheetsAndScrim();
   GlobalEventHandler.handleFirstKeyboardInput();
