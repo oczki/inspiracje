@@ -1135,7 +1135,12 @@ let VisibilityController = new function() {
     if (!element) return;
     element.disabled = true;
   }
-  
+
+  this.setElementEnabledState = (element, enabled) => {
+    if (!element) return;
+    element.disabled = !enabled;
+  }
+
   this.showElement = (element) => {
     if (!element) return;
     element.classList.add(visibleClass);
@@ -1459,67 +1464,112 @@ let Settings = new function() {
 
   this.CategoriesList = new function() {
     this.keyName = 'categories';
+    this.categories = [];
 
-    this.typeToMoveUpButtonId = (type) => {
+    this.moveUpButtonId = (type) => {
       return `${type}-move-up`;
     }
 
-    this.typeToMoveDownButtonId = (type) => {
+    this.moveDownButtonId = (type) => {
       return `${type}-move-down`;
     }
 
-    this.getListOfContainers = () => {
-      return containers; // TODO: Can't really iterate over this, as it's going to change. Need to prepare an array (esp if it's not in local storage yet) and iterate over that instead.
+    this.getListOfCategories = () => {
+      return JSON.parse(localStorage.getItem(this.keyName)) || containers;
+    }
+
+    this.saveListOfCategories = () => {
+      localStorage.setItem(this.keyName, JSON.stringify(this.categories));
+    }
+
+    this.getListItemElementByType = (containerType) => {
+      const elementId = `category-${containerType}-item`;
+      return document.getElementById(elementId);
+    }
+
+    this.getListItemElementByIndex = (index) => {
+      return this.getListItemElementByType(this.categories[index].type);
+    }
+
+    this.getIndexOfContainerByType = (containerType) => {
+      const item = this.categories.find(container => container.type === containerType);
+      return this.categories.indexOf(item);
+    }
+
+    this.getIndexOfPreviousItemInList = (currentContainerType) => {
+      const index = this.getIndexOfContainerByType(currentContainerType);
+      return index > 0 ? index - 1 : undefined;
+    }
+    
+    this.getIndexOfNextItemInList = (currentContainerType) => {
+      const index = this.getIndexOfContainerByType(currentContainerType);
+      if (index >= 0 && index < this.categories.length - 1) {
+        return index + 1;
+      }
+      return undefined;
+    }
+
+    this.swapItems = (firstIndex, secondIndex) => {
+      const firstElement = this.getListItemElementByIndex(firstIndex);
+      const secondElement = this.getListItemElementByIndex(secondIndex);
+      const parentElement = firstElement.parentElement;
+      parentElement.insertBefore(firstElement, secondElement);
+      [this.categories[firstIndex], this.categories[secondIndex]] = [this.categories[secondIndex], this.categories[firstIndex]];
+      this.saveListOfCategories();
+
+      this.updateMoveUpDownButtonsStates();
+    }
+
+    this.moveUp = (containerType) => {
+      const previousItemIndex = this.getIndexOfPreviousItemInList(containerType);
+      if (previousItemIndex === undefined) return;
+      const currentItemIndex = this.getIndexOfContainerByType(containerType);
+      this.swapItems(currentItemIndex, previousItemIndex);
+    }
+
+    this.moveDown = (containerType) => {
+      const nextItemIndex = this.getIndexOfNextItemInList(containerType);
+      if (nextItemIndex === undefined) return;
+      const currentItemIndex = this.getIndexOfContainerByType(containerType);
+      this.swapItems(nextItemIndex, currentItemIndex);
     }
 
     this.updateMoveUpDownButtonsStates = () => {
-      const listOfContainers = this.getListOfContainers();
-      for (let [index, container] of listOfContainers.entries()) {
-        if (index === 0) {
-          const buttonToDisable = document.getElementById(this.typeToMoveUpButtonId(container.type));
-          VisibilityController.disableElement(buttonToDisable);
-        }
-        if (index === listOfContainers.length - 1) {
-          const buttonToDisable = document.getElementById(this.typeToMoveDownButtonId(container.type));
-          VisibilityController.disableElement(buttonToDisable);
-        }
+      for (let [index, container] of this.categories.entries()) {
+        let upEnabled = index > 0;
+        let downEnabled = index < this.categories.length - 1;
+        VisibilityController.setElementEnabledState(document.getElementById(this.moveUpButtonId(container.type)), upEnabled);
+        VisibilityController.setElementEnabledState(document.getElementById(this.moveDownButtonId(container.type)), downEnabled);
       }
     }
 
-    this.createMoveUpButton = (itemId) => {
-      const buttonId = this.typeToMoveUpButtonId(itemId);
+    this.createMoveUpButton = (containerType) => {
+      const buttonId = this.moveUpButtonId(containerType);
       const buttonText = 'Przesuń w górę';
       const icon = Creator.createIcon(iconArrow, 'rotate-270');
       const callback = () => {
-        // TODO: Move this item up if possible.
-        // TODO: Move the above item down if possible.
+        this.moveUp(containerType);
       }
       const preventDoubleClick = true;
       return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
     }
 
-    this.createMoveDownButton = (itemId) => {
-      const buttonId = this.typeToMoveDownButtonId(itemId);
+    this.createMoveDownButton = (containerType) => {
+      const buttonId = this.moveDownButtonId(containerType);
       const buttonText = 'Przesuń w dół';
       const icon = Creator.createIcon(iconArrow, 'rotate-90');
       const callback = () => {
-        // TODO: Move this item down if possible.
-        // TODO: Move the below item up if possible.
+        this.moveDown(containerType);
       }
       const preventDoubleClick = true;
       return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
     }
 
-    this.updateCategoriesData = (newCategoriesData) => {
-      localStorage.setItem(this.keyName, newCategoriesData);
-      // TODO: Reorder categories in <main>.
-      Settings.updateColors();
-    }
-
     this.createControl = () => {
-      const list = Creator.createElementWithClass('div', 'categories-list-container');
+      this.categories = this.getListOfCategories();
+      const list = Creator.createElementWithId('div', 'categories-list-container');
 
-      for (let container of this.getListOfContainers()) {
+      for (let container of this.categories) {
         const itemId = `category-${container.type}-item`;
         const labelId = `category-${container.type}-label`;
         const checkboxId = `category-${container.type}-checkbox`;

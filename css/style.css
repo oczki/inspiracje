@@ -831,7 +831,7 @@ footer .circular-button .icon {
 
 /* #region Categories list */
 
-.categories-list-container {
+#categories-list-container {
   width: 100%;
 }
 
