@@ -994,7 +994,7 @@ let SpecializedCreator = new function() {
       // Prepare a combined text to speak
       setTimeout(() => {
         let textToSpeak = [];
-        for (let categoryData of Categories.getData()) {
+        for (let categoryData of Categories.getData()) { // TODO: This should only iterate over VISIBLE categories. Other places as well.
           textToSpeak.push(wordsContainer[categoryData.type]?.createTextToSpeak());
         }
         Aria.speak(textToSpeak.join(', '));
