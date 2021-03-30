@@ -1442,7 +1442,7 @@ let Settings = new function() {
         this.setAnimationsDisabledState(!event.currentTarget.checked);
         this.reinitializeAllSwipers();
       });
-      const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
+      const labelElement = Creator.createElementWithClass('label', 'checkbox-label');
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
       labelElement.appendChild(Creator.createToggleLabels('Animacje', 'Płynne przejścia słów i&nbsp;paneli'));
@@ -1479,7 +1479,7 @@ let Settings = new function() {
         this.setCompactModeState(event.currentTarget.checked);
       });
 
-      const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
+      const labelElement = Creator.createElementWithClass('label', 'checkbox-label');
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
       labelElement.appendChild(Creator.createToggleLabels('Tryb kompaktowy', 'Schowaj nagłówki kategorii'));
@@ -1523,7 +1523,7 @@ let Settings = new function() {
         this.setDarkModeState(event.currentTarget.checked);
       });
 
-      const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
+      const labelElement = Creator.createElementWithClass('label', 'checkbox-label');
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
       labelElement.appendChild(Creator.createToggleLabels('Tryb ciemny', 'Do improwizacji po&nbsp;nocach'));
@@ -1580,16 +1580,59 @@ let Settings = new function() {
       return undefined;
     }
 
+    this.cloneListItem = (element) => {
+      const clone = element.cloneNode(true);
+      clone.removeAttribute('id');
+      clone.classList.add('clone');
+      clone.classList.add('scale');
+      clone.classList.add('translate');
+      Array.from(clone.getElementsByTagName('input')).forEach(input => input.removeAttribute('id'));
+      Array.from(clone.getElementsByTagName('button')).forEach(input => input.removeAttribute('id'));
+      return clone;
+    }
+
+    this.animateSwap = (element1, element2, parentElement) => {
+      const clone1 = this.cloneListItem(element1);
+      const clone2 = this.cloneListItem(element2);
+
+      element1.appendChild(clone1);
+      element2.appendChild(clone2);
+
+      VisibilityController.hideElement(element1);
+      VisibilityController.hideElement(element2);
+
+      const height = clone1.getBoundingClientRect().height;
+
+      const posYpropertyName = '--posY';
+      clone1.style.setProperty(posYpropertyName, `-${height}px`);
+      clone2.style.setProperty(posYpropertyName, `${height}px`);
+
+      setTimeout(() => {
+        clone1.remove();
+        clone2.remove();
+        parentElement.insertBefore(element1, element2);
+        VisibilityController.showElement(element1);
+        VisibilityController.showElement(element2);
+      }, 1500); // TODO: animation duration from const
+
+      // TODO: slowly hide the clones, so that the up/down buttons fade instead of blinking immediately
+    }
+
     this.swapItems = (firstIndex, secondIndex) => {
       const firstElement = this.getListItemElementByIndex(firstIndex);
       const secondElement = this.getListItemElementByIndex(secondIndex);
       const parentElement = firstElement.parentElement;
-      parentElement.insertBefore(firstElement, secondElement);
+
+      // Swap the main containers with swipers.
       Categories.swap(firstIndex, secondIndex);
+
+      // Swap the elements on this list.
+      this.animateSwap(firstElement, secondElement, parentElement);
 
       // TODO: Aria.speak('zamieniono kategorie "miejsce" i "czynność"') or similar. Check how "" affects speech.
       // TODO: Make sure keyboard focus stays in the element that was recently pressed. If not, focus it.
 
+      // Up/down buttons need to be disabled on edges, and enabled elsewhere.
       this.updateMoveUpDownButtonsStates();
     }
 
@@ -1644,12 +1687,12 @@ let Settings = new function() {
 
       for (let categoryData of this.categories) { // TODO here
         const itemId = `category-${categoryData.type}-item`;
-        const labelId = `category-${categoryData.type}-label`;
         const checkboxId = `category-${categoryData.type}-checkbox`;
 
         const categoryContainer = Creator.createElementWithClassAndId('div', 'category-list-item', itemId);
+        VisibilityController.showElement(categoryContainer);
 
-        const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', labelId);
+        const labelElement = Creator.createElementWithClass('label', 'checkbox-label');
         const toggle = Creator.createElementWithId('input', checkboxId);
         toggle.type = 'checkbox';
         toggle.checked = true; // TODO

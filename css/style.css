@@ -844,9 +844,31 @@ footer .circular-button .icon {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  position: relative;
+  background-color: var(--color-card-background);
+  z-index: 1;
+  visibility: hidden;
 }
 
-.category-list-item > * + * {
+.category-list-item.visible {
+  visibility: visible;
+}
+
+.category-list-item.clone {
+  --posY: 0px;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translate3d(0px, var(--posY, 0px), 0px);
+  transition: transform 1500ms;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.category-list-item > button + button {
   margin-left: var(--distance-between-buttons);
 }
 
