@@ -1563,7 +1563,7 @@ let Settings = new function() {
     }
 
     this.moveDownButtonId = (type) => {
-      return `${type}-move-down`;
+      return `${type}-move-down`; // TODO: This button is not aligned with right-side icons.
     }
 
     this.getListOfCategories = () => {
