@@ -219,6 +219,7 @@ const defaultDelayBetweenLoadedWordsDuration = 20;
 const defaultFabTransitionDuration = 280;
 const defaultIconRotationDuration = 500;
 const defaultSpinnerOverlayFadeDuration = 120;
+const defaultCategorySwapDuration = 280;
 
 let swiperAnimationDuration = defaulSwiperAnimationDuration;
 let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
@@ -1591,7 +1592,18 @@ let Settings = new function() {
       return clone;
     }
 
-    this.animateSwap = (element1, element2, parentElement) => {
+    this.animateSwap = (element1, element2, parentElement, firstElementIsOnTop) => {
+      const setOnTop = (element, isOnTop) => {
+        const className = 'top';
+        isOnTop ? element.classList.add(className) : element.classList.remove(className);
+      };
+      const setOnBottom = (element, isOnBottom) => {
+        const className = 'bottom';
+        isOnBottom ? element.classList.add(className) : element.classList.remove(className);
+      };
+
+      setOnTop(firstElementIsOnTop ? element1 : element2, true);
+      setOnBottom(firstElementIsOnTop ? element2 : element1, true);
       const clone1 = this.cloneListItem(element1);
       const clone2 = this.cloneListItem(element2);
 
@@ -1602,7 +1614,6 @@ let Settings = new function() {
       VisibilityController.hideElement(element2);
 
       const height = clone1.getBoundingClientRect().height;
-
       const posYpropertyName = '--posY';
       clone1.style.setProperty(posYpropertyName, `-${height}px`);
       clone2.style.setProperty(posYpropertyName, `${height}px`);
@@ -1613,12 +1624,16 @@ let Settings = new function() {
         parentElement.insertBefore(element1, element2);
         VisibilityController.showElement(element1);
         VisibilityController.showElement(element2);
-      }, 1500); // TODO: animation duration from const
+        setOnTop(element1, false);
+        setOnTop(element2, false);
+        setOnBottom(element1, false);
+        setOnBottom(element2, false);
+      }, defaultCategorySwapDuration);
 
       // TODO: slowly hide the clones, so that the up/down buttons fade instead of blinking immediately
     }
 
-    this.swapItems = (firstIndex, secondIndex) => {
+    this.swapItems = (firstIndex, secondIndex, firstElementIsOnTop) => {
       const firstElement = this.getListItemElementByIndex(firstIndex);
       const secondElement = this.getListItemElementByIndex(secondIndex);
       const parentElement = firstElement.parentElement;
@@ -1627,7 +1642,7 @@ let Settings = new function() {
       Categories.swap(firstIndex, secondIndex);
 
       // Swap the elements on this list.
-      this.animateSwap(firstElement, secondElement, parentElement);
+      this.animateSwap(firstElement, secondElement, parentElement, firstElementIsOnTop);
 
       // TODO: Aria.speak('zamieniono kategorie "miejsce" i "czynność"') or similar. Check how "" affects speech.
       // TODO: Make sure keyboard focus stays in the element that was recently pressed. If not, focus it.
@@ -1640,14 +1655,16 @@ let Settings = new function() {
       const previousItemIndex = this.getIndexOfPreviousItemInList(categoryType);
       if (previousItemIndex === undefined) return;
       const currentItemIndex = this.getIndexOfContainerByType(categoryType);
-      this.swapItems(currentItemIndex, previousItemIndex);
+      const firstElementIsOnTop = true;
+      this.swapItems(currentItemIndex, previousItemIndex, firstElementIsOnTop);
     }
 
     this.moveDown = (categoryType) => {
       const nextItemIndex = this.getIndexOfNextItemInList(categoryType);
       if (nextItemIndex === undefined) return;
       const currentItemIndex = this.getIndexOfContainerByType(categoryType);
-      this.swapItems(nextItemIndex, currentItemIndex);
+      const firstElementIsOnTop = false;
+      this.swapItems(nextItemIndex, currentItemIndex, firstElementIsOnTop);
     }
 
     this.updateMoveUpDownButtonsStates = () => {

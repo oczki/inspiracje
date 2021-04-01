@@ -93,6 +93,9 @@ body {
   --color-card-background-l: 100%;
   --color-card-background: hsl(0, 0%, var(--color-card-background-l));
 
+  --color-list-background-l: 94%;
+  --color-list-background: hsl(0, 0%, var(--color-list-background-l));
+
   --color-destructive-l: 100%;
   --color-destructive: hsl(0, 0%, var(--color-destructive-l));
 
@@ -112,6 +115,7 @@ body {
   --icon-rotation-duration: 500ms;
   --spinner-overlay-duration: 120ms;
   --spinner-dot-duration: 1s;
+  --category-swap-duration: 280ms;
 
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -157,6 +161,7 @@ body.dark {
   --color-destructive-l: 70%;
   --color-body-background-l: 7%;
   --color-card-background-l: 12%;
+  --color-list-background-l: 10%;
   --color-divider-l: 100%;
   --color-footer-background-l: 18%;
 }
@@ -173,7 +178,6 @@ body.no-animations {
   --fab-opacity-duration: 0.1ms;
   --icon-rotation-duration: 0.1ms;
   --spinner-overlay-duration: 0.1ms;
-  --spinner-dot-duration: 2s;
 }
 
 body.no-animations .ripple {
@@ -837,6 +841,7 @@ footer .circular-button .icon {
 
 #categories-list-container {
   width: 100%;
+  background-color: var(--color-list-background);
 }
 
 .category-list-item {
@@ -863,9 +868,49 @@ footer .circular-button .icon {
   left: 0;
   right: 0;
   transform: translate3d(0px, var(--posY, 0px), 0px);
-  transition: transform 1500ms;
+  transition: transform var(--category-swap-duration);
   pointer-events: none;
   z-index: 2;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.category-list-item.bottom { 
+  z-index: 1;
+}
+
+.category-list-item.top { 
+  z-index: 2;
+}
+
+.category-list-item.clone:before,
+.category-list-item.clone:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  animation-name: fadeInOut;
+  animation-duration: var(--category-swap-duration);
+  animation-iteration-count: 1;
+  animation-play-state: paused;
+}
+
+.category-list-item.clone.bottom:before {
+  animation-play-state: running;
+  background-color: hsla(0, 0%, var(--color-card-background-l), 0.24);
+  z-index: 10;
+}
+
+.category-list-item.clone.top:after {
+  animation-play-state: running;
+  box-shadow: var(--card-shadow);
+  z-index: 3;
 }
 
 .category-list-item > button + button {
