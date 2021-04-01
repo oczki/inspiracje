@@ -22,6 +22,7 @@ let containers = [
   {
     type: "location",
     label: "Miejsce",
+    isVisible: true,
     color: {
       hue: 69,
       lightMode: {
@@ -55,6 +56,7 @@ let containers = [
   {
     type: "character",
     label: "Postać",
+    isVisible: true,
     color: {
       hue: 53,
       lightMode: {
@@ -86,6 +88,7 @@ let containers = [
   {
     type: "character-modifier",
     label: "Cecha postaci",
+    isVisible: true,
     color: {
       hue: 32,
       lightMode: {
@@ -117,6 +120,7 @@ let containers = [
   {
     type: "emotion",
     label: "Emocja",
+    isVisible: true,
     color: {
       hue: 5,
       lightMode: {
@@ -148,6 +152,7 @@ let containers = [
   {
     type: "relation",
     label: "Relacja",
+    isVisible: true,
     color: {
       hue: 330,
       lightMode: {
@@ -179,6 +184,7 @@ let containers = [
   {
     type: "action",
     label: "Czynność",
+    isVisible: true,
     color: {
       hue: 300,
       lightMode: {
@@ -517,7 +523,7 @@ let Categories = new function() {
 
     const firstElement = this.getSectionElementByIndex(index1);
     const secondElement = this.getSectionElementByIndex(index2);
-    const parentElement = firstElement.parentElement;
+    const parentElement = firstElement.parentElement; // TODO: This throws if firstElement is hidden (cannot read property parentElement of null).
     parentElement.insertBefore(secondElement, firstElement);
   }
 
@@ -525,9 +531,13 @@ let Categories = new function() {
     return this.categoriesData[index];
   }
 
-  this.getDataByType = (categoryType) => {
+  this.getIndexByType = (categoryType) => {
     const item = this.categoriesData.find(category => category.type === categoryType);
-    return this.getDataByIndex(this.categoriesData.indexOf(item));
+    return this.categoriesData.indexOf(item);
+  }
+
+  this.getDataByType = (categoryType) => {
+    return this.getDataByIndex(this.getIndexByType(categoryType));
   }
 
   this.getSectionElementByIndex = (index) => {
@@ -536,18 +546,27 @@ let Categories = new function() {
   }
 
   this.setVisibilityByType = (categoryType, isVisible) => {
-    const category = wordsContainer[categoryType];
+    let category = wordsContainer[categoryType];
     if (isVisible) {
       if (category) {
         category.reinitializeSwiper();
       } else {
-        category = new CategoryContainer(this.getDataByType(categoryType));
+        category = new CategoryContainer(this.getDataByType(categoryType)); // TODO: The new category appears at the end of the list, even if it should be first.
+        wordsContainer[categoryType] = category;
       }
     } else {
       category?.destroy();
     }
-    // TODO: Set an 'isVisible' flag for this category (in local storage)
+    const categoryData = this.categoriesData[this.getIndexByType(categoryType)];
+    if (categoryData !== undefined) {
+      this.categoriesData[this.getIndexByType(categoryType)].isVisible = isVisible;
+      this.saveData();
+    }
     Settings.updateColors();
+  }
+
+  this.isVisible = (categoryType) => {
+    return this.categoriesData[this.getIndexByType(categoryType)]?.isVisible || false;
   }
 }
 
@@ -995,7 +1014,8 @@ let SpecializedCreator = new function() {
       // Prepare a combined text to speak
       setTimeout(() => {
         let textToSpeak = [];
-        for (let categoryData of Categories.getData()) { // TODO: This should only iterate over VISIBLE categories. Other places as well.
+        for (let categoryData of Categories.getData()) {
+          if (!Categories.isVisible(categoryData.type)) continue;
           textToSpeak.push(wordsContainer[categoryData.type]?.createTextToSpeak());
         }
         Aria.speak(textToSpeak.join(', '));
@@ -1452,7 +1472,8 @@ let Settings = new function() {
     }
 
     this.reinitializeAllSwipers = () => {
-      for (const categoryData of containers) { // TODO here
+      for (const categoryData of containers) {
+        if (!Categories.isVisible(categoryData.type)) continue;
         wordsContainer[categoryData.type].reinitializeSwiper();
         new ColorSetter(categoryData).setColors();
       }
@@ -1546,7 +1567,7 @@ let Settings = new function() {
     }
 
     this.getListOfCategories = () => {
-      return Categories.getData(); // TODO here
+      return Categories.getData();
     }
 
     this.saveListOfCategories = () => {
@@ -1702,7 +1723,7 @@ let Settings = new function() {
       this.categories = this.getListOfCategories();
       const list = Creator.createElementWithId('div', 'categories-list-container');
 
-      for (let categoryData of this.categories) { // TODO here
+      for (let categoryData of this.categories) {
         const itemId = `category-${categoryData.type}-item`;
         const checkboxId = `category-${categoryData.type}-checkbox`;
 
@@ -1712,7 +1733,7 @@ let Settings = new function() {
         const labelElement = Creator.createElementWithClass('label', 'checkbox-label');
         const toggle = Creator.createElementWithId('input', checkboxId);
         toggle.type = 'checkbox';
-        toggle.checked = true; // TODO
+        toggle.checked = Categories.isVisible(categoryData.type);
         toggle.addEventListener('change', (event) => {
           Categories.setVisibilityByType(categoryData.type, event.currentTarget.checked);
         });
@@ -1739,7 +1760,7 @@ let Settings = new function() {
   }
 
   this.updateColors = () => {
-    for (let categoryData of containers) { // TODO here
+    for (let categoryData of containers) {
       new ColorSetter(categoryData).setColors();
     }
   }
@@ -1791,8 +1812,9 @@ let ElementPopulator = new function() {
   }
 
   this.populatePageWithCategoryContainers = () => {
-    for (const categoryData of Categories.getData()) { // TODO here
+    for (const categoryData of Categories.getData()) {
       this.removeFirstRemainingSkeletonElement();
+      if (!Categories.isVisible(categoryData.type)) continue;
       wordsContainer[categoryData.type] = new CategoryContainer(categoryData);
     }
   }
