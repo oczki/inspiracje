@@ -853,6 +853,7 @@ footer .circular-button .icon {
   background-color: var(--color-card-background);
   z-index: 1;
   visibility: hidden;
+  padding-right: calc(var(--card-padding) + var(--narrow-screen-padding-compensation));
 }
 
 .category-list-item.visible {
