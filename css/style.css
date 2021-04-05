@@ -130,6 +130,10 @@ body {
 
 /* #region Body variant: compact - no */
 
+body:not(.compact) {
+  margin-top: -8px;
+}
+
 body:not(.compact) .word-section {
   --card-margin-top: 32px;
 }
