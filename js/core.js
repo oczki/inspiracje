@@ -517,6 +517,10 @@ let Categories = new function() {
     localStorage.setItem(this.keyName, JSON.stringify(this.categoriesData));
   }
 
+  this.getDataOfVisible = () => {
+    return this.categoriesData.filter(category => category.isVisible);
+  }
+
   this.swap = (index1, index2) => {
     [this.categoriesData[index1], this.categoriesData[index2]] = [this.categoriesData[index2], this.categoriesData[index1]];
     this.saveData();
@@ -541,7 +545,7 @@ let Categories = new function() {
   }
 
   this.getSectionElementByIndex = (index) => {
-    const id = `section-${this.getDataByIndex(index).type}`;
+    const id = Selector.sectionId(this.getDataByIndex(index).type);
     return document.getElementById(id);
   }
 
@@ -551,7 +555,7 @@ let Categories = new function() {
       if (category) {
         category.reinitializeSwiper();
       } else {
-        category = new CategoryContainer(this.getDataByType(categoryType)); // TODO: The new category appears at the end of the list, even if it should be first.
+        category = new CategoryContainer(this.getDataByType(categoryType));
         wordsContainer[categoryType] = category;
       }
     } else {
@@ -581,10 +585,17 @@ class CategoryContainer {
     this.hasSpokenSinceTransitionEnd = true;
 
     WordSectionCreator.addSection(categoryData);
-    this.swiper = this.initializeSwiper();
-    this.initializeWords();
+    this.toggleSectionVisibility(this.isVisible());
+    if (this.isVisible()) {
+      this.swiper = this.initializeSwiper();
+      this.initializeWords();
+    }
 
     setInterval(() => this.speakCurrentSlideIfAllowed(), Math.max(150, swiperAnimationDuration + 11));
+  }
+
+  isVisible() {
+    return this.data.isVisible || false;
   }
 
   initializeWords() {
@@ -619,9 +630,13 @@ class CategoryContainer {
     }
     setTimeout(() => {
       this.swiper = this.initializeSwiper();
-      this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache + 1);
-      this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache);
-      this.hideSpinner();
+      if (this.wordsCache.length > 0) {
+        this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache + 1);
+        this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache);
+        this.hideSpinner();
+      } else {
+        this.initializeWords();
+      }
     }, 100);
   }
 
@@ -1001,7 +1016,7 @@ let SpecializedCreator = new function() {
       Aria.setIsAdvanceAllSpeaking(true);
 
       // Advance sections in randomized order
-      const categories = Categories.getData();
+      const categories = Categories.getDataOfVisible();
       const types = Object.keys(categories).map(key => categories[key].type);
       Util.shuffle(types);
       for (const [index, type] of types.entries()) {
@@ -1014,8 +1029,7 @@ let SpecializedCreator = new function() {
       // Prepare a combined text to speak
       setTimeout(() => {
         let textToSpeak = [];
-        for (let categoryData of Categories.getData()) {
-          if (!Categories.isVisible(categoryData.type)) continue;
+        for (let categoryData of Categories.getDataOfVisible()) {
           textToSpeak.push(wordsContainer[categoryData.type]?.createTextToSpeak());
         }
         Aria.speak(textToSpeak.join(', '));
@@ -1814,7 +1828,6 @@ let ElementPopulator = new function() {
   this.populatePageWithCategoryContainers = () => {
     for (const categoryData of Categories.getData()) {
       this.removeFirstRemainingSkeletonElement();
-      if (!Categories.isVisible(categoryData.type)) continue;
       wordsContainer[categoryData.type] = new CategoryContainer(categoryData);
     }
   }

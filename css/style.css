@@ -134,10 +134,6 @@ body:not(.compact) .word-section {
   --card-margin-top: 32px;
 }
 
-body:not(.compact) .word-section:first-of-type {
-  --card-margin-top: 24px; /* TODO: this causes a shift if the first section is removed! */
-}
-
 /* #endregion Body variant: compact - no */
 
 /* #region Body variant: compact - yes */
