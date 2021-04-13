@@ -729,14 +729,41 @@ footer .circular-button .icon {
   z-index: 5;
 }
 
-.sliding-sheet-header {
-  width: 100%;
+.sliding-sheet-header-first-line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   height: 56px;
   padding-left: var(--sliding-sheet-item-horizontal-padding);
+  position: relative;
+}
+
+.sliding-sheet-header-text {
+  width: 100%;
   display: flex;
   align-items: center;
   color: var(--color-secondary-text);
   font-weight: 500;
+}
+
+.sliding-sheet-header-right-side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.sliding-sheet-header-right-side .with-icon {
+  padding-right: calc(var(--card-padding) + var(--narrow-screen-padding-compensation));
+}
+
+.sliding-sheet-header-right-side .with-text {
+  padding-right: var(--sliding-sheet-item-horizontal-padding);
 }
 
 .sliding-sheet-header-container .separator {

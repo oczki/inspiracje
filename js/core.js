@@ -13,6 +13,7 @@ const iconPlusBox = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,1
 const iconMinusBox = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H7V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>';
 const iconPlusBoxOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,19V5H5V19H19M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5C3,3.89 3.9,3 5,3H19M11,7H13V11H17V13H13V17H11V13H7V11H11V7Z" /></svg>';
 const iconMinusBoxOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,19V5H5V19H19M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5C3,3.89 3.9,3 5,3H19M17,11V13H7V11H17Z" /></svg>';
+const iconRestore = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z" /></svg>';
 
 const iconEmail = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>';
 const iconGithub = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>';
@@ -306,6 +307,21 @@ let Util = new function() {
       timer = setTimeout(() => blocked = false, timeout);
     }
   }
+
+  this.deepFreeze = (obj) => {
+    Object.freeze(obj);
+
+    Object.getOwnPropertyNames(obj).forEach(function (prop) {
+      if (obj.hasOwnProperty(prop)
+      && obj[prop] !== null
+      && (typeof obj[prop] === "object" || typeof obj[prop] === "function")
+      && !Object.isFrozen(obj[prop])) {
+        Util.deepFreeze(obj[prop]);
+      }
+    });
+
+    return obj;
+  };
 }
 
 class Color {
@@ -509,7 +525,33 @@ let Categories = new function() {
   this.keyName = 'categories-data';
 
   this.initialize = () => {
-    this.categoriesData = JSON.parse(localStorage.getItem(this.keyName)) || containers;
+    this.categoriesData = JSON.parse(localStorage.getItem(this.keyName)) || this.getOriginalData();
+  }
+
+  this.forceReset = () => {
+    const currentOrder = this.getData();
+    const newOrder = this.getOriginalData();
+    for (const [index, data] of newOrder.entries()) {
+      console.log('-');
+      console.log('current|new', currentOrder[index].type, newOrder[index].type);
+      if (currentOrder[index].type === newOrder[index].type) { continue; }
+
+      const currentIndex = this.getIndexByType(newOrder[index].type);
+      console.log('about to check:', {currentIndex, index});
+      if (currentIndex === index) { continue; }
+      
+      this.swap(currentIndex, index);
+      console.log('swapped:', {currentIndex, index});
+      // BUG: With three elements - move third up, move first down, move third up - after reverting, the order in main sections is messed up!
+    }
+    console.log('----');
+    this.categoriesData = this.getOriginalData(); // TODO since this forces data reset, the 'new category' badges need to be stored as individual keys in local storage, not in the containers global.
+    this.saveData();
+    this.resetVisibilities();
+  }
+
+  this.getOriginalData = () => {
+    return containers.slice();
   }
 
   this.getData = () => {
@@ -566,7 +608,7 @@ let Categories = new function() {
     }
     const categoryData = this.categoriesData[this.getIndexByType(categoryType)];
     if (categoryData !== undefined) {
-      this.categoriesData[this.getIndexByType(categoryType)].isVisible = isVisible;
+      categoryData.isVisible = isVisible;
       this.saveData();
     }
     Settings.updateColors();
@@ -574,6 +616,13 @@ let Categories = new function() {
 
   this.isVisible = (categoryType) => {
     return this.categoriesData[this.getIndexByType(categoryType)]?.isVisible || false;
+  }
+
+  this.resetVisibilities = () => {
+    for (const category of this.getData()) {
+      const type = category.type;
+      this.setVisibilityByType(type, this.getOriginalData().find(c => c.type === type)?.isVisible);
+    }
   }
 }
 
@@ -887,10 +936,22 @@ let Creator = new function() {
     return sheet;
   }
 
-  this.createSlidingSheetHeader = (text) => {
+  this.createSlidingSheetHeader = (text, rightSideContent = undefined) => {
     const headerContainer = this.createElementWithClass('div', 'sliding-sheet-header-container');
-    headerContainer.appendChild(Creator.createParagraph(text, 'sliding-sheet-header'));
+    const firstLineWrapper = this.createElementWithClass('div', 'sliding-sheet-header-first-line');
+
+    firstLineWrapper.appendChild(Creator.createParagraph(text, 'sliding-sheet-header-text'));
+
+    if (rightSideContent) {
+      const rightSide = this.createElementWithClass('div', 'sliding-sheet-header-right-side');
+      rightSide.appendChild(rightSideContent);
+      firstLineWrapper.appendChild(rightSide);
+    }
+
+    headerContainer.appendChild(firstLineWrapper);
+
     headerContainer.appendChild(Creator.createSeparator());
+
     return headerContainer;
   }
 
@@ -1191,8 +1252,18 @@ let SheetCreator = new function() {
     const sheet = Creator.createSlidingSheet(sheetName);
     VisibilityController.preventTabbingToElement(sheet);
 
+    const rightSideContent = Creator.createElementWithClass('div', 'with-icon');
+
+    const buttonId = 'restore-default-categories';
+    const buttonText = 'Przywróć domyślne kategorie';
+    const icon = Creator.createIcon(iconRestore);
+    const callback = () => {
+      Settings.setDefaultCategories();
+    }
+    rightSideContent.appendChild(Creator.createCircularButton(buttonId, buttonText, icon, callback));
+
     const sheetContent = sheet.children[0];
-    sheetContent.appendChild(Creator.createSlidingSheetHeader('Kategorie'));
+    sheetContent.appendChild(Creator.createSlidingSheetHeader('Kategorie', rightSideContent));
 
     sheetContent.appendChild(Settings.createCategoriesList());
 
@@ -1575,6 +1646,8 @@ let Settings = new function() {
   this.CategoriesManagementList = new function() {
     this.keyName = 'categories';
     this.categories = [];
+    this.wrapperElementId = 'categories-list-container';
+    this.listContentElementId = 'categories-list-content';
 
     this.moveUpButtonId = (type) => {
       return `${type}-move-up`;
@@ -1740,7 +1813,13 @@ let Settings = new function() {
 
     this.createControl = () => {
       this.categories = this.getListOfCategories();
-      const list = Creator.createElementWithId('div', 'categories-list-container');
+      const listWrapper = Creator.createElementWithId('div', this.wrapperElementId);
+      listWrapper.appendChild(this.createListContent());
+      return listWrapper;
+    }
+
+    this.createListContent = () => {
+      const listContent = Creator.createElementWithId('div', this.listContentElementId);
 
       for (let categoryData of this.categories) {
         const itemId = `category-${categoryData.type}-item`;
@@ -1766,10 +1845,20 @@ let Settings = new function() {
         categoryContainer.appendChild(this.createMoveUpButton(categoryData.type));
         categoryContainer.appendChild(this.createMoveDownButton(categoryData.type));
 
-        list.appendChild(categoryContainer);
+        listContent.appendChild(categoryContainer);
       }
 
-      return list;
+      return listContent;
+    }
+
+    this.recreateListContent = () => {
+      requestAnimationFrame(() => {
+        this.categories = this.getListOfCategories();
+        document.getElementById(this.listContentElementId).remove();
+        const listWrapper = document.getElementById(this.wrapperElementId);
+        listWrapper.appendChild(this.createListContent());
+        this.updateMoveUpDownButtonsStates();
+      });
     }
   };
 
@@ -1808,6 +1897,15 @@ let Settings = new function() {
 
   this.createCategoriesList = () => {
     return this.CategoriesManagementList.createControl();
+  }
+
+  this.setDefaultVisualPreferences = () => {
+    // TODO
+  }
+
+  this.setDefaultCategories = () => {
+    Categories.forceReset();
+    this.CategoriesManagementList.recreateListContent();
   }
 }
 
@@ -1928,7 +2026,13 @@ let Aria = new function() {
   }
 }
 
+function freezeGlobals() {
+  Util.deepFreeze(containers);
+  Util.deepFreeze(containerColors);
+}
+
 function init() {
+  freezeGlobals();
   Categories.initialize();
   ElementPopulator.populateSlidingSheetsContainer();
   GlobalEventHandler.attachEventsToSheetsAndScrim();
@@ -1940,7 +2044,7 @@ function init() {
   Settings.updateMoveUpDownButtonsStates();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
-  VisibilityController.toggleSheetVisibility('category-management');
+  //VisibilityController.toggleSheetVisibility('category-management');
 }
 
 if (document.readyState != 'loading')
