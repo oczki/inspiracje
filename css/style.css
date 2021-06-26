@@ -54,6 +54,9 @@
   --fab-shadow-active: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
                        0 12px 17px 2px rgba(0, 0, 0, 0.14),
                        0 5px 22px 4px rgba(0, 0, 0, 0.12);
+
+  --icon-notification-dot-size: 12px;
+  --icon-notification-dot-color: hsla(5deg, 75%, 50%, 1);
 }
 
 /* #region Initial definitions */
@@ -638,6 +641,20 @@ footer.visible {
 
 footer .circular-button .icon {
   color: var(--color-icon);
+  position: relative;
+}
+
+footer .circular-button.notify .icon::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: var(--icon-notification-dot-size);
+  height: var(--icon-notification-dot-size);
+  background-color: var(--icon-notification-dot-color);
+  border: 2px solid var(--color-footer-background);
+  border-radius: 50%;
+  z-index: 2;
 }
 
 /* #endregion Footer */

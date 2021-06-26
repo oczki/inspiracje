@@ -531,19 +531,43 @@ let Categories = new function() {
   this.forceReset = () => {
     const currentOrder = this.getData();
     const newOrder = this.getOriginalData();
-    for (const [index, data] of newOrder.entries()) {
-      console.log('-');
-      console.log('current|new', currentOrder[index].type, newOrder[index].type);
-      if (currentOrder[index].type === newOrder[index].type) { continue; }
 
-      const currentIndex = this.getIndexByType(newOrder[index].type);
-      console.log('about to check:', {currentIndex, index});
-      if (currentIndex === index) { continue; }
+    let nextItemInNewOrder = this.getIndexByType(newOrder[newOrder.length - 1].type);
+
+    for (let index = newOrder.length - 2; index >= 0; index--) {
       
-      this.swap(currentIndex, index);
-      console.log('swapped:', {currentIndex, index});
-      // BUG: With three elements - move third up, move first down, move third up - after reverting, the order in main sections is messed up!
+      console.log('-');
+      console.log('next item in new order:', newOrder[nextItemInNewOrder].type);
+      console.log('current|new', currentOrder[index].type, newOrder[index].type);
+      if (currentOrder[index].type !== newOrder[index].type) {
+        const currentIndex = this.getIndexByType(newOrder[index].type);
+        console.log('about to check:', {currentIndex, index});
+        if (currentIndex !== index) {
+          this.insertFirstBeforeSecond(nextItemInNewOrder, index);
+        }
+      }
+      nextItemInNewOrder = this.getIndexByType(newOrder[index].type); // TODO: this still doesn't work fully. draw it on paper first.
     }
+
+
+
+
+    // for (const [index, data] of newOrder.entries()) {
+    //   console.log('-');
+    //   console.log('current|new', currentOrder[index].type, newOrder[index].type);
+    //   if (currentOrder[index].type === newOrder[index].type) { continue; }
+
+    //   const currentIndex = this.getIndexByType(newOrder[index].type);
+    //   console.log('about to check:', {currentIndex, index});
+    //   if (currentIndex === index) { continue; }
+      
+    //   this.swap(currentIndex, index);
+    //   console.log('swapped:', {currentIndex, index});
+    //   // BUG: With three elements - move third up, move first down, move third up - after reverting, the order in main sections is messed up!
+    // }
+
+
+
     console.log('----');
     this.categoriesData = this.getOriginalData(); // TODO since this forces data reset, the 'new category' badges need to be stored as individual keys in local storage, not in the containers global.
     this.saveData();
@@ -566,14 +590,18 @@ let Categories = new function() {
     return this.categoriesData.filter(category => category.isVisible);
   }
 
-  this.swap = (index1, index2) => {
-    [this.categoriesData[index1], this.categoriesData[index2]] = [this.categoriesData[index2], this.categoriesData[index1]];
-    this.saveData();
-
+  this.insertFirstBeforeSecond = (index1, index2) => {
     const firstElement = this.getSectionElementByIndex(index1);
     const secondElement = this.getSectionElementByIndex(index2);
     const parentElement = firstElement.parentElement;
     parentElement.insertBefore(secondElement, firstElement);
+  }
+
+  this.swap = (index1, index2) => {
+    [this.categoriesData[index1], this.categoriesData[index2]] = [this.categoriesData[index2], this.categoriesData[index1]];
+    this.saveData();
+
+    this.insertFirstBeforeSecond(index1, index2);
   }
 
   this.getDataByIndex = (index) => {
@@ -1254,13 +1282,13 @@ let SheetCreator = new function() {
 
     const rightSideContent = Creator.createElementWithClass('div', 'with-icon');
 
-    const buttonId = 'restore-default-categories';
-    const buttonText = 'Przywróć domyślne kategorie';
-    const icon = Creator.createIcon(iconRestore);
-    const callback = () => {
-      Settings.setDefaultCategories();
-    }
-    rightSideContent.appendChild(Creator.createCircularButton(buttonId, buttonText, icon, callback));
+    // const buttonId = 'restore-default-categories';
+    // const buttonText = 'Przywróć domyślne kategorie';
+    // const icon = Creator.createIcon(iconRestore);
+    // const callback = () => {
+    //   Settings.setDefaultCategories();
+    // }
+    // rightSideContent.appendChild(Creator.createCircularButton(buttonId, buttonText, icon, callback));
 
     const sheetContent = sheet.children[0];
     sheetContent.appendChild(Creator.createSlidingSheetHeader('Kategorie', rightSideContent));
@@ -1412,6 +1440,14 @@ let VisibilityController = new function() {
       otherSheet.classList.remove(visibleClass);
       setTimeout(() => this.preventTabbingToElement(otherSheet), sheetClosingAnimationDuration);
     }
+  }
+
+  this.toggleNotificationDotForCircularButton = (buttonId, isDotVisible) => {
+    document.getElementById(buttonId).classList.toggle('notify', isDotVisible);
+  }
+
+  this.toggleCategoriesNotificationDot = (isVisible) => {
+    this.toggleNotificationDotForCircularButton('button-category-management', isVisible);
   }
 }
 
@@ -1834,6 +1870,7 @@ let Settings = new function() {
         toggle.checked = Categories.isVisible(categoryData.type);
         toggle.addEventListener('change', (event) => {
           Categories.setVisibilityByType(categoryData.type, event.currentTarget.checked);
+          this.showDotIfNeeded();
         });
 
         labelElement.appendChild(toggle);
@@ -1859,6 +1896,16 @@ let Settings = new function() {
         listWrapper.appendChild(this.createListContent());
         this.updateMoveUpDownButtonsStates();
       });
+    }
+
+    this.showDotIfNeeded = () => {
+      for (let categoryData of Categories.getData()) {
+        if (!categoryData.isVisible) {
+          VisibilityController.toggleCategoriesNotificationDot(true);
+          return;
+        }
+      }
+      VisibilityController.toggleCategoriesNotificationDot(false);
     }
   };
 
@@ -2042,9 +2089,9 @@ function init() {
   Settings.updateColors();
   Settings.updateFontScaleElements();
   Settings.updateMoveUpDownButtonsStates();
+  Settings.CategoriesManagementList.showDotIfNeeded();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
-  //VisibilityController.toggleSheetVisibility('category-management');
 }
 
 if (document.readyState != 'loading')
