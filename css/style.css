@@ -657,6 +657,46 @@ footer .circular-button.notify .icon::after {
   z-index: 2;
 }
 
+footer .circular-button .icon::before {
+  content: '' var(--text);
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 0;
+  right: 0;
+  font-size: 8.5px;
+  font-weight: 500;
+  color: var(--color-icon);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-buttons-container .circular-button {
+  border-radius: 8px;
+}
+
+.footer-buttons-container .circular-button .icon {
+  top: -7px;
+} 
+
+#button-appearance-settings {
+  --text: 'Ustawienia';
+}
+
+#button-category-management {
+  --text: 'Kategorie';
+}
+
+#button-about {
+  --text: 'Info';
+}
+
+#button-category-management .icon svg {
+  transform: scale(1.15);
+  transform-origin: center bottom;
+}
+
 /* #endregion Footer */
 
 /* #region Sliding panel (settings, categories, about, ...) */
