@@ -1,35 +1,35 @@
-prehistoria
-starożytność
-średniowiecze
-renesans
-barok
-rokoko
-romantyzm
-manieryzm
-pozytywizm
-dwudziestolecie międzywojenne
-epoka kamienia
-paleolit
-mezolit
-neolit
-epoka brązu
-epoka żelaza
-nowożytność
-współczesność
-wczesny poranek
-wiosna
-lato
-jesień
-zima
-przedzimie
-przedwiośnie
-niedziela handlowa
 11:59
 23:59
-wieczór
 Nowy Rok
-śmierć cieplna Wszechświata
 Wielki Wybuch
 XXII wiek
-wynalezienie koła
+barok
+dwudziestolecie międzywojenne
+epoka brązu
+epoka kamienia
+epoka żelaza
+jesień
 lata 80'
+lato
+manieryzm
+mezolit
+neolit
+niedziela handlowa
+nowożytność
+paleolit
+pozytywizm
+prehistoria
+przedwiośnie
+przedzimie
+renesans
+rokoko
+romantyzm
+starożytność
+śmierć cieplna Wszechświata
+średniowiecze
+wczesny poranek
+wieczór
+wiosna
+współczesność
+wynalezienie koła
+zima
