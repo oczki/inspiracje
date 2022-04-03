@@ -33,6 +33,7 @@ bańka mydlana
 beczka
 berło z rubinami
 betoniarka
+bezpiecznik
 bidet
 bigos
 bilet
@@ -57,7 +58,9 @@ brzytwa
 brązowe zasłony
 budyń malinowy
 bukiet
+bursztyn
 buteleczka
+butla gazowa
 bułka tarta
 bęben
 błyskawica
@@ -74,18 +77,25 @@ chwast
 ciasto z wisienką
 ciekły azot
 cienka blacha
+ciepły kocyk
 cień do powiek
 ciupaga
 ciężarek 500 g
+ciężka konewka
 ciężki odkurzacz
 croissant
 cukier puder
+czajnik
+czapka kapitańska
 czapka z daszkiem
+czapka z papieru
 czapka z pomponem
 czarna cegła
 czarna pęseta
 czekolada z orzechami
+czterolistna koniczyna
 czujnik dymu
+czujnik ruchu
 czytnik książek
 cążki do paznokci
 dachówka
@@ -98,6 +108,7 @@ dezodorant
 diamentowe wiertło
 domestos
 domino
+domofon
 doniczka
 dowód osobisty
 drabina aluminiowa
@@ -113,8 +124,11 @@ dyplom
 dyskietka
 dywan
 dziadek do orzechów
+dzida
+dzienniczek
 dzwoneczek
 dętka
+długa probówka
 długi paragon
 dżem brzoskwiniowy
 edykt
@@ -125,8 +139,10 @@ encyklopedia
 etui
 etykieta
 fajerwerki
+fajka
 falafel
 farba w sprayu
+farelka
 fartuch
 fałda
 fedora
@@ -139,82 +155,222 @@ flakonik
 floret
 folder dokumentów
 folia aluminiowa
+folia bąbelkowa
+foremka
+formularz
+fortepian
+fotelik
+frytki
+furtka
+futerał
+futro
+gablota pełna eksponatów
+gablota z jednym pucharem
+gacie
+galareta
 gar z zupą
+garderoba
 garść cukierków
+garść klamerek
+gazeta pełna reklam
+gałązka
+gaśnica
+gilotyna
+gips
 gitara
+glejt
 glina
+gniazdko elektryczne
+gniazdo
+gnój
+gofrownica
 gogle VR
 golarka
+gondola
+gorset
 gorzka czekolada
 gorący asfalt
+gotówka
+gra planszowa
+grabie
+gramofon
+granat ręczny
 green screen
 grill
+grochówka
 gruba koperta
 gruby portfel
+gruz
 grzebień
+grzechotka
+grzejnik
+grzyb
 guma do żucia
+gumiaki
+gumka do ścierania
+guzik
 gwizdek
+gąbka
+głaz
 głośnik Bluetooth
 główka kapusty
+główny wyłącznik prądu
+główny zawór
+haczyk
+hamak
 hantle
+harfa
+harmonogram
 hasło
 hałda chusteczek
+hebel
+helikopter
+herbata z prądem
 hełm z dziurą
+hieroglif
 hologram
+hulajnoga
+hummus
+hydrant
+identyfikator
+igła
+imbryk
+impregnat
+indeks
+infografika
+inhalator
 inkaust
+inkubator
+iskra
+izotonik
 jajecznica
+jajko na twardo
 jeden ochraniacz na łokieć
+jedwab
+jo-jo
 jogurt naturalny
 kabel USB
+kabel wysokiego napięcia
+kadzidełko
+kafelek
+kaganiec
+kakao
+kalejdoskop
+kalendarz
 kalkulator
 kamera
+kamień
 kamień księżycowy
+kamuflaż
+kandelabr
 kapelusz
+kaptur
 karafka
 kareta asów
 karma dla zwierzaka
+karmnik
 karta SIM
+karta dań
 karta dostępu
 karta microSD
+karta telefoniczna
+kartka formatu A2
 kartka urodzinowa
+karton po mleku
 kaseta VHS
+kaseta magnetofonowa
+kask rowerowy
+kastet
+katalog
+katana
+kawa bezkofeinowa
+kałamarz
+kielnia
 kieszonkowy globus
+kij bejsbolowy
 kij golfowy
 kilka par majtek
 kilof
 klamka
+klatka
 klawiatura
 klawisz Scroll Lock
+klej do wszystkiego
+kleks
 klepsydra
+klimatyzator
 klisza z negatywem
+klocki LEGO
+klocki hamulcowe
+klozet
+klucz dynamometryczny
+klucz francuski
 kluczyki do auta
+kocioł
+kogel-mogel
 kokardka
+koktajl
+kolce
 kolczyki
+kolekcja kapsli
+kolorowa kreda
+kolumna
 kombinerki
 kompas
+kompot wiśniowy
+komputer
 konfetti
+konsola do gier
+kontrakt
 kontroler do gier
+kopuła
 korektor w płynie
+korkociąg
 korona
+koryto
+kosa
+kosiarka
+kostium
 kostka Rubika
+kostka rosołowa
+kosz na śmieci
 kosz wiklinowy
+kowadło
+koło fortuny
 koło zapasowe
 koło zębate
+kołpak
+końcówka ketchupu
+krajalnica
+kran
+krasnal ogrodowy
+krata
+krawat
 krem do opalania
 krem na zmarszczki
+krzemień
 krzew agrestu
 krąg sera
+kserokopiarka
 książeczka dla dzieci
 książka
 kubek firmowy
+kula do kręgli
 kula z lodu
+kule gradu
+kurtyna
 kurz
+kłódka na kod
+lakier do paznokci
 laska
 laska dynamitu
+lek homeopatyczny
+lemoniada cytrynowa
 lokówka
 lornetka
 lupa
 lustro
+makaron
 mapa
 maska
 maska przeciwgazowa
@@ -227,13 +383,16 @@ migający neon
 mikrofon
 mikroprocesor
 mikroskop elektronowy
+model kolejki
 moneta
 monitor
+muszelka
 mydło w płynie
 mysz komputerowa
 młot pneumatyczny
 młotek
 młynek do kawy
+nawigacja GPS
 naładowana kusza
 niebieska apaszka
 nienadmuchany balon
@@ -249,6 +408,7 @@ odgrzewany kotlet
 odręczny list
 odtrutka
 odzież ochronna
+ognisko
 ogon jaszczurki
 ogromny ręcznik
 ogryzek po gruszce
@@ -263,7 +423,9 @@ pamiątka z podróży
 pamiętniczek
 papier milimetrowy
 papier toaletowy
+papier ścierny
 papirus
+parawan
 pasek od spodni
 pałka
 perfumy
@@ -275,20 +437,26 @@ pisak permanentny
 piwo 0.0%
 pióro
 piła do metalu
+piła tarczowa
 piłka
 plan diety
+plasterek na paluszek
 plastikowy widelec
 po prostu jabłko
+pochodnia
 poduszka
 podwójne espresso
 pokrywka
+pomarańczowy liść
 pomięta koszula
+popiersie
+posortowane śmieci
 potłuczone szkło
 pończochy
 pożółkły papier
 pralka
 prawie pusty magazynek
-probówka
+prezerwatywa
 procesor
 prostownica
 proteza
@@ -304,6 +472,7 @@ półtora ziemniaka
 pęk kluczy
 płyta winylowa
 radziecka lutownica
+reflektor
 reklamówka
 robot kuchenny
 rower
@@ -312,6 +481,7 @@ rozgrzane żelazko
 rozpruta maskotka
 rozrusznik serca
 rysunek techniczny
+róg sygnałowy
 rękawice
 saszetka ryżu
 scenariusz
@@ -320,6 +490,7 @@ segregator
 sekator
 ser feta
 siekiera
+sierść
 siodło
 skafander
 skakanka
@@ -335,12 +506,14 @@ spocona koszulka
 spodnie
 srebrne sztućce
 stara gazeta
+stara konserwa
 stary komiks
 stempel
 stoper
 stos prania
 struna
 surowy ogórek
+syrop na kaszel
 szaszłyk
 szczoteczka do zębów
 sześć kostek cukru
@@ -348,16 +521,22 @@ szkielet
 szklanka
 szmatka w kratkę
 szminka
+sztanga
 słoik kiszonek
 słuchawki nauszne
 tabletki przeciwbólowe
 tablica suchościeralna
+taczka złomu
 tanie wino
+tarka do sera
 telefon z 2005 roku
 telegraf
 teleskop
 telewizor kineskopowy
+termofor
+termometr
 terrarium
+test IQ
 torebka
 torebka herbaty
 trucizna
@@ -374,6 +553,7 @@ wiertło
 wkrętak
 woda destylowana
 woda gazowana
+woreczek gwoździ
 wosk
 wrzątek
 wycieraczka
@@ -385,6 +565,7 @@ wysoki hamburger
 wyszczerbiony dzbanek
 za krótki kabel
 zabłocony kij
+zacięte imadło
 zacięty zszywacz
 zakreślacz
 zakurzona księga
@@ -392,9 +573,11 @@ zakurzony obraz
 zakładka do książki
 zamazane zdjęcie
 zardzewiała dźwignia
+zbroja
 zbyt gorąca kawa
 zegar atomowy
 zegar naścienny
+zegar słoneczny
 zegarek kieszonkowy
 zestaw kredek
 zielony płyn
@@ -412,3 +595,4 @@ złoty ząb
 światła sygnalizacji
 świeży śnieg
 żarówka
+żyrandol

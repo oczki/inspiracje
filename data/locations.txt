@@ -48,25 +48,31 @@ fabryka
 farma
 festiwal
 filharmonia
+forteca
 fosa zamku
 gabinet stomatologiczny
+gabinet zabiegowy
 galeria handlowa
 galeria sztuki
 garaż
 głębiny oceanu
 głęboko pod ziemią
+gondola
+gospoda
 góra
 hangar
 hotel
 ikea
 impreza firmowa
 jacht
+jadalnia
 jaskinia
 jasna pustka
 jądro Ziemi
 jezioro
 kabina toaletowa
 kafejka internetowa
+kamienica
 kanał ściekowy
 kanały Wenecji
 kanciapa
@@ -88,7 +94,9 @@ korek drogowy
 korytarz gmachu sądu
 kościół
 krematorium
+kręgielnia
 krypta
+księgarnia
 kuchnia
 kurnik
 kuźnia
@@ -103,6 +111,7 @@ lotnisko
 lumpeks
 lunapark
 ławeczka
+łódka
 łóżko
 metaverse
 mleczarnia
@@ -120,6 +129,7 @@ obora
 obozowisko
 obuwniczy
 ogródek
+oko cyklonu
 ołtarz
 open space
 opuszczona galeria
@@ -152,6 +162,7 @@ pod powierzchnią
 pod ścianą
 pogorzelisko
 pokaz mody
+pole gejzerów
 pole uprawne
 pośredniak
 pośród chmur
@@ -159,6 +170,7 @@ powierzchnia Księżyca
 poza zasięgiem kamer
 pralnia
 prosektorium
+przeciwne strony płotu
 przeciwne strony stołu
 przedostatnie piętro
 przedszkole
@@ -202,6 +214,7 @@ siłownia
 sklep muzyczny
 sklep
 skrzyżowanie
+spływ kajakowy
 spotkanie rodzinne
 stacja benzynowa
 stadion
@@ -236,6 +249,7 @@ trawnik
 trybuny
 tunel
 uniwersytet
+urwisko
 urząd pracy
 wagon
 wars
