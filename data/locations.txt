@@ -13,6 +13,7 @@ bar mleczny
 basen
 biblioteka
 biuro
+biuro rzeczy znalezionych
 biurowiec
 boisko
 brama
@@ -25,6 +26,7 @@ chłodnia
 chodnik
 ciasny transport publiczny
 ciasny tunel
+ciemna strona Księżyca
 ciemny zaułek
 cmentarz
 cyrk
@@ -42,7 +44,9 @@ działka
 dżungla
 elektrownia
 epicentrum
+fabryka
 farma
+festiwal
 filharmonia
 fosa zamku
 gabinet stomatologiczny
@@ -64,8 +68,10 @@ jezioro
 kabina toaletowa
 kafejka internetowa
 kanał ściekowy
+kanały Wenecji
 kanciapa
 karaoke
+kasa biletowa
 kasyno
 katedra
 kawiarnia
@@ -98,6 +104,7 @@ lumpeks
 lunapark
 ławeczka
 łóżko
+metaverse
 mleczarnia
 molo
 monopolowy
@@ -119,9 +126,11 @@ opuszczona galeria
 opuszczone kino
 orbita okołoziemska
 ostatni rząd w kinie
+ostatnie piętro
 pałac
 parawan
 park
+park linowy
 parking
 pas startowy
 piekło
@@ -133,6 +142,7 @@ plan zdjęciowy
 planeta
 plaża
 plebania
+płaska Ziemia
 płytko pod wodą
 pociąg
 poczekalnia
@@ -150,6 +160,7 @@ poza zasięgiem kamer
 pralnia
 prosektorium
 przeciwne strony stołu
+przedostatnie piętro
 przedszkole
 przejście dla pieszych
 przejście graniczne
@@ -193,6 +204,7 @@ sklep
 skrzyżowanie
 spotkanie rodzinne
 stacja benzynowa
+stadion
 stajnia
 stara kamienica
 statek
@@ -210,15 +222,18 @@ szczyt
 szklarnia
 szkoła
 szpital
+ściernisko
 ślepa uliczka
 świetlica
 taras
 tartak
 teatr
 toaleta
+tor wyścigowy
 tramwaj
 tratwa
 trawnik
+trybuny
 tunel
 uniwersytet
 urząd pracy
