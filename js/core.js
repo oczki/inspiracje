@@ -322,6 +322,38 @@ let Util = new function() {
 
     return obj;
   };
+
+  // From https://github.com/vicsstar/deep-unfreeze/blob/master/src/index.js
+  this.deepUnfreeze = (obj) => {
+    const unfreezeProp = (prop) => {
+      return Object.isFrozen(prop) ? Util.deepUnfreeze(prop) : prop;
+    };
+
+    if (obj !== null) {
+      if(obj.constructor.name !== 'Date' &&
+        !Array.isArray(obj) &&
+        typeof obj !== 'function' &&
+        typeof obj === 'object') {
+  
+        return Object.getOwnPropertyNames(obj).map((prop) => {
+          const clonedObj = {};
+          clonedObj[prop] = unfreezeProp(obj[prop]);
+          return clonedObj;
+        }).reduce(
+          (leftObj, rightObj) => Object.assign({}, leftObj, rightObj)
+        );
+      } else if (Array.isArray(obj)) {
+        return obj.map((item) => unfreezeProp(item));
+      } else if (typeof obj === 'function') {
+        const target = function() {
+          obj.call(this, ...arguments);
+        };
+        target.prototype = Object.create(obj.prototype);
+        return target;
+      }
+    }
+    return obj;
+  };
 }
 
 class Color {
@@ -529,53 +561,26 @@ let Categories = new function() {
   }
 
   this.forceReset = () => {
-    const currentOrder = this.getData();
     const newOrder = this.getOriginalData();
 
-    let nextItemInNewOrder = this.getIndexByType(newOrder[newOrder.length - 1].type);
-
     for (let index = newOrder.length - 2; index >= 0; index--) {
-      
-      console.log('-');
-      console.log('next item in new order:', newOrder[nextItemInNewOrder].type);
-      console.log('current|new', currentOrder[index].type, newOrder[index].type);
-      if (currentOrder[index].type !== newOrder[index].type) {
-        const currentIndex = this.getIndexByType(newOrder[index].type);
-        console.log('about to check:', {currentIndex, index});
-        if (currentIndex !== index) {
-          this.insertFirstBeforeSecond(nextItemInNewOrder, index);
-        }
-      }
-      nextItemInNewOrder = this.getIndexByType(newOrder[index].type); // TODO: this still doesn't work fully. draw it on paper first.
+      const thisItem = document.getElementById(Selector.sectionId(newOrder[index].type));
+      const nextItem = document.getElementById(Selector.sectionId(newOrder[index + 1].type));
+      if (!thisItem || !nextItem) continue;
+      const parentElement = nextItem.parentElement;
+      parentElement.insertBefore(thisItem, nextItem);
     }
 
-
-
-
-    // for (const [index, data] of newOrder.entries()) {
-    //   console.log('-');
-    //   console.log('current|new', currentOrder[index].type, newOrder[index].type);
-    //   if (currentOrder[index].type === newOrder[index].type) { continue; }
-
-    //   const currentIndex = this.getIndexByType(newOrder[index].type);
-    //   console.log('about to check:', {currentIndex, index});
-    //   if (currentIndex === index) { continue; }
-      
-    //   this.swap(currentIndex, index);
-    //   console.log('swapped:', {currentIndex, index});
-    //   // BUG: With three elements - move third up, move first down, move third up - after reverting, the order in main sections is messed up!
-    // }
-
-
-
-    console.log('----');
-    this.categoriesData = this.getOriginalData(); // TODO since this forces data reset, the 'new category' badges need to be stored as individual keys in local storage, not in the containers global.
-    this.saveData();
+    this.categoriesData = this.getOriginalData();
     this.resetVisibilities();
+    this.saveData();
+    Settings.updateColors();
+    Settings.CategoriesManagementList.showDotIfNeeded();
   }
 
   this.getOriginalData = () => {
-    return containers.slice();
+    let data = containers.slice();
+    return Util.deepUnfreeze(data);
   }
 
   this.getData = () => {
@@ -639,6 +644,7 @@ let Categories = new function() {
       categoryData.isVisible = isVisible;
       this.saveData();
     }
+    Settings.CategoriesManagementList.showDotIfNeeded();
     Settings.updateColors();
   }
 
@@ -649,7 +655,7 @@ let Categories = new function() {
   this.resetVisibilities = () => {
     for (const category of this.getData()) {
       const type = category.type;
-      this.setVisibilityByType(type, this.getOriginalData().find(c => c.type === type)?.isVisible);
+      this.setVisibilityByType(type, this.getOriginalData().slice().find(c => c.type === type)?.isVisible);
     }
   }
 }
@@ -1282,13 +1288,13 @@ let SheetCreator = new function() {
 
     const rightSideContent = Creator.createElementWithClass('div', 'with-icon');
 
-    // const buttonId = 'restore-default-categories';
-    // const buttonText = 'Przywróć domyślne kategorie';
-    // const icon = Creator.createIcon(iconRestore);
-    // const callback = () => {
-    //   Settings.setDefaultCategories();
-    // }
-    // rightSideContent.appendChild(Creator.createCircularButton(buttonId, buttonText, icon, callback));
+    const buttonId = 'restore-default-categories';
+    const buttonText = 'Przywróć domyślne kategorie';
+    const icon = Creator.createIcon(iconRestore);
+    const callback = () => {
+      Settings.setDefaultCategories();
+    }
+    rightSideContent.appendChild(Creator.createCircularButton(buttonId, buttonText, icon, callback));
 
     const sheetContent = sheet.children[0];
     sheetContent.appendChild(Creator.createSlidingSheetHeader('Kategorie', rightSideContent));
