@@ -677,7 +677,7 @@ footer .circular-button .icon::before {
 }
 
 .footer-buttons-container .circular-button .icon {
-  top: -7px;
+  top: -6px;
 } 
 
 #button-appearance-settings {
@@ -695,6 +695,10 @@ footer .circular-button .icon::before {
 #button-category-management .icon svg {
   transform: scale(1.15);
   transform-origin: center bottom;
+}
+
+.circular-button.highlighted {
+  --color-icon: var(--color-accent);
 }
 
 /* #endregion Footer */

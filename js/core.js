@@ -1412,10 +1412,16 @@ let VisibilityController = new function() {
     for (const sheet of sheetsToHide) {
       sheet.classList.remove(visibleClass);
       this.delayedPreventTabbingToElement(sheet, sheetClosingAnimationDuration);
+      this.setSheetsButtonHighlight(sheet.id, false);
     }
     Selector.getScrim()?.classList.remove(visibleClass);
     this.showAdvanceAllFab();
     this.allowScrollingBody(true);
+  }
+
+  this.setSheetsButtonHighlight = (sheetId, isHighlighted) => {
+    const button = document.getElementById(`button-${sheetId}`);
+    button?.classList.toggle('highlighted', isHighlighted);
   }
 
   this.toggleSheetVisibility = (sheetId) => {
@@ -1426,17 +1432,20 @@ let VisibilityController = new function() {
       this.hideAndPreventTabbingToElement(sheet, sheetClosingAnimationDuration);
       this.hideElement(Selector.getScrim());
       this.allowScrollingBody(true);
+      this.setSheetsButtonHighlight(sheetId, false);
     } else {
       this.showCloseFab();
       this.showAndAllowTabbingToElement(sheet);
       this.showElement(Selector.getScrim());
       this.allowScrollingBody(false);
+      this.setSheetsButtonHighlight(sheetId, true);
     }
   }
 
   this.hideOtherSheets = (idOfSheetNotToHide) => {
     const otherSheets = Array.from(document.querySelectorAll(`.sliding-sheet:not(#${idOfSheetNotToHide})`));
     for (let otherSheet of otherSheets) {
+      this.setSheetsButtonHighlight(otherSheet.id, false);
       otherSheet.classList.remove(visibleClass);
       setTimeout(() => this.preventTabbingToElement(otherSheet), sheetClosingAnimationDuration);
     }
