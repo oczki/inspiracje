@@ -827,6 +827,12 @@ footer .circular-button .icon::before {
   padding-right: var(--sliding-sheet-item-horizontal-padding);
 }
 
+.version-number {
+  transform: scale(0.75);
+  transform-origin: right center;
+  color: var(--color-secondary-text);
+}
+
 .sliding-sheet-header-container .separator {
   margin: 0;
 }
@@ -839,6 +845,11 @@ footer .circular-button .icon::before {
   width: 100%;
   padding: 8px var(--sliding-sheet-item-horizontal-padding);
   line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
 
 .checkbox-label {
