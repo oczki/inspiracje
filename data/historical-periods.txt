@@ -10,7 +10,7 @@ epoka brązu
 epoka kamienia
 epoka żelaza
 jesień
-lata 80'
+lata '80
 lato
 manieryzm
 mezolit
@@ -28,6 +28,7 @@ romantyzm
 starożytność
 śmierć cieplna Wszechświata
 średniowiecze
+tydzień po odkryciu ognia
 wczesny poranek
 wieczór
 wiosna

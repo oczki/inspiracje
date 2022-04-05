@@ -104,23 +104,31 @@ kwiaciarnia
 labirynt
 las
 latarnia
+latryna
+lepianka
 linia produkcyjna
 lodowiec
 lodowisko
+lombard
 lotnisko
 lumpeks
 lunapark
 ławeczka
+łazienka
+łąka
 łódka
 łóżko
+martwe pole
 metaverse
 mleczarnia
+młyn
 molo
 monopolowy
 morze
 most
 motocykl
 muzeum
+myjnia
 na powierzchni skóry
 namiot
 niebo
@@ -160,6 +168,7 @@ pod kioskiem
 pod mostem
 pod powierzchnią
 pod ścianą
+pod wysokim murem
 pogorzelisko
 pokaz mody
 pole gejzerów
@@ -281,3 +290,4 @@ zakład pogrzebowy
 zakrystia
 zamek
 zoo
+żaglowiec

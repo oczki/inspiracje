@@ -1,4 +1,3 @@
-Enigma
 abakus
 aerożel
 agrafka
@@ -17,6 +16,7 @@ antycząstka
 aparat fotograficzny
 artefakt
 azbest
+babcina marmolada
 bagaż
 bagietka
 bakteria
@@ -24,12 +24,13 @@ balonowe zwierzątko
 bambosze
 banan
 bandaż
+bańka mydlana
 bankomat
 barwnik spożywczy
 bateria AA
 batonik
 batuta
-bańka mydlana
+bęben
 beczka
 berło z rubinami
 betoniarka
@@ -44,6 +45,8 @@ biustonosz
 blender
 blok techniczny
 bluza
+błyskawica
+błyskotki
 boazeria
 bochenek
 bogaty wybór sosów
@@ -52,19 +55,16 @@ bolerko
 bomba
 bombonierka
 bonsai
+brązowe zasłony
 breloczek
 brudne buty
-brzytwa
-brązowe zasłony
 budyń malinowy
 bukiet
+bułka tarta
 bursztyn
 buteleczka
 butla gazowa
-bułka tarta
-bęben
-błyskawica
-błyskotki
+cążki do paznokci
 cebula
 celownik laserowy
 cement
@@ -76,13 +76,14 @@ chusteczka
 chwast
 ciasto z wisienką
 ciekły azot
+cień do powiek
 cienka blacha
 ciepły kocyk
-cień do powiek
-ciupaga
 ciężarek 500 g
 ciężka konewka
+ciężkie liczydło
 ciężki odkurzacz
+ciupaga
 croissant
 cukier puder
 czajnik
@@ -97,22 +98,27 @@ czterolistna koniczyna
 czujnik dymu
 czujnik ruchu
 czytnik książek
-cążki do paznokci
 dachówka
-de volaille
 deska
 deskorolka
+dętka
 detonator
+de volaille
 dewocjonalia
 dezodorant
 diamentowe wiertło
+długa lufa
+długa probówka
+długi lont
+długi paragon
+dokładnie jeden litr
 domestos
 domino
 domofon
 doniczka
 dowód osobisty
 drabina aluminiowa
-drewniany miecz
+drewniany
 drogie wino
 drukarka laserowa
 drut kolczasty
@@ -123,31 +129,31 @@ dwururka
 dyplom
 dyskietka
 dywan
+dżem brzoskwiniowy
 dziadek do orzechów
 dzida
 dzienniczek
 dzwoneczek
-dętka
-długa probówka
-długi paragon
-dżem brzoskwiniowy
 edykt
 ekspres do kawy
 elektroda
 elipsa
 encyklopedia
+Enigma
 etui
 etykieta
 fajerwerki
 fajka
 falafel
+fałda
 farba w sprayu
 farelka
 fartuch
-fałda
 fedora
 fidget spinner
+figurka z serialu
 filet z dorsza
+filet z makreli
 filtr wody
 fiszki
 flaga
@@ -164,22 +170,29 @@ frytki
 furtka
 futerał
 futro
+gąbka
+gąbkowa literka
 gablota pełna eksponatów
 gablota z jednym pucharem
 gacie
 galareta
-gar z zupą
+gałązka
 garderoba
 garść cukierków
 garść klamerek
-gazeta pełna reklam
-gałązka
+gar z zupą
 gaśnica
+gazeta pełna reklam
 gilotyna
 gips
 gitara
+głaz
 glejt
 glina
+głośnik Bluetooth
+główka kapusty
+główny wyłącznik prądu
+główny zawór
 gniazdko elektryczne
 gniazdo
 gnój
@@ -187,14 +200,14 @@ gofrownica
 gogle VR
 golarka
 gondola
+gorący asfalt
 gorset
 gorzka czekolada
-gorący asfalt
 gotówka
-gra planszowa
 grabie
 gramofon
 granat ręczny
+gra planszowa
 green screen
 grill
 grochówka
@@ -210,23 +223,17 @@ gumiaki
 gumka do ścierania
 guzik
 gwizdek
-gąbka
-głaz
-głośnik Bluetooth
-główka kapusty
-główny wyłącznik prądu
-główny zawór
 haczyk
+hałda chusteczek
 hamak
 hantle
 harfa
 harmonogram
 hasło
-hałda chusteczek
 hebel
 helikopter
-herbata z prądem
 hełm z dziurą
+herbata z prądem
 hieroglif
 hologram
 hulajnoga
@@ -247,14 +254,15 @@ jajecznica
 jajko na twardo
 jeden ochraniacz na łokieć
 jedwab
-jo-jo
 jogurt naturalny
+jo-jo
 kabel USB
 kabel wysokiego napięcia
 kadzidełko
 kafelek
 kaganiec
 kakao
+kałamarz
 kalejdoskop
 kalendarz
 kalkulator
@@ -269,22 +277,21 @@ karafka
 kareta asów
 karma dla zwierzaka
 karmnik
-karta SIM
 karta dań
 karta dostępu
 karta microSD
+karta SIM
 karta telefoniczna
 kartka formatu A2
 kartka urodzinowa
 karton po mleku
-kaseta VHS
 kaseta magnetofonowa
+kaseta VHS
 kask rowerowy
 kastet
 katalog
 katana
 kawa bezkofeinowa
-kałamarz
 kielnia
 kieszonkowy globus
 kij bejsbolowy
@@ -300,8 +307,9 @@ kleks
 klepsydra
 klimatyzator
 klisza z negatywem
-klocki LEGO
 klocki hamulcowe
+klocki LEGO
+kłódka na kod
 klozet
 klucz dynamometryczny
 klucz francuski
@@ -312,35 +320,41 @@ kokardka
 koktajl
 kolce
 kolczyki
+kolejny mandat
 kolekcja kapsli
+koło fortuny
 kolorowa kreda
+kolorowy latawiec
+koło zapasowe
+koło zębate
+kołpak
 kolumna
 kombinerki
 kompas
 kompot wiśniowy
 komputer
+końcówka ketchupu
 konfetti
 konsola do gier
 kontrakt
 kontroler do gier
 kopuła
+kopyść
+korba
 korektor w płynie
-korkociąg
 korona
 koryto
 kosa
 kosiarka
 kostium
-kostka Rubika
+kostka masła
 kostka rosołowa
+kostka Rubika
+kostki lodu
 kosz na śmieci
 kosz wiklinowy
 kowadło
-koło fortuny
-koło zapasowe
-koło zębate
-kołpak
-końcówka ketchupu
+krąg sera
 krajalnica
 kran
 krasnal ogrodowy
@@ -350,7 +364,6 @@ krem do opalania
 krem na zmarszczki
 krzemień
 krzew agrestu
-krąg sera
 kserokopiarka
 książeczka dla dzieci
 książka
@@ -360,43 +373,110 @@ kula z lodu
 kule gradu
 kurtyna
 kurz
-kłódka na kod
+L4
+łącznik
+ładowarka
 lakier do paznokci
+lakier do włosów
+lalka
+lampa 100 W
+łańcuch
+lapis lazuli
 laska
 laska dynamitu
+łata
+latarka
+ledeburyt przemieniony
 lek homeopatyczny
+lektyka
 lemoniada cytrynowa
+lep na muchy
+leżak
+libretto
+licznik kroków
+lina
+linijka na 49 cm
+listwa przypodłogowa
+list z urzędu
+lizak
 lokówka
+łom
+łopata
 lornetka
+łożysko kulkowe skośne
+łuk refleksyjny
 lupa
+łupież
 lustro
-makaron
+łyżwy
+magnes
+makaron chiński
+makaron pełnoziarnisty
+makieta
+małe co nieco
+mały wyświetlacz
+manekin
+manga
+manierka
+manuskrypt
 mapa
-maska
+marzanna
+maść
+maseczka
 maska przeciwgazowa
 maskotka
+maślanka
+maszyna do pisania
+maszyna do szycia
+maszynka do mięsa
 maszynka do tatuażu
 mata do ćwiczeń
+materac
+matrioszka
+matryca
+mechanizm
+medalion
 megafon
 meteoryt
+metka
+metronom
+miara zwijana
+miąższ
+miech
+miernik energii orgonowegj
+mieszadło
 migający neon
 mikrofon
+mikropędzelek
 mikroprocesor
 mikroskop elektronowy
+mikser
+mina przeciwpiechotna
+minutnik
+miotła
+mitochondrium
+mizeria
+mleczak
+mleko
+młotek
+młot pneumatyczny
+młynek do kawy
 model kolejki
+model samolotu
 moneta
 monitor
+monocykl
+monument
+mrożonki
 muszelka
+muszkiet
 mydło w płynie
 mysz komputerowa
-młot pneumatyczny
-młotek
-młynek do kawy
-nawigacja GPS
 naładowana kusza
+nawigacja GPS
+nić dentystyczna
 niebieska apaszka
 nienadmuchany balon
-nić dentystyczna
 nożyczki
 obca waluta
 obiektyw
@@ -413,50 +493,64 @@ ogon jaszczurki
 ogromny ręcznik
 ogryzek po gruszce
 okulary
+oliwki nadziewane
 opłatek
 ostatni papieros
+ostra musztarda
 otwarta koperta
 pachnące pranie
 pager
 pająk
+pałka
 pamiątka z podróży
 pamiętniczek
 papier milimetrowy
-papier toaletowy
 papier ścierny
+papier toaletowy
 papirus
 parawan
 pasek od spodni
-pałka
+pęk kluczy
 perfumy
 peruka
 pieluszka
-pierś z kurczaka
 pierścień
-pisak permanentny
-piwo 0.0%
-pióro
+pierś z kurczaka
 piła do metalu
 piła tarczowa
 piłka
+pióro
+pisak permanentny
+piwo 0.0%
 plan diety
+plan labiryntu
 plasterek na paluszek
 plastikowy widelec
-po prostu jabłko
+pług
+płyta winylowa
 pochodnia
 poduszka
 podwójne espresso
+pojemna miska
 pokrywka
+pół kilo krakowskiej suchej
+pół pizzy
+półtora ziemniaka
 pomarańczowy liść
 pomięta koszula
+pomnik
+pończochy
 popiersie
+po prostu jabłko
+porządny korkociąg
 posortowane śmieci
 potłuczone szkło
-pończochy
 pożółkły papier
+praca dyplomowa
 pralka
 prawie pusty magazynek
 prezerwatywa
+próbka moczu
 procesor
 prostownica
 proteza
@@ -466,29 +560,26 @@ pudło z kartonu
 pukiel włosów
 puste akwarium
 pusty worek
-pół kilo krakowskiej suchej
-pół pizzy
-półtora ziemniaka
-pęk kluczy
-płyta winylowa
+puzzle
 radziecka lutownica
 reflektor
+rękawice
 reklamówka
 robot kuchenny
+róg sygnałowy
 rower
 rozgrzana patelnia
 rozgrzane żelazko
 rozpruta maskotka
 rozrusznik serca
 rysunek techniczny
-róg sygnałowy
-rękawice
 saszetka ryżu
 scenariusz
 scrunchie
 segregator
 sekator
 ser feta
+siatka na komary
 siekiera
 sierść
 siodło
@@ -496,23 +587,33 @@ skafander
 skakanka
 skarpety nie do pary
 skarpety stópki
-skrzydła
 skórka po arbuzie
+skrzydła
+słoik kiszonek
+słuchawki nauszne
 smycz
+śnieżnobiały obrus
 solniczka
 spinka do włosów
 spirytus salicylowy
 spocona koszulka
 spodnie
+spory lejek
+sprawdzona brzytwa
 srebrne sztućce
 stara gazeta
 stara konserwa
 stary komiks
+stary laczek
 stempel
 stoper
+stop molibdenu
 stos prania
 struna
 surowy ogórek
+światła sygnalizacji
+świeża mięta
+świeży śnieg
 syrop na kaszel
 szaszłyk
 szczoteczka do zębów
@@ -522,8 +623,6 @@ szklanka
 szmatka w kratkę
 szminka
 sztanga
-słoik kiszonek
-słuchawki nauszne
 tabletki przeciwbólowe
 tablica suchościeralna
 taczka złomu
@@ -533,6 +632,7 @@ telefon z 2005 roku
 telegraf
 teleskop
 telewizor kineskopowy
+tępy nóż
 termofor
 termometr
 terrarium
@@ -542,10 +642,10 @@ torebka herbaty
 trucizna
 trytytka
 trzy marchewki
-tępy nóż
+ujemna lambda
 ultra-ostry nóż
-walkie-talkie
 wałek do malowania
+walkie-talkie
 wiatraczek
 wibrator
 wiertarka udarowa
@@ -563,36 +663,32 @@ wypisany długopis
 wyprasowana koszula
 wysoki hamburger
 wyszczerbiony dzbanek
-za krótki kabel
 zabłocony kij
 zacięte imadło
 zacięty zszywacz
+zakładka do książki
 zakreślacz
+za krótki kabel
 zakurzona księga
 zakurzony obraz
-zakładka do książki
 zamazane zdjęcie
 zardzewiała dźwignia
+żarówka
 zbroja
 zbyt gorąca kawa
 zegar atomowy
+zegarek kieszonkowy
 zegar naścienny
 zegar słoneczny
-zegarek kieszonkowy
 zestaw kredek
+zielony laser
 zielony płyn
 zimne ognie
-znaczek pocztowy
-zupka chińska
-zwycięski kupon
 złoto jadalne
 złoty naszyjnik
 złoty sygnet
 złoty ząb
-ładowarka
-łopata
-śnieżnobiały obrus
-światła sygnalizacji
-świeży śnieg
-żarówka
+znaczek pocztowy
+zupka chińska
+zwycięski kupon
 żyrandol
