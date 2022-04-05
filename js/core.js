@@ -390,6 +390,28 @@ let Util = new function() {
   };
 }
 
+let Store = new function() {
+  this.isLocalStorageSupported = () => {
+    try {
+      return !!window.localStorage
+        && typeof localStorage.getItem === 'function'
+        && typeof localStorage.setItem === 'function'
+        && typeof localStorage.removeItem === 'function';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  this.get = (key) => {
+    return this.isLocalStorageSupported() ? localStorage?.getItem(key) : null;
+  }
+
+  this.set = (key, value) => {
+    if (!this.isLocalStorageSupported()) return;
+    localStorage?.setItem(key, value);
+  }
+}
+
 class Color {
   constructor(hue = 0, saturation = 0, lightness = 0) {
     // If the passed lone argument was a string, parse it as hexadecimal color
@@ -592,12 +614,12 @@ let Categories = new function() {
   this.versionKeyName = 'app-version'; // Used to force update on user's side if new categories appear
 
   this.initialize = () => {
-    const localVersion = JSON.parse(localStorage.getItem(this.versionKeyName)) || 0.0;
+    const localVersion = JSON.parse(Store.get(this.versionKeyName)) || 0.0;
     if (localVersion === version) {
-      this.categoriesData = JSON.parse(localStorage.getItem(this.categoriesKeyName)) || this.getOriginalData();
+      this.categoriesData = JSON.parse(Store.get(this.categoriesKeyName)) || this.getOriginalData();
     } else {
       this.categoriesData = this.getOriginalData();
-      localStorage.setItem(this.versionKeyName, JSON.stringify(version));
+      Store.set(this.versionKeyName, JSON.stringify(version));
     }
     this.saveData();
   }
@@ -630,7 +652,7 @@ let Categories = new function() {
   }
 
   this.saveData = () => {
-    localStorage.setItem(this.categoriesKeyName, JSON.stringify(this.categoriesData));
+    Store.set(this.categoriesKeyName, JSON.stringify(this.categoriesData));
   }
 
   this.getDataOfVisible = () => {
@@ -1204,10 +1226,10 @@ let SpecializedCreator = new function() {
 
   this.closeSettingsPrompt = () => {
     const keyName = 'settings-prompt-dismissed';
-    if (localStorage.getItem(keyName) === 'true') return; // Prompt was already dismissed before, exit.
+    if (Store.get(keyName) === 'true') return; // Prompt was already dismissed before, exit.
 
     const promptCardId = 'prompt-settings';
-    localStorage.setItem(keyName, 'true');
+    Store.set(keyName, 'true');
     document.getElementById(promptCardId)?.remove();
   }
 
@@ -1238,7 +1260,7 @@ let SpecializedCreator = new function() {
 
   this.createSettingsPromptCardIfItWasNotDismissedAlready = () => {
     const keyName = 'settings-prompt-dismissed';
-    const shouldShowPrompt = localStorage.getItem(keyName) !== 'true';
+    const shouldShowPrompt = Store.get(keyName) !== 'true';
     if (shouldShowPrompt) {
       const prompt = this.createSettingsPromptCard();
       document.getElementsByTagName('main')[0].appendChild(prompt);
@@ -1520,11 +1542,11 @@ let Settings = new function() {
     this.scaleMinusElementId = 'button-font-scale-minus';
 
     this.getFontScale = () => {
-      return localStorage.getItem(this.keyName) || 1.0;
+      return Store.get(this.keyName) || 1.0;
     }
 
     this.setFontScale = (value) => {
-      localStorage.setItem(this.keyName, value);
+      Store.set(this.keyName, value);
       document.documentElement.style.setProperty('--font-size-multiplier', value);
       this.updateCurrentScaleDisplay();
       this.updateButtonsStates();
@@ -1610,7 +1632,7 @@ let Settings = new function() {
     }
 
     this.shouldAnimationsToggleBeChecked = () => {
-      const currentAnimationsDisabledKeyValue = localStorage.getItem(this.keyName);
+      const currentAnimationsDisabledKeyValue = Store.get(this.keyName) || null;
       if (currentAnimationsDisabledKeyValue === null)
         return !this.doesTheUserPreferReducedMotion();
       else
@@ -1622,7 +1644,7 @@ let Settings = new function() {
     }
 
     this.setAnimationsDisabledState = (state) => {
-      localStorage.setItem(this.keyName, state);
+      Store.set(this.keyName, state);
       this.setAnimationsDisabledBodyClass(state);
       if (state) {
         swiperAnimationDuration = 0;
@@ -1670,11 +1692,11 @@ let Settings = new function() {
     this.keyName = 'compact-mode';
 
     this.shouldToggleBeChecked = () => {
-      return localStorage.getItem(this.keyName) === 'true';
+      return Store.get(this.keyName) === 'true' || false;
     }
 
     this.setCompactModeState = (state) => {
-      localStorage.setItem(this.keyName, state);
+      Store.set(this.keyName, state);
       document.body.classList.toggle('compact', state);
     }
 
@@ -1704,7 +1726,7 @@ let Settings = new function() {
     }
 
     this.shouldToggleBeChecked = () => {
-      const currentDarkModeKeyValue = localStorage.getItem(this.keyName);
+      const currentDarkModeKeyValue = Store.get(this.keyName) || null;
       if (currentDarkModeKeyValue === null)
         return this.doesTheUserPreferDarkMode();
       else
@@ -1712,7 +1734,7 @@ let Settings = new function() {
     }
 
     this.setDarkModeState = (state) => {
-      localStorage.setItem(this.keyName, state);
+      Store.set(this.keyName, state);
       document.body.classList.toggle('dark', state);
       isDarkModeEnabled = state;
       Settings.updateColors();
