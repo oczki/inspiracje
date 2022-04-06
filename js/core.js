@@ -639,7 +639,7 @@ let Categories = new function() {
     this.resetVisibilities();
     this.saveData();
     Settings.updateColors();
-    Settings.CategoriesManagementList.showDotIfNeeded();
+    Settings.CategoriesManagementList.showHintForHiddenCategories();
   }
 
   this.getOriginalData = () => {
@@ -708,7 +708,7 @@ let Categories = new function() {
       categoryData.isVisible = isVisible;
       this.saveData();
     }
-    Settings.CategoriesManagementList.showDotIfNeeded();
+    Settings.CategoriesManagementList.showHintForHiddenCategories();
     Settings.updateColors();
   }
 
@@ -1526,11 +1526,15 @@ let VisibilityController = new function() {
   }
 
   this.toggleNotificationDotForCircularButton = (buttonId, isDotVisible) => {
-    document.getElementById(buttonId).classList.toggle('notify', isDotVisible);
+    document.getElementById(buttonId)?.classList.toggle('notify', isDotVisible);
   }
 
   this.toggleCategoriesNotificationDot = (isVisible) => {
     this.toggleNotificationDotForCircularButton('button-category-management', isVisible);
+  }
+
+  this.toggleCategoriesPlaceholder = (isVisible) => {
+    document.getElementById('categories-placeholder')?.classList.toggle('visible', isVisible);
   }
 }
 
@@ -1953,7 +1957,7 @@ let Settings = new function() {
         toggle.checked = Categories.isVisible(categoryData.type);
         toggle.addEventListener('change', (event) => {
           Categories.setVisibilityByType(categoryData.type, event.currentTarget.checked);
-          this.showDotIfNeeded();
+          this.showHintForHiddenCategories();
         });
 
         labelElement.appendChild(toggle);
@@ -1989,6 +1993,22 @@ let Settings = new function() {
         }
       }
       VisibilityController.toggleCategoriesNotificationDot(false);
+    }
+
+    this.showPlaceholderIfNeeded = () => {
+      let allCategoriesAreHidden = true;
+      for (let categoryData of Categories.getData()) {
+        if (categoryData.isVisible) {
+          allCategoriesAreHidden = false;
+          break;
+        }
+      }
+      VisibilityController.toggleCategoriesPlaceholder(allCategoriesAreHidden);
+    }
+
+    this.showHintForHiddenCategories = () => {
+      this.showDotIfNeeded();
+      this.showPlaceholderIfNeeded();
     }
   };
 
@@ -2103,6 +2123,24 @@ let GlobalEventHandler = new function() {
     advanceAllButton.addEventListener('click', Util.throttle(callbackFabClicked, defaultIconRotationDuration));
   }
 
+  this.attachClickEventsToCategoriesPlaceholderButtons = () => {
+    const restoreAllButton = document.getElementById('category-restore-defaults');
+    const showPanelButton = document.getElementById('category-open-panel');
+
+    Creator.addRipple(restoreAllButton);
+    Creator.addRipple(showPanelButton);
+
+    restoreAllButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      Settings.setDefaultCategories();
+    });
+
+    showPanelButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      VisibilityController.toggleSheetVisibility('category-management');
+    });
+  }
+
   this.handleKeyboardInput = (event) => {
     if (event.keyCode === 9) {
       document.body.classList.add('show-outline');
@@ -2172,8 +2210,9 @@ function init() {
   Settings.updateColors();
   Settings.updateFontScaleElements();
   Settings.updateMoveUpDownButtonsStates();
-  Settings.CategoriesManagementList.showDotIfNeeded();
+  Settings.CategoriesManagementList.showHintForHiddenCategories();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
+  GlobalEventHandler.attachClickEventsToCategoriesPlaceholderButtons();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
 }
 

@@ -239,6 +239,86 @@ u {
 
 /* #endregion Initial definitions */
 
+/* #region Placeholder when all categories have been hidden */
+
+#categories-placeholder {
+  --logo-size: 90px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: min(100%, 640px);
+  height: 100%;
+  padding: var(--card-padding);
+  margin-bottom: 108px;
+}
+
+#categories-placeholder.visible {
+  display: flex;
+}
+
+#app-logo {
+  width: var(--logo-size, 100px);
+  height: var(--logo-size, 100px);
+  opacity: 0.25;
+}
+
+#app-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+#categories-placeholder > p {
+  color: var(--color-secondary-text);
+  text-align: center;
+  line-height: 1.2;
+}
+
+#categories-placeholder > p:first-of-type {
+  font-size: 150%;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+#categories-placeholder button {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 240px);
+  height: 48px;
+  padding: var(--icon-padding) calc(2 * var(--icon-padding));
+  border-radius: 48px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1.25px;
+  box-shadow: var(--fab-shadow);
+}
+
+#categories-placeholder button:first-of-type {
+  margin-top: 24px;
+}
+
+#categories-placeholder button + button {
+  margin-top: 4px;
+}
+
+button#category-restore-defaults {
+  color: var(--color-text-negative);
+  background-color: var(--color-accent);
+}
+
+button#category-open-panel {
+  color: var(--color-text-black-high);
+  background-color: var(--color-destructive);
+}
+
+/* #endregion Placeholder when all categories have been hidden */
+
 /* #region Single section with a word swiper */
 
 .word-section {
