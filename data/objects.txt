@@ -4,6 +4,7 @@ agrafka
 akordeon
 aksamit
 akumulator
+akwalung
 album
 alkomat
 alternator
@@ -57,6 +58,7 @@ bombonierka
 bonsai
 brązowe zasłony
 breloczek
+broń biała
 brudne buty
 budyń malinowy
 bukiet
@@ -79,7 +81,6 @@ ciekły azot
 cień do powiek
 cienka blacha
 ciepły kocyk
-ciężarek 500 g
 ciężka konewka
 ciężkie liczydło
 ciężki odkurzacz
@@ -120,8 +121,11 @@ dowód osobisty
 drabina aluminiowa
 drewniany
 drogie wino
+dron
 drukarka laserowa
+druk normy europejskiej
 drut kolczasty
+dużo, dużo pajęczyny
 duży kątomierz
 dwadzieścia ołówków
 dwie zapałki
@@ -201,10 +205,12 @@ gogle VR
 golarka
 gondola
 gorący asfalt
+gorący napar
 gorset
 gorzka czekolada
 gotówka
 grabie
+grafen
 gramofon
 granat ręczny
 gra planszowa
@@ -212,6 +218,7 @@ green screen
 grill
 grochówka
 gruba koperta
+gruba panierka
 gruby portfel
 gruz
 grzebień
@@ -277,6 +284,7 @@ karafka
 kareta asów
 karma dla zwierzaka
 karmnik
+karoseria
 karta dań
 karta dostępu
 karta microSD
@@ -341,6 +349,7 @@ kontroler do gier
 kopuła
 kopyść
 korba
+korek
 korektor w płynie
 korona
 koryto
@@ -362,12 +371,14 @@ krata
 krawat
 krem do opalania
 krem na zmarszczki
+krew
 krzemień
 krzew agrestu
 kserokopiarka
 książeczka dla dzieci
 książka
 kubek firmowy
+kufel
 kula do kręgli
 kula z lodu
 kule gradu
@@ -404,12 +415,13 @@ lokówka
 łopata
 lornetka
 łożysko kulkowe skośne
+lśniące obuwie
 łuk refleksyjny
 lupa
 łupież
 lustro
 łyżwy
-magnes
+magnes neodymowy
 makaron chiński
 makaron pełnoziarnisty
 makieta
@@ -472,43 +484,98 @@ muszelka
 muszkiet
 mydło w płynie
 mysz komputerowa
+nadajnik
+nafta
+nagranie
+nagrobek
+nagroda
+naklejka
 naładowana kusza
+naleśnik
+nalewka
+napalm
+naparstek
+narkoza
+narożnik
+narty
+nasionko
+naskórek
 nawigacja GPS
+nawóz
+nektar
 nić dentystyczna
 niebieska apaszka
+nielegalne oprogramowanie
 nienadmuchany balon
+niepasująca ozdoba
+nocnik
+nośnik danych
 nożyczki
 obca waluta
+obcisłe ciuchy
+obiad na wynos
 obiektyw
+obieraczka
 obrane jabłko
+obroża
+obrzęk
+obwarzanek
 ocenzurowany dokument
 oczyszczacz powietrza
 odchody
+odcisk buta
+odcisk palca
 odgrzewany kotlet
 odręczny list
 odtrutka
+odtwarzacz MP3
+odważnik 500 g
 odzież ochronna
+odznaka
+odżywka do włosów
 ognisko
 ogon jaszczurki
 ogromny ręcznik
 ogryzek po gruszce
+okruszki
 okulary
+okulary przeciwsłoneczne
+oliwa z oliwek
 oliwki nadziewane
+opary
 opłatek
+opona
+oranżada
+organ do przeszczepu
+orzech włoski
+osełka
 ostatni papieros
 ostra musztarda
 otwarta koperta
+otwieracz
+owoce morza
 pachnące pranie
+padlina
 pager
 pająk
+pałeczki
 pałka
+palnik gazowy
 pamiątka z podróży
+pamięć RAM
 pamiętniczek
+pancerz
+panel słoneczny
+pantofelek
 papier milimetrowy
 papier ścierny
 papier toaletowy
 papirus
+papryka
+paracetamol
+parasol
 parawan
+partytura
 pasek od spodni
 pęk kluczy
 perfumy
@@ -521,7 +588,9 @@ piła tarczowa
 piłka
 pióro
 pisak permanentny
+pisemna odpowiedź
 piwo 0.0%
+placebo
 plan diety
 plan labiryntu
 plasterek na paluszek
@@ -529,9 +598,14 @@ plastikowy widelec
 pług
 płyta winylowa
 pochodnia
+podejrzany zapach
+podłokietnik
+podsłuch
 poduszka
 podwójne espresso
+podwozie
 pojemna miska
+pojemnik z nitkami
 pokrywka
 pół kilo krakowskiej suchej
 pół pizzy
@@ -554,8 +628,11 @@ próbka moczu
 procesor
 prostownica
 proteza
+prototyp
 pryzmat
 prześcieradło
+ptasie mleczko
+pudełko pączków
 pudło z kartonu
 pukiel włosów
 puste akwarium
@@ -578,6 +655,7 @@ scenariusz
 scrunchie
 segregator
 sekator
+sekretny składnik
 ser feta
 siatka na komary
 siekiera
@@ -611,6 +689,7 @@ stop molibdenu
 stos prania
 struna
 surowy ogórek
+suszarka do włosów
 światła sygnalizacji
 świeża mięta
 świeży śnieg
@@ -618,6 +697,7 @@ syrop na kaszel
 szaszłyk
 szczoteczka do zębów
 sześć kostek cukru
+szkic
 szkielet
 szklanka
 szmatka w kratkę
@@ -627,6 +707,7 @@ tabletki przeciwbólowe
 tablica suchościeralna
 taczka złomu
 tanie wino
+tarcza
 tarka do sera
 telefon z 2005 roku
 telegraf
@@ -639,28 +720,35 @@ terrarium
 test IQ
 torebka
 torebka herbaty
+transporter taśmowy
 trucizna
 trytytka
 trzy marchewki
+UFO
 ujemna lambda
 ultra-ostry nóż
 wałek do malowania
 walkie-talkie
+wczorajszy olej
 wiatraczek
 wibrator
 wiertarka udarowa
 wiertło
+winogrono
 wkrętak
 woda destylowana
 woda gazowana
+woda utleniona
 woreczek gwoździ
 wosk
 wrzątek
 wycieraczka
 wygodne krzesło
 wykres EKG
+wynik obliczeń
 wypisany długopis
 wyprasowana koszula
+wysokie obcasy
 wysoki hamburger
 wyszczerbiony dzbanek
 zabłocony kij
@@ -668,10 +756,12 @@ zacięte imadło
 zacięty zszywacz
 zakładka do książki
 zakreślacz
+zakrętka
 za krótki kabel
 zakurzona księga
 zakurzony obraz
 zamazane zdjęcie
+zapisany notes
 zardzewiała dźwignia
 żarówka
 zbroja

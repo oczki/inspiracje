@@ -40,6 +40,7 @@ cierpliwy
 coś za coś
 cwaniak
 cyniczny
+czepialski
 częste przejęzyczenia
 często dotyka twarzy
 często oblizuje wargi
@@ -195,6 +196,7 @@ nieufny
 niewierny
 niewinny
 niezależny
+niezdara
 niezdecydowany
 niska samoocena
 niski głos
@@ -251,6 +253,7 @@ poprawia fryzurę
 poprawia innych
 porównuje do siebie
 poważny
+powtarza po rozmówcy
 powtarza swoje słówko
 pracoholik
 prawiczek

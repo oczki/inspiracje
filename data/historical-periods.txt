@@ -4,6 +4,7 @@ Nowy Rok
 Wielki Wybuch
 XXII wiek
 barok
+czas losowo pauzuje
 czas płynie wstecz
 dwudziestolecie międzywojenne
 epoka brązu
@@ -17,11 +18,16 @@ mezolit
 neolit
 niedziela handlowa
 nowożytność
+odpływ
+okres godowy
 paleolit
+początki Internetu
+poniedziałek 08:57
 pozytywizm
 prehistoria
 przedwiośnie
 przedzimie
+przypływ
 renesans
 rokoko
 romantyzm
@@ -34,4 +40,6 @@ wieczór
 wiosna
 współczesność
 wynalezienie koła
+zaćmienie Słońca
+zaraz po ulewie
 zima

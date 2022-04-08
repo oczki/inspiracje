@@ -223,6 +223,7 @@ mumia
 murarz
 muzyk
 myśliwy
+narrator
 nauczyciel przedszkola
 nauczyciel wuefu
 nauczyciel
@@ -237,6 +238,7 @@ ogrodnik
 okulista
 ombudsman
 operator maszynerii
+opiekun
 optyk
 organizator
 ornitolog

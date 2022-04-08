@@ -2,6 +2,7 @@ absolutna ciemność
 akademik
 apartament
 apteka
+aquapark
 arsenał
 autobus
 autostrada
@@ -130,12 +131,22 @@ motocykl
 muzeum
 myjnia
 na powierzchni skóry
+nadprzestrzeń
 namiot
 niebo
+niestabilna powierzchnia
+nora
+nowe mieszkanie
 oaza
+oberża
 obora
 obozowisko
+obserwatorium
+obszar chroniony
 obuwniczy
+obwodnica
+oceanarium
+oczyszczalnia ścieków
 ogródek
 oko cyklonu
 ołtarz
@@ -143,8 +154,11 @@ open space
 opuszczona galeria
 opuszczone kino
 orbita okołoziemska
+osada
+osiedle PRL
 ostatni rząd w kinie
 ostatnie piętro
+ośmiotysięcznik
 pałac
 parawan
 park
@@ -158,6 +172,7 @@ piwnica
 plac zabaw
 plan zdjęciowy
 planeta
+planetarium
 plaża
 plebania
 płaska Ziemia
@@ -230,6 +245,7 @@ stadion
 stajnia
 stara kamienica
 statek
+statek kosmiczny
 sterowiec
 sterylne pomieszczenie
 stołówka
@@ -257,6 +273,7 @@ tratwa
 trawnik
 trybuny
 tunel
+pokład UFO
 uniwersytet
 urwisko
 urząd pracy
