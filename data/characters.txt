@@ -259,6 +259,7 @@ pilot
 piłkarz
 piosenkarz
 pirat
+pirotechnik
 pisarz
 plastyk
 plażowicz
@@ -308,6 +309,8 @@ radny
 rajdowiec
 ratownik
 recenzent
+recepcjonista
+recydywista
 redaktor
 rekruter
 rektor
@@ -325,6 +328,7 @@ rzeźbiarz
 rzeźnik
 samuraj
 sanitariusz
+saper
 satyryk
 scammer
 scenarzysta
@@ -395,6 +399,7 @@ terapeuta
 terminator
 terrorysta
 tester oprogramowania
+tester smaku
 tkacz
 tłumacz
 tokarz

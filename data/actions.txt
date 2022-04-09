@@ -1,4 +1,5 @@
 aportowanie
+bandażowanie rany
 bieganie
 całowanie
 chodzenie po linie
@@ -146,6 +147,7 @@ przełączanie programów
 przenoszenie akwarium
 przenoszenie mebli
 przesadzanie kwiatów
+przesiewanie mąki
 przeżuwanie
 przybijanie piątki
 przycinanie bonsai
@@ -192,6 +194,7 @@ szukanie z latarką
 szukanie z lupą
 szycie
 szydełkowanie
+ściąganie na teście
 śpiewanie
 tasowanie kart
 tatuowanie
@@ -201,6 +204,7 @@ układanie kostki brukowej
 układanie kostki Rubika
 układanie książek
 układanie puzzli
+ukrywanie się
 uprawianie jogi
 ustawianie zegara
 usuwanie graffiti
@@ -220,6 +224,7 @@ wkręcanie wkrętu
 wpisywanie hasła
 wsiadanie do pojazdu
 wspinaczka
+wspominanie dawnych czasów
 wybieranie numeru telefonu
 wyciskanie ketchupu
 wyciskanie pryszczy

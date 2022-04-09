@@ -198,6 +198,7 @@ niewinny
 niezależny
 niezdara
 niezdecydowany
+nigdy nie zapraszany
 niska samoocena
 niski głos
 niszowe zainteresowania
@@ -231,6 +232,7 @@ pamięta cytaty
 pamiętliwy
 papuguje innych
 parcie na szkło
+pasożyt
 patriota
 patrzy w oczy
 patrzy z góry
@@ -239,6 +241,7 @@ pedantyczny
 pewny siebie
 piękność
 pilnuje wagi
+piratuje wszystko
 planuje każdą czynność
 pobożny
 pochlebca
@@ -276,6 +279,7 @@ przytakiwacz
 psotny
 punktualny
 puszcza całusy
+ranny ptaszek
 ręce w kieszeni
 ręce za plecami
 rozgląda się
@@ -312,6 +316,7 @@ starzec
 strach przed zarazkami
 suchoklates
 syczy
+syndrom głównego bohatera
 szczegółowe zdania
 szczery
 szczęściarz
@@ -322,7 +327,10 @@ sztuczny uśmiech
 sztywniak
 szuka konspiracji
 szuka wrażeń
-szybki refleks
+szuka wymówek
+szuka zaczepki
+szybka regeneracja
+szybkie reakcje
 śliwa pod okiem
 śmiały
 śmiech złoczyńcy
@@ -350,10 +358,12 @@ uprzejmy
 urywa myśl
 utalentowany
 uzależniony
+używa przezwisk
 waleczny
 wchodzi w zdanie
 wcześnie dojrzał
 weseleje z czasem
+wie podejrzanie dużo
 wie wszystko
 wieczny student
 wiedza podręcznikowa
@@ -407,6 +417,7 @@ zmienia zdanie
 zmienna wysokość głosu
 zmyśla plotki
 zna przyszłość
+zna swoje prawa
 zna wszystkich
 zna wszystkie pokemony
 zna wszystkie żarty

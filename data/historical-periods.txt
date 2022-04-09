@@ -7,10 +7,13 @@ barok
 czas losowo pauzuje
 czas płynie wstecz
 dwudziestolecie międzywojenne
+dzień przed zagładą
+dzień wypłaty
 epoka brązu
 epoka kamienia
 epoka żelaza
 jesień
+kolejne sceny co 10 lat
 lata '80
 lato
 manieryzm
@@ -23,6 +26,7 @@ okres godowy
 paleolit
 początki Internetu
 poniedziałek 08:57
+pora sucha
 pozytywizm
 prehistoria
 przedwiośnie

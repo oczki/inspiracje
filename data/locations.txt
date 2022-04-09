@@ -19,6 +19,7 @@ biurowiec
 boisko
 brama
 browar
+brzeg rzeki
 budka z jedzeniem
 budowa
 bufet
@@ -110,6 +111,7 @@ lepianka
 linia produkcyjna
 lodowiec
 lodowisko
+lokomotywa
 lombard
 lotnisko
 lumpeks
@@ -165,6 +167,8 @@ park
 park linowy
 parking
 pas startowy
+peron
+peryferie
 piekło
 pijalnia
 piramida
@@ -177,6 +181,7 @@ plaża
 plebania
 płaska Ziemia
 płytko pod wodą
+pobocze
 pociąg
 poczekalnia
 pod kioskiem
@@ -184,6 +189,8 @@ pod mostem
 pod powierzchnią
 pod ścianą
 pod wysokim murem
+podkop
+podziemna grota
 pogorzelisko
 pokaz mody
 pole gejzerów
@@ -192,6 +199,7 @@ pośredniak
 pośród chmur
 powierzchnia Księżyca
 poza zasięgiem kamer
+półpiętro
 pralnia
 prosektorium
 przeciwne strony płotu
@@ -200,18 +208,25 @@ przedostatnie piętro
 przedszkole
 przejście dla pieszych
 przejście graniczne
+przepaść
 przyczepa kempingowa
 przymierzalnia
 przystanek
 psia buda
 pub
+punkt Nemo
 punkt obserwacyjny
 pustynia
+radiowóz
+rafa koralowa
 rakieta
 recepcja
 redakcja
+rezerwat przyrody
 restauracja
+ring
 rollercoaster
+rozdroże
 rozlewnia
 ruiny
 rynek

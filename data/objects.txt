@@ -11,6 +11,7 @@ alternator
 amulet
 amunicja
 ananas
+android
 antena satelitarna
 antybiotyk
 antycząstka
@@ -27,6 +28,7 @@ banan
 bandaż
 bańka mydlana
 bankomat
+bardzo dużo konfetti
 barwnik spożywczy
 bateria AA
 batonik
@@ -73,6 +75,7 @@ cement
 certyfikat
 chemikalia
 chlebak
+chleb razowy
 chochla
 chusteczka
 chwast
@@ -113,13 +116,14 @@ długa probówka
 długi lont
 długi paragon
 dokładnie jeden litr
+dokument z literówką
 domestos
 domino
 domofon
 doniczka
 dowód osobisty
 drabina aluminiowa
-drewniany
+drewniana skrzynia
 drogie wino
 dron
 drukarka laserowa
@@ -278,6 +282,7 @@ kamień
 kamień księżycowy
 kamuflaż
 kandelabr
+kanister
 kapelusz
 kaptur
 karafka
@@ -297,10 +302,12 @@ kaseta magnetofonowa
 kaseta VHS
 kask rowerowy
 kastet
+kasztanowy ludzik
 katalog
 katana
 kawa bezkofeinowa
 kielnia
+kieszeń na przekąski
 kieszonkowy globus
 kij bejsbolowy
 kij golfowy
@@ -340,9 +347,7 @@ kolumna
 kombinerki
 kompas
 kompot wiśniowy
-komputer
 końcówka ketchupu
-konfetti
 konsola do gier
 kontrakt
 kontroler do gier
@@ -432,6 +437,7 @@ manga
 manierka
 manuskrypt
 mapa
+markowe ciuchy
 marzanna
 maść
 maseczka
@@ -460,6 +466,7 @@ mieszadło
 migający neon
 mikrofon
 mikropędzelek
+mikro-porcja obiadu
 mikroprocesor
 mikroskop elektronowy
 mikser
@@ -475,6 +482,7 @@ młot pneumatyczny
 młynek do kawy
 model kolejki
 model samolotu
+mokry ręcznik
 moneta
 monitor
 monocykl
@@ -489,6 +497,7 @@ nafta
 nagranie
 nagrobek
 nagroda
+najnowszy modny produkt
 naklejka
 naładowana kusza
 naleśnik
@@ -505,6 +514,7 @@ nawóz
 nektar
 nić dentystyczna
 niebieska apaszka
+niekompletna talia kart
 nielegalne oprogramowanie
 nienadmuchany balon
 niepasująca ozdoba
@@ -577,10 +587,20 @@ parasol
 parawan
 partytura
 pasek od spodni
+pasta do butów
+pasta do zębów
+paszport
+pędzel
 pęk kluczy
+pendrive
 perfumy
+perkusja
+perłowy naszyjnik
 peruka
+peryskop
 pieluszka
+pieprz czarny
+pierogi ruskie
 pierścień
 pierś z kurczaka
 piła do metalu
@@ -589,21 +609,33 @@ piłka
 pióro
 pisak permanentny
 pisemna odpowiedź
+pistolet
 piwo 0.0%
+piżama w całki
 placebo
+plakat z Marylą
+plama z wina
 plan diety
 plan labiryntu
+plansza do gry
 plasterek na paluszek
 plastikowy widelec
+pleśń
 pług
 płyta winylowa
 pochodnia
+pocztówka
 podejrzany zapach
+podkładka pod mysz
+podkowa
 podłokietnik
+podnośnik hydrauliczny
 podsłuch
 poduszka
 podwójne espresso
+podwójny omlet
 podwozie
+poidło
 pojemna miska
 pojemnik z nitkami
 pokrywka
@@ -613,43 +645,93 @@ półtora ziemniaka
 pomarańczowy liść
 pomięta koszula
 pomnik
+pompa
 pończochy
+popielniczka
 popiersie
 po prostu jabłko
 porządny korkociąg
+posążek
+pościel ze Spider-manem
 posortowane śmieci
 potłuczone szkło
+poziomica
 pożółkły papier
+pożyczka
+pozytywka
 praca dyplomowa
+praliny z alkoholem
 pralka
+prasa
+prawidło do butów
+prawie czysta szklanka
 prawie pusty magazynek
+precyzyjna miara
 prezerwatywa
 próbka moczu
 procesor
+proch strzelniczy
+prochy dziadka
 prostownica
+proszek do pieczenia
+proszek do prania
 proteza
 prototyp
+próżnia
+pryszcz
 pryzmat
+przedziałek
+przekonująca podróbka
+przełącznik
+przepychacz
 prześcieradło
+przycisk
+przykrywka
+przynęta
+przystawka
 ptasie mleczko
 pudełko pączków
 pudło z kartonu
 pukiel włosów
+pułapka na szkodniki
+pumeks
 puste akwarium
 pusty worek
+puszka
 puzzle
+raca
+radiator
+radioodbiornik
 radziecka lutownica
+ręcznik w Pokemony
 reflektor
-rękawice
+rękawica
 reklamówka
+relikwia
+rewolwer
 robot kuchenny
+rodzynki
 róg sygnałowy
+rolka
 rower
+rower stacjonarny
+róża
+różdżka
 rozgrzana patelnia
 rozgrzane żelazko
+rozkład jazdy
 rozpruta maskotka
+rozpuszczalnik
 rozrusznik serca
+rumianek
+rura
+rynna
 rysunek techniczny
+rysunki sprzed lat
+ryza papieru A4
+rzadka ryba
+rzutki
+rzutnik przezroczy
 saszetka ryżu
 scenariusz
 scrunchie
@@ -657,16 +739,19 @@ segregator
 sekator
 sekretny składnik
 ser feta
+ser pleśniowy
 siatka na komary
 siekiera
 sierść
 siodło
+sitko
 skafander
 skakanka
 skarpety nie do pary
 skarpety stópki
 skórka po arbuzie
 skrzydła
+skrzynka z narzędziami
 słoik kiszonek
 słuchawki nauszne
 smycz
@@ -676,6 +761,7 @@ spinka do włosów
 spirytus salicylowy
 spocona koszulka
 spodnie
+spójnik na końcu linii
 spory lejek
 sprawdzona brzytwa
 srebrne sztućce
@@ -684,10 +770,12 @@ stara konserwa
 stary komiks
 stary laczek
 stempel
+stół do piłkarzyków
 stoper
 stop molibdenu
 stos prania
 struna
+styrany piekarnik
 surowy ogórek
 suszarka do włosów
 światła sygnalizacji
@@ -697,16 +785,20 @@ syrop na kaszel
 szaszłyk
 szczoteczka do zębów
 sześć kostek cukru
+sześć procent baterii
 szkic
 szkielet
-szklanka
+szklanka whisky
 szmatka w kratkę
 szminka
 sztanga
+szydełko
+szyszka
 tabletki przeciwbólowe
 tablica suchościeralna
 taczka złomu
 tanie wino
+tara do prania
 tarcza
 tarka do sera
 telefon z 2005 roku
@@ -730,6 +822,8 @@ ultra-ostry nóż
 wałek do malowania
 walkie-talkie
 wczorajszy olej
+wędka najnowszej generacji
+wiadro paszy
 wiatraczek
 wibrator
 wiertarka udarowa
@@ -741,12 +835,16 @@ woda gazowana
 woda utleniona
 woreczek gwoździ
 wosk
+wróżba z ciasteczka
 wrzątek
 wycieraczka
 wygodne krzesło
 wykres EKG
 wynik obliczeń
+wypasiony komputer
 wypisany długopis
+wypłata w gotówce
+wypowiedzenie
 wyprasowana koszula
 wysokie obcasy
 wysoki hamburger
@@ -766,6 +864,7 @@ zardzewiała dźwignia
 żarówka
 zbroja
 zbyt gorąca kawa
+zdjęcie rentgenowskie
 zegar atomowy
 zegarek kieszonkowy
 zegar naścienny

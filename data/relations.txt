@@ -23,6 +23,7 @@ drogówka i kierowca
 druga randka
 dwójka laików
 dwójka specjalistów
+dwójka świeżaków
 dwójka złoczyńców
 dziecko z lalką
 ex aequo pierwsze miejsce
@@ -67,12 +68,14 @@ przed i po
 przybrana rodzina
 przyjaciele z dzieciństwa
 przyszli współlokatorzy
+przyjezdny i lokals
 pytanie i odpowiedź
 randka w ciemno
 robot z twórcą
 rodzeństwo
 rodzic i dziecko
 rodzina zastępcza
+rozwodnicy
 różnica wieku
 ryba i robak na haku
 rywalizacja przyjaciół
@@ -100,4 +103,5 @@ za cienką ścianą
 za grubą ścianą
 zakładnik terrorysty
 zamiana ciał
+znają się od trzech dni
 żaba i królewna
