@@ -100,6 +100,7 @@ czapka z papieru
 czapka z pomponem
 czarna cegła
 czarna pęseta
+czaszka
 czekolada z orzechami
 czerwone stringi
 czterolistna koniczyna
@@ -132,6 +133,7 @@ doniczka
 dowód osobisty
 drabina aluminiowa
 drewniana skrzynia
+drewniany totem
 drogie wino
 dron
 drukarka laserowa
@@ -160,6 +162,7 @@ etui
 etykieta
 fajerwerki
 fajka
+faks
 falafel
 fałda
 farba w sprayu
@@ -572,6 +575,7 @@ opona
 oranżada
 organ do przeszczepu
 orzech włoski
+oscyloskop
 osełka
 ostatni papieros
 ostra musztarda
@@ -730,6 +734,7 @@ robot kuchenny
 rodzynki
 róg sygnałowy
 rolka
+rolka tapety
 rower
 rower stacjonarny
 róża
@@ -862,30 +867,57 @@ sztanga
 sztuczna szczęka
 szydełko
 szyszka
+tabaka
+tablet
 tabletki przeciwbólowe
+tablica rejestracyjna
 tablica suchościeralna
 taczka złomu
 tajemniczy symbol
+talizman
+tampony
 tanie wino
 tara do prania
+taran
 tarcza
 tarka do sera
+tasak
+tatuaż
 telefon z 2005 roku
 telegraf
+teleobiektyw
 teleskop
 telewizor kineskopowy
+temblak
+temperówka
 tępy nóż
 tępy ołówek
 termofor
 termometr
+termos 500 ml
 terrarium
+testament
+test ciążowy
 test IQ
+tkanina
+tokarka
 torebka
 torebka herbaty
+tornister
+tortilla na ostro
+toster
+towar deficytowy
 transporter taśmowy
+tran w kapsułkach
+tranzystor 4 nm
+trociny
+trójząb
 trucizna
+trymer do nosa
 trytytka
+trzepaczka
 trzy marchewki
+tusz do rzęs
 UFO
 ujemna lambda
 ultra-ostry nóż
