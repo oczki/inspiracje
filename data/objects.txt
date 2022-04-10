@@ -23,6 +23,7 @@ bagaż
 bagietka
 bakteria
 balonowe zwierzątko
+bałwan
 bambosze
 banan
 bandaż
@@ -70,6 +71,7 @@ buteleczka
 butla gazowa
 cążki do paznokci
 cebula
+cebulka prażona
 celownik laserowy
 cement
 certyfikat
@@ -89,6 +91,7 @@ ciężkie liczydło
 ciężki odkurzacz
 ciupaga
 croissant
+cuchnący śpiwór
 cukier puder
 czajnik
 czapka kapitańska
@@ -98,12 +101,15 @@ czapka z pomponem
 czarna cegła
 czarna pęseta
 czekolada z orzechami
+czerwone stringi
 czterolistna koniczyna
 czujnik dymu
 czujnik ruchu
 czytnik książek
 dachówka
+defibrylator
 deska
+deska snowboardowa
 deskorolka
 dętka
 detonator
@@ -113,8 +119,10 @@ dezodorant
 diamentowe wiertło
 długa lufa
 długa probówka
+długa ściąga
 długi lont
 długi paragon
+długi sopel
 dokładnie jeden litr
 dokument z literówką
 domestos
@@ -175,6 +183,7 @@ formularz
 fortepian
 fotelik
 frytki
+fura\, skóra i komóra
 furtka
 futerał
 futro
@@ -247,6 +256,7 @@ hełm z dziurą
 herbata z prądem
 hieroglif
 hologram
+horoskop
 hulajnoga
 hummus
 hydrant
@@ -415,6 +425,7 @@ linijka na 49 cm
 listwa przypodłogowa
 list z urzędu
 lizak
+lody śmietankowe
 lokówka
 łom
 łopata
@@ -426,6 +437,7 @@ lupa
 łupież
 lustro
 łyżwy
+magiczny zwój
 magnes neodymowy
 makaron chiński
 makaron pełnoziarnisty
@@ -470,6 +482,7 @@ mikro-porcja obiadu
 mikroprocesor
 mikroskop elektronowy
 mikser
+mikstura
 mina przeciwpiechotna
 minutnik
 miotła
@@ -518,6 +531,7 @@ niekompletna talia kart
 nielegalne oprogramowanie
 nienadmuchany balon
 niepasująca ozdoba
+niszczarka
 nocnik
 nośnik danych
 nożyczki
@@ -602,7 +616,7 @@ pieluszka
 pieprz czarny
 pierogi ruskie
 pierścień
-pierś z kurczaka
+pierś kurczaka
 piła do metalu
 piła tarczowa
 piłka
@@ -621,6 +635,7 @@ plansza do gry
 plasterek na paluszek
 plastikowy widelec
 pleśń
+plik banknotów
 pług
 płyta winylowa
 pochodnia
@@ -637,7 +652,8 @@ podwójny omlet
 podwozie
 poidło
 pojemna miska
-pojemnik z nitkami
+pojemnik z nićmi
+pokaz slajdów
 pokrywka
 pół kilo krakowskiej suchej
 pół pizzy
@@ -684,6 +700,7 @@ przedziałek
 przekonująca podróbka
 przełącznik
 przepychacz
+przerośnięty zszywacz
 prześcieradło
 przycisk
 przykrywka
@@ -732,38 +749,70 @@ ryza papieru A4
 rzadka ryba
 rzutki
 rzutnik przezroczy
+sadzonki
+sałatka grecka
+salmonella
+salsa
+sandały
+sanki
+saperka
 saszetka ryżu
 scenariusz
 scrunchie
+scyzoryk ze wszystkim
 segregator
+sejsmograf
 sekator
 sekretny składnik
 ser feta
+serial na DVD
 ser pleśniowy
+serwer
+siano
 siatka na komary
 siekiera
 sierść
+siodełko
 siodło
 sitko
 skafander
 skakanka
+skaner
 skarpety nie do pary
 skarpety stópki
 skórka po arbuzie
+skręt
 skrzydła
 skrzynka z narzędziami
+słodzik
 słoik kiszonek
+słoik od mamusi
+słomka
+słownik
 słuchawki nauszne
+smar
+smartfon
+śmietana 18%
+smoczek
 smycz
+śniadanie angielskie
 śnieżnobiały obrus
+soda oczyszczona
+sól himalajska
 solniczka
+sorbet truskawkowy
+spadrochron
 spinka do włosów
 spirytus salicylowy
+spis rzeczy
 spocona koszulka
 spodnie
 spójnik na końcu linii
 spory lejek
 sprawdzona brzytwa
+sprężarka
+sprężyna
+sprzęgło
 srebrne sztućce
 stara gazeta
 stara konserwa
@@ -774,29 +823,49 @@ stół do piłkarzyków
 stoper
 stop molibdenu
 stos prania
+strach na wróble
 struna
+strzała
+strzykawka
+studnia
 styrany piekarnik
+sucharki
+sukulent
 surowy ogórek
+suszarka do prania
 suszarka do włosów
+suwak
 światła sygnalizacji
+świeczka zapachowa
 świeża mięta
 świeży śnieg
 syrop na kaszel
+szabelka
+szablon
+szafa z lustrem
+szafran
+szalik
+szampon 5 w 1
 szaszłyk
 szczoteczka do zębów
+sześciopak
 sześć kostek cukru
 sześć procent baterii
 szkic
 szkielet
+szkiełko
 szklanka whisky
+szlafmyca
 szmatka w kratkę
 szminka
 sztanga
+sztuczna szczęka
 szydełko
 szyszka
 tabletki przeciwbólowe
 tablica suchościeralna
 taczka złomu
+tajemniczy symbol
 tanie wino
 tara do prania
 tarcza
@@ -806,6 +875,7 @@ telegraf
 teleskop
 telewizor kineskopowy
 tępy nóż
+tępy ołówek
 termofor
 termometr
 terrarium
@@ -821,6 +891,7 @@ ujemna lambda
 ultra-ostry nóż
 wałek do malowania
 walkie-talkie
+wąż ogrodowy
 wczorajszy olej
 wędka najnowszej generacji
 wiadro paszy

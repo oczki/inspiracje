@@ -17,6 +17,7 @@ blizna na ciele
 błaha supermoc
 bogaty
 bogobojny
+boi się ciemności
 boi się zwierzątek
 brudas
 burzy czwartą ścianę
@@ -126,6 +127,7 @@ lubi zwierzęta
 łobuz
 ma swój trigger
 macho
+malinka na szyi
 maminsynek
 manipulant
 maruda
@@ -146,6 +148,7 @@ mówi na 'ty'
 mówi tylko o sobie
 mówi tylko w ruchu
 mówi w trzeciej osobie
+mówi więcej niż słucha
 mruży oczy
 musi coś trzymać
 musi się ruszać
@@ -195,6 +198,7 @@ nieśmiertelny
 nieufny
 niewierny
 niewinny
+niewyspany
 niezależny
 niezdara
 niezdecydowany
@@ -220,6 +224,7 @@ odważny
 odwraca się od rozmówcy
 opiekuńczy
 opinia na każdy temat
+opisuje swoje czynności
 opóźniony o 2 s
 optymista
 osiłek
@@ -243,6 +248,7 @@ piękność
 pilnuje wagi
 piratuje wszystko
 planuje każdą czynność
+płaczliwy
 pobożny
 pochlebca
 pociąga nosem
@@ -285,6 +291,7 @@ ręce za plecami
 rozgląda się
 rozrzutny
 rozsądny
+roztargniony
 różne skarpety
 ruchy rąk gdy mówi
 rymuje
@@ -292,11 +299,14 @@ rytmiczne ruchy
 rzadko w domu
 rzut monetą na wszystko
 samotny z wyboru
+sarkastyczny
 sceptyczny
 skarżypyta
 sknera
 skryty
 skupiony
+słuch absolutny
+słucha więcej niż mówi
 smutnieje z czasem
 sokole oko
 specjalistyczny żargon
@@ -317,10 +327,12 @@ strach przed zarazkami
 suchoklates
 syczy
 syndrom głównego bohatera
+szantażysta
 szczegółowe zdania
 szczery
 szczęściarz
 szczodry
+szepcze bez powodu
 szeryfuje
 szlachcic
 sztuczny uśmiech
@@ -331,11 +343,13 @@ szuka wymówek
 szuka zaczepki
 szybka regeneracja
 szybkie reakcje
+szyderczy
 śliwa pod okiem
 śmiały
 śmiech złoczyńcy
 śmieciuch
 śpioch
+światłowstręt
 świeżo po czterdziestce
 świeżo wykąpany
 tajemnica rodzinna
@@ -348,6 +362,7 @@ twardziel
 uczciwy
 udaje głupiego
 udaje mądrego
+udawany uśmiech
 ukryte marzenie
 ukryty talent
 uległy
@@ -359,6 +374,7 @@ urywa myśl
 utalentowany
 uzależniony
 używa przezwisk
+używa staropolszczyzny
 waleczny
 wchodzi w zdanie
 wcześnie dojrzał
@@ -384,6 +400,7 @@ wtrąca korpo-słówka
 wybuchowy
 wyluzowany
 wymagający
+wymyśla nowe słowa
 wyprostowane łokcie
 wyprostowany
 wyrachowany

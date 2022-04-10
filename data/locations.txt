@@ -202,6 +202,7 @@ poza zasięgiem kamer
 półpiętro
 pralnia
 prosektorium
+próg wodospadu
 przeciwne strony płotu
 przeciwne strony stołu
 przedostatnie piętro
@@ -232,6 +233,7 @@ ruiny
 rynek
 rzeźnia
 sad
+safari
 sala operacyjna
 sala rozpraw
 sala weselna
@@ -244,15 +246,20 @@ sauna
 scena występu impro
 scena
 schody ruchome
+schron
 schronisko
 sesja zdjęciowa
 sex shop
 side'y sceny impro
 silne pole magnetyczne
 siłownia
+skarbiec
 sklep muzyczny
 sklep
+skocznia
 skrzyżowanie
+solarium
+speluna
 spływ kajakowy
 spotkanie rodzinne
 stacja benzynowa
@@ -263,6 +270,8 @@ statek
 statek kosmiczny
 sterowiec
 sterylne pomieszczenie
+stocznia
+stodoła
 stołówka
 strych
 studio
@@ -275,7 +284,9 @@ szczyt
 szklarnia
 szkoła
 szpital
+ścianka wspinaczkowa
 ściernisko
+ścieżka rowerowa
 ślepa uliczka
 świetlica
 taras
@@ -307,8 +318,8 @@ więzienie
 willa
 winda
 winiarnia
-wodospad
 woodstock
+wulkan
 wykopaliska
 wykopki
 wypożyczalnia
@@ -316,6 +327,7 @@ wysoko nad ziemią
 wyspa
 wysypisko
 za garażami
+za wodospadem
 zagroda
 zakład fryzjerski
 zakład pogrzebowy

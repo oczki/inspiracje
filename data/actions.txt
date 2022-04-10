@@ -58,6 +58,7 @@ koszenie trawy
 kradzież
 krojenie kotleta
 krojenie tortu
+liczenie gotówki
 lizanie lizaka
 lunatykowanie
 lutowanie
@@ -143,6 +144,7 @@ przeciąganie się
 przecieranie oczu
 przecinanie wstęgi
 przeganianie much
+przeglądanie katalogu
 przełączanie programów
 przenoszenie akwarium
 przenoszenie mebli
@@ -155,6 +157,8 @@ przymierzanie spodni
 przyprawianie
 przywoływanie windy
 pukanie do drzwi
+robienie selfie
+robienie shake\'a
 robienie zdjęć
 rozbijanie namiotu
 rozgrzewanie mięśni
@@ -214,6 +218,7 @@ walenie młotem
 ważenie się
 wbijanie gwoździ
 wcieranie maści
+wciskanie przycisku co chwilę
 wiązanie butów
 wiązanie węzłów
 wiercenie wiertarką
@@ -226,6 +231,7 @@ wsiadanie do pojazdu
 wspinaczka
 wspominanie dawnych czasów
 wybieranie numeru telefonu
+wycieranie plam
 wyciskanie ketchupu
 wyciskanie pryszczy
 wydmuchiwanie nosa

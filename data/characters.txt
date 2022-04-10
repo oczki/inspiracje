@@ -137,6 +137,7 @@ językoznawca
 jubiler
 juror
 kadrowy
+kamerdyner
 kamerzysta
 kapitan
 karczmarz
@@ -333,16 +334,20 @@ satyryk
 scammer
 scenarzysta
 sekretarz
+sekundant
 serwisant
 sędzia
 sierżant
 skarbnik
+skazaniec
 skoczek
 służący
 snajper
 sobowtór
+socjolog
 sokolnik
 solenizant
+sołtys
 sommelier
 spadochroniarz
 spawacz
@@ -381,6 +386,7 @@ szef
 szejk
 szeregowy
 szewc
+szofer
 szogun
 szpieg
 sztuczna inteligencja
