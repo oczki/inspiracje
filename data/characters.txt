@@ -254,6 +254,7 @@ pasterz
 pastor
 pedagog
 pediatra
+perkusista
 piekarz
 pielęgniarz
 pilot
@@ -422,6 +423,7 @@ uczony
 upiór
 urolog
 urzędnik
+uzdrowiciel
 wampir
 weterynarz
 wezyr

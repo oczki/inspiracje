@@ -38,6 +38,7 @@ bęben
 beczka
 berło z rubinami
 betoniarka
+bezcenny wazon
 bezpiecznik
 bidet
 bigos
@@ -357,6 +358,7 @@ koło zapasowe
 koło zębate
 kołpak
 kolumna
+kołyska
 kombinerki
 kompas
 kompot wiśniowy
@@ -425,6 +427,7 @@ libretto
 licznik kroków
 lina
 linijka na 49 cm
+list miłosny
 listwa przypodłogowa
 list z urzędu
 lizak
@@ -439,8 +442,10 @@ lśniące obuwie
 lupa
 łupież
 lustro
+łyżka do butów
 łyżwy
 magiczny zwój
+magnes na lodówkę
 magnes neodymowy
 makaron chiński
 makaron pełnoziarnisty
@@ -638,6 +643,7 @@ plan labiryntu
 plansza do gry
 plasterek na paluszek
 plastikowy widelec
+płatek kosmetyczny
 pleśń
 plik banknotów
 pług
@@ -676,6 +682,7 @@ pościel ze Spider-manem
 posortowane śmieci
 potłuczone szkło
 poziomica
+pozłacane pióro
 pożółkły papier
 pożyczka
 pozytywka
@@ -687,6 +694,7 @@ prawidło do butów
 prawie czysta szklanka
 prawie pusty magazynek
 precyzyjna miara
+prezentacja kejpiajów
 prezerwatywa
 próbka moczu
 procesor
@@ -918,30 +926,72 @@ trytytka
 trzepaczka
 trzy marchewki
 tusz do rzęs
+ubranko z napisem
 UFO
 ujemna lambda
+układanka
+układ okresowy pierwiastków
+ulotka reklamowa
 ultra-ostry nóż
+umowa
+uniform
+uprząż
+uran zubożony
+urna wyborcza
+usterka
+uszanka
+uszczelka
+Viagra
+wachlarz
+wafelek
+wahadło
+wałek do ciasta
 wałek do malowania
 walkie-talkie
+warkocz
+warstwa
+wata cukrowa
 wąż ogrodowy
 wczorajszy olej
 wędka najnowszej generacji
+wegeburger
+węgiel
+wehikuł czasu
+wełna
+węzeł
 wiadro paszy
+wianek
 wiatraczek
+wiatrowskaz
 wibrator
+widelcołyżka
+widły
 wiertarka udarowa
 wiertło
+wieszak
 winogrono
+wiosło
+wiśniówka
+witamina B12
+witraż
+wizytówka
 wkrętak
+włóczka
 woda destylowana
 woda gazowana
 woda utleniona
+wolant
+woltomierz
 woreczek gwoździ
 wosk
 wróżba z ciasteczka
 wrzątek
+wskaźnik laserowy
+wstęga
+wtyczka
 wycieraczka
 wygodne krzesło
+wykałaczka
 wykres EKG
 wynik obliczeń
 wypasiony komputer
@@ -952,6 +1002,7 @@ wyprasowana koszula
 wysokie obcasy
 wysoki hamburger
 wyszczerbiony dzbanek
+wyszukiwarka
 zabłocony kij
 zacięte imadło
 zacięty zszywacz
@@ -962,6 +1013,7 @@ za krótki kabel
 zakurzona księga
 zakurzony obraz
 zamazane zdjęcie
+zanęta
 zapisany notes
 zardzewiała dźwignia
 żarówka
@@ -981,6 +1033,7 @@ złoty naszyjnik
 złoty sygnet
 złoty ząb
 znaczek pocztowy
+znak zakazu
 zupka chińska
 zwycięski kupon
 żyrandol

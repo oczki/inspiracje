@@ -305,12 +305,16 @@ pokład UFO
 uniwersytet
 urwisko
 urząd pracy
+utopia
+uzdrowisko
 wagon
 wars
 warsztat
+wartownia
 warzywniak
 wąska ścieżka
 we wnętrznościach
+wernisaż
 wewnątrz drzewa
 wiatrak
 wieża Eiffela
@@ -320,7 +324,9 @@ więzienie
 willa
 winda
 winiarnia
+winnica
 woodstock
+wrak statku
 wulkan
 wykopaliska
 wykopki
@@ -335,5 +341,6 @@ zakład fryzjerski
 zakład pogrzebowy
 zakrystia
 zamek
+złomowisko
 zoo
 żaglowiec

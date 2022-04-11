@@ -107,6 +107,7 @@ kieruje się zasadami
 klaszcze przy śmiechu
 kleptoman
 kłamczuch
+kłania się głęboko
 kocha muzykę
 kolana na zewnątrz
 kolekcjoner
@@ -164,6 +165,7 @@ narcyz
 nazywa czynności
 nazywa wszystko
 nerd
+nie akceptuje ciasteczek
 nie czyta książek
 nie docenia siebie
 nie dotrzymuje słowa
@@ -191,6 +193,7 @@ niecierpliwy
 niedoceniany
 niedoświadczony
 nieletni
+nienawidzi reklam
 nieogarnięty
 niepoważny
 niespełniony
@@ -216,6 +219,7 @@ obgryza paznokcie
 obolały
 obrażalski
 obżartuch
+oczekuje komplementów
 oczytany
 oddycha przez usta
 odmawia pomocy sobie
@@ -252,6 +256,7 @@ płaczliwy
 pobożny
 pochlebca
 pociąga nosem
+podatny na reklamy
 podejrzliwy
 podlizywacz
 podrywacz
@@ -376,6 +381,7 @@ uzależniony
 używa przezwisk
 używa staropolszczyzny
 waleczny
+wandal
 wchodzi w zdanie
 wcześnie dojrzał
 weseleje z czasem

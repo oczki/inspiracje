@@ -85,6 +85,7 @@ mycie włosów
 mycie zębów
 nadmuchiwanie balonów
 nadmuchiwanie pontonu
+nagrywanie unboxingu
 nakładanie makijażu
 nalewanie cieczy
 naprawa mechanizmu
@@ -104,6 +105,7 @@ ogrzewanie się
 operowanie pacjenta
 organizowanie papierów
 ostrzenie
+oszukiwanie w grze
 otwieranie butelki
 otwieranie drzwi
 otwieranie koperty
@@ -159,7 +161,7 @@ przyprawianie
 przywoływanie windy
 pukanie do drzwi
 robienie selfie
-robienie shake\'a
+robienie shake'a
 robienie zdjęć
 rozbijanie namiotu
 rozgrzewanie mięśni
