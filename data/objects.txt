@@ -1,14 +1,14 @@
 abakus
+adapter
 aerożel
 agrafka
+akcelerator
 akordeon
 aksamit
 akumulator
 akwalung
-album
 alkomat
 alternator
-amulet
 amunicja
 ananas
 android
@@ -16,6 +16,8 @@ antena satelitarna
 antybiotyk
 antycząstka
 aparat fotograficzny
+arkusz kalkulacyjny
+aromat
 artefakt
 azbest
 babcina marmolada
@@ -24,11 +26,9 @@ bagietka
 bakteria
 balonowe zwierzątko
 bałwan
-bambosze
 banan
 bandaż
 bańka mydlana
-bankomat
 bardzo dużo konfetti
 barwnik spożywczy
 bateria AA
@@ -90,6 +90,7 @@ ciepły kocyk
 ciężka konewka
 ciężkie liczydło
 ciężki odkurzacz
+ciuchy po rodzeństwie
 ciupaga
 croissant
 cuchnący śpiwór
@@ -239,6 +240,7 @@ grill
 grochówka
 gruba koperta
 gruba panierka
+gruby album
 gruby portfel
 gruz
 grzebień
@@ -403,6 +405,7 @@ kserokopiarka
 książeczka dla dzieci
 książka
 kubek firmowy
+kuchenka mikrofalowa
 kufel
 kula do kręgli
 kula z lodu
@@ -444,6 +447,7 @@ lokówka
 lornetka
 łożysko kulkowe skośne
 lśniące obuwie
+lśniący amulet
 łuk refleksyjny
 lupa
 łupież
@@ -481,6 +485,7 @@ matryca
 mechanizm
 medalion
 megafon
+metalowe szczypce
 meteoryt
 metka
 metronom
@@ -660,6 +665,7 @@ pług
 płyta winylowa
 pochodnia
 pocztówka
+podejrzany bankomat
 podejrzany zapach
 podkładka pod mysz
 podkowa
@@ -976,6 +982,7 @@ wegeburger
 węgiel
 wehikuł czasu
 wełna
+wełniane bambosze
 węzeł
 wiadro paszy
 wianek
@@ -1063,8 +1070,10 @@ zmiotka i szufelka
 zmywacz do paznokci
 zmywak kuchenny
 znaczek pocztowy
+znak ostrzegawczy
 znak zakazu
 żółta kartka
+żółte kalosze
 zupka chińska
 zwycięski kupon
 żyrandol
