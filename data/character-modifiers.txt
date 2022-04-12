@@ -151,10 +151,12 @@ mówi tylko w ruchu
 mówi w trzeciej osobie
 mówi więcej niż słucha
 mruży oczy
+mściwy
 musi coś trzymać
 musi się ruszać
 myli kierunki
 myśli na głos
+na szczęście mam to!
 nadmiar elektroniki
 nadmiar perfum
 nadmiar zarostu
@@ -445,6 +447,7 @@ zna wszystkich
 zna wszystkie pokemony
 zna wszystkie żarty
 zorganizowany
+związany
 zziębnięty
 źle znosi hałas
 życie na ASAPie

@@ -103,12 +103,14 @@ czarna cegła
 czarna pęseta
 czaszka
 czekolada z orzechami
+czerwona kartka
 czerwone stringi
 czterolistna koniczyna
 czujnik dymu
 czujnik ruchu
 czytnik książek
 dachówka
+dawna zguba
 defibrylator
 deska
 deska snowboardowa
@@ -210,6 +212,7 @@ gitara
 głaz
 glejt
 glina
+głośna zabawka
 głośnik Bluetooth
 główka kapusty
 główny wyłącznik prądu
@@ -286,6 +289,7 @@ kabel wysokiego napięcia
 kadzidełko
 kafelek
 kaganiec
+kajdanki
 kakao
 kałamarz
 kalejdoskop
@@ -372,6 +376,7 @@ korba
 korek
 korektor w płynie
 korona
+korowarka kabli
 koryto
 kosa
 kosiarka
@@ -404,6 +409,7 @@ kula z lodu
 kule gradu
 kurtyna
 kurz
+kwaśne żelki
 L4
 łącznik
 ładowarka
@@ -528,6 +534,7 @@ naparstek
 narkoza
 narożnik
 narty
+nasionka bardzo instant
 nasionko
 naskórek
 nawigacja GPS
@@ -539,6 +546,8 @@ niekompletna talia kart
 nielegalne oprogramowanie
 nienadmuchany balon
 niepasująca ozdoba
+niewielka kotwica
+niewygodna zbroja
 niszczarka
 nocnik
 nośnik danych
@@ -589,7 +598,6 @@ otwieracz
 owoce morza
 pachnące pranie
 padlina
-pager
 pająk
 pałeczki
 pałka
@@ -633,6 +641,7 @@ pióro
 pisak permanentny
 pisemna odpowiedź
 pistolet
+piszczący zawias
 piwo 0.0%
 piżama w całki
 placebo
@@ -644,6 +653,7 @@ plansza do gry
 plasterek na paluszek
 plastikowy widelec
 płatek kosmetyczny
+płatki śniadaniowe
 pleśń
 plik banknotów
 pług
@@ -722,6 +732,7 @@ ptasie mleczko
 pudełko pączków
 pudło z kartonu
 pukiel włosów
+puknięty zderzak
 pułapka na szkodniki
 pumeks
 puste akwarium
@@ -760,6 +771,7 @@ rysunek techniczny
 rysunki sprzed lat
 ryza papieru A4
 rzadka ryba
+rzep
 rzutki
 rzutnik przezroczy
 sadzonki
@@ -783,6 +795,7 @@ ser pleśniowy
 serwer
 siano
 siatka na komary
+siedem zdrapek
 siekiera
 sierść
 siodełko
@@ -815,6 +828,7 @@ sól himalajska
 solniczka
 sorbet truskawkowy
 spadrochron
+spawarka
 spinka do włosów
 spirytus salicylowy
 spis rzeczy
@@ -823,6 +837,7 @@ spodnie
 spójnik na końcu linii
 spory lejek
 sprawdzona brzytwa
+sprawny pager
 sprężarka
 sprężyna
 sprzęgło
@@ -849,6 +864,7 @@ suszarka do prania
 suszarka do włosów
 suwak
 światła sygnalizacji
+świece zapłonowe
 świeczka zapachowa
 świeża mięta
 świeży śnieg
@@ -871,6 +887,7 @@ szklanka whisky
 szlafmyca
 szmatka w kratkę
 szminka
+sztabka złota
 sztanga
 sztuczna szczęka
 szydełko
@@ -885,6 +902,7 @@ tajemniczy symbol
 talizman
 tampony
 tanie wino
+tani zamiennik
 tara do prania
 taran
 tarcza
@@ -984,6 +1002,7 @@ wolant
 woltomierz
 woreczek gwoździ
 wosk
+wózek sklepowy
 wróżba z ciasteczka
 wrzątek
 wskaźnik laserowy
@@ -1003,9 +1022,13 @@ wysokie obcasy
 wysoki hamburger
 wyszczerbiony dzbanek
 wyszukiwarka
+wytrych
 zabłocony kij
+ząb mleczny
 zacięte imadło
 zacięty zszywacz
+zagrycha
+zakazany owoc
 zakładka do książki
 zakreślacz
 zakrętka
@@ -1013,11 +1036,15 @@ za krótki kabel
 zakurzona księga
 zakurzony obraz
 zamazane zdjęcie
+zamek błyskawiczny
 zanęta
+zapasy na 21 dni
 zapisany notes
 zardzewiała dźwignia
 żarówka
-zbroja
+zasilacz
+zaskórniak
+zawieszka na klamkę
 zbyt gorąca kawa
 zdjęcie rentgenowskie
 zegar atomowy
@@ -1032,8 +1059,13 @@ złoto jadalne
 złoty naszyjnik
 złoty sygnet
 złoty ząb
+zmiotka i szufelka
+zmywacz do paznokci
+zmywak kuchenny
 znaczek pocztowy
 znak zakazu
+żółta kartka
 zupka chińska
 zwycięski kupon
 żyrandol
+żyroskop
