@@ -10,7 +10,6 @@ akumulator
 akwalung
 alkomat
 alternator
-amunicja
 ananas
 android
 antena satelitarna
@@ -443,7 +442,7 @@ linijka na 49 cm
 list miłosny
 listwa przypodłogowa
 list z urzędu
-lizak
+lizak z wczoraj
 lody śmietankowe
 lokówka
 łom
@@ -454,7 +453,6 @@ lśniące obuwie
 lśniący amulet
 łuk refleksyjny
 lupa
-łupież
 lustro
 łyżka do butów
 łyżwy
@@ -513,7 +511,6 @@ mitochondrium
 mizeria
 mleczak
 mleko
-młotek
 młot pneumatyczny
 młynek do kawy
 model kolejki
@@ -562,6 +559,7 @@ niewygodna zbroja
 niszczarka
 nocnik
 nośnik danych
+nowiutki smartfon
 nożyczki
 obca waluta
 obcisłe ciuchy
@@ -603,6 +601,7 @@ orzech włoski
 oscyloskop
 osełka
 ostatni papieros
+ostra amunicja
 ostra musztarda
 oszukane kości do gry
 otwarta koperta
@@ -620,6 +619,7 @@ pancerz
 panel słoneczny
 pantofelek
 papier milimetrowy
+papierowa słomka
 papier ścierny
 papier toaletowy
 papirus
@@ -665,6 +665,7 @@ plasterek na paluszek
 plastikowy widelec
 płatek kosmetyczny
 płatki śniadaniowe
+płatny test IQ
 pleśń
 plik banknotów
 pług
@@ -802,6 +803,7 @@ ser feta
 serial na DVD
 ser pleśniowy
 serwer
+shake bananowy
 siano
 siatka na komary
 siedem zdrapek
@@ -816,17 +818,16 @@ skaner
 skarpety nie do pary
 skarpety stópki
 skórka po arbuzie
-skręt
 skrzydła
 skrzynka z narzędziami
+słaby skręt
+ślady łupieżu
 słodzik
 słoik kiszonek
 słoik od mamusi
-słomka
 słownik
 słuchawki nauszne
 smar
-smartfon
 śmietana 18%
 smoczek
 smycz
@@ -834,7 +835,6 @@ smycz
 śnieżnobiały obrus
 soda oczyszczona
 sól himalajska
-solniczka
 sorbet truskawkowy
 spadochron
 spawarka
@@ -936,7 +936,6 @@ termos 500 ml
 terrarium
 testament
 test ciążowy
-test IQ
 tkanina
 tokarka
 torebka
@@ -964,6 +963,7 @@ układ okresowy pierwiastków
 ukryta usterka
 ulotka reklamowa
 ultra-ostry nóż
+ulubiony młotek
 uniform
 uprząż
 uran zubożony
@@ -1056,6 +1056,7 @@ zardzewiała dźwignia
 żarówka
 zasilacz
 zaskórniak
+zatkana solniczka
 zawieszka na klamkę
 zbyt gorąca kawa
 zdjęcie rentgenowskie
