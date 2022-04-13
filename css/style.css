@@ -631,7 +631,7 @@ footer.visible {
 }
 
 .footer-buttons-container > button + button {
-  margin-left: var(--distance-between-buttons);
+  margin-left: calc(4px + var(--distance-between-buttons));
 }
 
 @keyframes spin-360 {
