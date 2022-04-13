@@ -1,5 +1,6 @@
 abakus
 adapter
+aerodynamiczne sandały
 aerożel
 agrafka
 akcelerator
@@ -49,13 +50,12 @@ biurko
 biustonosz
 blender
 blok techniczny
-bluza
+bluza z kapturem
 błyskawica
 błyskotki
 boazeria
 bochenek
 bogaty wybór sosów
-bokserki
 bolerko
 bomba
 bombonierka
@@ -77,11 +77,11 @@ celownik laserowy
 cement
 certyfikat
 chemikalia
-chlebak
 chleb razowy
 chochla
 chusteczka
-chwast
+ciasne bokserki
+ciasny węzeł
 ciasto z wisienką
 ciekły azot
 cień do powiek
@@ -105,6 +105,7 @@ czarna pęseta
 czaszka
 czekolada z orzechami
 czerwona kartka
+czerwona salsa
 czerwone stringi
 czterolistna koniczyna
 czujnik dymu
@@ -113,10 +114,11 @@ czytnik książek
 dachówka
 dawna zguba
 defibrylator
+designerski chlebak
 deska
 deska snowboardowa
 deskorolka
-dętka
+dętka z łatami
 detonator
 de volaille
 dewocjonalia
@@ -125,9 +127,11 @@ diamentowe wiertło
 długa lufa
 długa probówka
 długa ściąga
+długa umowa
 długi lont
 długi paragon
 długi sopel
+dłuto
 dokładnie jeden litr
 dokument z literówką
 domestos
@@ -139,7 +143,6 @@ drabina aluminiowa
 drewniana skrzynia
 drewniany totem
 drogie wino
-dron
 drukarka laserowa
 druk normy europejskiej
 drut kolczasty
@@ -150,7 +153,6 @@ dwie zapałki
 dwururka
 dyplom
 dyskietka
-dywan
 dżem brzoskwiniowy
 dziadek do orzechów
 dzida
@@ -163,15 +165,14 @@ elipsa
 encyklopedia
 Enigma
 etui
-etykieta
+etykieta z toną tekstu
 fajerwerki
-fajka
 faks
 falafel
 fałda
 farba w sprayu
 farelka
-fartuch
+fartuch z serduszkiem
 fedora
 fidget spinner
 figurka z serialu
@@ -189,7 +190,7 @@ foremka
 formularz
 fortepian
 fotelik
-frytki
+frytki belgijskie
 fura\, skóra i komóra
 furtka
 futerał
@@ -215,6 +216,7 @@ glejt
 glina
 głośna zabawka
 głośnik Bluetooth
+głośny dron
 główka kapusty
 główny wyłącznik prądu
 główny zawór
@@ -235,6 +237,7 @@ grafen
 gramofon
 granat ręczny
 gra planszowa
+grawer
 green screen
 grill
 grochówka
@@ -399,6 +402,7 @@ krawat
 krem do opalania
 krem na zmarszczki
 krew
+kruchy wafelek
 krzemień
 krzew agrestu
 kserokopiarka
@@ -418,7 +422,7 @@ L4
 ładowarka
 lakier do paznokci
 lakier do włosów
-lalka
+lalka z dzieciństwa
 lampa 100 W
 łańcuch
 lapis lazuli
@@ -492,7 +496,7 @@ metronom
 miara zwijana
 miąższ
 miech
-miernik energii orgonowegj
+miernik energii orgonowej
 mieszadło
 migający neon
 mikrofon
@@ -516,7 +520,7 @@ model kolejki
 model samolotu
 mokry ręcznik
 moneta
-monitor
+monitor cztery ka
 monocykl
 monument
 mrożonki
@@ -549,8 +553,10 @@ nić dentystyczna
 niebieska apaszka
 niekompletna talia kart
 nielegalne oprogramowanie
+niemal rozładowana różdżka
 nienadmuchany balon
 niepasująca ozdoba
+nieśmiertelny chwast
 niewielka kotwica
 niewygodna zbroja
 niszczarka
@@ -565,7 +571,7 @@ obieraczka
 obrane jabłko
 obroża
 obrzęk
-obwarzanek
+obwarzanek z makiem
 ocenzurowany dokument
 oczyszczacz powietrza
 odchody
@@ -598,13 +604,13 @@ oscyloskop
 osełka
 ostatni papieros
 ostra musztarda
+oszukane kości do gry
 otwarta koperta
 otwieracz
 owoce morza
 pachnące pranie
 padlina
-pająk
-pałeczki
+pałeczki bambusowe
 pałka
 palnik gazowy
 pamiątka z podróży
@@ -694,7 +700,7 @@ popiersie
 po prostu jabłko
 porządny korkociąg
 posążek
-pościel ze Spider-manem
+pościel ze Spider-Manem
 posortowane śmieci
 potłuczone szkło
 poziomica
@@ -743,7 +749,7 @@ pułapka na szkodniki
 pumeks
 puste akwarium
 pusty worek
-puszka
+puszka nie do otwarcia
 puzzle
 raca
 radiator
@@ -752,7 +758,7 @@ radziecka lutownica
 ręcznik w Pokemony
 reflektor
 rękawica
-reklamówka
+reklamówka z innego sklepu
 relikwia
 rewolwer
 robot kuchenny
@@ -763,7 +769,6 @@ rolka tapety
 rower
 rower stacjonarny
 róża
-różdżka
 rozgrzana patelnia
 rozgrzane żelazko
 rozkład jazdy
@@ -783,8 +788,6 @@ rzutnik przezroczy
 sadzonki
 sałatka grecka
 salmonella
-salsa
-sandały
 sanki
 saperka
 saszetka ryżu
@@ -833,7 +836,7 @@ soda oczyszczona
 sól himalajska
 solniczka
 sorbet truskawkowy
-spadrochron
+spadochron
 spawarka
 spinka do włosów
 spirytus salicylowy
@@ -848,6 +851,7 @@ sprężarka
 sprężyna
 sprzęgło
 srebrne sztućce
+stara fajka
 stara gazeta
 stara konserwa
 stary komiks
@@ -883,6 +887,7 @@ szalik
 szampon 5 w 1
 szaszłyk
 szczoteczka do zębów
+szczotka do WC
 sześciopak
 sześć kostek cukru
 sześć procent baterii
@@ -896,6 +901,7 @@ szminka
 sztabka złota
 sztanga
 sztuczna szczęka
+sztuczny pająk
 szydełko
 szyszka
 tabaka
@@ -914,7 +920,7 @@ taran
 tarcza
 tarka do sera
 tasak
-tatuaż
+tatuaż z imieniem
 telefon z 2005 roku
 telegraf
 teleobiektyw
@@ -955,19 +961,17 @@ UFO
 ujemna lambda
 układanka
 układ okresowy pierwiastków
+ukryta usterka
 ulotka reklamowa
 ultra-ostry nóż
-umowa
 uniform
 uprząż
 uran zubożony
 urna wyborcza
-usterka
 uszanka
 uszczelka
 Viagra
 wachlarz
-wafelek
 wahadło
 wałek do ciasta
 wałek do malowania
@@ -983,7 +987,6 @@ węgiel
 wehikuł czasu
 wełna
 wełniane bambosze
-węzeł
 wiadro paszy
 wianek
 wiatraczek
@@ -1032,6 +1035,7 @@ wyszukiwarka
 wytrych
 zabłocony kij
 ząb mleczny
+zacięta walizka
 zacięte imadło
 zacięty zszywacz
 zagrycha
@@ -1041,6 +1045,7 @@ zakreślacz
 zakrętka
 za krótki kabel
 zakurzona księga
+zakurzony dywan
 zakurzony obraz
 zamazane zdjęcie
 zamek błyskawiczny
@@ -1075,6 +1080,7 @@ znak zakazu
 żółta kartka
 żółte kalosze
 zupka chińska
+zwierciadło
 zwycięski kupon
 żyrandol
 żyroskop
