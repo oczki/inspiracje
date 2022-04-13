@@ -211,6 +211,33 @@ let containerColors = [
       },
     },
   },
+  {
+    hue: 240,
+    lightMode: {
+      saturation: {
+        card: 61,
+        header: 88,
+        word: 60,
+      },
+      lightness: {
+        card: 93,
+        header: 36,
+        word: 38,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 28,
+        header: 37,
+        word: 75,
+      },
+      lightness: {
+        card: 12,
+        header: 54,
+        word: 77,
+      },
+    },
+  },
 ]
 
 let containers = [
@@ -249,6 +276,11 @@ let containers = [
   {
     type: "object",
     label: "Przedmiot",
+    isVisible: true,
+  },
+  {
+    type: "time",
+    label: "Czas",
     isVisible: true,
   },
 ];
