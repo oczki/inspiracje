@@ -141,6 +141,10 @@ body:not(.compact) .word-section {
   --card-margin-top: 32px;
 }
 
+body:not(.compact) #categories-placeholder {
+  padding-top: 20px;
+}
+
 /* #endregion Body variant: compact - no */
 
 /* #region Body variant: compact - yes */
