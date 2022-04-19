@@ -238,6 +238,33 @@ let containerColors = [
       },
     },
   },
+  {
+    hue: 210,
+    lightMode: {
+      saturation: {
+        card: 61,
+        header: 88,
+        word: 60,
+      },
+      lightness: {
+        card: 93,
+        header: 36,
+        word: 38,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 28,
+        header: 37,
+        word: 75,
+      },
+      lightness: {
+        card: 12,
+        header: 54,
+        word: 77,
+      },
+    },
+  },
 ]
 
 let containers = [
@@ -281,6 +308,11 @@ let containers = [
   {
     type: "time",
     label: "Czas",
+    isVisible: true,
+  },
+  {
+    type: "genre",
+    label: "Gatunek",
     isVisible: true,
   },
 ];
@@ -1107,10 +1139,23 @@ let Creator = new function() {
     parentElement.appendChild(this.createElementWithClass('div', 'rippleJS'));
   }
 
+  // TODO: refactor
   this.createSlide = (text) => {
     const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
     const textWithNonBreakingSpace = capitalizedText.replace(/ (i|z|w|od|za|oraz) /gi, ' $1&nbsp;');
-    return `<div class="swiper-slide">${textWithNonBreakingSpace}</div>`;
+    const slideWithSubtitleRegex = /^(.+) _\((.+)\)$/; // e.g. 'Hello _(World)' ---> 'Hello', 'World'
+    const matches = textWithNonBreakingSpace?.match(slideWithSubtitleRegex);
+
+    let content = '';
+    if (matches?.length > 2) { // Slide uses the subtitle format
+      for (let i = 1; i < matches.length; i++) {
+        content += `<p>${matches[i]}</p>`;
+      }
+    } else { // Slide uses plain text
+      content = textWithNonBreakingSpace;
+    }
+
+    return `<div class="swiper-slide">${content}</div>`;
   }
 
   this.createSlides = (texts = []) => {
