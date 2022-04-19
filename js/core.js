@@ -304,16 +304,22 @@ let containers = [
     type: "object",
     label: "Przedmiot",
     isVisible: true,
+    prevButtonPrefix: "Poprzedni",
+    nextButtonPrefix: "Następny",
   },
   {
     type: "time",
     label: "Czas",
     isVisible: true,
+    prevButtonPrefix: "Poprzedni",
+    nextButtonPrefix: "Następny",
   },
   {
     type: "genre",
     label: "Gatunek",
     isVisible: true,
+    prevButtonPrefix: "Poprzedni",
+    nextButtonPrefix: "Następny",
   },
 ];
 
