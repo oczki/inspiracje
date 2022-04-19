@@ -1466,7 +1466,7 @@ let SheetCreator = new function() {
     sheetContent.appendChild(Creator.createParagraph('Zbiór pomysłów do scen teatru impro&shy;wizo&shy;wanego.', 'sliding-sheet-text'));
     sheetContent.appendChild(Creator.createParagraph('Na&nbsp;występach źródłem inspiracji jest publicz&shy;ność, ' +
       'lecz&nbsp;jej pomoc nie&nbsp;jest dostępna podczas prób i&nbsp;ćwiczeń. Magazyn Inspiracji wypełnia tę&nbsp;lukę ' +
-      'ponad dwoma tysiącami pomysłów, podzielonych na&nbsp;wygodne kategorie.', 'sliding-sheet-text'
+      'ponad trzema tysiącami pomysłów, podzielonych na&nbsp;wygodne kategorie.', 'sliding-sheet-text'
     ));
 
     sheetContent.appendChild(Creator.createSeparator());
