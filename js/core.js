@@ -458,6 +458,13 @@ let Util = new function() {
     }
     return obj;
   };
+
+  this.areGlobalAndLocalMinorVersionsMatching = (localVersion) => {
+    const majorAndMinorRegex = /^(\d+\.\d+).*$/;
+    const globalVersionMajorAndMinor = version?.match(majorAndMinorRegex)[1] || 'global invalid';
+    const localVersionMajorAndMinor = localVersion?.match(majorAndMinorRegex)[1] || 'local invalid';
+    return globalVersionMajorAndMinor === localVersionMajorAndMinor;
+  }
 }
 
 let Store = new function() {
@@ -685,7 +692,7 @@ let Categories = new function() {
 
   this.initialize = () => {
     const localVersion = JSON.parse(Store.get(this.versionKeyName)) || 0.0;
-    if (localVersion === version) {
+    if (Util.areGlobalAndLocalMinorVersionsMatching(localVersion)) {
       this.categoriesData = JSON.parse(Store.get(this.categoriesKeyName)) || this.getOriginalData();
     } else {
       this.categoriesData = this.getOriginalData();
