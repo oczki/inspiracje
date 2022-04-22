@@ -1727,7 +1727,7 @@ let Settings = new function() {
     }
 
     this.setAnimationsDisabledBodyClass = (state) => {
-      document.body.classList.toggle('no-animations', state);
+      document.body.classList.toggle('reduced-animations', state);
     }
 
     this.setAnimationsDisabledState = (state) => {
@@ -1737,14 +1737,14 @@ let Settings = new function() {
         swiperAnimationDuration = 0;
         sheetClosingAnimationDuration = 0;
         delayBetweenLoadedWordsDuration = 0;
-        fabTransitionDuration = 0;
-        spinnerOverlayFadeDuration = 0;
+        // fabTransitionDuration = 0;
+        // spinnerOverlayFadeDuration = 0;
       } else {
         swiperAnimationDuration = defaulSwiperAnimationDuration;
         sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
         delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
-        fabTransitionDuration = defaultFabTransitionDuration;
-        spinnerOverlayFadeDuration = defaultSpinnerOverlayFadeDuration;
+        // fabTransitionDuration = defaultFabTransitionDuration;
+        // spinnerOverlayFadeDuration = defaultSpinnerOverlayFadeDuration;
       }
     }
 
