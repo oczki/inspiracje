@@ -3,13 +3,12 @@ Alba _(Pieśń rozstania)
 Bajka
 Ballada
 Baśń
-Chick lit
+Chick lit _(Kariera i rodzina kobiety po 30tce)
 Cyberpunk
 Dystopia _(Czarna wizja przyszłości)
 Dreszczowiec
 Duma _(Refleksja o bohaterze, historyczna)
 Dytyramb _(Pieśń pochwalna, patetyczna)
-Dziennik intymny
 Dziennik podróży
 Dziwny Zachód
 Elegia _(Refleksja nt. śmierci, miłości)
@@ -27,3 +26,23 @@ Ibisigo _(O dziejach państwa i rodu panującego)
 Jeremiady _(Skargi, biadania, lamenty)
 Karykatura _(Podkreślenie negatywnych cech)
 Klechda _(O miejscowych wierzeniach i tradycjach)
+Lad lit _(Niepokoje, dojrzewanie faceta po 30tce)
+Legenda
+List poetycki
+Makabreska _(Groza, groteska, czarny humor)
+Melodramat
+Mitologia
+Moralitet _(Bohater wybiera między Dobrem a Złem)
+New adult _(Tematyka studiów, podejmowanie pracy, seks)
+Nowela _(Konkretne miejsce i czas, narrator)
+Oda _(Sławi ideę, wydarzenie, czas)
+Pamflet _(Ośmiesza, demaskuje, poniża osobę, instytucję)
+Pamiętnik
+Panegiryk _(Przesadny zachwyt nad osobą, wydarzeniem)
+Parodia
+Pastisz (stylistyka)
+Pastourelle _(Karykatura życia wiejskiego)
+Pateryk _(O życiu ascetycznych mnichów)
+Planctus _(Żal po bliskiej, zmarłej osobie)
+Prosodion _(Pieśń dziękczynna do bogów)
+Przypowieść
