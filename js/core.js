@@ -460,6 +460,7 @@ let Util = new function() {
   };
 
   this.areGlobalAndLocalMinorVersionsMatching = (localVersion) => {
+    if (!localVersion) return false;
     const majorAndMinorRegex = /^(\d+\.\d+).*$/;
     const globalVersionMajorAndMinor = version?.match(majorAndMinorRegex)[1] || 'global invalid';
     const localVersionMajorAndMinor = localVersion?.match(majorAndMinorRegex)[1] || 'local invalid';
