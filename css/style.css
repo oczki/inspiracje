@@ -345,7 +345,7 @@ button#category-open-panel {
   display: none !important;
 }
 
-main section:last-child {
+main section.last-visible {
   margin-bottom: 108px;
 }
 

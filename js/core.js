@@ -717,6 +717,7 @@ let Categories = new function() {
     this.saveData();
     Settings.updateColors();
     Settings.CategoriesManagementList.showHintForHiddenCategories();
+    Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
   }
 
   this.getOriginalData = () => {
@@ -786,6 +787,7 @@ let Categories = new function() {
       this.saveData();
     }
     Settings.CategoriesManagementList.showHintForHiddenCategories();
+    Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
     Settings.updateColors();
   }
 
@@ -1967,6 +1969,7 @@ let Settings = new function() {
       // Swap the main containers with swipers.
       Categories.swap(firstIndex, secondIndex);
       Settings.updateColors();
+      Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
 
       // Swap the elements on this list.
       this.animateSwap(firstElement, secondElement, parentElement, firstElementIsOnTop);
@@ -2100,6 +2103,25 @@ let Settings = new function() {
     this.showHintForHiddenCategories = () => {
       this.showDotIfNeeded();
       this.showPlaceholderIfNeeded();
+    }
+
+    this.adjustMarginUnderLastCategory = () => {
+      const setLargeMargin = (categoryData, useLargeMargin) => {
+        const sectionElement = document.getElementById(Selector.sectionId(categoryData.type));
+        sectionElement.classList.toggle('last-visible', useLargeMargin);
+      };
+
+      const categoriesData = Categories.getData();
+      for (let categoryData of categoriesData) {
+        setLargeMargin(categoryData, false);
+      }
+      for (let index = categoriesData.length - 1; index >= 0; index--) {
+        const categoryData = categoriesData[index];
+        if (categoryData.isVisible) {
+          setLargeMargin(categoryData, true);
+          return;
+        }
+      }
     }
   };
 
@@ -2302,6 +2324,7 @@ function init() {
   Settings.updateFontScaleElements();
   Settings.updateMoveUpDownButtonsStates();
   Settings.CategoriesManagementList.showHintForHiddenCategories();
+  Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
   GlobalEventHandler.attachClickEventsToCategoriesPlaceholderButtons();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
