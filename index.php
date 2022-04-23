@@ -130,7 +130,7 @@ function addJs($name) {
           setTimeout(() => skeleton.classList.add('visible'), 250);
         }
       }
-      createSkeletons(6, 3);
+      createSkeletons(7, 3);
     </script>
     <?php addJs('swiper-bundle.min'); ?>
     <?php addJs('core'); ?>
