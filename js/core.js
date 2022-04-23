@@ -1325,6 +1325,7 @@ let SpecializedCreator = new function() {
     const promptCardId = 'prompt-settings';
     Store.set(keyName, 'true');
     document.getElementById(promptCardId)?.remove();
+    Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
   }
 
   this.createSettingsPromptCard = () => {
@@ -1334,7 +1335,7 @@ let SpecializedCreator = new function() {
     const cardElement = Creator.createElementWithClass('div', 'prompt-card');
 
     const textWrapper = Creator.createElementWithClass('div', 'prompt-text-wrapper');
-    const textElement = Creator.createSpan('Dostosuj wygląd, animacje i&nbsp;rozmiar tekstu.');
+    const textElement = Creator.createSpan('Dostosuj wygląd aplikacji i&nbsp;kategorie pomysłów.');
     textWrapper.appendChild(textElement);
     
     const closePromptCallback = () => {
@@ -2111,17 +2112,29 @@ let Settings = new function() {
         const sectionElement = document.getElementById(Selector.sectionId(categoryData.type));
         sectionElement.classList.toggle('last-visible', useLargeMargin);
       };
+      const isSettingsPromptVisible = () => {
+        const promptCardId = 'prompt-settings';
+        return !!document.getElementById(promptCardId);
+      };
+      const resetAllMargins = (categoriesData) => {
+        for (let categoryData of categoriesData) {
+          setLargeMargin(categoryData, false);
+        }
+      };
+      const setMarginUnderLastCategory = (categoriesData) => {
+        for (let index = categoriesData.length - 1; index >= 0; index--) {
+          const categoryData = categoriesData[index];
+          if (categoryData.isVisible) {
+            setLargeMargin(categoryData, true);
+            return;
+          }
+        }
+      };
 
       const categoriesData = Categories.getData();
-      for (let categoryData of categoriesData) {
-        setLargeMargin(categoryData, false);
-      }
-      for (let index = categoriesData.length - 1; index >= 0; index--) {
-        const categoryData = categoriesData[index];
-        if (categoryData.isVisible) {
-          setLargeMargin(categoryData, true);
-          return;
-        }
+      resetAllMargins(categoriesData);
+      if (!isSettingsPromptVisible()) {
+        setMarginUnderLastCategory(categoriesData);
       }
     }
   };
@@ -2325,10 +2338,10 @@ function init() {
   Settings.updateFontScaleElements();
   Settings.updateMoveUpDownButtonsStates();
   Settings.CategoriesManagementList.showHintForHiddenCategories();
-  Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
   GlobalEventHandler.attachClickEventsToCategoriesPlaceholderButtons();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
+  Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
 }
 
 if (document.readyState != 'loading')

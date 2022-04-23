@@ -516,6 +516,7 @@ main section.last-visible {
   position: relative;
   width: min(100%, 640px);
   margin-top: auto;
+  margin-bottom: 108px;
   display: flex;
   flex-direction: column;
   opacity: 0;
