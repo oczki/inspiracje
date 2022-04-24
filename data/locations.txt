@@ -63,6 +63,7 @@ gondola
 gospoda
 góra
 hangar
+hol hotelowy
 hotel
 ikea
 impreza firmowa
@@ -135,6 +136,7 @@ myjnia
 na powierzchni skóry
 nadprzestrzeń
 namiot
+NASA
 niebo
 niestabilna powierzchnia
 nora
@@ -248,6 +250,8 @@ scena
 schody ruchome
 schron
 schronisko
+sejm
+senat
 sesja zdjęciowa
 sex shop
 side'y sceny impro
@@ -274,7 +278,8 @@ stocznia
 stodoła
 stołówka
 strych
-studio
+studio nagrań
+studio TV
 supermarket
 suszarnia
 sypialnia

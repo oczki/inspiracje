@@ -79,9 +79,11 @@ empatyczny
 energiczny
 fanatyk
 farciarz
+FOMO _(Boi się, że coś go ominie)
 gaduła
 gbur
 geniusz
+gesty zamiast słów _(Niezapowiedziane kalambury)
 gestykuluje
 gibki
 głęboko oddycha
@@ -272,13 +274,15 @@ poprawia fryzurę
 poprawia innych
 porównuje do siebie
 poważny
-powtarza po rozmówcy
+powtarza ruchy rozmówcy _(Od razu lub po 5 s)
+powtarza słowa rozmówcy
 powtarza swoje słówko
 pracoholik
 prawiczek
 prehistoryczny
 prekursor fachu
 prokrastynacja
+próbuje kogoś ukryć
 próżny
 przebiegły
 przecenia swoje umiejętności
@@ -419,7 +423,7 @@ wyrozumiały
 wysoka samoocena
 wysoki głos
 wytyka błędy
-yolo
+YOLO _(Ignoruje konsekwencje; jedziemy!)
 z przyszłości
 za moich czasów...
 zachowuje symetrię
@@ -427,6 +431,7 @@ zaciśnięte dłonie
 zadbany
 zajmuje dużo miejsca
 zakochany
+zakupoholik
 zamyślony
 zapisuje wszystko
 zapominalski
@@ -447,7 +452,7 @@ zmyśla plotki
 zna przyszłość
 zna swoje prawa
 zna wszystkich
-zna wszystkie pokemony
+zna wszystkie Pokémony
 zna wszystkie żarty
 zorganizowany
 związany

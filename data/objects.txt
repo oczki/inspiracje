@@ -21,6 +21,7 @@ aromat
 artefakt
 azbest
 babcina marmolada
+badziew z telezakupów
 bagaż
 bagietka
 bakteria
@@ -756,7 +757,7 @@ raca
 radiator
 radioodbiornik
 radziecka lutownica
-ręcznik w Pokemony
+ręcznik w Pokémony
 reflektor
 rękawica
 reklamówka z innego sklepu

@@ -5,27 +5,30 @@ Ballada
 Baśń
 Chick lit _(Kariera i rodzina kobiety po 30tce)
 Cyberpunk
-Dystopia _(Czarna wizja przyszłości)
 Dreszczowiec
-Duma _(Refleksja o bohaterze, historyczna)
+Duma _(Refleksja o bohaterze; historyczna)
+Dystopia _(Czarna wizja przyszłości)
 Dytyramb _(Pieśń pochwalna, patetyczna)
 Dziennik podróży
 Dziwny Zachód
 Elegia _(Refleksja nt. śmierci, miłości)
 Epitalamium _(Pieśń na cześć nowożeńców)
 Erotyk _(Miłość zmysłowa, pasja)
+Fantastyka postapokaliptyczna
+Fantasy _(Magia i inne motywy nadprzyrodzone)
 Fikcja polityczna
 Fraszka
 Geheimbundroman _(Powieść przygodowa, grozy, o duchach)
 Haiku _(5-7-5 sylab)
 Hodoeporikon _(Opis podróży)
+Horror lovecraftowski _(Psychologiczny; suspens, nie szok)
 Horror _(Zjawiska nadprzyrodzone, groza, szok)
-Horror lovecraftowski _(Psychologiczny, suspens, nie szok)
 Hymn _(Pieśń pochwalna nt. bóstwa, ojczyzny, idei)
 Ibisigo _(O dziejach państwa i rodu panującego)
 Jeremiady _(Skargi, biadania, lamenty)
 Karykatura _(Podkreślenie negatywnych cech)
 Klechda _(O miejscowych wierzeniach i tradycjach)
+Komedia
 Lad lit _(Niepokoje, dojrzewanie faceta po 30tce)
 Legenda
 List poetycki
@@ -36,6 +39,7 @@ Moralitet _(Bohater wybiera między Dobrem a Złem)
 New adult _(Tematyka studiów, podejmowanie pracy, seks)
 Nowela _(Konkretne miejsce i czas, narrator)
 Oda _(Sławi ideę, wydarzenie, czas)
+Opera kosmiczna _(Konflikt międzyplanetarny)
 Pamflet _(Ośmiesza, demaskuje, poniża osobę, instytucję)
 Pamiętnik
 Panegiryk _(Przesadny zachwyt nad osobą, wydarzeniem)
@@ -43,6 +47,21 @@ Parodia
 Pastisz (stylistyka)
 Pastourelle _(Karykatura życia wiejskiego)
 Pateryk _(O życiu ascetycznych mnichów)
-Planctus _(Żal po bliskiej, zmarłej osobie)
 Prosodion _(Pieśń dziękczynna do bogów)
 Przypowieść
+Robinsonada _(Podróż samotnego człowieka; trudne warunki)
+Romans dworski _(Przygody rycerzy cierpiących dla wybranki)
+Romans _(Intrygi, zbiegi okoliczności, miłość)
+Science fiction _(Wpływ nauki i techniki na życie)
+Serenada _(Pieśń miłosna, wieczorna)
+Sielanka _(Wyidealizowane uroki życia wiejskiego)
+Survival horror _(Zagrożenie życia bohatera; groza)
+Tautogram _(Wersy zaczynają się od tej samej litery)
+Technothriller _(Sci-Fi, szpiedzy wojskowi)
+Testament poetycki _(Ostatnia wola, pożegnanie, rachunek sumienia)
+Thriller medyczny _(Biotechnologia, genetyka)
+Tragedia
+Transhumanizm _(Nauka i technika ulepszająca człowieka)
+Tren _(Żal po bliskiej, zmarłej osobie)
+Western
+Young adult _(Pierwsza miłość, dorastanie, szukanie samego siebie)

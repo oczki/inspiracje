@@ -1,4 +1,4 @@
-5 zł i 100 zł
+5 zł i 100 zł _(Różnica statusów)
 aktor z reżyserem
 artysta i dzieło
 astronauta i kosmita
@@ -29,7 +29,7 @@ dwójka złoczyńców
 dziecko z lalką
 ex aequo pierwsze miejsce
 FBI i zwykły człowiek
-kaskader aktora
+kaskader z aktorem
 kelner i klient
 kierowca i pasażer
 klient prostytutki
@@ -50,6 +50,7 @@ nauczyciel i rodzic
 nauczyciel i uczeń
 naukowiec i mysz
 nieznajomy sobowtór
+nowożeńcy
 nowy partner oraz eks
 obserwator i obserwowany
 ósme spotkanie dzisiaj
@@ -65,7 +66,7 @@ położna i dziecko
 poprzednie wcielenie
 prawnik i klient
 profesor i świeżak
-przed i po
+przed i po _(Różnica doświadczenia)
 przybrana rodzina
 przyjaciele z dzieciństwa
 przyszli współlokatorzy
@@ -76,6 +77,7 @@ robot z twórcą
 rodzeństwo
 rodzic i dziecko
 rodzina zastępcza
+romans współpracowników
 rozwodnicy
 różnica wieku
 ryba i robak na haku
@@ -89,10 +91,11 @@ spotkanie biznesowe
 sprzedawca i kupujący
 stare małżeństwo
 strażnik i więzień
+szef z podwładnym
+szef ze swoim szefem
 szeryf z kowbojem
 szewc z klientem
 światło i cień
-świeżo po ślubie
 teść i zięć
 tinderowa randka
 to samo imię i nazwisko
