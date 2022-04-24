@@ -800,7 +800,8 @@ let Categories = new function() {
   this.resetVisibilities = () => {
     for (const category of this.getData()) {
       const type = category.type;
-      this.setVisibilityByType(type, this.getOriginalData().slice().find(c => c.type === type)?.isVisible);
+      this.setVisibilityByType(type, true); // Force all categories to be visible upon reset
+      // this.setVisibilityByType(type, this.getOriginalData().slice().find(c => c.type === type)?.isVisible); // Uncomment to use default visibilites instead
     }
   }
 }
