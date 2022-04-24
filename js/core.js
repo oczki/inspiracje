@@ -1476,21 +1476,21 @@ let SheetCreator = new function() {
 
     sheetContent.appendChild(Creator.createSlidingSheetHeader('Magazyn Inspiracji', rightSideContent));
 
-    sheetContent.appendChild(Creator.createParagraph('Zbiór pomysłów do scen teatru impro&shy;wizo&shy;wanego.', 'sliding-sheet-text'));
-    sheetContent.appendChild(Creator.createParagraph('Na&nbsp;występach źródłem inspiracji jest publicz&shy;ność, ' +
-      'lecz&nbsp;jej pomoc nie&nbsp;jest dostępna podczas prób i&nbsp;ćwiczeń. Magazyn Inspiracji wypełnia tę&nbsp;lukę ' +
-      'ponad trzema tysiącami pomysłów, podzielonych na&nbsp;wygodne kategorie.', 'sliding-sheet-text'
+    sheetContent.appendChild(Creator.createParagraph('<b>Zbiór pomysłów do scen teatru impro&shy;wizo&shy;wanego.</b>', 'sliding-sheet-text'));
+    sheetContent.appendChild(Creator.createParagraph('Na&nbsp;występach źródłem inspi&shy;racji jest publicz&shy;ność, ' +
+      'lecz&nbsp;jej pomoc nie&nbsp;jest dostępna podczas prób i&nbsp;ćwiczeń. Magazyn Inspi&shy;racji wypełnia tę&nbsp;lukę ' +
+      '<b>ponad trzema tysią&shy;cami pomy&shy;słów</b>, podzie&shy;lo&shy;nych na&nbsp;wygodne kategorie.', 'sliding-sheet-text'
     ));
 
     sheetContent.appendChild(Creator.createSeparator());
 
-    sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w&nbsp;rozwoju aplikacji lub&nbsp;zgłosić błąd?', 'sliding-sheet-text'));
+    sheetContent.appendChild(Creator.createParagraph('Kontakt:', 'sliding-sheet-text'));
     sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na&nbsp;GitHub', 'https://github.com/oczki/inspiracje', iconGithub, 'accented'));
     sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail, 'accented'));
 
     sheetContent.appendChild(Creator.createSeparator());
 
-    const currentYear = Math.max(2021, new Date().getFullYear());
+    const currentYear = Math.max(2022, new Date().getFullYear());
     sheetContent.appendChild(Creator.createLinkWithIcon(
       `&copy; 2018–${currentYear} <u>Damian&nbsp;Oczki</u>`,
       'https://oczki.pl', iconExternalLink, 'accented'));

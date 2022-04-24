@@ -31,6 +31,7 @@
   --icon-size: 24px;
   --icon-padding: 12px;
   --distance-between-buttons: 8px;
+  --distance-icon-to-label: 32px;
   --footer-height: 56px;
   --narrow-screen-padding-compensation: 0px;
   --sliding-sheet-border-radius: 12px;
@@ -965,6 +966,10 @@ footer .circular-button .icon::before {
   hyphens: auto;
 }
 
+.sliding-sheet-text b {
+  font-weight: 500;
+}
+
 .checkbox-label {
   position: relative;
   width: 100%;
@@ -976,12 +981,17 @@ footer .circular-button .icon::before {
   cursor: pointer;
   color: var(--color-text);
   border-radius: var(--sliding-sheet-item-border-radius);
+  overflow: hidden;
 }
 
 .checkbox-label .label-text {
-  margin-left: 32px;
+  margin-left: var(--distance-icon-to-label);
   display: flex;
   flex-direction: column;
+}
+
+.checkbox-label .label-text-primary {
+  white-space: nowrap;
 }
 
 .checkbox-label .label-text-secondary {
@@ -1021,7 +1031,7 @@ footer .circular-button .icon::before {
 }
 
 #scale-control-container > span:first-of-type {
-  margin: 0 20px 0 32px;
+  margin: 0 20px 0 var(--distance-icon-to-label);
 }
 
 #scale-control-value {
@@ -1049,7 +1059,7 @@ footer .circular-button .icon::before {
 }
 
 .link-with-icon span {
-  margin-left: 32px;
+  margin-left: var(--distance-icon-to-label);
   line-height: 1.5;
 }
 
@@ -1273,6 +1283,8 @@ button:disabled::after,
 @media (max-width: 300px) {
   :root {
     --distance-between-buttons: 0px;
+    --distance-icon-to-label: 16px;
+    --icon-padding: 8px;
   }
 }
 
