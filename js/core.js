@@ -1485,15 +1485,15 @@ let SheetCreator = new function() {
     sheetContent.appendChild(Creator.createSeparator());
 
     sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w&nbsp;rozwoju aplikacji lub&nbsp;zgłosić błąd?', 'sliding-sheet-text'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na&nbsp;GitHub', 'https://github.com/oczki/inspiracje', iconGithub));
-    sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail));
+    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na&nbsp;GitHub', 'https://github.com/oczki/inspiracje', iconGithub, 'accented'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail, 'accented'));
 
     sheetContent.appendChild(Creator.createSeparator());
 
     const currentYear = Math.max(2021, new Date().getFullYear());
     sheetContent.appendChild(Creator.createLinkWithIcon(
       `&copy; 2018–${currentYear} <u>Damian&nbsp;Oczki</u>`,
-      'https://oczki.pl', iconExternalLink));
+      'https://oczki.pl', iconExternalLink, 'accented'));
 
     return sheet;
   }

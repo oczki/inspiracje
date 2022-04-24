@@ -1044,6 +1044,10 @@ footer .circular-button .icon::before {
   color: var(--color-icon);
 }
 
+.link-with-icon.accented {
+  --color-icon: var(--color-accent);
+}
+
 .link-with-icon span {
   margin-left: 32px;
   line-height: 1.5;
