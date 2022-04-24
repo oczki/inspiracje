@@ -318,6 +318,25 @@ button#category-restore-defaults {
   background-color: var(--color-accent);
 }
 
+#category-management .sliding-sheet-header-first-line {
+  position: relative;
+}
+
+#category-management .sliding-sheet-header-first-line::before {
+  content: attr(data-categories-count);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: calc(var(--icon-size) + 2 * var(--icon-padding) + var(--narrow-screen-padding-compensation) + var(--distance-between-buttons) + var(--card-padding));
+  width: calc(var(--icon-size) + 2 * var(--icon-padding));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transform: scale(0.75);
+  color: var(--color-secondary-text);
+}
+
 button#category-open-panel {
   color: var(--color-text-black-high);
   background-color: var(--color-destructive);

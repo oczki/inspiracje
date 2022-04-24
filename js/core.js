@@ -789,6 +789,7 @@ let Categories = new function() {
     }
     Settings.CategoriesManagementList.showHintForHiddenCategories();
     Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
+    Settings.CategoriesManagementList.updateCounter();
     Settings.updateColors();
   }
 
@@ -2137,6 +2138,21 @@ let Settings = new function() {
         setMarginUnderLastCategory(categoriesData);
       }
     }
+
+    this.updateCounter = () => {
+      const counterParent = document.querySelector('#category-management .sliding-sheet-header-first-line');
+      if (!counterParent) return;
+
+      let counterAll = 0;
+      let counterVisible = 0;
+      for (let categoryData of Categories.getData()) {
+        counterAll++;
+        counterVisible += categoryData.isVisible;
+      }
+
+      const newCounterText = `${counterVisible} z ${counterAll}`;
+      counterParent.setAttribute('data-categories-count', newCounterText);
+    }
   };
 
   this.updateFontScaleElements = () => {
@@ -2342,6 +2358,7 @@ function init() {
   GlobalEventHandler.attachClickEventsToCategoriesPlaceholderButtons();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
   Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
+  Settings.CategoriesManagementList.updateCounter();
 }
 
 if (document.readyState != 'loading')
