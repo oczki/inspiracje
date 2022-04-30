@@ -1167,11 +1167,10 @@ let Creator = new function() {
 
   this.addNonBreakingSpaces = (text) => {
     try {
-      const patternWithLookbehind = new RegExp('(?<![\\wąćęłńóśźż])(a|i|o|u|w|z|\\d+)\\s(?!_)', 'gi'); // Digits or a conjunction that's not part of previous word (e.g. "o" matches, but "hello" doesn't)
-      return text.replace(patternWithLookbehind, '$1&nbsp;');
+      // Add nbsp after a conjunction or digits, but not before _(subtitle)
+      return text.replace(/\b(a|i|o|u|w|z|\d+)\s(?!_)/gi, '$1&nbsp;');
     } catch (e) {
-      const patternDumbedDown = /([^\wąćęłńóśźż])(a|i|o|u|w|z)\s(?!_)/gi; // It's 2022 and Safari still doesn't support lookbehinds...
-      return text.replace(patternDumbedDown, '$1$2&nbsp;');
+      return text;
     }
   }
 
