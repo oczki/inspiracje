@@ -3,7 +3,7 @@ Alba _(Pieśń rozstania)
 Bajka
 Ballada
 Baśń
-Chick lit _(Kariera i rodzina kobiety po 30tce)
+Chick lit _(Kariera i rodzina kobiety po 30-tce)
 Cyberpunk
 Dreszczowiec
 Duma _(Refleksja o bohaterze; historyczna)
@@ -14,7 +14,7 @@ Dziwny Zachód
 Elegia _(Refleksja nt. śmierci, miłości)
 Epitalamium _(Pieśń na cześć nowożeńców)
 Erotyk _(Miłość zmysłowa, pasja)
-Fantastyka postapokaliptyczna
+Fantastyka postapokaliptyczna _(Kataklizm; także inwazja obcych, zombie)
 Fantasy _(Magia i inne motywy nadprzyrodzone)
 Fikcja polityczna
 Fraszka
@@ -28,7 +28,7 @@ Jeremiady _(Skargi, biadania, lamenty)
 Karykatura _(Podkreślenie negatywnych cech)
 Klechda _(O miejscowych wierzeniach i tradycjach)
 Komedia
-Lad lit _(Niepokoje, dojrzewanie faceta po 30tce)
+Lad lit _(Niepokoje, dojrzewanie faceta po 30-tce)
 Legenda
 List poetycki
 Makabreska _(Groza, groteska, czarny humor)
@@ -93,3 +93,7 @@ Mystery _(Nierozwiązana zagadka, zniknięcie osób, kradzież)
 Film płaszcza i szpady _(Awanturnicze przygody bogate w pojedynki)
 Film przyrodniczy _(Zwierzęta i rośliny w naturalnym środowisku)
 Slapstick _(Przerysowane postaci, groteska, przemoc)
+Film akcji _(Pościgi, wybuchy, pojedynki)
+Film sportowy
+Film szpiegowski _(Agenci rządowi, działanie w ukryciu)
+
