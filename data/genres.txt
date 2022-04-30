@@ -96,4 +96,5 @@ Slapstick _(Przerysowane postaci, groteska, przemoc)
 Film akcji _(Pościgi, wybuchy, pojedynki)
 Film sportowy
 Film szpiegowski _(Agenci rządowi, działanie w ukryciu)
-
+Film przygodowy _(Podróż, brawura, pokonywanie przeszkód, natura)
+Sitcom _(Jedno pomieszczenie, liczne gagi)
