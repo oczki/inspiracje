@@ -175,7 +175,7 @@ let containerColors = [
       saturation: {
         card: 28,
         header: 37,
-        word: 75,
+        word: 72,
       },
       lightness: {
         card: 12,
@@ -195,7 +195,7 @@ let containerColors = [
       lightness: {
         card: 93,
         header: 48,
-        word: 41,
+        word: 47,
       },
     },
     darkMode: {
@@ -217,24 +217,24 @@ let containerColors = [
       saturation: {
         card: 58,
         header: 70,
-        word: 50,
+        word: 46,
       },
       lightness: {
         card: 94,
         header: 57,
-        word: 47,
+        word: 52,
       },
     },
     darkMode: {
       saturation: {
         card: 23,
         header: 39,
-        word: 75,
+        word: 76,
       },
       lightness: {
         card: 13,
         header: 62,
-        word: 78,
+        word: 81,
       },
     },
   },
@@ -249,7 +249,7 @@ let containerColors = [
       lightness: {
         card: 93,
         header: 45,
-        word: 38,
+        word: 42,
       },
     },
     darkMode: {
