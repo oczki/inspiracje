@@ -1157,24 +1157,50 @@ let Creator = new function() {
     parentElement.appendChild(this.createElementWithClass('div', 'rippleJS'));
   }
 
-  // TODO: refactor
-  this.createSlide = (text) => {
-    const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
-    const conjunctionPattern = /([^\wąćęłńóśźż])(a|i|o|u|w|z|\d+)\s(?!_)/gi; // Digits or a conjunction that's not part of previous word (e.g. "o" matches, but "hello" doesn't)
-    const textWithNonBreakingSpace = capitalizedText.replace(conjunctionPattern, '$1$2&nbsp;');
-    const slideWithSubtitleRegex = /^(.+) _\((.+)\)$/; // e.g. 'Hello _(World)' ---> 'Hello', 'World'
-    const matches = textWithNonBreakingSpace?.match(slideWithSubtitleRegex);
-
-    let content = '';
-    if (matches?.length > 2) { // Slide uses the subtitle format
-      for (let i = 1; i < matches.length; i++) {
-        content += `<p>${matches[i]}</p>`;
-      }
-    } else { // Slide uses plain text
-      content = textWithNonBreakingSpace;
+  this.capitalizeFirstLetter = (text) => {
+    try {
+      return text?.charAt(0)?.toUpperCase() + text?.slice(1);
+    } catch (e) {
+      return text;
     }
+  }
 
-    return `<div class="swiper-slide">${content}</div>`;
+  this.addNonBreakingSpaces = (text) => {
+    const patternWithLookbehind = /(?<![\wąćęłńóśźż])(a|i|o|u|w|z|\d+)\s(?!_)/gi; // Digits or a conjunction that's not part of previous word (e.g. "o" matches, but "hello" doesn't)
+    const patternDumbedDown = /([^\wąćęłńóśźż])(a|i|o|u|w|z)\s(?!_)/gi; // It's 2022 and Safari still doesn't support lookbehinds...
+    try {
+      return text.replace(patternWithLookbehind, '$1&nbsp;');
+    } catch (e) {
+      return text.replace(patternDumbedDown, '$1$2&nbsp;');
+    }
+  }
+
+  this.splitIntoTitleAndSubtitle = (text) => {
+    const slideWithSubtitleRegex = /^(.+) _\((.+)\)$/; // e.g. 'Hello _(World)' ---> 'Hello', 'World'
+    const matches = text?.match(slideWithSubtitleRegex);
+    try {
+      let result = '';
+      if (matches?.length > 2) { // Slide uses the subtitle format
+        for (let i = 1; i < matches.length; i++) {
+          result += `<p>${matches[i]}</p>`;
+        }
+      } else { // Slide uses plain text
+        result = textWithNonBreakingSpace;
+      }
+      return result;
+    } catch (e) {
+      return text;
+    }
+  }
+
+  this.parseSlideText = (text) => {
+    const capitalizedText = this.capitalizeFirstLetter(text);
+    const textWithNonBreakingSpaces = this.addNonBreakingSpaces(capitalizedText);
+    return this.splitIntoTitleAndSubtitle(textWithNonBreakingSpaces);
+  }
+
+  this.createSlide = (text) => {
+    return `<div class="swiper-slide">${this.parseSlideText(text)}</div>`;
   }
 
   this.createSlides = (texts = []) => {
