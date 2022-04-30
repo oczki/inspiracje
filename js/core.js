@@ -1160,8 +1160,8 @@ let Creator = new function() {
   // TODO: refactor
   this.createSlide = (text) => {
     const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
-    const conjunctionPattern = /(?<![\wąćęłńóśźż])(a|i|o|u|w|z|\d+)\s(?!_)/gi; // Digits or a conjunction that's not part of previous word (e.g. "o" matches, but "hello" doesn't)
-    const textWithNonBreakingSpace = capitalizedText.replace(conjunctionPattern, '$1&nbsp;');
+    const conjunctionPattern = /([^\wąćęłńóśźż])(a|i|o|u|w|z|\d+)\s(?!_)/gi; // Digits or a conjunction that's not part of previous word (e.g. "o" matches, but "hello" doesn't)
+    const textWithNonBreakingSpace = capitalizedText.replace(conjunctionPattern, '$1$2&nbsp;');
     const slideWithSubtitleRegex = /^(.+) _\((.+)\)$/; // e.g. 'Hello _(World)' ---> 'Hello', 'World'
     const matches = textWithNonBreakingSpace?.match(slideWithSubtitleRegex);
 
