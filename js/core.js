@@ -22,8 +22,8 @@ const iconExternalLink = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="
 const version = '2.1';
 
 let containerColors = [
-  {
-    hue: 69,
+  { // Green
+    hue: 70,
     lightMode: {
       saturation: {
         card: 74,
@@ -49,7 +49,7 @@ let containerColors = [
       },
     },
   },
-  {
+  { // Yellow
     hue: 53,
     lightMode: {
       saturation: {
@@ -76,7 +76,7 @@ let containerColors = [
       },
     },
   },
-  {
+  { // Orange
     hue: 32,
     lightMode: {
       saturation: {
@@ -103,7 +103,7 @@ let containerColors = [
       },
     },
   },
-  {
+  { // Red
     hue: 5,
     lightMode: {
       saturation: {
@@ -130,7 +130,7 @@ let containerColors = [
       },
     },
   },
-  {
+  { // Pink
     hue: 330,
     lightMode: {
       saturation: {
@@ -157,7 +157,7 @@ let containerColors = [
       },
     },
   },
-  {
+  { // Purple
     hue: 300,
     lightMode: {
       saturation: {
@@ -184,71 +184,71 @@ let containerColors = [
       },
     },
   },
-  {
+  { // Violet
     hue: 270,
     lightMode: {
       saturation: {
         card: 61,
-        header: 88,
-        word: 60,
+        header: 65,
+        word: 57,
       },
       lightness: {
         card: 93,
-        header: 36,
-        word: 38,
+        header: 48,
+        word: 41,
       },
     },
     darkMode: {
       saturation: {
-        card: 28,
+        card: 29,
         header: 37,
         word: 75,
       },
       lightness: {
         card: 12,
-        header: 54,
-        word: 77,
+        header: 58,
+        word: 78,
       },
     },
   },
-  {
+  { // Blue
     hue: 240,
     lightMode: {
       saturation: {
-        card: 61,
-        header: 88,
-        word: 60,
+        card: 58,
+        header: 70,
+        word: 50,
       },
       lightness: {
-        card: 93,
-        header: 36,
-        word: 38,
+        card: 94,
+        header: 57,
+        word: 47,
       },
     },
     darkMode: {
       saturation: {
-        card: 28,
-        header: 37,
+        card: 23,
+        header: 39,
         word: 75,
       },
       lightness: {
-        card: 12,
-        header: 54,
-        word: 77,
+        card: 13,
+        header: 62,
+        word: 78,
       },
     },
   },
-  {
-    hue: 210,
+  { // Cyan
+    hue: 218,
     lightMode: {
       saturation: {
-        card: 61,
-        header: 88,
+        card: 56,
+        header: 80,
         word: 60,
       },
       lightness: {
         card: 93,
-        header: 36,
+        header: 45,
         word: 38,
       },
     },
@@ -260,8 +260,8 @@ let containerColors = [
       },
       lightness: {
         card: 12,
-        header: 54,
-        word: 77,
+        header: 55,
+        word: 76,
       },
     },
   },
