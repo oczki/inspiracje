@@ -1166,19 +1166,19 @@ let Creator = new function() {
   }
 
   this.addNonBreakingSpaces = (text) => {
-    const patternWithLookbehind = /(?<![\wąćęłńóśźż])(a|i|o|u|w|z|\d+)\s(?!_)/gi; // Digits or a conjunction that's not part of previous word (e.g. "o" matches, but "hello" doesn't)
-    const patternDumbedDown = /([^\wąćęłńóśźż])(a|i|o|u|w|z)\s(?!_)/gi; // It's 2022 and Safari still doesn't support lookbehinds...
     try {
+      const patternWithLookbehind = /(?<![\wąćęłńóśźż])(a|i|o|u|w|z|\d+)\s(?!_)/gi; // Digits or a conjunction that's not part of previous word (e.g. "o" matches, but "hello" doesn't)
       return text.replace(patternWithLookbehind, '$1&nbsp;');
     } catch (e) {
+      const patternDumbedDown = /([^\wąćęłńóśźż])(a|i|o|u|w|z)\s(?!_)/gi; // It's 2022 and Safari still doesn't support lookbehinds...
       return text.replace(patternDumbedDown, '$1$2&nbsp;');
     }
   }
 
   this.splitIntoTitleAndSubtitle = (text) => {
-    const slideWithSubtitleRegex = /^(.+) _\((.+)\)$/; // e.g. 'Hello _(World)' ---> 'Hello', 'World'
-    const matches = text?.match(slideWithSubtitleRegex);
     try {
+      const slideWithSubtitleRegex = /^(.+) _\((.+)\)$/; // e.g. 'Hello _(World)' ---> 'Hello', 'World'
+      const matches = text?.match(slideWithSubtitleRegex);
       let result = '';
       if (matches?.length > 2) { // Slide uses the subtitle format
         for (let i = 1; i < matches.length; i++) {
