@@ -164,7 +164,7 @@ elektroda
 elipsa
 encyklopedia
 Enigma
-etui
+etui ze sztucznej skóry
 etykieta z toną tekstu
 fajerwerki
 faks
@@ -319,12 +319,12 @@ karta microSD
 karta SIM
 karta telefoniczna
 kartka formatu A2
-kartka urodzinowa
+kartka urodzinowa _(Z pozytywką)
 karton po mleku
 kaseta magnetofonowa
 kaseta VHS
 kask rowerowy
-kastet
+kastet wysadzany diamentami
 kasztanowy ludzik
 katalog
 katana
@@ -373,7 +373,7 @@ kompas
 kompot wiśniowy
 końcówka ketchupu
 konsola do gier
-kontrakt
+kontrakt _(Został tylko jeden podpis!)
 kontroler do gier
 kopuła
 kopyść
@@ -381,7 +381,7 @@ korba
 korek
 korektor w płynie
 korona
-korowarka kabli
+korowarka kabli _(Do zdejmowania izolacji)
 koryto
 kosa
 kosiarka
@@ -408,6 +408,7 @@ krzew agrestu
 kserokopiarka
 książeczka dla dzieci
 książka
+książka kucharska
 kubek firmowy
 kuchenka mikrofalowa
 kufel
@@ -430,7 +431,7 @@ laska
 laska dynamitu
 łata
 latarka
-ledeburyt przemieniony
+ledeburyt przemieniony _(Składnik stopu żelazo-węgiel)
 lek homeopatyczny
 lektyka
 lemoniada cytrynowa
@@ -518,14 +519,14 @@ model kolejki
 model samolotu
 mokry ręcznik
 moneta
-monitor cztery ka
+monitor cztery ka _(3840&times;2160, 144 Hz, HDR)
 monocykl
 monument
 mrożonki
 muszelka
 muszkiet
 mydło w płynie
-mysz komputerowa
+mysz komputerowa _(Z kulką, nie optyczna)
 nadajnik
 nafta
 nagranie
@@ -535,7 +536,7 @@ najnowszy modny produkt
 naklejka
 naładowana kusza
 naleśnik
-nalewka
+nalewka domowej roboty
 napalm
 naparstek
 narkoza
@@ -562,6 +563,7 @@ nocnik
 nośnik danych
 nowiutki smartfon
 nożyczki
+nuggetsy z kurczaka _(W kształcie dinozaurów)
 obca waluta
 obcisłe ciuchy
 obiad na wynos
@@ -592,13 +594,14 @@ okruszki
 okulary
 okulary przeciwsłoneczne
 oliwa z oliwek
-oliwki nadziewane
+oliwki nadziewane migdałami
 opary
 opłatek
 opona
 oranżada
 organ do przeszczepu
 orzech włoski
+orzeszki w ostrej panierce
 oscyloskop
 osełka
 ostatni papieros
@@ -718,7 +721,7 @@ prawidło do butów
 prawie czysta szklanka
 prawie pusty magazynek
 precyzyjna miara
-prezentacja kejpiajów
+prezentacja kejpiajów _(PowerPoint na pendrajwie)
 prezerwatywa
 próbka moczu
 procesor
@@ -874,6 +877,7 @@ surowy ogórek
 suszarka do prania
 suszarka do włosów
 suwak
+świadectwo z paskiem
 światła sygnalizacji
 świece zapłonowe
 świeczka zapachowa
@@ -1000,7 +1004,8 @@ wiertło
 wieszak
 winogrono
 wiosło
-wiśniówka
+wirówka wysokoobrotowa _(Do biologii molekularnej)
+wiśniówka od Wieśka
 witamina B12
 witraż
 wizytówka
@@ -1021,7 +1026,7 @@ wstęga
 wtyczka
 wycieraczka
 wygodne krzesło
-wykałaczka
+wykałaczka _(Chyba nieużywana)
 wykres EKG
 wynik obliczeń
 wypasiony komputer
@@ -1053,6 +1058,7 @@ zamek błyskawiczny
 zanęta
 zapasy na 21 dni
 zapisany notes
+zaproszenie
 zardzewiała dźwignia
 żarówka
 zasilacz

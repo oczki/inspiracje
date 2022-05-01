@@ -281,12 +281,13 @@ pracoholik
 prawiczek
 prehistoryczny
 prekursor fachu
-prokrastynacja
+prokrastynator _(Odkłada na później)
 próbuje kogoś ukryć
 próżny
 przebiegły
 przecenia swoje umiejętności
 przechwala się
+przejedzony _(No, może serniczka)
 przełyka ślinę
 przesadne ruchy
 przesądny
@@ -343,7 +344,7 @@ syczy
 syndrom głównego bohatera
 szantażysta
 szczegółowe zdania
-szczery
+szczery do bólu
 szczęściarz
 szczodry
 szepcze bez powodu
@@ -411,11 +412,11 @@ wszystko na 'chyba'
 wszystko w kalendarzu
 wścibski
 wtrąca historyjki
-wtrąca korpo-słówka
+wtrąca korpo-słówka _(Sfokusuj się na estymacie tego kejsa)
 wybuchowy
 wyluzowany
 wymagający
-wymyśla nowe słowa
+wymyśla nowe słowa _(Negatywka to pozytywka grająca heavy metal)
 wyprostowane łokcie
 wyprostowany
 wyrachowany
@@ -425,6 +426,7 @@ wysoki głos
 wytyka błędy
 YOLO _(Ignoruje konsekwencje; jedziemy!)
 z przyszłości
+za dużo technologii
 za moich czasów...
 zachowuje symetrię
 zaciśnięte dłonie
@@ -437,7 +439,7 @@ zapisuje wszystko
 zapominalski
 zawsze był drugi
 zawsze musi wygrać
-zawsze na tak
+zawsze na 'tak'
 zawsze wygrywa
 zbiera statystyki
 zdolny
