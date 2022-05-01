@@ -247,7 +247,7 @@ let containerColors = [
         word: 60,
       },
       lightness: {
-        card: 93,
+        card: 92.5,
         header: 45,
         word: 42,
       },
