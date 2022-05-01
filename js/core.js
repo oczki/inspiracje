@@ -310,14 +310,14 @@ let containers = [
   {
     type: "time",
     label: "Czas",
-    isVisible: false, // TODO: this requires a change to microcopy in 'restore all' button when all categories are hidden
+    isVisible: false,
     prevButtonPrefix: "Poprzedni",
     nextButtonPrefix: "Następny",
   },
   {
     type: "genre",
     label: "Gatunek",
-    isVisible: false, // TODO: this requires a change to microcopy in 'restore all' button when all categories are hidden
+    isVisible: false,
     prevButtonPrefix: "Poprzedni",
     nextButtonPrefix: "Następny",
   },
