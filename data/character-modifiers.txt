@@ -17,8 +17,10 @@ blizna na ciele
 błaha supermoc
 bogaty
 bogobojny
+boi się ciemności
 boi się zwierzątek
 brudas
+burzy czwartą ścianę
 był wszędzie
 cebulak
 celebryta
@@ -39,6 +41,7 @@ cierpliwy
 coś za coś
 cwaniak
 cyniczny
+czepialski
 częste przejęzyczenia
 często dotyka twarzy
 często oblizuje wargi
@@ -76,9 +79,11 @@ empatyczny
 energiczny
 fanatyk
 farciarz
+FOMO _(Boi się, że coś go ominie)
 gaduła
 gbur
 geniusz
+gesty zamiast słów _(Niezapowiedziane kalambury)
 gestykuluje
 gibki
 głęboko oddycha
@@ -89,6 +94,7 @@ gościnny
 grubas
 gry słowne
 grzeczny
+guzdrała
 gwiżdże
 hiperpoprawność wymowy
 hipochondryk
@@ -103,14 +109,18 @@ kieruje się zasadami
 klaszcze przy śmiechu
 kleptoman
 kłamczuch
+kłania się głęboko
 kocha muzykę
 kolana na zewnątrz
 kolekcjoner
+kompletny brak gestykulacji
 kontrola żywiołu
 kreatywny
 krótkie kroki
 kura domowa
 leniwy
+leworęczny
+lęk wysokości
 liczy pod nosem
 lizus
 lojalny
@@ -118,30 +128,39 @@ lubi dotyk
 lubi zwierzęta
 łakomczuch
 łatwowierny
+łobuz
 ma swój trigger
 macho
+malinka na szyi
 maminsynek
 manipulant
+maruda
 mazgaj
 mędrzec
 miesza polski z angielskim
+mieszane sygnały
 mieszczuch
+milczy
 mlaska
 młody duchem
 mocarz
 modniś
 mowi bez 'ogonkow'
 mówca
+mówi bez konkretów
 mówi do siebie
 mówi na 'ty'
 mówi tylko o sobie
 mówi tylko w ruchu
 mówi w trzeciej osobie
+mówi więcej niż słucha
 mruży oczy
+mściwy
 musi coś trzymać
 musi się ruszać
 myli kierunki
 myśli na głos
+na szczęście mam to!
 nadmiar elektroniki
 nadmiar perfum
 nadmiar zarostu
@@ -152,6 +171,7 @@ narcyz
 nazywa czynności
 nazywa wszystko
 nerd
+nie akceptuje ciasteczek
 nie czyta książek
 nie docenia siebie
 nie dotrzymuje słowa
@@ -165,6 +185,7 @@ nie na czasie
 nie oddaje długów
 nie ogarnia technologii
 nie patrzy w oczy
+nie robi nic za darmo
 nie sprząta
 nie śledzi wydarzeń
 nie taki jak kiedyś
@@ -178,15 +199,20 @@ niecierpliwy
 niedoceniany
 niedoświadczony
 nieletni
+nienawidzi reklam
 nieogarnięty
 niepoważny
+nieprzyjemnie pachnie
 niespełniony
 nieśmiertelny
 nieufny
 niewierny
 niewinny
+niewyspany
 niezależny
+niezdara
 niezdecydowany
+nigdy nie zapraszany
 niska samoocena
 niski głos
 niszowe zainteresowania
@@ -200,6 +226,7 @@ obgryza paznokcie
 obolały
 obrażalski
 obżartuch
+oczekuje komplementów
 oczytany
 oddycha przez usta
 odmawia pomocy sobie
@@ -208,6 +235,7 @@ odważny
 odwraca się od rozmówcy
 opiekuńczy
 opinia na każdy temat
+opisuje swoje czynności
 opóźniony o 2 s
 optymista
 osiłek
@@ -220,6 +248,7 @@ pamięta cytaty
 pamiętliwy
 papuguje innych
 parcie na szkło
+pasożyt
 patriota
 patrzy w oczy
 patrzy z góry
@@ -228,10 +257,13 @@ pedantyczny
 pewny siebie
 piękność
 pilnuje wagi
+piratuje wszystko
 planuje każdą czynność
+płaczliwy
 pobożny
 pochlebca
 pociąga nosem
+podatny na reklamy
 podejrzliwy
 podlizywacz
 podrywacz
@@ -242,16 +274,20 @@ poprawia fryzurę
 poprawia innych
 porównuje do siebie
 poważny
+powtarza ruchy rozmówcy _(Od razu lub po 5 s)
+powtarza słowa rozmówcy
 powtarza swoje słówko
 pracoholik
 prawiczek
 prehistoryczny
 prekursor fachu
-prokrastynacja
+prokrastynator _(Odkłada na później)
+próbuje kogoś ukryć
 próżny
 przebiegły
 przecenia swoje umiejętności
 przechwala się
+przejedzony _(No, może serniczka)
 przełyka ślinę
 przesadne ruchy
 przesądny
@@ -264,11 +300,13 @@ przytakiwacz
 psotny
 punktualny
 puszcza całusy
+ranny ptaszek
 ręce w kieszeni
 ręce za plecami
 rozgląda się
 rozrzutny
 rozsądny
+roztargniony
 różne skarpety
 ruchy rąk gdy mówi
 rymuje
@@ -276,11 +314,15 @@ rytmiczne ruchy
 rzadko w domu
 rzut monetą na wszystko
 samotny z wyboru
+sarkastyczny
 sceptyczny
 skarżypyta
 sknera
 skryty
 skupiony
+słuch absolutny
+słucha więcej niż mówi
+smutnieje z czasem
 sokole oko
 specjalistyczny żargon
 spełniony
@@ -299,22 +341,30 @@ starzec
 strach przed zarazkami
 suchoklates
 syczy
+syndrom głównego bohatera
+szantażysta
 szczegółowe zdania
-szczery
+szczery do bólu
 szczęściarz
 szczodry
+szepcze bez powodu
 szeryfuje
 szlachcic
 sztuczny uśmiech
 sztywniak
 szuka konspiracji
 szuka wrażeń
-szybki refleks
+szuka wymówek
+szuka zaczepki
+szybka regeneracja
+szybkie reakcje
+szyderczy
 śliwa pod okiem
 śmiały
 śmiech złoczyńcy
 śmieciuch
 śpioch
+światłowstręt
 świeżo po czterdziestce
 świeżo wykąpany
 tajemnica rodzinna
@@ -327,6 +377,7 @@ twardziel
 uczciwy
 udaje głupiego
 udaje mądrego
+udawany uśmiech
 ukryte marzenie
 ukryty talent
 uległy
@@ -337,9 +388,14 @@ uprzejmy
 urywa myśl
 utalentowany
 uzależniony
+używa przezwisk
+używa staropolszczyzny
 waleczny
+wandal
 wchodzi w zdanie
 wcześnie dojrzał
+weseleje z czasem
+wie podejrzanie dużo
 wie wszystko
 wieczny student
 wiedza podręcznikowa
@@ -356,10 +412,11 @@ wszystko na 'chyba'
 wszystko w kalendarzu
 wścibski
 wtrąca historyjki
-wtrąca korpo-słówka
+wtrąca korpo-słówka _(Sfokusuj się na estymacie tego kejsa)
 wybuchowy
 wyluzowany
 wymagający
+wymyśla nowe słowa _(Negatywka to pozytywka grająca heavy metal)
 wyprostowane łokcie
 wyprostowany
 wyrachowany
@@ -367,20 +424,22 @@ wyrozumiały
 wysoka samoocena
 wysoki głos
 wytyka błędy
-yolo
+YOLO _(Ignoruje konsekwencje; jedziemy!)
 z przyszłości
+za dużo technologii
 za moich czasów...
 zachowuje symetrię
 zaciśnięte dłonie
 zadbany
 zajmuje dużo miejsca
 zakochany
+zakupoholik
 zamyślony
 zapisuje wszystko
 zapominalski
 zawsze był drugi
 zawsze musi wygrać
-zawsze na tak
+zawsze na 'tak'
 zawsze wygrywa
 zbiera statystyki
 zdolny
@@ -393,10 +452,12 @@ zmienia zdanie
 zmienna wysokość głosu
 zmyśla plotki
 zna przyszłość
+zna swoje prawa
 zna wszystkich
-zna wszystkie pokemony
+zna wszystkie Pokémony
 zna wszystkie żarty
 zorganizowany
+związany
 zziębnięty
 źle znosi hałas
 życie na ASAPie

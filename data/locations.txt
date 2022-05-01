@@ -2,6 +2,7 @@ absolutna ciemność
 akademik
 apartament
 apteka
+aquapark
 arsenał
 autobus
 autostrada
@@ -13,10 +14,12 @@ bar mleczny
 basen
 biblioteka
 biuro
+biuro rzeczy znalezionych
 biurowiec
 boisko
 brama
 browar
+brzeg rzeki
 budka z jedzeniem
 budowa
 bufet
@@ -25,6 +28,7 @@ chłodnia
 chodnik
 ciasny transport publiczny
 ciasny tunel
+ciemna strona Księżyca
 ciemny zaułek
 cmentarz
 cyrk
@@ -42,30 +46,41 @@ działka
 dżungla
 elektrownia
 epicentrum
+fabryka
 farma
+festiwal
 filharmonia
+forteca
 fosa zamku
 gabinet stomatologiczny
+gabinet zabiegowy
 galeria handlowa
 galeria sztuki
 garaż
 głębiny oceanu
 głęboko pod ziemią
+gondola
+gospoda
 góra
 hangar
+hol hotelowy
 hotel
 ikea
 impreza firmowa
 jacht
+jadalnia
 jaskinia
 jasna pustka
 jądro Ziemi
 jezioro
 kabina toaletowa
 kafejka internetowa
+kamienica
 kanał ściekowy
+kanały Wenecji
 kanciapa
 karaoke
+kasa biletowa
 kasyno
 katedra
 kawiarnia
@@ -82,7 +97,9 @@ korek drogowy
 korytarz gmachu sądu
 kościół
 krematorium
+kręgielnia
 krypta
+księgarnia
 kuchnia
 kurnik
 kuźnia
@@ -90,40 +107,70 @@ kwiaciarnia
 labirynt
 las
 latarnia
+latryna
+lepianka
 linia produkcyjna
 lodowiec
 lodowisko
+lokomotywa
+lombard
 lotnisko
 lumpeks
 lunapark
 ławeczka
+łazienka
+łąka
+łódka
 łóżko
+martwe pole
+metaverse
 mleczarnia
+młyn
 molo
 monopolowy
 morze
 most
 motocykl
 muzeum
+myjnia
 na powierzchni skóry
+nadprzestrzeń
 namiot
+NASA
 niebo
+niestabilna powierzchnia
+nora
+nowe mieszkanie
 oaza
+oberża
 obora
 obozowisko
+obserwatorium
+obszar chroniony
 obuwniczy
+obwodnica
+oceanarium
+oczyszczalnia ścieków
 ogródek
+oko cyklonu
 ołtarz
 open space
 opuszczona galeria
 opuszczone kino
 orbita okołoziemska
+osada
+osiedle PRL
 ostatni rząd w kinie
+ostatnie piętro
+ośmiotysięcznik
 pałac
 parawan
 park
+park linowy
 parking
 pas startowy
+peron
+peryferie
 piekło
 pijalnia
 piramida
@@ -131,45 +178,64 @@ piwnica
 plac zabaw
 plan zdjęciowy
 planeta
+planetarium
 plaża
 plebania
+płaska Ziemia
 płytko pod wodą
+pobocze
 pociąg
 poczekalnia
 pod kioskiem
 pod mostem
 pod powierzchnią
 pod ścianą
+pod wysokim murem
+podkop
+podziemna grota
 pogorzelisko
 pokaz mody
+pole gejzerów
 pole uprawne
 pośredniak
 pośród chmur
 powierzchnia Księżyca
 poza zasięgiem kamer
+półpiętro
 pralnia
 prosektorium
+próg wodospadu
+przeciwne strony płotu
 przeciwne strony stołu
+przedostatnie piętro
 przedszkole
 przejście dla pieszych
 przejście graniczne
+przepaść
 przyczepa kempingowa
 przymierzalnia
 przystanek
 psia buda
 pub
+punkt Nemo
 punkt obserwacyjny
 pustynia
+radiowóz
+rafa koralowa
 rakieta
 recepcja
 redakcja
+rezerwat przyrody
 restauracja
+ring
 rollercoaster
+rozdroże
 rozlewnia
 ruiny
 rynek
 rzeźnia
 sad
+safari
 sala operacyjna
 sala rozpraw
 sala weselna
@@ -182,25 +248,38 @@ sauna
 scena występu impro
 scena
 schody ruchome
+schron
 schronisko
+sejm
+senat
 sesja zdjęciowa
 sex shop
 side'y sceny impro
 silne pole magnetyczne
 siłownia
+skarbiec
 sklep muzyczny
 sklep
+skocznia
 skrzyżowanie
+solarium
+speluna
+spływ kajakowy
 spotkanie rodzinne
 stacja benzynowa
+stadion
 stajnia
 stara kamienica
 statek
+statek kosmiczny
 sterowiec
 sterylne pomieszczenie
+stocznia
+stodoła
 stołówka
 strych
-studio
+studio nagrań
+studio TV
 supermarket
 suszarnia
 sypialnia
@@ -210,24 +289,37 @@ szczyt
 szklarnia
 szkoła
 szpital
+ścianka wspinaczkowa
+ściernisko
+ścieżka rowerowa
 ślepa uliczka
 świetlica
+tama
 taras
+targowisko
 tartak
 teatr
 toaleta
+tor wyścigowy
 tramwaj
 tratwa
 trawnik
+trybuny
 tunel
+pokład UFO
 uniwersytet
+urwisko
 urząd pracy
+utopia
+uzdrowisko
 wagon
 wars
 warsztat
+wartownia
 warzywniak
 wąska ścieżka
 we wnętrznościach
+wernisaż
 wewnątrz drzewa
 wiatrak
 wieża Eiffela
@@ -237,8 +329,10 @@ więzienie
 willa
 winda
 winiarnia
-wodospad
+winnica
 woodstock
+wrak statku
+wulkan
 wykopaliska
 wykopki
 wypożyczalnia
@@ -246,9 +340,12 @@ wysoko nad ziemią
 wyspa
 wysypisko
 za garażami
+za wodospadem
 zagroda
 zakład fryzjerski
 zakład pogrzebowy
 zakrystia
 zamek
+złomowisko
 zoo
+żaglowiec

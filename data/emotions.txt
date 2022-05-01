@@ -1,5 +1,6 @@
 akceptacja
 amok
+antypatia
 apatia
 bezradność
 bezsilność
@@ -25,6 +26,7 @@ krzywda
 lęk
 melancholia
 miłość
+motywacja
 mściwość
 napięcie
 niechęć
@@ -34,6 +36,7 @@ niepokój
 nieśmiałość
 nieufność
 niezadowolenie
+nostalgia
 obawa
 obojętność
 obrzydzenie
@@ -43,6 +46,8 @@ odrzucenie
 oszołomienie
 ożywienie
 panika
+pasja
+pobudzenie
 poczucie bezpieczeństwa
 poczucie winy
 podejrzliwość
@@ -62,25 +67,31 @@ rozbawienie
 rozczarowanie
 rozdrażnienie
 rozpacz
+samotność
 satysfakcja
 serdeczność
+skrucha
 smutek
 spełnienie
 spokój
 strach
 strata
+stres
 sympatia
 szał
 szczęście
 szok
 tęsknota
 trauma
+trema
 troska
 trwoga
 ufność
 ulga
 upokorzenie
+urażenie
 uwielbienie
+wahania nastroju
 wahanie
 wdzięczność
 wesołość
@@ -91,6 +102,7 @@ wstyd
 wściekłość
 wyrzuty sumienia
 wzburzenie
+wzruszenie
 zachwyt
 zacietrzewienie
 zadowolenie

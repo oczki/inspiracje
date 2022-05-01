@@ -23,6 +23,10 @@ Używasz Windows 10? Sprawdź [instrukcję uruchamiania serwera PHP z menu konte
 
 Licencja znajduje się w pliku [LICENSE](LICENSE.md).
 
+## Więcej informacji
+
+Jeżeli chcesz dodać nowe kategorie, poczytaj [informacje o bazie słów](data/README.md).
+
 ---
 ---
 
@@ -43,3 +47,7 @@ Using Windows 10? Check out [how to run the PHP server from the context menu](ht
 ## License
 
 See the [LICENSE](LICENSE.md) file.
+
+## Further information
+
+If you want to add new categories, read the [information about the database](data/README.md).

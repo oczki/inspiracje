@@ -137,6 +137,7 @@ językoznawca
 jubiler
 juror
 kadrowy
+kamerdyner
 kamerzysta
 kapitan
 karczmarz
@@ -223,6 +224,7 @@ mumia
 murarz
 muzyk
 myśliwy
+narrator
 nauczyciel przedszkola
 nauczyciel wuefu
 nauczyciel
@@ -237,6 +239,7 @@ ogrodnik
 okulista
 ombudsman
 operator maszynerii
+opiekun
 optyk
 organizator
 ornitolog
@@ -251,12 +254,14 @@ pasterz
 pastor
 pedagog
 pediatra
+perkusista
 piekarz
 pielęgniarz
 pilot
 piłkarz
 piosenkarz
 pirat
+pirotechnik
 pisarz
 plastyk
 plażowicz
@@ -306,6 +311,8 @@ radny
 rajdowiec
 ratownik
 recenzent
+recepcjonista
+recydywista
 redaktor
 rekruter
 rektor
@@ -323,19 +330,25 @@ rzeźbiarz
 rzeźnik
 samuraj
 sanitariusz
+saper
 satyryk
+scammer
 scenarzysta
 sekretarz
+sekundant
 serwisant
 sędzia
 sierżant
 skarbnik
+skazaniec
 skoczek
 służący
 snajper
 sobowtór
+socjolog
 sokolnik
 solenizant
+sołtys
 sommelier
 spadochroniarz
 spawacz
@@ -374,6 +387,7 @@ szef
 szejk
 szeregowy
 szewc
+szofer
 szogun
 szpieg
 sztuczna inteligencja
@@ -392,6 +406,7 @@ terapeuta
 terminator
 terrorysta
 tester oprogramowania
+tester smaku
 tkacz
 tłumacz
 tokarz
@@ -408,6 +423,7 @@ uczony
 upiór
 urolog
 urzędnik
+uzdrowiciel
 wampir
 weterynarz
 wezyr

@@ -1,5 +1,4 @@
-const iconArrowLeft = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>';
-const iconArrowRight = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>';
+const iconArrow = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>';
 
 const iconCog = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" /></svg>';
 const iconEditList = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2,6V8H14V6H2M2,10V12H14V10H2M20.04,10.13C19.9,10.13 19.76,10.19 19.65,10.3L18.65,11.3L20.7,13.35L21.7,12.35C21.92,12.14 21.92,11.79 21.7,11.58L20.42,10.3C20.31,10.19 20.18,10.13 20.04,10.13M18.07,11.88L12,17.94V20H14.06L20.12,13.93L18.07,11.88M2,14V16H10V14H2Z" /></svg>';
@@ -14,199 +13,313 @@ const iconPlusBox = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,1
 const iconMinusBox = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H7V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>';
 const iconPlusBoxOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,19V5H5V19H19M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5C3,3.89 3.9,3 5,3H19M11,7H13V11H17V13H13V17H11V13H7V11H11V7Z" /></svg>';
 const iconMinusBoxOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,19V5H5V19H19M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5C3,3.89 3.9,3 5,3H19M17,11V13H7V11H17Z" /></svg>';
+const iconRestore = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z" /></svg>';
 
 const iconEmail = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>';
 const iconGithub = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>';
 const iconExternalLink = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" /></svg>';
 
+const version = '2.1';
+
+let containerColors = [
+  { // Green
+    hue: 70,
+    lightMode: {
+      saturation: {
+        card: 74,
+        header: 100,
+        word: 84,
+      },
+      lightness: {
+        card: 90,
+        header: 23,
+        word: 23,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 35,
+        header: 85,
+        word: 60,
+      },
+      lightness: {
+        card: 10,
+        header: 29,
+        word: 60,
+      },
+    },
+  },
+  { // Yellow
+    hue: 53,
+    lightMode: {
+      saturation: {
+        card: 68,
+        header: 100,
+        word: 100,
+      },
+      lightness: {
+        card: 90,
+        header: 24,
+        word: 23,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 31,
+        header: 100,
+        word: 64,
+      },
+      lightness: {
+        card: 10,
+        header: 30,
+        word: 61,
+      },
+    },
+  },
+  { // Orange
+    hue: 32,
+    lightMode: {
+      saturation: {
+        card: 80,
+        header: 100,
+        word: 100,
+      },
+      lightness: {
+        card: 92,
+        header: 31,
+        word: 30,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 32,
+        header: 55,
+        word: 92,
+      },
+      lightness: {
+        card: 11,
+        header: 45,
+        word: 69,
+      },
+    },
+  },
+  { // Red
+    hue: 5,
+    lightMode: {
+      saturation: {
+        card: 82,
+        header: 83,
+        word: 60,
+      },
+      lightness: {
+        card: 94,
+        header: 37,
+        word: 43,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 24,
+        header: 40,
+        word: 100,
+      },
+      lightness: {
+        card: 12.5,
+        header: 56,
+        word: 77.5,
+      },
+    },
+  },
+  { // Pink
+    hue: 330,
+    lightMode: {
+      saturation: {
+        card: 76,
+        header: 96,
+        word: 67,
+      },
+      lightness: {
+        card: 93.5,
+        header: 34,
+        word: 39,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 26,
+        header: 45,
+        word: 89,
+      },
+      lightness: {
+        card: 12,
+        header: 55,
+        word: 78,
+      },
+    },
+  },
+  { // Purple
+    hue: 300,
+    lightMode: {
+      saturation: {
+        card: 61,
+        header: 88,
+        word: 60,
+      },
+      lightness: {
+        card: 93,
+        header: 36,
+        word: 38,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 28,
+        header: 37,
+        word: 72,
+      },
+      lightness: {
+        card: 12,
+        header: 54,
+        word: 77,
+      },
+    },
+  },
+  { // Violet
+    hue: 270,
+    lightMode: {
+      saturation: {
+        card: 61,
+        header: 65,
+        word: 57,
+      },
+      lightness: {
+        card: 93,
+        header: 48,
+        word: 47,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 29,
+        header: 37,
+        word: 75,
+      },
+      lightness: {
+        card: 12,
+        header: 58,
+        word: 78,
+      },
+    },
+  },
+  { // Blue
+    hue: 240,
+    lightMode: {
+      saturation: {
+        card: 58,
+        header: 70,
+        word: 46,
+      },
+      lightness: {
+        card: 94,
+        header: 57,
+        word: 52,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 23,
+        header: 39,
+        word: 76,
+      },
+      lightness: {
+        card: 13,
+        header: 62,
+        word: 81,
+      },
+    },
+  },
+  { // Cyan
+    hue: 218,
+    lightMode: {
+      saturation: {
+        card: 56,
+        header: 80,
+        word: 60,
+      },
+      lightness: {
+        card: 92.5,
+        header: 45,
+        word: 42,
+      },
+    },
+    darkMode: {
+      saturation: {
+        card: 28,
+        header: 37,
+        word: 75,
+      },
+      lightness: {
+        card: 12,
+        header: 55,
+        word: 76,
+      },
+    },
+  },
+]
+
 let containers = [
   {
     type: "location",
     label: "Miejsce",
-    color: {
-      hue: 69,
-      lightMode: {
-        saturation: {
-          card: 74,
-          header: 100,
-          word: 84,
-        },
-        lightness: {
-          card: 90,
-          header: 23,
-          word: 23,
-        },
-      },
-      darkMode: {
-        saturation: {
-          card: 35,
-          header: 85,
-          word: 60,
-        },
-        lightness: {
-          card: 10,
-          header: 29,
-          word: 60,
-        },
-      },
-    },
+    isVisible: true,
     prevButtonPrefix: "Poprzednie",
     nextButtonPrefix: "Następne",
   },
   {
     type: "character",
     label: "Postać",
-    color: {
-      hue: 53,
-      lightMode: {
-        saturation: {
-          card: 68,
-          header: 100,
-          word: 100,
-        },
-        lightness: {
-          card: 90,
-          header: 24,
-          word: 23,
-        },
-      },
-      darkMode: {
-        saturation: {
-          card: 31,
-          header: 100,
-          word: 64,
-        },
-        lightness: {
-          card: 10,
-          header: 30,
-          word: 61,
-        },
-      },
-    },
+    isVisible: true,
   },
   {
     type: "character-modifier",
     label: "Cecha postaci",
-    color: {
-      hue: 32,
-      lightMode: {
-        saturation: {
-          card: 80,
-          header: 100,
-          word: 100,
-        },
-        lightness: {
-          card: 92,
-          header: 31,
-          word: 30,
-        },
-      },
-      darkMode: {
-        saturation: {
-          card: 32,
-          header: 55,
-          word: 92,
-        },
-        lightness: {
-          card: 11,
-          header: 45,
-          word: 69,
-        },
-      },
-    },
+    isVisible: true,
   },
   {
     type: "emotion",
     label: "Emocja",
-    color: {
-      hue: 5,
-      lightMode: {
-        saturation: {
-          card: 82,
-          header: 83,
-          word: 60,
-        },
-        lightness: {
-          card: 94,
-          header: 37,
-          word: 43,
-        },
-      },
-      darkMode: {
-        saturation: {
-          card: 24,
-          header: 40,
-          word: 100,
-        },
-        lightness: {
-          card: 12.5,
-          header: 56,
-          word: 77.5,
-        },
-      },
-    },
+    isVisible: true,
   },
   {
     type: "relation",
     label: "Relacja",
-    color: {
-      hue: 330,
-      lightMode: {
-        saturation: {
-          card: 76,
-          header: 96,
-          word: 67,
-        },
-        lightness: {
-          card: 93.5,
-          header: 34,
-          word: 39,
-        },
-      },
-      darkMode: {
-        saturation: {
-          card: 26,
-          header: 45,
-          word: 89,
-        },
-        lightness: {
-          card: 12,
-          header: 55,
-          word: 78,
-        },
-      },
-    },
+    isVisible: true,
   },
   {
     type: "action",
     label: "Czynność",
-    color: {
-      hue: 300,
-      lightMode: {
-        saturation: {
-          card: 61,
-          header: 88,
-          word: 60,
-        },
-        lightness: {
-          card: 93,
-          header: 36,
-          word: 38,
-        },
-      },
-      darkMode: {
-        saturation: {
-          card: 28,
-          header: 37,
-          word: 75,
-        },
-        lightness: {
-          card: 12,
-          header: 54,
-          word: 77,
-        },
-      },
-    },
+    isVisible: true,
+  },
+  {
+    type: "object",
+    label: "Przedmiot",
+    isVisible: true,
+    prevButtonPrefix: "Poprzedni",
+    nextButtonPrefix: "Następny",
+  },
+  {
+    type: "time",
+    label: "Czas",
+    isVisible: false,
+    prevButtonPrefix: "Poprzedni",
+    nextButtonPrefix: "Następny",
+  },
+  {
+    type: "genre",
+    label: "Gatunek",
+    isVisible: false,
+    prevButtonPrefix: "Poprzedni",
+    nextButtonPrefix: "Następny",
   },
 ];
 
@@ -220,6 +333,7 @@ const defaultDelayBetweenLoadedWordsDuration = 20;
 const defaultFabTransitionDuration = 280;
 const defaultIconRotationDuration = 500;
 const defaultSpinnerOverlayFadeDuration = 120;
+const defaultCategorySwapDuration = 280;
 
 let swiperAnimationDuration = defaulSwiperAnimationDuration;
 let sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
@@ -296,6 +410,83 @@ let Util = new function() {
       clearTimeout(timer);
       timer = setTimeout(() => blocked = false, timeout);
     }
+  }
+
+  this.deepFreeze = (obj) => {
+    Object.freeze(obj);
+
+    Object.getOwnPropertyNames(obj).forEach(function (prop) {
+      if (obj.hasOwnProperty(prop)
+      && obj[prop] !== null
+      && (typeof obj[prop] === "object" || typeof obj[prop] === "function")
+      && !Object.isFrozen(obj[prop])) {
+        Util.deepFreeze(obj[prop]);
+      }
+    });
+
+    return obj;
+  };
+
+  // From https://github.com/vicsstar/deep-unfreeze/blob/master/src/index.js
+  this.deepUnfreeze = (obj) => {
+    const unfreezeProp = (prop) => {
+      return Object.isFrozen(prop) ? Util.deepUnfreeze(prop) : prop;
+    };
+
+    if (obj !== null) {
+      if(obj.constructor.name !== 'Date' &&
+        !Array.isArray(obj) &&
+        typeof obj !== 'function' &&
+        typeof obj === 'object') {
+  
+        return Object.getOwnPropertyNames(obj).map((prop) => {
+          const clonedObj = {};
+          clonedObj[prop] = unfreezeProp(obj[prop]);
+          return clonedObj;
+        }).reduce(
+          (leftObj, rightObj) => Object.assign({}, leftObj, rightObj)
+        );
+      } else if (Array.isArray(obj)) {
+        return obj.map((item) => unfreezeProp(item));
+      } else if (typeof obj === 'function') {
+        const target = function() {
+          obj.call(this, ...arguments);
+        };
+        target.prototype = Object.create(obj.prototype);
+        return target;
+      }
+    }
+    return obj;
+  };
+
+  this.areGlobalAndLocalMinorVersionsMatching = (localVersion) => {
+    if (!localVersion) return false;
+    const majorAndMinorRegex = /^(\d+\.\d+).*$/;
+    const globalVersionMajorAndMinor = version?.match(majorAndMinorRegex)[1] || 'global invalid';
+    const localVersionMajorAndMinor = localVersion?.match(majorAndMinorRegex)[1] || 'local invalid';
+    return globalVersionMajorAndMinor === localVersionMajorAndMinor;
+  }
+}
+
+let Store = new function() {
+  this.isLocalStorageSupported = () => {
+    try {
+      return !!window.localStorage
+        && typeof localStorage.getItem === 'function'
+        && typeof localStorage.setItem === 'function'
+        && typeof localStorage.removeItem === 'function';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  this.get = (key) => {
+    return this.isLocalStorageSupported() ? localStorage?.getItem(key) : null;
+  }
+
+  this.set = (key, value) => {
+    if (!this.isLocalStorageSupported()) return;
+    localStorage?.setItem(key, value);
   }
 }
 
@@ -403,9 +594,9 @@ class Color {
 }
 
 class ColorSetter {
-  constructor(containerData) {
-    this.colorData = isDarkModeEnabled ? containerData?.color?.darkMode : containerData?.color?.lightMode;
-    this.hue = containerData?.color?.hue || 0;
+  constructor(containerData, index) {
+    this.colorData = isDarkModeEnabled ? containerColors[index]?.darkMode : containerColors[index]?.lightMode;
+    this.hue = containerColors[index]?.hue || 0;
     this.sectionElement = document.getElementById(Selector.sectionId(containerData.type));
   }
 
@@ -495,9 +686,129 @@ class ColorSetter {
   }
 }
 
-class Container {
-  constructor(containerData) {
-    this.data = containerData;
+let Categories = new function() {
+  this.categoriesData = [];
+  this.categoriesKeyName = 'categories-data';
+  this.versionKeyName = 'app-version'; // Used to force update on user's side if new categories appear
+
+  this.initialize = () => {
+    const localVersion = JSON.parse(Store.get(this.versionKeyName)) || 0.0;
+    if (Util.areGlobalAndLocalMinorVersionsMatching(localVersion)) {
+      this.categoriesData = JSON.parse(Store.get(this.categoriesKeyName)) || this.getOriginalData();
+    } else {
+      this.categoriesData = this.getOriginalData();
+      Store.set(this.versionKeyName, JSON.stringify(version));
+    }
+    this.saveData();
+  }
+
+  this.forceReset = () => {
+    const newOrder = this.getOriginalData();
+
+    for (let index = newOrder.length - 2; index >= 0; index--) {
+      const thisItem = document.getElementById(Selector.sectionId(newOrder[index].type));
+      const nextItem = document.getElementById(Selector.sectionId(newOrder[index + 1].type));
+      if (!thisItem || !nextItem) continue;
+      const parentElement = nextItem.parentElement;
+      parentElement.insertBefore(thisItem, nextItem);
+    }
+
+    this.categoriesData = this.getOriginalData();
+    this.resetVisibilities();
+    this.saveData();
+    Settings.updateColors();
+    Settings.CategoriesManagementList.showHintForHiddenCategories();
+    Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
+  }
+
+  this.getOriginalData = () => {
+    let data = containers.slice();
+    return Util.deepUnfreeze(data);
+  }
+
+  this.getData = () => {
+    return this.categoriesData;
+  }
+
+  this.saveData = () => {
+    Store.set(this.categoriesKeyName, JSON.stringify(this.categoriesData));
+  }
+
+  this.getDataOfVisible = () => {
+    return this.categoriesData.filter(category => category.isVisible);
+  }
+
+  this.insertFirstBeforeSecond = (index1, index2) => {
+    const firstElement = this.getSectionElementByIndex(index1);
+    const secondElement = this.getSectionElementByIndex(index2);
+    const parentElement = firstElement.parentElement;
+    parentElement.insertBefore(secondElement, firstElement);
+  }
+
+  this.swap = (index1, index2) => {
+    [this.categoriesData[index1], this.categoriesData[index2]] = [this.categoriesData[index2], this.categoriesData[index1]];
+    this.saveData();
+
+    this.insertFirstBeforeSecond(index1, index2);
+  }
+
+  this.getDataByIndex = (index) => {
+    return this.categoriesData[index];
+  }
+
+  this.getIndexByType = (categoryType) => {
+    const item = this.categoriesData.find(category => category.type === categoryType);
+    return this.categoriesData.indexOf(item);
+  }
+
+  this.getDataByType = (categoryType) => {
+    return this.getDataByIndex(this.getIndexByType(categoryType));
+  }
+
+  this.getSectionElementByIndex = (index) => {
+    const id = Selector.sectionId(this.getDataByIndex(index).type);
+    return document.getElementById(id);
+  }
+
+  this.setVisibilityByType = (categoryType, isVisible) => {
+    let category = wordsContainer[categoryType];
+    if (isVisible) {
+      if (category) {
+        category.reinitializeSwiper();
+      } else {
+        category = new CategoryContainer(this.getDataByType(categoryType));
+        wordsContainer[categoryType] = category;
+      }
+    } else {
+      category?.destroy();
+    }
+    const categoryData = this.categoriesData[this.getIndexByType(categoryType)];
+    if (categoryData !== undefined) {
+      categoryData.isVisible = isVisible;
+      this.saveData();
+    }
+    Settings.CategoriesManagementList.showHintForHiddenCategories();
+    Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
+    Settings.CategoriesManagementList.updateCounter();
+    Settings.updateColors();
+  }
+
+  this.isVisible = (categoryType) => {
+    return this.categoriesData[this.getIndexByType(categoryType)]?.isVisible || false;
+  }
+
+  this.resetVisibilities = () => {
+    for (const category of this.getData()) {
+      const type = category.type;
+      this.setVisibilityByType(type, true); // Force all categories to be visible upon reset
+      // this.setVisibilityByType(type, this.getOriginalData().slice().find(c => c.type === type)?.isVisible); // Uncomment to use default visibilites instead
+    }
+  }
+}
+
+class CategoryContainer {
+  constructor(categoryData) {
+    this.data = categoryData;
     this.numberOfSlidesToGenerateFromWordsCache = 12;
     this.wordsCache = [];
     this.wordsCacheIndex = 0;
@@ -505,11 +816,18 @@ class Container {
     this.slideIndex = 0;
     this.hasSpokenSinceTransitionEnd = true;
 
-    WordSectionCreator.addSection(containerData);
-    this.swiper = this.initializeSwiper();
-    this.initializeWords();
+    WordSectionCreator.addSection(categoryData);
+    this.toggleSectionVisibility(this.isVisible());
+    if (this.isVisible()) {
+      this.swiper = this.initializeSwiper();
+      this.initializeWords();
+    }
 
     setInterval(() => this.speakCurrentSlideIfAllowed(), Math.max(150, swiperAnimationDuration + 11));
+  }
+
+  isVisible() {
+    return this.data.isVisible || false;
   }
 
   initializeWords() {
@@ -524,6 +842,7 @@ class Container {
   }
 
   initializeSwiper() {
+    this.toggleSectionVisibility(true);
     const prevSlideCallbackStart = () => { this.wordsCacheIndex--; }
     const nextSlideCallbackStart = () => { this.wordsCacheIndex++; }
     const prevSlideCallbackEnd = () => { this.appendSlidesToTheLeftIfNeeded(); this.hasSpokenSinceTransitionEnd = false; }
@@ -543,10 +862,26 @@ class Container {
     }
     setTimeout(() => {
       this.swiper = this.initializeSwiper();
-      this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache + 1);
-      this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache);
-      this.hideSpinner();
+      if (this.wordsCache.length > 0) {
+        this.appendSlidesToTheLeft(this.numberOfSlidesToGenerateFromWordsCache + 1);
+        this.appendSlidesToTheRight(this.numberOfSlidesToGenerateFromWordsCache);
+        this.hideSpinner();
+      } else {
+        this.initializeWords();
+      }
     }, 100);
+  }
+
+  destroy() {
+    if (this.swiper) {
+      this.swiper.destroy();
+      this.toggleSectionVisibility(false);
+    }
+  }
+
+  toggleSectionVisibility(isVisible) {
+    const section = document.getElementById(Selector.sectionId(this.data.type));
+    isVisible ? VisibilityController.showElement(section) : VisibilityController.hideElement(section);
   }
 
   appendSlidesToTheLeft(numberOfSlidesToAppend, offset = 0) {
@@ -781,7 +1116,26 @@ let Creator = new function() {
     return sheet;
   }
 
-  this.createCircularButton = (buttonId, buttonText, svgCode, callback, preventDoubleClick = false) => {
+  this.createSlidingSheetHeader = (text, rightSideContent = undefined) => {
+    const headerContainer = this.createElementWithClass('div', 'sliding-sheet-header-container');
+    const firstLineWrapper = this.createElementWithClass('div', 'sliding-sheet-header-first-line');
+
+    firstLineWrapper.appendChild(Creator.createParagraph(text, 'sliding-sheet-header-text'));
+
+    if (rightSideContent) {
+      const rightSide = this.createElementWithClass('div', 'sliding-sheet-header-right-side');
+      rightSide.appendChild(rightSideContent);
+      firstLineWrapper.appendChild(rightSide);
+    }
+
+    headerContainer.appendChild(firstLineWrapper);
+
+    headerContainer.appendChild(Creator.createSeparator());
+
+    return headerContainer;
+  }
+
+  this.createCircularButton = (buttonId, buttonText, iconElement, callback, preventDoubleClick = false) => {
     const button = this.createElementWithClassAndId('button', 'circular-button', buttonId);
     const callbackOnSingleClick = (e) => {
       e.preventDefault();
@@ -794,7 +1148,7 @@ let Creator = new function() {
     }
 
     Aria.setLabel(button, buttonText);
-    button.appendChild(this.createIcon(svgCode));
+    button.appendChild(iconElement);
     this.addRipple(button);
     return button;
   }
@@ -803,10 +1157,49 @@ let Creator = new function() {
     parentElement.appendChild(this.createElementWithClass('div', 'rippleJS'));
   }
 
+  this.capitalizeFirstLetter = (text) => {
+    try {
+      return text?.charAt(0)?.toUpperCase() + text?.slice(1);
+    } catch (e) {
+      return text;
+    }
+  }
+
+  this.addNonBreakingSpaces = (text) => {
+    try {
+      // Add nbsp after a conjunction or digits, but not before _(subtitle)
+      return text.replace(/\b(a|i|o|u|w|z|\d+)\s(?!_)/gi, '$1&nbsp;');
+    } catch (e) {
+      return text;
+    }
+  }
+
+  this.splitIntoTitleAndSubtitle = (text) => {
+    try {
+      const slideWithSubtitleRegex = /^(.+) _\((.+)\)$/; // e.g. 'Hello _(World)' ---> 'Hello', 'World'
+      const matches = text?.match(slideWithSubtitleRegex);
+      let result = '';
+      if (matches?.length > 2) { // Slide uses the subtitle format
+        for (let i = 1; i < matches.length; i++) {
+          result += `<p>${matches[i]}</p>`;
+        }
+      } else { // Slide uses plain text
+        result = textWithNonBreakingSpace;
+      }
+      return result;
+    } catch (e) {
+      return text;
+    }
+  }
+
+  this.parseSlideText = (text) => {
+    const capitalizedText = this.capitalizeFirstLetter(text);
+    const textWithNonBreakingSpaces = this.addNonBreakingSpaces(capitalizedText);
+    return this.splitIntoTitleAndSubtitle(textWithNonBreakingSpaces);
+  }
+
   this.createSlide = (text) => {
-    const capitalizedText = text?.charAt(0)?.toUpperCase() + text?.slice(1);
-    const textWithNonBreakingSpace = capitalizedText.replace(/ (i|z|w|od|za|oraz) /gi, ' $1&nbsp;');
-    return `<div class="swiper-slide">${textWithNonBreakingSpace}</div>`;
+    return `<div class="swiper-slide">${this.parseSlideText(text)}</div>`;
   }
 
   this.createSlides = (texts = []) => {
@@ -824,38 +1217,66 @@ let Creator = new function() {
   }
 
   this.createToggleLabels = (primaryText, secondaryText = '') => {
-    const primaryLabelElement = this.createSpan(primaryText, 'label-text-primary');
-    const secondaryLabelElement = this.createSpan(secondaryText, 'label-text-secondary');
-
     const labelsContainer = this.createElementWithClass('div', 'label-text');
+    const primaryLabelElement = this.createSpan(primaryText, 'label-text-primary');
     labelsContainer.appendChild(primaryLabelElement);
-    labelsContainer.appendChild(secondaryLabelElement);
+
+    if (secondaryText.length > 0) {
+      const secondaryLabelElement = this.createSpan(secondaryText, 'label-text-secondary');
+      labelsContainer.appendChild(secondaryLabelElement);
+    }
+
     return labelsContainer;
   }
 }
 
 let SpecializedCreator = new function() {
-  this.createSettingsButton = () => {
+  this.createAppearanceSettingsButton = () => {
     const buttonId = 'button-appearance-settings';
-    const buttonText = 'Ustawienia';
-    const iconSvgCode = iconCog;
+    const buttonText = 'Ustawienia wyglądu';
+    const icon = Creator.createIcon(iconCog);
     const callback = () => {
       VisibilityController.toggleSheetVisibility('appearance-settings');
       this.closeSettingsPrompt();
     }
     const preventDoubleClick = true;
-    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
+    return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
+  }
+
+  this.createCategoryManagementButton = () => {
+    const buttonId = 'button-category-management';
+    const buttonText = 'Kategorie słów';
+    const icon = Creator.createIcon(iconEditList);
+    const callback = () => {
+      VisibilityController.toggleSheetVisibility('category-management');
+      this.closeSettingsPrompt();
+    }
+    const preventDoubleClick = true;
+    return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
   }
 
   this.createAboutButton = () => {
     const buttonId = 'button-about';
     const buttonText = 'Informacje';
-    const iconSvgCode = iconInfo;
+    const icon = Creator.createIcon(iconInfo);
     const callback = () => {
       VisibilityController.toggleSheetVisibility('about');
     }
     const preventDoubleClick = true;
-    return Creator.createCircularButton(buttonId, buttonText, iconSvgCode, callback, preventDoubleClick);
+    return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
+  }
+
+  this.createFooterLeftSideButtons = () => {
+    const buttonsContainer = Creator.createElementWithClass('div', 'footer-buttons-container');
+    buttonsContainer.appendChild(this.createAppearanceSettingsButton());
+    buttonsContainer.appendChild(this.createCategoryManagementButton());
+    return buttonsContainer;
+  }
+
+  this.createFooterRightSideButtons = () => {
+    const buttonsContainer = Creator.createElementWithClass('div', 'footer-buttons-container');
+    buttonsContainer.appendChild(this.createAboutButton());
+    return buttonsContainer;
   }
 
   this.createCheckboxIcons = () => {
@@ -878,7 +1299,8 @@ let SpecializedCreator = new function() {
       Aria.setIsAdvanceAllSpeaking(true);
 
       // Advance sections in randomized order
-      const types = Object.keys(containers).map(key => containers[key].type);
+      const categories = Categories.getDataOfVisible();
+      const types = Object.keys(categories).map(key => categories[key].type);
       Util.shuffle(types);
       for (const [index, type] of types.entries()) {
         const swiper = Selector.getSwiper(type);
@@ -890,8 +1312,8 @@ let SpecializedCreator = new function() {
       // Prepare a combined text to speak
       setTimeout(() => {
         let textToSpeak = [];
-        for (let container of containers) {
-          textToSpeak.push(wordsContainer[container.type]?.createTextToSpeak());
+        for (let categoryData of Categories.getDataOfVisible()) {
+          textToSpeak.push(wordsContainer[categoryData.type]?.createTextToSpeak());
         }
         Aria.speak(textToSpeak.join(', '));
       }, delayBetweenLoadedWordsDuration * types.length);
@@ -925,11 +1347,12 @@ let SpecializedCreator = new function() {
 
   this.closeSettingsPrompt = () => {
     const keyName = 'settings-prompt-dismissed';
-    if (localStorage.getItem(keyName) === 'true') return; // Prompt was already dismissed before, exit.
+    if (Store.get(keyName) === 'true') return; // Prompt was already dismissed before, exit.
 
     const promptCardId = 'prompt-settings';
-    localStorage.setItem(keyName, 'true');
+    Store.set(keyName, 'true');
     document.getElementById(promptCardId)?.remove();
+    Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
   }
 
   this.createSettingsPromptCard = () => {
@@ -939,13 +1362,13 @@ let SpecializedCreator = new function() {
     const cardElement = Creator.createElementWithClass('div', 'prompt-card');
 
     const textWrapper = Creator.createElementWithClass('div', 'prompt-text-wrapper');
-    const textElement = Creator.createSpan('Dostosuj wygląd, animacje i&nbsp;rozmiar tekstu.');
+    const textElement = Creator.createSpan('Dostosuj wygląd aplikacji i&nbsp;kategorie pomysłów.');
     textWrapper.appendChild(textElement);
     
     const closePromptCallback = () => {
       this.closeSettingsPrompt();
     }
-    const closeButton = Creator.createCircularButton('close-prompt-settings', 'Zamknij', iconClose, closePromptCallback);
+    const closeButton = Creator.createCircularButton('close-prompt-settings', 'Zamknij', Creator.createIcon(iconClose), closePromptCallback);
     Creator.addRipple(closeButton);
     
     cardElement.appendChild(textWrapper);
@@ -959,7 +1382,7 @@ let SpecializedCreator = new function() {
 
   this.createSettingsPromptCardIfItWasNotDismissedAlready = () => {
     const keyName = 'settings-prompt-dismissed';
-    const shouldShowPrompt = localStorage.getItem(keyName) !== 'true';
+    const shouldShowPrompt = Store.get(keyName) !== 'true';
     if (shouldShowPrompt) {
       const prompt = this.createSettingsPromptCard();
       document.getElementsByTagName('main')[0].appendChild(prompt);
@@ -970,12 +1393,12 @@ let SpecializedCreator = new function() {
 let WordSectionCreator = new function() {
   this.addSwiperPrevNextButtons = (parentElement) => {
     const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
-    prevButton.appendChild(Creator.createIcon(iconArrowLeft));
+    prevButton.appendChild(Creator.createIcon(iconArrow, 'rotate-180'));
     prevButton.style.position = 'relative';
     Creator.addRipple(prevButton);
 
     const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
-    nextButton.appendChild(Creator.createIcon(iconArrowRight));
+    nextButton.appendChild(Creator.createIcon(iconArrow));
     nextButton.style.position = 'relative';
     Creator.addRipple(nextButton);
 
@@ -1007,9 +1430,9 @@ let WordSectionCreator = new function() {
     parentElement.appendChild(overlay);
   }
 
-  this.addSection = (containerData) => {
-    const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(containerData.type));
-    this.addSectionHeader(section, containerData.label);
+  this.addSection = (categoryData) => {
+    const section = Creator.createElementWithClassAndId('section', 'word-section', Selector.sectionId(categoryData.type));
+    this.addSectionHeader(section, categoryData.label);
     this.addSectionOverlay(section);
     this.addSwiperPrevNextButtons(section);
 
@@ -1031,9 +1454,7 @@ let SheetCreator = new function() {
     VisibilityController.preventTabbingToElement(sheet);
 
     const sheetContent = sheet.children[0];
-    sheetContent.appendChild(Creator.createParagraph('Ustawienia wyglądu', 'sliding-sheet-header'));
-
-    sheetContent.appendChild(Creator.createSeparator());
+    sheetContent.appendChild(Creator.createSlidingSheetHeader('Ustawienia'));
 
     sheetContent.appendChild(Settings.createAnimationsToggle());
     sheetContent.appendChild(Settings.createCompactModeToggle());
@@ -1046,34 +1467,59 @@ let SheetCreator = new function() {
     return sheet;
   }
 
-  this.createAboutSheet = () => {
-    const sheet = Creator.createSlidingSheet('about');
+  this.createCategoryManagementSheet = () => {
+    const sheetName = 'category-management';
+    const sheet = Creator.createSlidingSheet(sheetName);
     VisibilityController.preventTabbingToElement(sheet);
+
+    const rightSideContent = Creator.createElementWithClass('div', 'with-icon');
+
+    const buttonId = 'restore-default-categories';
+    const buttonText = 'Przywróć domyślne kategorie';
+    const icon = Creator.createIcon(iconRestore);
+    const callback = () => {
+      Settings.setDefaultCategories();
+    }
+    rightSideContent.appendChild(Creator.createCircularButton(buttonId, buttonText, icon, callback));
+
+    const sheetContent = sheet.children[0];
+    sheetContent.appendChild(Creator.createSlidingSheetHeader('Kategorie', rightSideContent));
+
+    sheetContent.appendChild(Settings.createCategoriesList());
+
+    return sheet;
+  }
+
+  this.createAboutSheet = () => {
+    const sheetName = 'about';
+    const sheet = Creator.createSlidingSheet(sheetName);
+    VisibilityController.preventTabbingToElement(sheet);
+
+    const rightSideContent = Creator.createElementWithClass('div', 'with-text');
+    rightSideContent.appendChild(Creator.createParagraph(`v${version}`, 'version-number'));
 
     const sheetContent = sheet.children[0];
 
-    sheetContent.appendChild(Creator.createParagraph('Magazyn Inspiracji', 'sliding-sheet-header'));
+    sheetContent.appendChild(Creator.createSlidingSheetHeader('Magazyn Inspiracji', rightSideContent));
 
-    sheetContent.appendChild(Creator.createSeparator());
-
-    sheetContent.appendChild(Creator.createParagraph('Generator słów do scen teatru improwizowanego.', 'sliding-sheet-text'));
-    sheetContent.appendChild(Creator.createParagraph('Na&nbsp;występach źródłem inspiracji jest publiczność, ' +
-      'lecz&nbsp;jej pomoc nie&nbsp;jest dostępna podczas prób i&nbsp;ćwiczeń. Magazyn Inspiracji wypełnia tę&nbsp;lukę ' +
-      'zbiorem ponad 1500 pomysłów, podzielonych na&nbsp;wygodne kategorie.', 'sliding-sheet-text'
+    sheetContent.appendChild(Creator.createParagraph('<b>Zbiór pomysłów do scen teatru impro&shy;wizo&shy;wanego.</b>', 'sliding-sheet-text'));
+    sheetContent.appendChild(Creator.createParagraph('Na&nbsp;występach źródłem inspi&shy;racji jest publicz&shy;ność, ' +
+      'lecz&nbsp;jej pomoc nie&nbsp;jest dostępna podczas prób i&nbsp;ćwiczeń. Magazyn Inspi&shy;racji wypełnia tę&nbsp;lukę ' +
+      '<b>ponad trzema tysią&shy;cami pomy&shy;słów</b>, podzie&shy;lo&shy;nymi na&nbsp;wygodne kategorie.', 'sliding-sheet-text'
     ));
 
     sheetContent.appendChild(Creator.createSeparator());
 
-    sheetContent.appendChild(Creator.createParagraph('Chcesz dodać nowe słówka, pomóc w&nbsp;rozwoju aplikacji lub&nbsp;zgłosić błąd?', 'sliding-sheet-text'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na&nbsp;GitHub', 'https://github.com/oczki/inspiracje', iconGithub));
-    sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail));
+    sheetContent.appendChild(Creator.createParagraph('Kontakt:', 'sliding-sheet-text'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na&nbsp;GitHub', 'https://github.com/oczki/inspiracje', iconGithub, 'accented'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail, 'accented'));
 
     sheetContent.appendChild(Creator.createSeparator());
 
-    const currentYear = Math.max(2021, new Date().getFullYear());
+    const currentYear = Math.max(2022, new Date().getFullYear());
     sheetContent.appendChild(Creator.createLinkWithIcon(
       `&copy; 2018–${currentYear} <u>Damian&nbsp;Oczki</u>`,
-      'https://oczki.pl', iconExternalLink));
+      'https://oczki.pl', iconExternalLink, 'accented'));
 
     return sheet;
   }
@@ -1083,12 +1529,29 @@ let VisibilityController = new function() {
   this.fabAdvanceAllId = 'button-advance-all';
   this.fabCloseSheetId = 'button-close-sheet';
 
-  this.showElement = (element) => {
-    element?.classList.add(visibleClass);
+  this.enableElement = (element) => {
+    if (!element) return;
+    element.disabled = false;
   }
 
+  this.disableElement = (element) => {
+    if (!element) return;
+    element.disabled = true;
+  }
+
+  this.setElementEnabledState = (element, enabled) => {
+    if (!element) return;
+    element.disabled = !enabled;
+  }
+
+  this.showElement = (element) => {
+    if (!element) return;
+    element.classList.add(visibleClass);
+  }
+  
   this.hideElement = (element) => {
-    element?.classList.remove(visibleClass);
+    if (!element) return;
+    element.classList.remove(visibleClass);
   }
 
   this.preventTabbingToElement = (element) => {
@@ -1145,10 +1608,16 @@ let VisibilityController = new function() {
     for (const sheet of sheetsToHide) {
       sheet.classList.remove(visibleClass);
       this.delayedPreventTabbingToElement(sheet, sheetClosingAnimationDuration);
+      this.setSheetsButtonHighlight(sheet.id, false);
     }
     Selector.getScrim()?.classList.remove(visibleClass);
     this.showAdvanceAllFab();
     this.allowScrollingBody(true);
+  }
+
+  this.setSheetsButtonHighlight = (sheetId, isHighlighted) => {
+    const button = document.getElementById(`button-${sheetId}`);
+    button?.classList.toggle('highlighted', isHighlighted);
   }
 
   this.toggleSheetVisibility = (sheetId) => {
@@ -1159,20 +1628,35 @@ let VisibilityController = new function() {
       this.hideAndPreventTabbingToElement(sheet, sheetClosingAnimationDuration);
       this.hideElement(Selector.getScrim());
       this.allowScrollingBody(true);
+      this.setSheetsButtonHighlight(sheetId, false);
     } else {
       this.showCloseFab();
       this.showAndAllowTabbingToElement(sheet);
       this.showElement(Selector.getScrim());
       this.allowScrollingBody(false);
+      this.setSheetsButtonHighlight(sheetId, true);
     }
   }
 
   this.hideOtherSheets = (idOfSheetNotToHide) => {
     const otherSheets = Array.from(document.querySelectorAll(`.sliding-sheet:not(#${idOfSheetNotToHide})`));
     for (let otherSheet of otherSheets) {
+      this.setSheetsButtonHighlight(otherSheet.id, false);
       otherSheet.classList.remove(visibleClass);
       setTimeout(() => this.preventTabbingToElement(otherSheet), sheetClosingAnimationDuration);
     }
+  }
+
+  this.toggleNotificationDotForCircularButton = (buttonId, isDotVisible) => {
+    document.getElementById(buttonId)?.classList.toggle('notify', isDotVisible);
+  }
+
+  this.toggleCategoriesNotificationDot = (isVisible) => {
+    this.toggleNotificationDotForCircularButton('button-category-management', isVisible);
+  }
+
+  this.toggleCategoriesPlaceholder = (isVisible) => {
+    document.getElementById('categories-placeholder')?.classList.toggle('visible', isVisible);
   }
 }
 
@@ -1184,11 +1668,11 @@ let Settings = new function() {
     this.scaleMinusElementId = 'button-font-scale-minus';
 
     this.getFontScale = () => {
-      return localStorage.getItem(this.keyName) || 1.0;
+      return Store.get(this.keyName) || 1.0;
     }
 
     this.setFontScale = (value) => {
-      localStorage.setItem(this.keyName, value);
+      Store.set(this.keyName, value);
       document.documentElement.style.setProperty('--font-size-multiplier', value);
       this.updateCurrentScaleDisplay();
       this.updateButtonsStates();
@@ -1210,20 +1694,20 @@ let Settings = new function() {
 
     this.createIncreaseFontScaleButton = () => {
       const buttonText = 'Powiększ tekst';
-      const iconSvgCode = iconPlusBox;
+      const icon = Creator.createIcon(iconPlusBox);
       const callback = () => {
         this.increaseFontScale();
       }
-      return Creator.createCircularButton(this.scalePlusElementId, buttonText, iconSvgCode, callback);
+      return Creator.createCircularButton(this.scalePlusElementId, buttonText, icon, callback);
     }
 
     this.createDecreaseFontScaleButton = () => {
       const buttonText = 'Pomniejsz tekst';
-      const iconSvgCode = iconMinusBox;
+      const icon = Creator.createIcon(iconMinusBox);
       const callback = () => {
         this.decreaseFontScale();
       }
-      return Creator.createCircularButton(this.scaleMinusElementId, buttonText, iconSvgCode, callback);
+      return Creator.createCircularButton(this.scaleMinusElementId, buttonText, icon, callback);
     }
 
     this.createCurrentScaleDisplay = () => {
@@ -1274,7 +1758,7 @@ let Settings = new function() {
     }
 
     this.shouldAnimationsToggleBeChecked = () => {
-      const currentAnimationsDisabledKeyValue = localStorage.getItem(this.keyName);
+      const currentAnimationsDisabledKeyValue = Store.get(this.keyName) || null;
       if (currentAnimationsDisabledKeyValue === null)
         return !this.doesTheUserPreferReducedMotion();
       else
@@ -1282,24 +1766,24 @@ let Settings = new function() {
     }
 
     this.setAnimationsDisabledBodyClass = (state) => {
-      document.body.classList.toggle('no-animations', state);
+      document.body.classList.toggle('reduced-animations', state);
     }
 
     this.setAnimationsDisabledState = (state) => {
-      localStorage.setItem(this.keyName, state);
+      Store.set(this.keyName, state);
       this.setAnimationsDisabledBodyClass(state);
       if (state) {
         swiperAnimationDuration = 0;
         sheetClosingAnimationDuration = 0;
         delayBetweenLoadedWordsDuration = 0;
-        fabTransitionDuration = 0;
-        spinnerOverlayFadeDuration = 0;
+        // fabTransitionDuration = 0;
+        // spinnerOverlayFadeDuration = 0;
       } else {
         swiperAnimationDuration = defaulSwiperAnimationDuration;
         sheetClosingAnimationDuration = defaultSheetClosingAnimationDuration;
         delayBetweenLoadedWordsDuration = defaultDelayBetweenLoadedWordsDuration;
-        fabTransitionDuration = defaultFabTransitionDuration;
-        spinnerOverlayFadeDuration = defaultSpinnerOverlayFadeDuration;
+        // fabTransitionDuration = defaultFabTransitionDuration;
+        // spinnerOverlayFadeDuration = defaultSpinnerOverlayFadeDuration;
       }
     }
 
@@ -1312,18 +1796,20 @@ let Settings = new function() {
         this.setAnimationsDisabledState(!event.currentTarget.checked);
         this.reinitializeAllSwipers();
       });
-      const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
+      const labelElement = Creator.createElementWithClass('label', 'checkbox-label');
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
-      labelElement.appendChild(Creator.createToggleLabels('Animacje', 'Płynne przejścia słów i paneli'));
+      labelElement.appendChild(Creator.createToggleLabels('Animacje', 'Płynne przejścia słów i&nbsp;paneli'));
       Creator.addRipple(labelElement);
       return labelElement;
     }
 
     this.reinitializeAllSwipers = () => {
-      for (const containerData of containers) {
-        wordsContainer[containerData.type].reinitializeSwiper();
-        new ColorSetter(containerData).setColors();
+      let colorIndex = 0;
+      for (const categoryData of Categories.getData()) {
+        if (!Categories.isVisible(categoryData.type)) continue;
+        wordsContainer[categoryData.type].reinitializeSwiper();
+        new ColorSetter(categoryData, colorIndex++).setColors();
       }
     }
   };
@@ -1332,11 +1818,11 @@ let Settings = new function() {
     this.keyName = 'compact-mode';
 
     this.shouldToggleBeChecked = () => {
-      return localStorage.getItem(this.keyName) === 'true';
+      return Store.get(this.keyName) === 'true' || false;
     }
 
     this.setCompactModeState = (state) => {
-      localStorage.setItem(this.keyName, state);
+      Store.set(this.keyName, state);
       document.body.classList.toggle('compact', state);
     }
 
@@ -1349,7 +1835,7 @@ let Settings = new function() {
         this.setCompactModeState(event.currentTarget.checked);
       });
 
-      const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
+      const labelElement = Creator.createElementWithClass('label', 'checkbox-label');
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
       labelElement.appendChild(Creator.createToggleLabels('Tryb kompaktowy', 'Schowaj nagłówki kategorii'));
@@ -1366,7 +1852,7 @@ let Settings = new function() {
     }
 
     this.shouldToggleBeChecked = () => {
-      const currentDarkModeKeyValue = localStorage.getItem(this.keyName);
+      const currentDarkModeKeyValue = Store.get(this.keyName) || null;
       if (currentDarkModeKeyValue === null)
         return this.doesTheUserPreferDarkMode();
       else
@@ -1374,7 +1860,7 @@ let Settings = new function() {
     }
 
     this.setDarkModeState = (state) => {
-      localStorage.setItem(this.keyName, state);
+      Store.set(this.keyName, state);
       document.body.classList.toggle('dark', state);
       isDarkModeEnabled = state;
       Settings.updateColors();
@@ -1393,12 +1879,305 @@ let Settings = new function() {
         this.setDarkModeState(event.currentTarget.checked);
       });
 
-      const labelElement = Creator.createElementWithClassAndId('label', 'checkbox-label', this.keyName);
+      const labelElement = Creator.createElementWithClass('label', 'checkbox-label');
       labelElement.appendChild(toggle);
       labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
-      labelElement.appendChild(Creator.createToggleLabels('Tryb ciemny', 'Do improwizacji po nocach'));
+      labelElement.appendChild(Creator.createToggleLabels('Tryb ciemny', 'Do improwizacji po&nbsp;nocach'));
       Creator.addRipple(labelElement);
       return labelElement;
+    }
+  };
+
+  this.CategoriesManagementList = new function() {
+    this.keyName = 'categories';
+    this.categories = [];
+    this.wrapperElementId = 'categories-list-container';
+    this.listContentElementId = 'categories-list-content';
+
+    this.moveUpButtonId = (type) => {
+      return `${type}-move-up`;
+    }
+
+    this.moveDownButtonId = (type) => {
+      return `${type}-move-down`;
+    }
+
+    this.getListOfCategories = () => {
+      return Categories.getData();
+    }
+
+    this.saveListOfCategories = () => {
+      Categories.saveData();
+    }
+
+    this.getListItemElementByType = (categoryType) => {
+      const elementId = `category-${categoryType}-item`;
+      return document.getElementById(elementId);
+    }
+
+    this.getListItemElementByIndex = (index) => {
+      return this.getListItemElementByType(this.categories[index].type);
+    }
+
+    this.getIndexOfContainerByType = (categoryType) => {
+      const categoriesList = Categories.getData();
+      const item = categoriesList.find(category => category.type === categoryType);
+      return categoriesList.indexOf(item);
+    }
+
+    this.getIndexOfPreviousItemInList = (currentCategoryType) => {
+      const index = this.getIndexOfContainerByType(currentCategoryType);
+      return index > 0 ? index - 1 : undefined;
+    }
+    
+    this.getIndexOfNextItemInList = (currentCategoryType) => {
+      const index = this.getIndexOfContainerByType(currentCategoryType);
+      if (index >= 0 && index < this.categories.length - 1) {
+        return index + 1;
+      }
+      return undefined;
+    }
+
+    this.cloneListItem = (element) => {
+      const clone = element.cloneNode(true);
+      clone.removeAttribute('id');
+      clone.classList.add('clone');
+      clone.classList.add('scale');
+      clone.classList.add('translate');
+      Array.from(clone.getElementsByTagName('input')).forEach(input => input.removeAttribute('id'));
+      Array.from(clone.getElementsByTagName('button')).forEach(input => input.removeAttribute('id'));
+      return clone;
+    }
+
+    this.animateSwap = (element1, element2, parentElement, firstElementIsOnTop) => {
+      const setOnTop = (element, isOnTop) => {
+        const className = 'top';
+        isOnTop ? element.classList.add(className) : element.classList.remove(className);
+      };
+      const setOnBottom = (element, isOnBottom) => {
+        const className = 'bottom';
+        isOnBottom ? element.classList.add(className) : element.classList.remove(className);
+      };
+
+      setOnTop(firstElementIsOnTop ? element1 : element2, true);
+      setOnBottom(firstElementIsOnTop ? element2 : element1, true);
+      const clone1 = this.cloneListItem(element1);
+      const clone2 = this.cloneListItem(element2);
+
+      element1.appendChild(clone1);
+      element2.appendChild(clone2);
+
+      VisibilityController.hideElement(element1);
+      VisibilityController.hideElement(element2);
+
+      const height = clone1.getBoundingClientRect().height;
+      const posYpropertyName = '--posY';
+      clone1.style.setProperty(posYpropertyName, `-${height}px`);
+      clone2.style.setProperty(posYpropertyName, `${height}px`);
+
+      setTimeout(() => {
+        clone1.remove();
+        clone2.remove();
+        parentElement.insertBefore(element1, element2);
+        VisibilityController.showElement(element1);
+        VisibilityController.showElement(element2);
+        setOnTop(element1, false);
+        setOnTop(element2, false);
+        setOnBottom(element1, false);
+        setOnBottom(element2, false);
+      }, defaultCategorySwapDuration);
+
+      // TODO: slowly hide the clones, so that the up/down buttons fade instead of blinking immediately
+    }
+
+    this.swapItems = (firstIndex, secondIndex, firstElementIsOnTop) => {
+      const firstElement = this.getListItemElementByIndex(firstIndex);
+      const secondElement = this.getListItemElementByIndex(secondIndex);
+      const parentElement = firstElement.parentElement;
+
+      // Swap the main containers with swipers.
+      Categories.swap(firstIndex, secondIndex);
+      Settings.updateColors();
+      Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
+
+      // Swap the elements on this list.
+      this.animateSwap(firstElement, secondElement, parentElement, firstElementIsOnTop);
+
+      // TODO: Aria.speak('zamieniono kategorie "miejsce" i "czynność"') or similar. Check how "" affects speech.
+      // TODO: Make sure keyboard focus stays in the element that was recently pressed. If not, focus it.
+
+      // Up/down buttons need to be disabled on edges, and enabled elsewhere.
+      this.updateMoveUpDownButtonsStates();
+    }
+
+    this.moveUp = (categoryType) => {
+      const previousItemIndex = this.getIndexOfPreviousItemInList(categoryType);
+      if (previousItemIndex === undefined) return;
+      const currentItemIndex = this.getIndexOfContainerByType(categoryType);
+      const firstElementIsOnTop = true;
+      this.swapItems(currentItemIndex, previousItemIndex, firstElementIsOnTop);
+    }
+
+    this.moveDown = (categoryType) => {
+      const nextItemIndex = this.getIndexOfNextItemInList(categoryType);
+      if (nextItemIndex === undefined) return;
+      const currentItemIndex = this.getIndexOfContainerByType(categoryType);
+      const firstElementIsOnTop = false;
+      this.swapItems(nextItemIndex, currentItemIndex, firstElementIsOnTop);
+    }
+
+    this.updateMoveUpDownButtonsStates = () => {
+      for (let [index, categoryData] of this.categories.entries()) {
+        let upEnabled = index > 0;
+        let downEnabled = index < this.categories.length - 1;
+        VisibilityController.setElementEnabledState(document.getElementById(this.moveUpButtonId(categoryData.type)), upEnabled);
+        VisibilityController.setElementEnabledState(document.getElementById(this.moveDownButtonId(categoryData.type)), downEnabled);
+      }
+    }
+
+    this.createMoveUpButton = (categoryType) => {
+      const buttonId = this.moveUpButtonId(categoryType);
+      const buttonText = 'Przesuń w górę';
+      const icon = Creator.createIcon(iconArrow, 'rotate-270');
+      const callback = () => {
+        this.moveUp(categoryType);
+      }
+      const preventDoubleClick = true;
+      return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
+    }
+
+    this.createMoveDownButton = (categoryType) => {
+      const buttonId = this.moveDownButtonId(categoryType);
+      const buttonText = 'Przesuń w dół';
+      const icon = Creator.createIcon(iconArrow, 'rotate-90');
+      const callback = () => {
+        this.moveDown(categoryType);
+      }
+      const preventDoubleClick = true;
+      return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
+    }
+
+    this.createControl = () => {
+      this.categories = this.getListOfCategories();
+      const listWrapper = Creator.createElementWithId('div', this.wrapperElementId);
+      listWrapper.appendChild(this.createListContent());
+      return listWrapper;
+    }
+
+    this.createListContent = () => {
+      const listContent = Creator.createElementWithId('div', this.listContentElementId);
+
+      for (let categoryData of this.categories) {
+        const itemId = `category-${categoryData.type}-item`;
+        const checkboxId = `category-${categoryData.type}-checkbox`;
+
+        const categoryContainer = Creator.createElementWithClassAndId('div', 'category-list-item', itemId);
+        VisibilityController.showElement(categoryContainer);
+
+        const labelElement = Creator.createElementWithClass('label', 'checkbox-label');
+        const toggle = Creator.createElementWithId('input', checkboxId);
+        toggle.type = 'checkbox';
+        toggle.checked = Categories.isVisible(categoryData.type);
+        toggle.addEventListener('change', (event) => {
+          Categories.setVisibilityByType(categoryData.type, event.currentTarget.checked);
+          this.showHintForHiddenCategories();
+        });
+
+        labelElement.appendChild(toggle);
+        labelElement.appendChild(SpecializedCreator.createCheckboxIcons());
+        labelElement.appendChild(Creator.createToggleLabels(categoryData.label));
+        Creator.addRipple(labelElement);
+
+        categoryContainer.appendChild(labelElement);
+        categoryContainer.appendChild(this.createMoveUpButton(categoryData.type));
+        categoryContainer.appendChild(this.createMoveDownButton(categoryData.type));
+
+        listContent.appendChild(categoryContainer);
+      }
+
+      return listContent;
+    }
+
+    this.recreateListContent = () => {
+      requestAnimationFrame(() => {
+        this.categories = this.getListOfCategories();
+        document.getElementById(this.listContentElementId).remove();
+        const listWrapper = document.getElementById(this.wrapperElementId);
+        listWrapper.appendChild(this.createListContent());
+        this.updateMoveUpDownButtonsStates();
+      });
+    }
+
+    this.showDotIfNeeded = () => {
+      for (let categoryData of Categories.getData()) {
+        if (!categoryData.isVisible) {
+          VisibilityController.toggleCategoriesNotificationDot(true);
+          return;
+        }
+      }
+      VisibilityController.toggleCategoriesNotificationDot(false);
+    }
+
+    this.showPlaceholderIfNeeded = () => {
+      let allCategoriesAreHidden = true;
+      for (let categoryData of Categories.getData()) {
+        if (categoryData.isVisible) {
+          allCategoriesAreHidden = false;
+          break;
+        }
+      }
+      VisibilityController.toggleCategoriesPlaceholder(allCategoriesAreHidden);
+    }
+
+    this.showHintForHiddenCategories = () => {
+      this.showDotIfNeeded();
+      this.showPlaceholderIfNeeded();
+    }
+
+    this.adjustMarginUnderLastCategory = () => {
+      const setLargeMargin = (categoryData, useLargeMargin) => {
+        const sectionElement = document.getElementById(Selector.sectionId(categoryData.type));
+        sectionElement.classList.toggle('last-visible', useLargeMargin);
+      };
+      const isSettingsPromptVisible = () => {
+        const promptCardId = 'prompt-settings';
+        return !!document.getElementById(promptCardId);
+      };
+      const resetAllMargins = (categoriesData) => {
+        for (let categoryData of categoriesData) {
+          setLargeMargin(categoryData, false);
+        }
+      };
+      const setMarginUnderLastCategory = (categoriesData) => {
+        for (let index = categoriesData.length - 1; index >= 0; index--) {
+          const categoryData = categoriesData[index];
+          if (categoryData.isVisible) {
+            setLargeMargin(categoryData, true);
+            return;
+          }
+        }
+      };
+
+      const categoriesData = Categories.getData();
+      resetAllMargins(categoriesData);
+      if (!isSettingsPromptVisible()) {
+        setMarginUnderLastCategory(categoriesData);
+      }
+    }
+
+    this.updateCounter = () => {
+      const counterParent = document.querySelector('#category-management .sliding-sheet-header-first-line');
+      if (!counterParent) return;
+
+      let counterAll = 0;
+      let counterVisible = 0;
+      for (let categoryData of Categories.getData()) {
+        counterAll++;
+        counterVisible += categoryData.isVisible;
+      }
+
+      const newCounterText = `${counterVisible} z ${counterAll}`;
+      counterParent.setAttribute('data-categories-count', newCounterText);
     }
   };
 
@@ -1408,9 +2187,15 @@ let Settings = new function() {
   }
 
   this.updateColors = () => {
-    for (let container of containers) {
-      new ColorSetter(container).setColors();
+    let colorIndex = 0;
+    for (let categoryData of Categories.getData()) {
+      if (!Categories.isVisible(categoryData.type)) continue;
+      new ColorSetter(categoryData, colorIndex++).setColors();
     }
+  }
+
+  this.updateMoveUpDownButtonsStates = () => {
+    this.CategoriesManagementList.updateMoveUpDownButtonsStates();
   }
 
   this.createFontScaleControl = () => {
@@ -1428,12 +2213,26 @@ let Settings = new function() {
   this.createDarkModeToggle = () => {
     return this.DarkModeToggle.createToggle();
   }
+
+  this.createCategoriesList = () => {
+    return this.CategoriesManagementList.createControl();
+  }
+
+  this.setDefaultVisualPreferences = () => {
+    // TODO
+  }
+
+  this.setDefaultCategories = () => {
+    Categories.forceReset();
+    this.CategoriesManagementList.recreateListContent();
+  }
 }
 
 let ElementPopulator = new function() {
   this.populateSlidingSheetsContainer = () => {
     const container = document.getElementById('sliding-sheets-container');
     container.appendChild(SheetCreator.createAppearanceSettingsSheet());
+    container.appendChild(SheetCreator.createCategoryManagementSheet());
     container.appendChild(SheetCreator.createAboutSheet());
   }
 
@@ -1443,17 +2242,17 @@ let ElementPopulator = new function() {
     const innerContainer = Creator.createElementWithId('div', 'footer-inner-container');
     innerContainer.appendChild(SpecializedCreator.createAdvanceAllWordsFloatingActionButton());
     innerContainer.appendChild(SpecializedCreator.createCloseSheetFloatingActionButton());
-    innerContainer.appendChild(SpecializedCreator.createSettingsButton());
-    innerContainer.appendChild(SpecializedCreator.createAboutButton());
+    innerContainer.appendChild(SpecializedCreator.createFooterLeftSideButtons());
+    innerContainer.appendChild(SpecializedCreator.createFooterRightSideButtons());
 
     footer.appendChild(innerContainer);
     VisibilityController.showElement(footer);
   }
 
-  this.populatePageWithWordContainers = () => {
-    for (const container of containers) {
+  this.populatePageWithCategoryContainers = () => {
+    for (const categoryData of Categories.getData()) {
       this.removeFirstRemainingSkeletonElement();
-      wordsContainer[container.type] = new Container(container);
+      wordsContainer[categoryData.type] = new CategoryContainer(categoryData);
     }
   }
 
@@ -1491,6 +2290,24 @@ let GlobalEventHandler = new function() {
     }
 
     advanceAllButton.addEventListener('click', Util.throttle(callbackFabClicked, defaultIconRotationDuration));
+  }
+
+  this.attachClickEventsToCategoriesPlaceholderButtons = () => {
+    const restoreAllButton = document.getElementById('category-restore-defaults');
+    const showPanelButton = document.getElementById('category-open-panel');
+
+    Creator.addRipple(restoreAllButton);
+    Creator.addRipple(showPanelButton);
+
+    restoreAllButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      Settings.setDefaultCategories();
+    });
+
+    showPanelButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      VisibilityController.toggleSheetVisibility('category-management');
+    });
   }
 
   this.handleKeyboardInput = (event) => {
@@ -1546,16 +2363,28 @@ let Aria = new function() {
   }
 }
 
+function freezeGlobals() {
+  Util.deepFreeze(containers);
+  Util.deepFreeze(containerColors);
+}
+
 function init() {
+  freezeGlobals();
+  Categories.initialize();
   ElementPopulator.populateSlidingSheetsContainer();
   GlobalEventHandler.attachEventsToSheetsAndScrim();
   GlobalEventHandler.handleFirstKeyboardInput();
   ElementPopulator.populateFooter();
-  ElementPopulator.populatePageWithWordContainers();
+  ElementPopulator.populatePageWithCategoryContainers();
   Settings.updateColors();
   Settings.updateFontScaleElements();
+  Settings.updateMoveUpDownButtonsStates();
+  Settings.CategoriesManagementList.showHintForHiddenCategories();
   GlobalEventHandler.attachClickEventToAdvanceAllFabToRotateIcon();
+  GlobalEventHandler.attachClickEventsToCategoriesPlaceholderButtons();
   SpecializedCreator.createSettingsPromptCardIfItWasNotDismissedAlready();
+  Settings.CategoriesManagementList.adjustMarginUnderLastCategory();
+  Settings.CategoriesManagementList.updateCounter();
 }
 
 if (document.readyState != 'loading')

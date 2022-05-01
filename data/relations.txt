@@ -1,4 +1,4 @@
-5 zł i 100 zł
+5 zł i 100 zł _(Różnica statusów)
 aktor z reżyserem
 artysta i dzieło
 astronauta i kosmita
@@ -8,6 +8,7 @@ bogacz i biedak
 bóg i szatan
 bóstwo i śmiertelnik
 byli przyjaciele
+byli sojusznicy
 byli wrogowie
 byli współlokatorzy
 celebryta i fan
@@ -23,10 +24,12 @@ drogówka i kierowca
 druga randka
 dwójka laików
 dwójka specjalistów
+dwójka świeżaków
+dwójka złoczyńców
 dziecko z lalką
 ex aequo pierwsze miejsce
 FBI i zwykły człowiek
-kaskader aktora
+kaskader z aktorem
 kelner i klient
 kierowca i pasażer
 klient prostytutki
@@ -41,11 +44,13 @@ lekarz z pacjentem
 małżeństwo
 mechanik z klientem
 mistrz i uczeń
+mózg i serce
 nauczyciel i dyrektor
 nauczyciel i rodzic
 nauczyciel i uczeń
 naukowiec i mysz
 nieznajomy sobowtór
+nowożeńcy
 nowy partner oraz eks
 obserwator i obserwowany
 ósme spotkanie dzisiaj
@@ -61,33 +66,39 @@ położna i dziecko
 poprzednie wcielenie
 prawnik i klient
 profesor i świeżak
-przed i po
+przed i po _(Różnica doświadczenia)
 przybrana rodzina
 przyjaciele z dzieciństwa
 przyszli współlokatorzy
+przyjezdny i lokals
 pytanie i odpowiedź
 randka w ciemno
 robot z twórcą
 rodzeństwo
 rodzic i dziecko
 rodzina zastępcza
+romans współpracowników
+rozwodnicy
 różnica wieku
 ryba i robak na haku
 rywalizacja przyjaciół
 sędzia i prawnik
 sędzia i skazany
+siła i finezja
 skłóceni o błahostkę
 spadkodawca i spadkobierca
 spotkanie biznesowe
 sprzedawca i kupujący
 stare małżeństwo
 strażnik i więzień
+szef z podwładnym
+szef ze swoim szefem
 szeryf z kowbojem
 szewc z klientem
 światło i cień
-świeżo po ślubie
 teść i zięć
 tinderowa randka
+to samo imię i nazwisko
 trójkąt miłosny
 uczciwy i oszust
 weterynarz i właściciel
@@ -97,4 +108,6 @@ za cienką ścianą
 za grubą ścianą
 zakładnik terrorysty
 zamiana ciał
+znają się od trzech dni
+związek na odległość
 żaba i królewna

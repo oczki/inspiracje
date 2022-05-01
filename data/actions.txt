@@ -1,5 +1,7 @@
 aportowanie
+bandażowanie rany
 bieganie
+budowanie tratwy
 całowanie
 chodzenie po linie
 chodzenie w kółko
@@ -57,6 +59,7 @@ koszenie trawy
 kradzież
 krojenie kotleta
 krojenie tortu
+liczenie gotówki
 lizanie lizaka
 lunatykowanie
 lutowanie
@@ -82,6 +85,7 @@ mycie włosów
 mycie zębów
 nadmuchiwanie balonów
 nadmuchiwanie pontonu
+nagrywanie unboxingu
 nakładanie makijażu
 nalewanie cieczy
 naprawa mechanizmu
@@ -94,6 +98,7 @@ obcinanie włosów
 obgryzanie paznokci
 obieranie owoców
 obserwacja z ukrycia
+odgrzewanie jedzenia
 odkręcanie śruby
 odkurzanie
 odpoczywanie tuż po wysiłku
@@ -101,6 +106,7 @@ ogrzewanie się
 operowanie pacjenta
 organizowanie papierów
 ostrzenie
+oszukiwanie w grze
 otwieranie butelki
 otwieranie drzwi
 otwieranie koperty
@@ -142,10 +148,12 @@ przeciąganie się
 przecieranie oczu
 przecinanie wstęgi
 przeganianie much
+przeglądanie katalogu
 przełączanie programów
 przenoszenie akwarium
 przenoszenie mebli
 przesadzanie kwiatów
+przesiewanie mąki
 przeżuwanie
 przybijanie piątki
 przycinanie bonsai
@@ -153,7 +161,9 @@ przymierzanie spodni
 przyprawianie
 przywoływanie windy
 pukanie do drzwi
-robienie zdjęć
+robienie selfie
+robienie shake'a
+robienie zdjęć makro
 rozbijanie namiotu
 rozgrzewanie mięśni
 rozliczanie podatków
@@ -192,6 +202,7 @@ szukanie z latarką
 szukanie z lupą
 szycie
 szydełkowanie
+ściąganie na teście
 śpiewanie
 tasowanie kart
 tatuowanie
@@ -201,6 +212,7 @@ układanie kostki brukowej
 układanie kostki Rubika
 układanie książek
 układanie puzzli
+ukrywanie się
 uprawianie jogi
 ustawianie zegara
 usuwanie graffiti
@@ -210,6 +222,7 @@ walenie młotem
 ważenie się
 wbijanie gwoździ
 wcieranie maści
+wciskanie przycisku co chwilę
 wiązanie butów
 wiązanie węzłów
 wiercenie wiertarką
@@ -220,7 +233,9 @@ wkręcanie wkrętu
 wpisywanie hasła
 wsiadanie do pojazdu
 wspinaczka
+wspominanie dawnych czasów
 wybieranie numeru telefonu
+wycieranie plam
 wyciskanie ketchupu
 wyciskanie pryszczy
 wydmuchiwanie nosa

@@ -1,0 +1,100 @@
+Adoksografia _(Poważnie na błahy temat)
+Alba _(Pieśń rozstania)
+Bajka
+Ballada
+Baśń
+Chick lit _(Kariera i rodzina kobiety po 30-tce)
+Cyberpunk
+Dreszczowiec
+Duma _(Refleksja o bohaterze; historyczna)
+Dystopia _(Czarna wizja przyszłości)
+Dytyramb _(Pieśń pochwalna, patetyczna)
+Dziennik podróży
+Dziwny Zachód
+Elegia _(Refleksja nt. śmierci, miłości)
+Epitalamium _(Pieśń na cześć nowożeńców)
+Erotyk _(Miłość zmysłowa, pasja)
+Fantastyka postapokaliptyczna _(Kataklizm; także inwazja obcych, zombie)
+Fantasy _(Magia i inne motywy nadprzyrodzone)
+Fikcja polityczna
+Fraszka
+Geheimbundroman _(Powieść przygodowa, grozy, o duchach)
+Haiku _(5-7-5 sylab)
+Horror lovecraftowski _(Psychologiczny; suspens, nie szok)
+Horror _(Zjawiska nadprzyrodzone, groza, szok)
+Hymn _(Pieśń pochwalna nt. bóstwa, ojczyzny, idei)
+Ibisigo _(O dziejach państwa i rodu panującego)
+Jeremiady _(Skargi, biadania, lamenty)
+Karykatura _(Podkreślenie negatywnych cech)
+Klechda _(O miejscowych wierzeniach i tradycjach)
+Komedia
+Lad lit _(Niepokoje, dojrzewanie faceta po 30-tce)
+Legenda
+List poetycki
+Makabreska _(Groza, groteska, czarny humor)
+Melodramat
+Mitologia
+Moralitet _(Bohater wybiera między Dobrem a Złem)
+New adult _(Tematyka studiów, podejmowanie pracy, seks)
+Nowela _(Konkretne miejsce i czas, narrator)
+Oda _(Sławi ideę, wydarzenie, czas)
+Opera kosmiczna _(Konflikt międzyplanetarny)
+Pamflet _(Ośmiesza, demaskuje, poniża osobę, instytucję)
+Pamiętnik
+Panegiryk _(Przesadny zachwyt nad osobą, wydarzeniem)
+Parodia
+Pastourelle _(Karykatura życia wiejskiego)
+Pateryk _(O życiu ascetycznych mnichów)
+Prosodion _(Pieśń dziękczynna do bogów)
+Przypowieść
+Robinsonada _(Podróż samotnego człowieka; trudne warunki)
+Romans dworski _(Przygody rycerzy cierpiących dla wybranki)
+Romans _(Intrygi, zbiegi okoliczności, miłość)
+Science fiction _(Wpływ nauki i techniki na życie)
+Serenada _(Pieśń miłosna, wieczorna)
+Sielanka _(Wyidealizowane uroki życia wiejskiego)
+Survival horror _(Zagrożenie życia bohatera; groza)
+Tautogram _(Wersy zaczynają się od tej samej litery)
+Technothriller _(Sci-Fi, szpiedzy wojskowi)
+Testament poetycki _(Ostatnia wola, pożegnanie, rachunek sumienia)
+Thriller medyczny _(Biotechnologia, genetyka)
+Tragedia
+Transhumanizm _(Nauka i technika ulepszająca człowieka)
+Tren _(Żal po bliskiej, zmarłej osobie)
+Western _(Honor, strzelaniny, wyraźny podział na dobro i zło)
+Young adult _(Pierwsza miłość, dorastanie, szukanie samego siebie)
+Anime
+Comedy of remarriage _(Para po rozstaniu schodzi się ponownie)
+Czarna komedia _(Groteska, ironia, absurd)
+Film noir _(Prywatni detektywi, femme fatale, nocne miasto)
+Paradokument
+Dramat sądowy _(Ława przysięgłych; nacisk na psychikę postaci)
+Steampunk _(Maszyny parowe zamiast elektroniki)
+Film artystyczny _(Niekonwencjonalny, eksperymentalny, symboliczny)
+Kino familijne _(Kontekst domu i rodziny; dla dzieci)
+Film o superbohaterach _(Nadludzkie zdolności, ale też ukrywanie ich)
+Found footage _('Znalezione' amatorskie nagranie)
+Film gangsterski _(Kariera i upadek; historia napadu; rywalizacja)
+Film górski _(Wspinaczka, walka z siłami natury)
+Heist _(Grupa ludzi planuje kradzież; liczne zwroty akcji)
+Historia alternatywna _(Co by było, gdyby...?)
+Film interaktywny _(Widz ma bezpośredni wpływ na fabułę)
+Telezakupy
+Film sztuk walki _(Broń biała; walka wręcz)
+Film katastroficzny _(Wypadek, klęski żywiołowe, kolizja z asteroidą)
+Kino klasy B _(Niski budżet; jeden aktor gra wiele postaci)
+Kino klasy Z _(Niespójna fabuła, tandetne efekty i gra aktorska)
+Komedia grozy _(Zjawiska nadprzyrodzone dla efektu komicznego)
+Komedia romantyczna _(Dowcipne dialogi, charakterystyczna para)
+Kryminał _(Przestępczość, wymiar sprawiedliwości, mafia)
+Monster movie _(Walka człowieka z jednym lub grupą potworów)
+Musical _(Piosenki wplecione w narrację)
+Mystery _(Nierozwiązana zagadka, zniknięcie osób, kradzież)
+Film płaszcza i szpady _(Awanturnicze przygody bogate w pojedynki)
+Film przyrodniczy _(Zwierzęta i rośliny w naturalnym środowisku)
+Slapstick _(Przerysowane postaci, groteska, przemoc)
+Film akcji _(Pościgi, wybuchy, pojedynki)
+Film sportowy
+Film szpiegowski _(Agenci rządowi, działanie w ukryciu)
+Film przygodowy _(Podróż, brawura, pokonywanie przeszkód, natura)
+Sitcom _(Jedno pomieszczenie, liczne gagi)
