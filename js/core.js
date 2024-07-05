@@ -2,6 +2,7 @@ const iconArrow = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,11V1
 
 const iconCog = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" /></svg>';
 const iconEditList = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2,6V8H14V6H2M2,10V12H14V10H2M20.04,10.13C19.9,10.13 19.76,10.19 19.65,10.3L18.65,11.3L20.7,13.35L21.7,12.35C21.92,12.14 21.92,11.79 21.7,11.58L20.42,10.3C20.31,10.19 20.18,10.13 20.04,10.13M18.07,11.88L12,17.94V20H14.06L20.12,13.93L18.07,11.88M2,14V16H10V14H2Z" /></svg>';
+const iconClipboard = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>';
 const iconInfo = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>';
 const iconAutoRenew = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,6V9L16,5L12,1V4A8,8 0 0,0 4,12C4,13.57 4.46,15.03 5.24,16.26L6.7,14.8C6.25,13.97 6,13 6,12A6,6 0 0,1 12,6M18.76,7.74L17.3,9.2C17.74,10.04 18,11 18,12A6,6 0 0,1 12,18V15L8,19L12,23V20A8,8 0 0,0 20,12C20,10.43 19.54,8.97 18.76,7.74Z" /></svg>';
 const iconClose = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>';
@@ -978,7 +979,13 @@ class CategoryContainer {
   }
 
   createTextToSpeak() {
-    return this.data.label + ': ' + this.getWordByIndex(this.wordsCacheIndex);
+    const textStrippedOfFormatting = this.getWordByIndex(this.wordsCacheIndex).replace('_(', '(');
+    let textSentenceCase = textStrippedOfFormatting;
+    try {
+      textSentenceCase = textStrippedOfFormatting.slice(0, 1).toUpperCase() + textStrippedOfFormatting.slice(1);
+    } catch (e) {
+    }
+    return this.data.label + ': ' + textSentenceCase;
   }
 
   speakCurrentSlideIfAllowed() {
@@ -1255,6 +1262,43 @@ let SpecializedCreator = new function() {
     return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
   }
 
+  this.createCopyToClipboardButton = () => {
+    const buttonId = 'button-copy-to-clipboard';
+    const buttonText = 'Kopiuj inspiracje do schowka';
+    const icon = Creator.createIcon(iconClipboard);
+    const callback = () => {
+      const setTextOverride = (newLabel) => {
+        const buttonElement = document.getElementById(buttonId);
+        if (buttonElement) {
+          buttonElement.style.setProperty('--text-override', newLabel);
+        }
+      }
+      const setTemporaryLabel = (newLabel) => {
+        setTextOverride(newLabel);
+        setTimeout(() => {
+          setTextOverride('unset');
+        }, 1500);
+      }
+      const getTextToCopy = () => {
+        let textToCopy = [];
+        for (let categoryData of Categories.getDataOfVisible()) {
+          textToCopy.push(wordsContainer[categoryData.type]?.createTextToSpeak());
+        }
+        return textToCopy.join('\n');
+      }
+      navigator.clipboard.writeText(getTextToCopy()).then(
+        () => {
+          setTemporaryLabel('\'Skopiowano!\'');
+        },
+        () => {
+          setTemporaryLabel('\'Błąd!\'');
+        }
+      );
+    }
+    const preventDoubleClick = true;
+    return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
+  }
+
   this.createAboutButton = () => {
     const buttonId = 'button-about';
     const buttonText = 'Informacje';
@@ -1275,6 +1319,7 @@ let SpecializedCreator = new function() {
 
   this.createFooterRightSideButtons = () => {
     const buttonsContainer = Creator.createElementWithClass('div', 'footer-buttons-container');
+    buttonsContainer.appendChild(this.createCopyToClipboardButton());
     buttonsContainer.appendChild(this.createAboutButton());
     return buttonsContainer;
   }

@@ -69,10 +69,6 @@
   box-sizing: border-box;
 }
 
-::selection {
-  background-color: transparent;
-}
-
 html,
 body {
   height: 100%;
@@ -457,6 +453,10 @@ main section.last-visible {
   word-break: break-word;
 }
 
+.swiper-slide:not(.swiper-slide-active) {
+  user-select: none;
+}
+
 .swiper-slide p:not(:first-of-type) {
   font-size: 70%;
   font-weight: 400;
@@ -800,6 +800,10 @@ footer .circular-button .icon::before {
 
 #button-category-management {
   --text: 'Kategorie';
+}
+
+#button-copy-to-clipboard {
+  --text: var(--text-override, 'Kopiuj');
 }
 
 #button-about {
