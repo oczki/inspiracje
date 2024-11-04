@@ -311,14 +311,14 @@ let containers = [
   {
     type: "time",
     label: "Czas",
-    isVisible: false,
+    isVisible: true,
     prevButtonPrefix: "Poprzedni",
     nextButtonPrefix: "Następny",
   },
   {
     type: "genre",
     label: "Gatunek",
-    isVisible: false,
+    isVisible: true,
     prevButtonPrefix: "Poprzedni",
     nextButtonPrefix: "Następny",
   },
