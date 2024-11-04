@@ -1667,6 +1667,16 @@ let VisibilityController = new function() {
     button?.classList.toggle('highlighted', isHighlighted);
   }
 
+  this.makeMainContentTabbable = (makeTabbable = false) => {
+    const main = document.getElementsByTagName('main')[0];
+    if (!main) return;
+    if (makeTabbable) {
+      main.removeAttribute('inert');
+    } else {
+      main.setAttribute('inert', 'true');
+    }
+  }
+
   this.toggleSheetVisibility = (sheetId) => {
     const sheet = document.getElementById(sheetId);
     this.hideOtherSheets(sheetId);
@@ -1675,12 +1685,14 @@ let VisibilityController = new function() {
       this.hideAndPreventTabbingToElement(sheet, sheetClosingAnimationDuration);
       this.hideElement(Selector.getScrim());
       this.allowScrollingBody(true);
+      this.makeMainContentTabbable(true);
       this.setSheetsButtonHighlight(sheetId, false);
     } else {
       this.showCloseFab();
       this.showAndAllowTabbingToElement(sheet);
       this.showElement(Selector.getScrim());
       this.allowScrollingBody(false);
+      this.makeMainContentTabbable(false);
       this.setSheetsButtonHighlight(sheetId, true);
     }
   }
