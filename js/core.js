@@ -1602,12 +1602,14 @@ let VisibilityController = new function() {
   this.preventTabbingToElement = (element) => {
     if (!element) return;
     element.style.visibility = 'hidden';
+    element.setAttribute('inert', 'true');
     Aria.setAttr(element, 'hidden', 'true');
   }
   
   this.allowTabbingToElement = (element) => {
     if (!element) return;
     element.style.visibility = 'initial';
+    element.removeAttribute('inert');
     Aria.setAttr(element, 'hidden', 'false');
   }
 
