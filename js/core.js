@@ -2049,6 +2049,14 @@ let Settings = new function() {
       // TODO: slowly hide the clones, so that the up/down buttons fade instead of blinking immediately
     }
 
+    this.announceSwappedItems = (firstIndex, secondIndex) => {
+      let text = 'Zamieniono miejscami kategorie';
+      try {
+        text += ` ${Categories.getData()[firstIndex].label} i ${Categories.getData()[secondIndex].label}`;
+      } catch (e) { }
+      Aria.speak(text);
+    }
+
     this.swapItems = (firstIndex, secondIndex, firstElementIsOnTop) => {
       const firstElement = this.getListItemElementByIndex(firstIndex);
       const secondElement = this.getListItemElementByIndex(secondIndex);
@@ -2062,25 +2070,26 @@ let Settings = new function() {
       // Swap the elements on this list.
       this.animateSwap(firstElement, secondElement, parentElement, firstElementIsOnTop);
 
-      // TODO: Aria.speak('zamieniono kategorie "miejsce" i "czynność"') or similar. Check how "" affects speech.
+      this.announceSwappedItems(firstIndex, secondIndex);
+
       // TODO: Make sure keyboard focus stays in the element that was recently pressed. If not, focus it.
 
       // Up/down buttons need to be disabled on edges, and enabled elsewhere.
       this.updateMoveUpDownButtonsStates();
     }
 
-    this.moveUp = (categoryType) => {
-      const previousItemIndex = this.getIndexOfPreviousItemInList(categoryType);
+    this.moveUp = (categoryData) => {
+      const previousItemIndex = this.getIndexOfPreviousItemInList(categoryData.type);
       if (previousItemIndex === undefined) return;
-      const currentItemIndex = this.getIndexOfContainerByType(categoryType);
+      const currentItemIndex = this.getIndexOfContainerByType(categoryData.type);
       const firstElementIsOnTop = true;
       this.swapItems(currentItemIndex, previousItemIndex, firstElementIsOnTop);
     }
 
-    this.moveDown = (categoryType) => {
-      const nextItemIndex = this.getIndexOfNextItemInList(categoryType);
+    this.moveDown = (categoryData) => {
+      const nextItemIndex = this.getIndexOfNextItemInList(categoryData.type);
       if (nextItemIndex === undefined) return;
-      const currentItemIndex = this.getIndexOfContainerByType(categoryType);
+      const currentItemIndex = this.getIndexOfContainerByType(categoryData.type);
       const firstElementIsOnTop = false;
       this.swapItems(nextItemIndex, currentItemIndex, firstElementIsOnTop);
     }
@@ -2094,23 +2103,23 @@ let Settings = new function() {
       }
     }
 
-    this.createMoveUpButton = (categoryType) => {
-      const buttonId = this.moveUpButtonId(categoryType);
-      const buttonText = 'Przesuń w górę';
+    this.createMoveUpButton = (categoryData) => {
+      const buttonId = this.moveUpButtonId(categoryData.type);
+      const buttonText = `Przesuń w górę kategorię ${categoryData.label}`;
       const icon = Creator.createIcon(iconArrow, 'rotate-270');
       const callback = () => {
-        this.moveUp(categoryType);
+        this.moveUp(categoryData);
       }
       const preventDoubleClick = true;
       return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
     }
 
-    this.createMoveDownButton = (categoryType) => {
-      const buttonId = this.moveDownButtonId(categoryType);
-      const buttonText = 'Przesuń w dół';
+    this.createMoveDownButton = (categoryData) => {
+      const buttonId = this.moveDownButtonId(categoryData.type);
+      const buttonText = `Przesuń w dół kategorię ${categoryData.label}`;
       const icon = Creator.createIcon(iconArrow, 'rotate-90');
       const callback = () => {
-        this.moveDown(categoryType);
+        this.moveDown(categoryData);
       }
       const preventDoubleClick = true;
       return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
@@ -2148,8 +2157,8 @@ let Settings = new function() {
         Creator.addRipple(labelElement);
 
         categoryContainer.appendChild(labelElement);
-        categoryContainer.appendChild(this.createMoveUpButton(categoryData.type));
-        categoryContainer.appendChild(this.createMoveDownButton(categoryData.type));
+        categoryContainer.appendChild(this.createMoveUpButton(categoryData));
+        categoryContainer.appendChild(this.createMoveDownButton(categoryData));
 
         listContent.appendChild(categoryContainer);
       }
