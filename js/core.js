@@ -2069,10 +2069,7 @@ let Settings = new function() {
 
       // Swap the elements on this list.
       this.animateSwap(firstElement, secondElement, parentElement, firstElementIsOnTop);
-
       this.announceSwappedItems(firstIndex, secondIndex);
-
-      // TODO: Make sure keyboard focus stays in the element that was recently pressed. If not, focus it.
 
       // Up/down buttons need to be disabled on edges, and enabled elsewhere.
       this.updateMoveUpDownButtonsStates();
@@ -2103,12 +2100,23 @@ let Settings = new function() {
       }
     }
 
+    this.refocusAfterMoving = (buttonId) => {
+      setTimeout(() => {
+          const button = document.getElementById(buttonId);
+          if (!button) return;
+          button.focus();
+        },
+        defaultCategorySwapDuration
+      );
+    }
+
     this.createMoveUpButton = (categoryData) => {
       const buttonId = this.moveUpButtonId(categoryData.type);
       const buttonText = `Przesuń w górę kategorię ${categoryData.label}`;
       const icon = Creator.createIcon(iconArrow, 'rotate-270');
       const callback = () => {
         this.moveUp(categoryData);
+        this.refocusAfterMoving(buttonId);
       }
       const preventDoubleClick = true;
       return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
@@ -2120,6 +2128,7 @@ let Settings = new function() {
       const icon = Creator.createIcon(iconArrow, 'rotate-90');
       const callback = () => {
         this.moveDown(categoryData);
+        this.refocusAfterMoving(buttonId);
       }
       const preventDoubleClick = true;
       return Creator.createCircularButton(buttonId, buttonText, icon, callback, preventDoubleClick);
