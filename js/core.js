@@ -1660,6 +1660,7 @@ let VisibilityController = new function() {
     Selector.getScrim()?.classList.remove(visibleClass);
     this.showAdvanceAllFab();
     this.allowScrollingBody(true);
+    this.makeMainContentTabbable(true);
   }
 
   this.setSheetsButtonHighlight = (sheetId, isHighlighted) => {
