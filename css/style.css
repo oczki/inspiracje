@@ -30,7 +30,7 @@
   --card-border-radius: 4px;
   --icon-size: 24px;
   --icon-padding: 12px;
-  --distance-between-buttons: 8px;
+  --distance-between-buttons: 0.75rem;
   --distance-icon-to-label: 32px;
   --footer-height: 56px;
   --narrow-screen-padding-compensation: 0px;
@@ -135,7 +135,7 @@ body:not(.compact) {
 }
 
 body:not(.compact) .word-section {
-  --card-margin-top: 32px;
+  --card-margin-top: 2rem;
 }
 
 body:not(.compact) #categories-placeholder {
@@ -279,7 +279,7 @@ u {
 }
 
 #categories-placeholder > p:first-of-type {
-  font-size: 150%;
+  font-size: 1.5em;
   font-weight: 500;
   margin-bottom: 12px;
 }
@@ -290,15 +290,15 @@ u {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  width: min(100%, 240px);
+  width: min(100%, max(15rem, 200px));
   height: 48px;
   padding: var(--icon-padding) calc(2 * var(--icon-padding));
   border-radius: 48px;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 1.25px;
+  font-size: 0.875rem;
+  letter-spacing: 0.09em;
   box-shadow: var(--fab-shadow);
 }
 
@@ -436,7 +436,7 @@ main section.last-visible {
 }
 
 .swiper-wrapper {
-  min-height: calc(24px * var(--font-size-multiplier));
+  min-height: calc(1.5rem * var(--font-size-multiplier));
   will-change: transform;
 }
 
@@ -447,7 +447,7 @@ main section.last-visible {
   justify-content: center;
   text-align: center;
   font-weight: 500;
-  font-size: calc(20px * var(--font-size-multiplier));
+  font-size: calc(1.25rem * var(--font-size-multiplier));
   line-height: 1.25;
   letter-spacing: 0.15px;
   word-break: break-word;
@@ -458,7 +458,7 @@ main section.last-visible {
 }
 
 .swiper-slide p:not(:first-of-type) {
-  font-size: 70%;
+  font-size: 0.7em;
   font-weight: 400;
   margin-top: 4px;
 }
@@ -469,11 +469,11 @@ main section.last-visible {
   justify-content: center;
   text-transform: uppercase;
   text-align: center;
-  font-size: 14px;
-  letter-spacing: 1px;
+  font-size: 0.875rem;
+  letter-spacing: 0.0625em;
   word-break: break-word;
   color: var(--color-secondary-text);
-  height: 24px;
+  height: 1.5rem;
 }
 
 .word-section .header-container {
@@ -497,7 +497,7 @@ main section.last-visible {
   background-color: transparent;
   font-weight: 500;
   padding: var(--icon-padding);
-  border-radius: 48px;
+  border-radius: 100px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -662,10 +662,7 @@ footer.visible {
 .footer-buttons-container {
   display: flex;
   flex-direction: row;
-}
-
-.footer-buttons-container > button + button {
-  margin-left: calc(4px + var(--distance-between-buttons));
+  column-gap: var(--distance-between-buttons);
 }
 
 @keyframes spin-360 {
@@ -712,10 +709,10 @@ footer.visible {
 
 .floating-action-button span {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.875rem;
   display: inline-block;
   margin: 1px 0 0 var(--icon-padding);
-  letter-spacing: 1.25px;
+  letter-spacing: 0.09em;
 }
 
 .floating-action-button.rotate .icon {
@@ -774,10 +771,10 @@ footer .circular-button.notify .icon::after {
 footer .circular-button .icon::before {
   content: '' var(--text);
   position: absolute;
-  top: calc(100% + 3px);
+  top: calc(100% + 4px);
   left: 0;
   right: 0;
-  font-size: 8.5px;
+  font-size: 0.6rem;
   font-weight: 500;
   color: var(--color-icon);
   text-align: center;
@@ -791,7 +788,7 @@ footer .circular-button .icon::before {
 }
 
 .footer-buttons-container .circular-button .icon {
-  top: -6px;
+  top: -7px;
 } 
 
 #button-appearance-settings {
@@ -999,10 +996,10 @@ footer .circular-button .icon::before {
 }
 
 .checkbox-label .label-text-secondary {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--color-secondary-text);
   margin-top: 6px;
-  letter-spacing: 0.15px;
+  letter-spacing: 0.0125em;
 }
 
 .checkbox-label input {
