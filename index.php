@@ -10,7 +10,7 @@ function addCss($name) {
 }
 
 function addJs($name) {
-  echo '<script src="' . timestampUrl('./js/' . $name . '.js') . '"></script>'
+  echo '<script src="' . timestampUrl('./js/' . $name . '.js') . '" defer></script>'
      . "\n";
 }
 ?><!DOCTYPE html>
