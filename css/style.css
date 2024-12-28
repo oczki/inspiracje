@@ -569,7 +569,8 @@ main section.last-visible {
   border-radius: var(--card-border-radius);
   background-color: var(--color-card-background);
   margin-top: auto;
-  padding: var(--card-padding);
+  padding: calc(var(--card-padding) - 1px);
+  border: 1px solid transparent;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas: 'text button-close';
@@ -605,7 +606,8 @@ main section.last-visible {
 /* Arrow's shadow */
 .prompt::before,
 .prompt::after {
-  --vertical-shift: 0.5px;
+  --vertical-shift: 0px;
+  --horizontal-shift: 1px;
 
   filter: blur(var(--arrow-shadow-blur));
   background-color: var(--color-text-black-medium);
@@ -617,9 +619,10 @@ main section.last-visible {
 .prompt::before,
 .prompt-card::before {
   top: calc(100% - 2px);
-  left: var(--arrow-margin-left);
+  left: calc(var(--arrow-margin-left) + var(--horizontal-shift, 0px));
   width: var(--arrow-width);
   height: var(--arrow-height);
+  border-inline: 1px solid transparent;
 }
 
 /* Arrow's head */
@@ -629,11 +632,12 @@ main section.last-visible {
   --pos100: calc(100% + var(--arrow-clip-path-margin));
 
   top: calc(100% + var(--arrow-height) - 0.5 * var(--arrow-head-size) - 4px + var(--vertical-shift, 0px));
-  left: calc(var(--arrow-margin-left) + 0.5 * var(--arrow-width) - var(--arrow-head-size) * 0.5);
+  left: calc(var(--arrow-margin-left) + 0.5 * var(--arrow-width) - var(--arrow-head-size) * 0.5 + var(--horizontal-shift, 0px));
   width: var(--arrow-head-size);
   height: var(--arrow-head-size);
   transform: rotate(-135deg);
   clip-path: polygon(var(--pos0) var(--pos0), var(--pos100) var(--pos0), var(--pos0) var(--pos100));
+  border: 1px solid transparent;
 }
 
 /* #endregion Prompt to open settings for the first time */
