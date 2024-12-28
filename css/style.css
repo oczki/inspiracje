@@ -117,6 +117,8 @@ body {
   --spinner-dot-duration: 1s;
   --category-swap-duration: 280ms;
 
+  --outline-width: 2px;
+
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: var(--color-text);
@@ -199,6 +201,13 @@ body.reduced-animations .ripple.done {
 
 /* #endregion Body */
 
+:focus-visible {
+  outline-width: calc(3 * var(--outline-width));
+  outline-offset: calc(-2 * var(--outline-width));
+  outline-style: double;
+  outline-color: transparent; /* High contrast mode will force its color */
+}
+
 main {
   margin: 0 auto;
   display: flex;
@@ -212,7 +221,6 @@ button,
 a {
   font-family: inherit;
   border: none;
-  outline: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -1191,7 +1199,7 @@ a::before,
 button::after,
 a::after,
 .checkbox-label::after {
-  box-shadow: inset 0 0 0 2px currentColor;
+  box-shadow: inset 0 0 0 var(--outline-width) currentColor;
 }
 
 /* Light mode - Only hovered */
@@ -1211,7 +1219,7 @@ body.show-outline .checkbox-label:focus-within::before {
 body.show-outline button:focus::after,
 body.show-outline a:focus::after,
 body.show-outline .checkbox-label:focus-within::after {
-  box-shadow: inset 0 0 0 2px currentColor;
+  box-shadow: inset 0 0 0 var(--outline-width) currentColor;
   opacity: 0.5;
 }
 
