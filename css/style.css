@@ -360,6 +360,8 @@ button#category-open-panel {
   margin-top: var(--card-margin-top, 0px);
   margin-bottom: 8px;
   padding: var(--card-padding);
+  padding-block-end: calc(var(--card-padding) - 1px);
+  border-block-end: 1px solid transparent;
   display: grid !important;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'nav-prev swiper-container nav-next';
