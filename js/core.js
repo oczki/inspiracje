@@ -1191,7 +1191,7 @@ let Creator = new function() {
           result += `<p>${matches[i]}</p>`;
         }
       } else { // Slide uses plain text
-        result = textWithNonBreakingSpace;
+        result = text;
       }
       return result;
     } catch (e) {
