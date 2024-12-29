@@ -1556,8 +1556,8 @@ let SheetCreator = new function() {
     sheetContent.appendChild(Creator.createSeparator());
 
     sheetContent.appendChild(Creator.createParagraph('Kontakt:', 'sliding-sheet-text'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('Repozytorium na&nbsp;GitHub', 'https://github.com/oczki/inspiracje', iconGithub, 'accented'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('E-mail', 'mailto:damian.oczki@gmail.com', iconEmail, 'accented'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('<u>Repozytorium na&nbsp;GitHub</u>', 'https://github.com/oczki/inspiracje', iconGithub, 'accented'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('<u>E-mail</u>', 'mailto:damian.oczki@gmail.com', iconEmail, 'accented'));
 
     sheetContent.appendChild(Creator.createSeparator());
 
