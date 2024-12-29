@@ -818,7 +818,7 @@ footer .circular-button .icon::before {
   transform-origin: center bottom;
 }
 
-.circular-button.highlighted {
+.circular-button[aria-current="true"] {
   --color-icon: var(--color-accent);
 }
 
@@ -1337,6 +1337,10 @@ button:disabled::after,
 
   #scrim.visible {
     opacity: 0.8;
+  }
+
+  .circular-button[aria-current="true"] .icon::before {
+    text-decoration: underline;
   }
 }
 

@@ -1671,7 +1671,8 @@ let VisibilityController = new function() {
 
   this.setSheetsButtonHighlight = (sheetId, isHighlighted) => {
     const button = document.getElementById(`button-${sheetId}`);
-    button?.classList.toggle('highlighted', isHighlighted);
+    if (!button) return;
+    Aria.setAttr(button, 'current', isHighlighted ? 'true' : 'false');
   }
 
   this.makeMainContentTabbable = (makeTabbable = false) => {
