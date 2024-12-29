@@ -1650,6 +1650,11 @@ let VisibilityController = new function() {
     this.showAndAllowTabbingToElement(fabAdvanceAll);
   }
 
+  this.focusAdvanceAllFab = () => {
+    const [fabAdvanceAll, fabCloseSheet] = this.getFabs();
+    fabAdvanceAll.focus();
+  }
+
   this.hideSlidingSheetsAndScrim = () => {
     const sheetsToHide = Array.from(document.querySelectorAll(`.sliding-sheet.${visibleClass}`));
     for (const sheet of sheetsToHide) {
@@ -1659,6 +1664,7 @@ let VisibilityController = new function() {
     }
     Selector.getScrim()?.classList.remove(visibleClass);
     this.showAdvanceAllFab();
+    this.focusAdvanceAllFab();
     this.allowScrollingBody(true);
     this.makeMainContentTabbable(true);
   }
@@ -1683,6 +1689,7 @@ let VisibilityController = new function() {
     this.hideOtherSheets(sheetId);
     if (sheet?.classList.contains(visibleClass)) {
       this.showAdvanceAllFab();
+      this.focusAdvanceAllFab();
       this.hideAndPreventTabbingToElement(sheet, sheetClosingAnimationDuration);
       this.hideElement(Selector.getScrim());
       this.allowScrollingBody(true);
