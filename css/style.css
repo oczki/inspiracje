@@ -215,7 +215,7 @@ a {
   font-family: inherit;
   border: none;
   outline: none; /* Taken care of via pseudoelements, covering high contrast mode too */
-  scroll-margin: var(--footer-height);
+  scroll-margin: calc(1.5 * var(--footer-height));
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -360,6 +360,7 @@ button#category-open-panel {
   display: grid !important;
   grid-template-columns: auto 1fr auto;
   grid-template-areas: 'nav-prev swiper-container nav-next';
+  scroll-margin: calc(1.5 * var(--footer-height));
 }
 
 .word-section:not(.visible) {
@@ -1017,7 +1018,7 @@ footer .circular-button .icon::before {
   cursor: pointer;
   width: 0;
   height: 0;
-  scroll-margin: var(--footer-height);
+  scroll-margin: calc(1.5 * var(--footer-height));
 }
 
 .checkbox-icon,
