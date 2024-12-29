@@ -1,25 +1,3 @@
-const iconArrow = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>';
-
-const iconCog = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" /></svg>';
-const iconEditList = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2,6V8H14V6H2M2,10V12H14V10H2M20.04,10.13C19.9,10.13 19.76,10.19 19.65,10.3L18.65,11.3L20.7,13.35L21.7,12.35C21.92,12.14 21.92,11.79 21.7,11.58L20.42,10.3C20.31,10.19 20.18,10.13 20.04,10.13M18.07,11.88L12,17.94V20H14.06L20.12,13.93L18.07,11.88M2,14V16H10V14H2Z" /></svg>';
-const iconClipboard = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>';
-const iconInfo = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" /></svg>';
-const iconAutoRenew = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,6V9L16,5L12,1V4A8,8 0 0,0 4,12C4,13.57 4.46,15.03 5.24,16.26L6.7,14.8C6.25,13.97 6,13 6,12A6,6 0 0,1 12,6M18.76,7.74L17.3,9.2C17.74,10.04 18,11 18,12A6,6 0 0,1 12,18V15L8,19L12,23V20A8,8 0 0,0 20,12C20,10.43 19.54,8.97 18.76,7.74Z" /></svg>';
-const iconClose = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>';
-
-const iconCheckboxBlankOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z" /></svg>';
-const iconCheckboxMarked = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>';
-const iconFormatSize = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 4V7H7V19H10V7H15V4H2M21 9H12V12H15V19H18V12H21V9Z" /></svg>';
-const iconPlusBox = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>';
-const iconMinusBox = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M17,13H7V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>';
-const iconPlusBoxOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,19V5H5V19H19M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5C3,3.89 3.9,3 5,3H19M11,7H13V11H17V13H13V17H11V13H7V11H11V7Z" /></svg>';
-const iconMinusBoxOutline = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M19,19V5H5V19H19M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5C3,3.89 3.9,3 5,3H19M17,11V13H7V11H17Z" /></svg>';
-const iconRestore = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z" /></svg>';
-
-const iconEmail = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" /></svg>';
-const iconGithub = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" /></svg>';
-const iconExternalLink = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" /></svg>';
-
 const version = '2.4';
 
 let containerColors = [
@@ -1013,6 +991,45 @@ class CategoryContainer {
   }
 }
 
+let Icon = new function() {
+  this._svg = (content) => `<svg viewBox="0 0 24 24">${content}</svg>`;
+  this._svgPath = (path) => this._svg(`<path fill="currentColor" d="${path}" />`);
+
+  this.general = new function() {
+    this.x = () => Icon._svgPath('M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z');
+    this.externalLink = () => Icon._svgPath('M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z');
+    this.email = () => Icon._svgPath('M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z');
+  }
+
+  this.arrow = new function() {
+    this.right = () => Icon._svgPath('M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z');
+    this.circleBack = () => Icon._svgPath('M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z');
+    this.doubleForward = () => Icon._svgPath('M12,6V9L16,5L12,1V4A8,8 0 0,0 4,12C4,13.57 4.46,15.03 5.24,16.26L6.7,14.8C6.25,13.97 6,13 6,12A6,6 0 0,1 12,6M18.76,7.74L17.3,9.2C17.74,10.04 18,11 18,12A6,6 0 0,1 12,18V15L8,19L12,23V20A8,8 0 0,0 20,12C20,10.43 19.54,8.97 18.76,7.74Z');
+  }
+
+  this.footer = new function() {
+    this.settings = () => Icon._svgPath('M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z');
+    this.categories = () => Icon._svgPath('M2,6V8H14V6H2M2,10V12H14V10H2M20.04,10.13C19.9,10.13 19.76,10.19 19.65,10.3L18.65,11.3L20.7,13.35L21.7,12.35C21.92,12.14 21.92,11.79 21.7,11.58L20.42,10.3C20.31,10.19 20.18,10.13 20.04,10.13M18.07,11.88L12,17.94V20H14.06L20.12,13.93L18.07,11.88M2,14V16H10V14H2Z');
+    this.clipboard = () => Icon._svgPath('M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z');
+    this.info = () => Icon._svgPath('M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z');
+  }
+
+  this.checkbox = new function() {
+    this.unchecked = () => Icon._svgPath('M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z');
+    this.checked = () => Icon._svgPath('M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z');
+  }
+
+  this.textScale = new function() {
+    this.size = () => Icon._svgPath('M2 4V7H7V19H10V7H15V4H2M21 9H12V12H15V19H18V12H21V9Z');
+    this.plus = () => Icon._svgPath('M17,13H13V17H11V13H7V11H11V7H13V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z');
+    this.minus = () => Icon._svgPath('M17,13H7V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z');
+  }
+
+  this.brand = new function() {
+    this.github = () => Icon._svgPath('M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z');
+  }
+}
+
 let Creator = new function() {
   this.createSwiper = (data,
     prevTransitionStartCallback, nextTransitionStartCallback,
@@ -1241,7 +1258,7 @@ let SpecializedCreator = new function() {
   this.createAppearanceSettingsButton = () => {
     const buttonId = 'button-appearance-settings';
     const buttonText = 'Ustawienia wyglądu';
-    const icon = Creator.createIcon(iconCog);
+    const icon = Creator.createIcon(Icon.footer.settings());
     const callback = () => {
       VisibilityController.toggleSheetVisibility('appearance-settings');
       this.closeSettingsPrompt();
@@ -1253,7 +1270,7 @@ let SpecializedCreator = new function() {
   this.createCategoryManagementButton = () => {
     const buttonId = 'button-category-management';
     const buttonText = 'Kategorie słów';
-    const icon = Creator.createIcon(iconEditList);
+    const icon = Creator.createIcon(Icon.footer.categories());
     const callback = () => {
       VisibilityController.toggleSheetVisibility('category-management');
       this.closeSettingsPrompt();
@@ -1265,7 +1282,7 @@ let SpecializedCreator = new function() {
   this.createCopyToClipboardButton = () => {
     const buttonId = 'button-copy-to-clipboard';
     const buttonText = 'Kopiuj inspiracje do schowka';
-    const icon = Creator.createIcon(iconClipboard);
+    const icon = Creator.createIcon(Icon.footer.clipboard());
     const callback = () => {
       const setTextOverride = (newLabel) => {
         const buttonElement = document.getElementById(buttonId);
@@ -1302,7 +1319,7 @@ let SpecializedCreator = new function() {
   this.createAboutButton = () => {
     const buttonId = 'button-about';
     const buttonText = 'Informacje';
-    const icon = Creator.createIcon(iconInfo);
+    const icon = Creator.createIcon(Icon.footer.info());
     const callback = () => {
       VisibilityController.toggleSheetVisibility('about');
     }
@@ -1326,8 +1343,8 @@ let SpecializedCreator = new function() {
 
   this.createCheckboxIcons = () => {
     const container = Creator.createElementWithClass('div', 'checkbox-icon');
-    container.appendChild(Creator.createIcon(iconCheckboxMarked, 'checked'));
-    container.appendChild(Creator.createIcon(iconCheckboxBlankOutline, 'unchecked'));
+    container.appendChild(Creator.createIcon(Icon.checkbox.checked(), 'checked'));
+    container.appendChild(Creator.createIcon(Icon.checkbox.unchecked(), 'unchecked'));
     return container;
   }
 
@@ -1369,7 +1386,7 @@ let SpecializedCreator = new function() {
       }, 500 + swiperAnimationDuration + delayBetweenLoadedWordsDuration * types.length)
     });
 
-    advanceAllButton.appendChild(Creator.createIcon(iconAutoRenew));
+    advanceAllButton.appendChild(Creator.createIcon(Icon.arrow.doubleForward()));
     advanceAllButton.appendChild(Creator.createSpan('Kolejny zestaw'));
     return advanceAllButton;
   }
@@ -1385,7 +1402,7 @@ let SpecializedCreator = new function() {
       VisibilityController.hideSlidingSheetsAndScrim();
     });
 
-    closeSheetButton.appendChild(Creator.createIcon(iconClose));
+    closeSheetButton.appendChild(Creator.createIcon(Icon.general.x()));
     closeSheetButton.appendChild(Creator.createSpan('Zamknij'));
     return closeSheetButton;
   }
@@ -1413,7 +1430,7 @@ let SpecializedCreator = new function() {
     const closePromptCallback = () => {
       this.closeSettingsPrompt();
     }
-    const closeButton = Creator.createCircularButton('close-prompt-settings', 'Zamknij', Creator.createIcon(iconClose), closePromptCallback);
+    const closeButton = Creator.createCircularButton('close-prompt-settings', 'Zamknij', Creator.createIcon(Icon.general.x()), closePromptCallback);
     Creator.addRipple(closeButton);
     
     cardElement.appendChild(textWrapper);
@@ -1438,12 +1455,12 @@ let SpecializedCreator = new function() {
 let WordSectionCreator = new function() {
   this.addSwiperPrevNextButtons = (parentElement) => {
     const prevButton = Creator.createElementWithClass('button', 'navigation-button-prev');
-    prevButton.appendChild(Creator.createIcon(iconArrow, 'rotate-180'));
+    prevButton.appendChild(Creator.createIcon(Icon.arrow.right(), 'rotate-180'));
     prevButton.style.position = 'relative';
     Creator.addRipple(prevButton);
 
     const nextButton = Creator.createElementWithClass('button', 'navigation-button-next');
-    nextButton.appendChild(Creator.createIcon(iconArrow));
+    nextButton.appendChild(Creator.createIcon(Icon.arrow.right()));
     nextButton.style.position = 'relative';
     Creator.addRipple(nextButton);
 
@@ -1521,7 +1538,7 @@ let SheetCreator = new function() {
 
     const buttonId = 'restore-default-categories';
     const buttonText = 'Przywróć domyślne kategorie';
-    const icon = Creator.createIcon(iconRestore);
+    const icon = Creator.createIcon(Icon.arrow.circleBack());
     const callback = () => {
       Settings.setDefaultCategories();
     }
@@ -1556,15 +1573,15 @@ let SheetCreator = new function() {
     sheetContent.appendChild(Creator.createSeparator());
 
     sheetContent.appendChild(Creator.createParagraph('Kontakt:', 'sliding-sheet-text'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('<u>Repozytorium na&nbsp;GitHub</u>', 'https://github.com/oczki/inspiracje', iconGithub, 'accented'));
-    sheetContent.appendChild(Creator.createLinkWithIcon('<u>E-mail</u>', 'mailto:damian.oczki@gmail.com', iconEmail, 'accented'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('<u>Repozytorium na&nbsp;GitHub</u>', 'https://github.com/oczki/inspiracje', Icon.brand.github(), 'accented'));
+    sheetContent.appendChild(Creator.createLinkWithIcon('<u>E-mail</u>', 'mailto:damian.oczki@gmail.com', Icon.general.email(), 'accented'));
 
     sheetContent.appendChild(Creator.createSeparator());
 
     const currentYear = Math.max(2022, new Date().getFullYear());
     sheetContent.appendChild(Creator.createLinkWithIcon(
       `&copy; 2018–${currentYear} <u>Damian&nbsp;Oczki</u>`,
-      'https://oczki.pl', iconExternalLink, 'accented'));
+      'https://oczki.pl', Icon.general.externalLink(), 'accented'));
 
     return sheet;
   }
@@ -1762,7 +1779,7 @@ let Settings = new function() {
 
     this.createIncreaseFontScaleButton = () => {
       const buttonText = 'Powiększ tekst';
-      const icon = Creator.createIcon(iconPlusBox);
+      const icon = Creator.createIcon(Icon.textScale.plus());
       const callback = () => {
         this.increaseFontScale();
       }
@@ -1771,7 +1788,7 @@ let Settings = new function() {
 
     this.createDecreaseFontScaleButton = () => {
       const buttonText = 'Pomniejsz tekst';
-      const icon = Creator.createIcon(iconMinusBox);
+      const icon = Creator.createIcon(Icon.textScale.minus());
       const callback = () => {
         this.decreaseFontScale();
       }
@@ -1806,7 +1823,7 @@ let Settings = new function() {
 
     this.createControl = () => {
       const container = Creator.createElementWithId('div', 'scale-control-container');
-      container.appendChild(Creator.createIcon(iconFormatSize, 'decorative-icon'));
+      container.appendChild(Creator.createIcon(Icon.textScale.size(), 'decorative-icon'));
       container.appendChild(Creator.createSpan('Skala:'));
       container.appendChild(this.createDecreaseFontScaleButton());
       container.appendChild(this.createCurrentScaleDisplay());
@@ -2122,7 +2139,7 @@ let Settings = new function() {
     this.createMoveUpButton = (categoryData) => {
       const buttonId = this.moveUpButtonId(categoryData.type);
       const buttonText = `Przesuń w górę kategorię ${categoryData.label}`;
-      const icon = Creator.createIcon(iconArrow, 'rotate-270');
+      const icon = Creator.createIcon(Icon.arrow.right(), 'rotate-270');
       const callback = () => {
         this.moveUp(categoryData);
         this.refocusAfterMoving(buttonId);
@@ -2134,7 +2151,7 @@ let Settings = new function() {
     this.createMoveDownButton = (categoryData) => {
       const buttonId = this.moveDownButtonId(categoryData.type);
       const buttonText = `Przesuń w dół kategorię ${categoryData.label}`;
-      const icon = Creator.createIcon(iconArrow, 'rotate-90');
+      const icon = Creator.createIcon(Icon.arrow.right(), 'rotate-90');
       const callback = () => {
         this.moveDown(categoryData);
         this.refocusAfterMoving(buttonId);
