@@ -215,6 +215,7 @@ a {
   font-family: inherit;
   border: none;
   outline: none; /* Taken care of via pseudoelements, covering high contrast mode too */
+  scroll-margin: var(--footer-height);
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -1016,6 +1017,7 @@ footer .circular-button .icon::before {
   cursor: pointer;
   width: 0;
   height: 0;
+  scroll-margin: var(--footer-height);
 }
 
 .checkbox-icon,
