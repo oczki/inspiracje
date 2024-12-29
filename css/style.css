@@ -1328,6 +1328,22 @@ button:disabled::after,
     color: transparent !important; /* Allows overriding by high contrast mode */
     border: 1px solid transparent;
   }
+
+  footer {
+    border-top: 1px solid transparent;
+  }
+
+  .sliding-sheet {
+    border-top: 1px solid transparent;
+  }
+
+  .separator {
+    border-bottom: 1px solid transparent;
+  }
+
+  #scrim.visible {
+    opacity: 0.8;
+  }
 }
 
 /* #endregion Media queries */
