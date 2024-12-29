@@ -201,13 +201,6 @@ body.reduced-animations .ripple.done {
 
 /* #endregion Body */
 
-:focus-visible {
-  outline-width: calc(3 * var(--outline-width));
-  outline-offset: calc(-2 * var(--outline-width));
-  outline-style: double;
-  outline-color: transparent; /* High contrast mode will force its color */
-}
-
 main {
   margin: 0 auto;
   display: flex;
@@ -221,6 +214,7 @@ button,
 a {
   font-family: inherit;
   border: none;
+  outline: none; /* Taken care of via pseudoelements, covering high contrast mode too */
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -1194,59 +1188,67 @@ a::after,
   transition: opacity var(--hover-duration) var(--timing-function);
 }
 
-/* Hover: background color */
+/* Hover: background color (and outline for high contrast mode) */
 button::before,
 a::before,
 .checkbox-label::before {
   background-color: currentColor;
+  border: 1px solid transparent;
+  outline-width: var(--outline-width);
+  outline-style: auto;
+  outline-color: transparent;
 }
 
-/* Focus: ring around the element */
+/* Focus: ring around the element (and outline for high contrast mode) */
 button::after,
 a::after,
 .checkbox-label::after {
   box-shadow: inset 0 0 0 var(--outline-width) currentColor;
+  outline-width: calc(3 * var(--outline-width));
+  outline-offset: calc(-2 * var(--outline-width));
+  outline-style: double;
+  outline-color: transparent;
 }
 
 /* Light mode - Only hovered */
 button:hover::before,
 a:hover::before,
 .checkbox-label:hover::before {
-  opacity: 0.08;
+  opacity: var(--outline-opacity-hover-override, 0.08);
 }
 
 /* Light mode - Focused */
 body.show-outline button:focus::before,
 body.show-outline a:focus::before,
 body.show-outline .checkbox-label:focus-within::before {
-  opacity: 0.12;
+  opacity: var(--outline-opacity-focus-override, 0.12);
 }
 
 body.show-outline button:focus::after,
 body.show-outline a:focus::after,
 body.show-outline .checkbox-label:focus-within::after {
   box-shadow: inset 0 0 0 var(--outline-width) currentColor;
-  opacity: 0.5;
+  opacity: var(--outline-opacity-hover-override, 0.5);
 }
 
 /* Dark mode - Only hovered */
 body.dark button:hover::before,
 body.dark a:hover::before,
 body.dark .checkbox-label:hover::before {
-  opacity: 0.12;
+  opacity: var(--outline-opacity-hover-override, 0.12);
 }
 
 /* Dark mode - Focused */
 body.dark.show-outline button:focus::before,
 body.dark.show-outline a:focus::before,
 body.dark.show-outline .checkbox-label:focus-within::before {
-  opacity: 0.24;
+  opacity: var(--outline-opacity-focus-override, 0.24);
 }
 
 body.dark.show-outline button:focus::after,
 body.dark.show-outline a:focus::after,
 body.dark.show-outline .checkbox-label:focus-within::after {
-  opacity: 0.5;
+  opacity: var(--outline-opacity-hover-override, 0.5);
 }
 
 button:disabled,
@@ -1311,6 +1313,18 @@ button:disabled::after,
   a::after,
   .checkbox-label::after {
     opacity: 0 !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :root {
+    --outline-opacity-hover-override: 1;
+    --outline-opacity-focus-override: 0;
+  }
+
+  button {
+    color: transparent !important; /* Allows overriding by high contrast mode */
+    border: 1px solid transparent;
   }
 }
 
