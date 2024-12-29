@@ -297,7 +297,6 @@ u {
   height: 48px;
   padding: var(--icon-padding) calc(2 * var(--icon-padding));
   border-radius: 48px;
-  cursor: pointer;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 0.875rem;
@@ -504,7 +503,6 @@ main section.last-visible {
   font-weight: 500;
   padding: var(--icon-padding);
   border-radius: 100px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -697,7 +695,6 @@ footer.visible {
   border-radius: 48px;
   box-shadow: var(--fab-shadow);
   text-transform: uppercase;
-  cursor: pointer;
   background-color: var(--color-accent);
   transform: scale(0) translate3d(-50%, -50%, 0);
   transform-origin: 0 0;
@@ -750,7 +747,6 @@ footer.visible {
   justify-content: center;
   padding: var(--icon-padding);
   border-radius: 48px;
-  cursor: pointer;
   background-color: transparent;
   color: var(--color-text);
   height: 100%;
@@ -991,7 +987,6 @@ footer .circular-button .icon::before {
   flex-direction: row;
   flex-wrap: nowrap;
   padding: 16px var(--sliding-sheet-item-horizontal-padding);
-  cursor: pointer;
   color: var(--color-text);
   border-radius: var(--sliding-sheet-item-border-radius);
   overflow: hidden;
@@ -1017,7 +1012,6 @@ footer .circular-button .icon::before {
 .checkbox-label input {
   position: absolute;
   opacity: 0;
-  cursor: pointer;
   width: 0;
   height: 0;
   scroll-margin: calc(1.5 * var(--footer-height));
